@@ -1,0 +1,778 @@
+{
+ "depts": [
+  [
+   "1",
+   "Architecture"
+  ],
+  [
+   "11",
+   "Biology"
+  ],
+  [
+   "23",
+   "Biosystems Science and Engineering"
+  ],
+  [
+   "20",
+   "Chemistry and Applied Biosciences"
+  ],
+  [
+   "2",
+   "Civil, Environmental and Geomatic Engineering"
+  ],
+  [
+   "5",
+   "Computer Science"
+  ],
+  [
+   "13",
+   "Earth and Planetary Sciences"
+  ],
+  [
+   "25",
+   "Environmental Systems Science"
+  ],
+  [
+   "24",
+   "Health Sciences and Technology"
+  ],
+  [
+   "17",
+   "Humanities, Social and Political Sciences"
+  ],
+  [
+   "18",
+   "Information Technology and Electrical Engineering"
+  ],
+  [
+   "7",
+   "Management, Technology, and Economics"
+  ],
+  [
+   "19",
+   "Materials"
+  ],
+  [
+   "8",
+   "Mathematics"
+  ],
+  [
+   "3",
+   "Mechanical and Process Engineering"
+  ],
+  [
+   "9",
+   "Physics"
+  ]
+ ],
+ "programs": {
+  "122764": {
+   "dept": "1",
+   "deptName": "Architecture",
+   "name": "Architecture Bachelor",
+   "sections": [
+    [
+     "123620",
+     "Bachelor Studies (Programme Regulations 2017)"
+    ],
+    [
+     "123621",
+     "Bachelor Studies (Programme Regulations 2025)"
+    ],
+    [
+     "123277",
+     "Science in Perspective"
+    ],
+    [
+     "123622",
+     "Seminar Weeks"
+    ]
+   ]
+  },
+  "122758": {
+   "dept": "11",
+   "deptName": "Biology",
+   "name": "Biology Bachelor",
+   "sections": [
+    [
+     "123529",
+     "First Year Courses"
+    ],
+    [
+     "123029",
+     "Science in Perspective"
+    ],
+    [
+     "123534",
+     "Second Year Courses"
+    ],
+    [
+     "123542",
+     "Third Year Courses"
+    ]
+   ]
+  },
+  "122886": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Biochemistry – Chemical Biology Bachelor",
+   "sections": [
+    [
+     "123432",
+     "Block Courses"
+    ],
+    [
+     "123408",
+     "Core Courses First Year Examination"
+    ],
+    [
+     "123411",
+     "Electives"
+    ],
+    [
+     "123409",
+     "Laboratory Courses"
+    ],
+    [
+     "123410",
+     "Science in Perspective"
+    ],
+    [
+     "123431",
+     "Second and Third Year Core Courses"
+    ]
+   ]
+  },
+  "122790": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Chemical Engineering Bachelor",
+   "sections": [
+    [
+     "123416",
+     "1. Semester"
+    ],
+    [
+     "123429",
+     "3. Semester"
+    ],
+    [
+     "123430",
+     "5. Semester"
+    ],
+    [
+     "122994",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122750": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Chemistry Bachelor",
+   "sections": [
+    [
+     "123353",
+     "1. Semester"
+    ],
+    [
+     "123394",
+     "3. Semester"
+    ],
+    [
+     "123354",
+     "5. Semester"
+    ],
+    [
+     "123278",
+     "Electives"
+    ],
+    [
+     "122938",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122765": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Interdisciplinary Sciences Bachelor",
+   "sections": [
+    [
+     "123310",
+     "Biochemical-Physical Direction"
+    ],
+    [
+     "122966",
+     "Physical-Chemical Direction"
+    ],
+    [
+     "123060",
+     "Science in Perspective"
+    ],
+    [
+     "123073",
+     "Second and Third Year Additional Subjects"
+    ]
+   ]
+  },
+  "122757": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Pharmaceutical Sciences Bachelor",
+   "sections": [
+    [
+     "123192",
+     "Compensatory Courses"
+    ],
+    [
+     "123543",
+     "Electives"
+    ],
+    [
+     "123528",
+     "First Year Compulsory Subjects"
+    ],
+    [
+     "122934",
+     "Science in Perspective"
+    ],
+    [
+     "123535",
+     "Second Year Courses"
+    ],
+    [
+     "123541",
+     "Third Year Courses"
+    ]
+   ]
+  },
+  "122752": {
+   "dept": "2",
+   "deptName": "Civil, Environmental and Geomatic Engineering",
+   "name": "Civil Engineering Bachelor",
+   "sections": [
+    [
+     "123282",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123502",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ],
+    [
+     "122935",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122753": {
+   "dept": "2",
+   "deptName": "Civil, Environmental and Geomatic Engineering",
+   "name": "Environmental Engineering Bachelor",
+   "sections": [
+    [
+     "122990",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123501",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ],
+    [
+     "122937",
+     "Electives"
+    ],
+    [
+     "122989",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122872": {
+   "dept": "2",
+   "deptName": "Civil, Environmental and Geomatic Engineering",
+   "name": "Geospatial Engineering Bachelor",
+   "sections": [
+    [
+     "123448",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123303",
+     "Basic Courses"
+    ],
+    [
+     "123346",
+     "Compulsory Courses"
+    ],
+    [
+     "123404",
+     "Elective Blocks"
+    ],
+    [
+     "123304",
+     "Electives"
+    ],
+    [
+     "123320",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122754": {
+   "dept": "5",
+   "deptName": "Computer Science",
+   "name": "Computer Science Bachelor",
+   "sections": [
+    [
+     "123105",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123287",
+     "Basic Courses"
+    ],
+    [
+     "123288",
+     "Core Courses"
+    ],
+    [
+     "123289",
+     "Electives"
+    ],
+    [
+     "123283",
+     "First Year Examinations"
+    ],
+    [
+     "123309",
+     "Minor Courses"
+    ],
+    [
+     "123220",
+     "Science in Perspective"
+    ],
+    [
+     "123308",
+     "Seminar"
+    ]
+   ]
+  },
+  "122759": {
+   "dept": "13",
+   "deptName": "Earth and Planetary Sciences",
+   "name": "Earth and Climate Sciences Bachelor",
+   "sections": [
+    [
+     "123033",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123384",
+     "Basic Courses I"
+    ],
+    [
+     "123371",
+     "Basic Courses II"
+    ],
+    [
+     "123372",
+     "General Earth Sciences Courses"
+    ],
+    [
+     "123385",
+     "Integrated Earth Systems"
+    ],
+    [
+     "123386",
+     "Majors"
+    ],
+    [
+     "123286",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122761": {
+   "dept": "25",
+   "deptName": "Environmental Systems Science",
+   "name": "Agricultural Sciences Bachelor",
+   "sections": [
+    [
+     "123360",
+     "1. Semester"
+    ],
+    [
+     "123373",
+     "Agricultural Sciences Basic Courses"
+    ],
+    [
+     "123363",
+     "Agricultural Sciences Disciplines"
+    ],
+    [
+     "123375",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123362",
+     "Basic Courses (Second Year)"
+    ],
+    [
+     "123391",
+     "Electives"
+    ],
+    [
+     "123374",
+     "Methods"
+    ]
+   ]
+  },
+  "122760": {
+   "dept": "25",
+   "deptName": "Environmental Systems Science",
+   "name": "Environmental Sciences Bachelor",
+   "sections": [
+    [
+     "123119",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123359",
+     "Basic Courses I"
+    ],
+    [
+     "123364",
+     "Basic Courses II"
+    ],
+    [
+     "123367",
+     "Highly recommended Natural Science and Technical Electives"
+    ],
+    [
+     "123369",
+     "Natural Science and Technical Electives"
+    ],
+    [
+     "123361",
+     "Social Sciences and Humanities"
+    ],
+    [
+     "123370",
+     "Specialization in an Environmental System"
+    ]
+   ]
+  },
+  "122762": {
+   "dept": "24",
+   "deptName": "Health Sciences and Technology",
+   "name": "Food Science and Nutrition Bachelor",
+   "sections": [
+    [
+     "123155",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123582",
+     "Bachelor Studies (Programme Regulations 2016)"
+    ],
+    [
+     "123583",
+     "Bachelor Studies (Programme Regulations 2024)"
+    ]
+   ]
+  },
+  "122833": {
+   "dept": "24",
+   "deptName": "Health Sciences and Technology",
+   "name": "Health Sciences and Technology Bachelor",
+   "sections": [
+    [
+     "123407",
+     "Bachelor Studies (Programme Regulations 2020)"
+    ],
+    [
+     "123125",
+     "Electives"
+    ],
+    [
+     "123221",
+     "Science in Perspective"
+    ],
+    [
+     "123130",
+     "Sports Practice"
+    ]
+   ]
+  },
+  "122862": {
+   "dept": "24",
+   "deptName": "Health Sciences and Technology",
+   "name": "Human Medicine Bachelor",
+   "sections": [
+    [
+     "123500",
+     "Bachelor Studies (Programme Regulations 2018)"
+    ],
+    [
+     "123499",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ]
+   ]
+  },
+  "122749": {
+   "dept": "17",
+   "deptName": "Humanities, Social and Political Sciences",
+   "name": "Public Policy Bachelor",
+   "sections": [
+    [
+     "123355",
+     "1. Semester"
+    ],
+    [
+     "123356",
+     "3. Semester"
+    ],
+    [
+     "123357",
+     "5. Semester"
+    ],
+    [
+     "123158",
+     "Electives"
+    ]
+   ]
+  },
+  "122763": {
+   "dept": "18",
+   "deptName": "Information Technology and Electrical Engineering",
+   "name": "Electrical Engineering and Information Technology Bachelor",
+   "sections": [
+    [
+     "123358",
+     "1st semester: foundation year"
+    ],
+    [
+     "123627",
+     "3rd semester: second year courses"
+    ],
+    [
+     "123412",
+     "5th semester: third year additional foundation courses"
+    ],
+    [
+     "123626",
+     "5th semester: third year core courses"
+    ],
+    [
+     "123436",
+     "Bachelor's Project"
+    ],
+    [
+     "123231",
+     "Electives"
+    ],
+    [
+     "123230",
+     "Laboratory Courses, Projects, Seminars"
+    ],
+    [
+     "123247",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122751": {
+   "dept": "19",
+   "deptName": "Materials",
+   "name": "Materials Science Bachelor",
+   "sections": [
+    [
+     "123618",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123615",
+     "Basis Courses Part 1"
+    ],
+    [
+     "122933",
+     "Science in Perspective"
+    ],
+    [
+     "123617",
+     "Second Year Basic Courses"
+    ],
+    [
+     "123619",
+     "Third Year Basic Courses"
+    ]
+   ]
+  },
+  "122747": {
+   "dept": "8",
+   "deptName": "Mathematics",
+   "name": "Computational Science and Engineering Bachelor",
+   "sections": [
+    [
+     "123420",
+     "Additional Electives from the Fields of Specialization (CSE Master)"
+    ],
+    [
+     "123427",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123426",
+     "Basic Courses"
+    ],
+    [
+     "123414",
+     "Case Studies"
+    ],
+    [
+     "123415",
+     "Colloquia"
+    ],
+    [
+     "123428",
+     "Core Courses"
+    ],
+    [
+     "123419",
+     "Electives"
+    ],
+    [
+     "123418",
+     "Fields of Specialization"
+    ],
+    [
+     "123421",
+     "First Year Compulsory Courses"
+    ],
+    [
+     "123417",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122755": {
+   "dept": "8",
+   "deptName": "Mathematics",
+   "name": "Mathematics Bachelor",
+   "sections": [
+    [
+     "122964",
+     "Additional Courses"
+    ],
+    [
+     "122963",
+     "Bachelor's Thesis"
+    ],
+    [
+     "124225",
+     "Compulsory Elective Courses"
+    ],
+    [
+     "125101",
+     "Core Courses and Elective Courses"
+    ],
+    [
+     "123522",
+     "Electives (only conditionally recognised)"
+    ],
+    [
+     "123679",
+     "First Year Compulsory Courses"
+    ],
+    [
+     "123611",
+     "Further Electives (Programme Regulations 2021 and 2016)"
+    ],
+    [
+     "124224",
+     "Minor Courses"
+    ],
+    [
+     "123222",
+     "Science in Perspective"
+    ],
+    [
+     "124348",
+     "Second and Third Year Compulsory Courses"
+    ],
+    [
+     "125102",
+     "Seminars and Semester Papers"
+    ]
+   ]
+  },
+  "122748": {
+   "dept": "3",
+   "deptName": "Mechanical and Process Engineering",
+   "name": "Mechanical Engineering Bachelor",
+   "sections": [
+    [
+     "123505",
+     "Bachelor Studies (Programme Regulations 2010)"
+    ],
+    [
+     "123504",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ],
+    [
+     "122932",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122756": {
+   "dept": "9",
+   "deptName": "Physics",
+   "name": "Physics Bachelor",
+   "sections": [
+    [
+     "122955",
+     "Additional Courses, Seminars and Colloquia"
+    ],
+    [
+     "123227",
+     "Core Courses"
+    ],
+    [
+     "123569",
+     "Electives"
+    ],
+    [
+     "123226",
+     "First Year"
+    ],
+    [
+     "123526",
+     "First Year Compulsory Courses"
+    ],
+    [
+     "123305",
+     "Practical Courses"
+    ],
+    [
+     "123225",
+     "Proseminars, Experimental and Theoretical Semester Papers"
+    ],
+    [
+     "123223",
+     "Science in Perspective"
+    ],
+    [
+     "123540",
+     "Second and Third Year Compulsory Courses"
+    ],
+    [
+     "123041",
+     "Selection of Higher Semester Courses"
+    ]
+   ]
+  }
+ }
+}
