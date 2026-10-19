@@ -31,6 +31,8 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const [gen, setGen] = useState(0);
   const portraitId = useCallback((id: number) => `portrait-${id}-${gen}`, [gen]);
   const trigger = useRef<HTMLElement | null>(null);
+  // the dialog itself takes focus (Escape and Tab work at once) instead of the close button, which showed a focus ring on every open
+  const focusOnMount = useCallback((el: HTMLElement | null) => el?.focus({ preventScroll: true }), []);
   const current = useRef<number | null>(null);
 
   const open = useCallback((p: Prof) => {
@@ -59,12 +61,12 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
           <motion.div key="scrim" className="scrim" onClick={close} initial={{ opacity: 0 }} animate={{ opacity: 1, pointerEvents: 'auto' }} exit={{ opacity: 0, pointerEvents: 'none' }} transition={MOTION.fade} />
           {/* one panel per professor: opening another while the last one leaves gives a fresh panel, not a half-faded one */}
           <div className="profile-wrap" key={`wrap-${prof.id}`}>
-            <motion.section className="panel profile" role="dialog" aria-modal="true" aria-label={prof.name}
+            <motion.section className="panel profile" role="dialog" aria-modal="true" aria-label={prof.name} tabIndex={-1} ref={focusOnMount}
               style={{ ['--accent' as any]: deptByName(prof.department).color }}
               initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0, pointerEvents: 'auto' }}
               exit={{ opacity: 0, scale: 0.97, y: 8, pointerEvents: 'none', transition: MOTION.exit }}
               transition={{ ...MOTION.soft, opacity: MOTION.fade }}>
-              <button className="btn sm red icon-only close" onClick={close} aria-label="Schliessen" autoFocus><Icon name="close" size={22} className="icon x" /></button>
+              <button className="btn sm red icon-only close" onClick={close} aria-label="Schliessen"><Icon name="close" size={22} className="icon x" /></button>
               {/* radius inline and the figure as its own layout box, so Motion keeps both undistorted on the way */}
               <motion.div layoutId={portraitId(prof.id)} transition={MOTION.snappy} className="frame" style={{ borderRadius: 16 }}>
                 <motion.span layoutId={`${portraitId(prof.id)}-fig`} transition={MOTION.snappy} className="fig">
