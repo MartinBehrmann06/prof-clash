@@ -77,7 +77,7 @@ async function main() {
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
             ON CONFLICT (id) DO UPDATE SET name = excluded.name, full_name = excluded.full_name, relationship = excluded.relationship,
               department = excluded.department, field = excluded.field, url = excluded.url, image = excluded.image, image_source = excluded.image_source`,
-            [Number(p.id), cleanName(p.fullName), p.fullName, p.relationship || '', p.department || '', p.field || '', p.url || '', null, null] // no photos);
+            [Number(p.id), cleanName(p.fullName), p.fullName, p.relationship || '', p.department || '', p.field || '', p.url || '', null, null]); // no photos
           seenProf.add(p.id);
         }
         await db.query('INSERT INTO course_professors (course_id, prof_id) VALUES ($1, $2) ON CONFLICT DO NOTHING', [course.id, Number(p.id)]);
