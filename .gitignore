@@ -15,3 +15,8 @@ scraper/courses.before_augment.json
 scraper/photo_index.json
 scraper/courses.v1.json
 scraper/*.partial
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.next-build/
+scraper/*.tmp.json

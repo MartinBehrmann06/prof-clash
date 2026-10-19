@@ -3,7 +3,11 @@ Output: courses.json  {programs: {...}, courses: [...], lecturers: {...}}"""
 import json, os, re, sys
 from vvz_common import get, options, text, reset_session
 
-SEMS = ['2026W', '2026S']  # autumn 2026 + spring 2026 = one full study year
+# Terms to scrape (VVZ 'semkez'), e.g. TERMS=2025W,2025S. Default: the current study year.
+SEMS = [t for t in os.environ.get('TERMS', '2026W,2026S').split(',') if t]
+# Older terms only matter for early semesters (a student in semester N had semester k
+# N-k terms ago), so sections clearly above KMAX are skipped to save requests.
+KMAX = int(os.environ.get('KMAX', '99'))
 SKIP = re.compile(r"science in perspective|thesis|bachelor's project|elective|wahl|minor|seminar week|sports practice|compensatory|additional|colloqui|major|specialization|fields of|conditionally", re.I)
 
 EXPLICIT_YEAR = [(1, r'first year|1st year|basisprüfung|basis courses part 1|foundation year|basic courses i\b'),
@@ -80,6 +84,7 @@ def main(sections_file, out_file):
             pre = get('sucheLehrangebotPre.view', lang='en', semkez=sem, studiengangTyp='BSC', deptId=did, studiengangAbschnittId=spid, refresh='on')
             for bid, bname in options(pre, 'bereichAbschnittId'):
                 if SKIP.search(bname): continue
+                if (semester_of(bname, sem) or 0) > KMAX: continue
                 reset_session()  # fresh session, or VVZ shows the previous section's subsections
                 pre2 = get('sucheLehrangebotPre.view', lang='en', semkez=sem, studiengangTyp='BSC', deptId=did,
                            studiengangAbschnittId=spid, bereichAbschnittId=bid, refresh='on')

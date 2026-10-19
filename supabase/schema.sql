@@ -150,3 +150,14 @@ end $$;
 drop trigger if exists lock_profile on profiles;
 create trigger lock_profile before update on profiles
   for each row execute function public.lock_profile();
+
+-- ---------------------------------------------------------------
+-- v3: courses per VVZ term (lecturers rotate), and each student's cohort
+-- ---------------------------------------------------------------
+alter table courses add column if not exists term text;          -- VVZ semkez, e.g. '2025W'
+alter table courses drop constraint if exists courses_program_id_code_key;
+create unique index if not exists courses_program_code_term on courses (program_id, code, term);
+create index if not exists idx_courses_program_term on courses (program_id, term);
+
+-- term in which the student took semester 1; semester k = start_term + (k-1) terms
+alter table profiles add column if not exists start_term text;

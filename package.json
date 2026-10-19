@@ -5,16 +5,31 @@
   "description": "1v1 Elo battles between ETH Zurich bachelor professors",
   "type": "module",
   "engines": {
-    "node": ">=22.9"
+    "node": ">=20.9"
   },
   "scripts": {
-    "start": "node --env-file-if-exists=.env server.js",
-    "db:setup": "node --env-file-if-exists=.env seed.js --schema",
-    "seed": "node --env-file-if-exists=.env seed.js",
-    "scrape": "cd scraper && python3 dump_sections.py sections.json && python3 scrape_courses.py sections.json courses.json && python3 augment.py courses.json && python3 photo_index.py photo_index.json && python3 scrape_people.py courses.json people.json ../public/img/profs"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "db:setup": "node --env-file-if-exists=.env scripts/seed.mjs --schema",
+    "seed": "node --env-file-if-exists=.env scripts/seed.mjs",
+    "scrape": "cd scraper && python3 dump_sections.py sections.json && python3 scrape_courses.py sections.json courses.json && python3 augment.py courses.json && ./scrape_history.sh && python3 photo_index.py photo_index.json && python3 scrape_people.py courses.json people.json ../public/img/profs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
-    "pg": "^8.23.1"
+    "motion": "^12.43.0",
+    "next": "^15.5.28",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.3"
   }
 }

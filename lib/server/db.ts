@@ -1,0 +1,42 @@
+import 'server-only';
+import pg from 'pg';
+
+declare global {
+  // reuse one pool across hot reloads in dev
+  var __pgPool: pg.Pool | undefined;
+}
+
+function createPool() {
+  if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not set — copy .env.example to .env');
+  return new pg.Pool({
+    connectionString: process.env.DATABASE_URL,
+    // Supabase requires TLS; its pooler certificate isn't in Node's default CA store
+    ssl: { rejectUnauthorized: false },
+    max: Number(process.env.DB_POOL_SIZE || 5),
+  });
+}
+
+export const pool = globalThis.__pgPool ?? (globalThis.__pgPool = createPool());
+
+export async function all<T = Record<string, any>>(sql: string, params: unknown[] = []): Promise<T[]> {
+  return (await pool.query(sql, params)).rows as T[];
+}
+
+export async function one<T = Record<string, any>>(sql: string, params: unknown[] = []): Promise<T | undefined> {
+  return (await pool.query(sql, params)).rows[0] as T | undefined;
+}
+
+export async function tx<T>(fn: (db: pg.PoolClient) => Promise<T>): Promise<T> {
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const out = await fn(client);
+    await client.query('COMMIT');
+    return out;
+  } catch (e) {
+    await client.query('ROLLBACK').catch(() => {});
+    throw e;
+  } finally {
+    client.release();
+  }
+}

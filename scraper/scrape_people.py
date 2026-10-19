@@ -1,6 +1,6 @@
 """Fetch lecturer details from VVZ (dozent.view) and look for a portrait photo on the web.
 Usage: python3 scrape_people.py courses.json people.json ../public/img/profs"""
-import json, os, re, sys, unicodedata, urllib.request, urllib.parse, html as H
+import glob, json, os, re, sys, unicodedata, urllib.request, urllib.parse, html as H
 from concurrent.futures import ThreadPoolExecutor
 from vvz_common import get, text, UA
 
@@ -95,9 +95,10 @@ def find_image(p, outdir):
 
 def main(courses_file, out_file, outdir):
     os.makedirs(outdir, exist_ok=True)
-    C = json.load(open(courses_file))
+    # courses.json plus the older-term files next to it (courses_2025W.json, ...)
+    files = [courses_file] + sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(courses_file)), 'courses_[0-9][0-9][0-9][0-9][WS].json')), reverse=True)
     ids = {}
-    for c in C['courses']:
+    for c in (c for f in files for c in json.load(open(f))['courses']):
         for d, short in c['lecturers']:
             ids.setdefault(d, c['sem'])
     old = json.load(open(out_file)) if os.path.exists(out_file) else {}
