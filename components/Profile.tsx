@@ -47,7 +47,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
               style={{ ['--accent' as any]: deptByName(prof.department).color }}
               initial={{ opacity: 0, scale: 0.94, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 12, transition: MOTION.exit }}
               transition={MOTION.soft}>
-              <button className="btn sm stone icon-only close" onClick={close} aria-label="Schliessen" autoFocus><Icon name="close" /></button>
+              <button className="btn sm red icon-only close" onClick={close} aria-label="Schliessen" autoFocus><Icon name="close" /></button>
               <motion.div layoutId={`portrait-${prof.id}`} transition={MOTION.snappy} className="frame">
                 <Figure id={prof.id} name={prof.name} department={prof.department} mood="happy" />
               </motion.div>

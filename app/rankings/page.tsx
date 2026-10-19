@@ -42,7 +42,7 @@ export default function RankingsPage() {
   return (
     <div className="page">
       <header className="head">
-        <h1><span className="title-badge" style={{ background: 'var(--gold)', color: 'var(--ink)' }}><Icon name="trophy" /></span>Rankings</h1>
+        <h1><span className="title-badge" style={{ ['--tb' as any]: 'var(--gold-2)' }}><Icon name="trophy" /></span>Rankings</h1>
         <p>{scope === 'all' ? 'Trophäen aller Profs aus gezählten Duellen eingeloggter ETH-Studierender.' : `Nur Stimmen aus dem Clan ${deptName} — jede Clan-Wertung ist unabhängig.`}</p>
         <div className="tabs" role="tablist" aria-label="Wertung">
           {(['all', 'dept'] as const).map((s) => (

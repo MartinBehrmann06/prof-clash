@@ -1,12 +1,12 @@
 'use client';
 // Procedural professor portraits instead of photos. Every professor gets a fixed, family-friendly
 // character derived from their id — it is deliberately NOT a likeness of the real person.
-// Flat vector style: no outlines, every shape is either fully inside another or clipped to it,
-// so nothing overlaps raggedly at any size.
+// Clash-style cel look: flat fills with one light-from-the-left shade, and ink outlines drawn by an
+// SVG filter around whole shapes (never strokes on overlapping fills), so every edge stays clean.
 import { memo, useId } from 'react';
 import { deptByName } from '@/lib/departments';
 
-const INK = '#23212e';
+const INK = '#1e1712';
 const SKIN = ['#ffe0c7', '#f6cba6', '#e6ab80', '#c98a5c', '#9d6743', '#6e472f'];
 const HAIR = ['#2a221f', '#4a3428', '#7a4b2c', '#b5833f', '#e3c483', '#8e8b93', '#c8c5cc', '#eceaee', '#a9472f'];
 type Hair = 'bald' | 'short' | 'side' | 'curly' | 'long' | 'bun' | 'quiff' | 'tuft';
@@ -87,21 +87,28 @@ export const Figure = memo(function Figure({ id, name, department, mood = 'idle'
         <clipPath id={c('hl')}><path d={HAIRLINE[t.hair]} /></clipPath>
         <clipPath id={c('head')}><ellipse {...HEAD} /></clipPath>
         <clipPath id={c('body')}><path d="M18 238C18 198 50 178 100 178C150 178 182 198 182 238Z" /></clipPath>
+        <clipPath id={c('cap')}><ellipse {...CAP} /></clipPath>
+        <Outline id={c('ol')} r={3.2} />
+        <Outline id={c('il')} r={1.6} />
       </defs>
 
       <rect width="200" height="238" fill={`url(#${c('bg')})`} />
       <circle cx="100" cy="118" r="80" fill="#ffffff" opacity=".35" />
 
+      <g filter={`url(#${c('ol')})`}>
       {/* long hair falls behind the head and over the shoulders */}
       {hairBack && <path d="M51 104C51 70 72 48 100 48C128 48 149 70 149 104V186C149 194 142 200 134 200H66C58 200 51 194 51 186Z" fill={hairShade} />}
 
       {/* body: jacket, shirt, optional tie */}
+      <g filter={`url(#${c('il')})`}>
       <path d="M18 238C18 198 50 178 100 178C150 178 182 198 182 238Z" fill={jacket} />
       <g clipPath={`url(#${c('body')})`}>
+        <path d="M100 170H190V238H100Z" fill="#000" opacity=".1" />
         <path d="M100 178L74 182L100 228L126 182Z" fill="#ffffff" />
         {t.tie && <path d="M95 192H105L109 230L100 238L91 230Z" fill={INK} opacity=".85" />}
         <path d="M74 181L100 214L95 221L66 186Z" fill={jacketShade} />
         <path d="M126 181L100 214L105 221L134 186Z" fill={jacketShade} />
+      </g>
       </g>
       <path d="M86 150H114V174C114 182 108 188 100 188C92 188 86 182 86 174Z" fill={skinShade} />
 
@@ -109,17 +116,23 @@ export const Figure = memo(function Figure({ id, name, department, mood = 'idle'
       {t.hair === 'bun' && <circle cx="100" cy="46" r="19" fill={t.hairColor} />}
       {t.hair === 'curly' && <g fill={t.hairColor}>{[-168, -146, -124, -102, -80, -58, -36, -14].map((deg) => {
         const a = (deg * Math.PI) / 180;
-        return <circle key={deg} cx={CAP.cx + Math.cos(a) * (CAP.rx - 6)} cy={CAP.cy + Math.sin(a) * (CAP.ry - 6)} r="15" />;
+        return <circle key={deg} cx={(CAP.cx + Math.cos(a) * (CAP.rx - 6)).toFixed(2)} cy={(CAP.cy + Math.sin(a) * (CAP.ry - 6)).toFixed(2)} r="15" />;
       })}</g>}
 
       {/* ears, head */}
-      {showEars && <g>
-        <circle cx="57" cy="117" r="10" fill={t.skin} /><circle cx="58" cy="117" r="5" fill={skinShade} />
-        <circle cx="143" cy="117" r="10" fill={t.skin} /><circle cx="142" cy="117" r="5" fill={skinShade} />
-      </g>}
-      <ellipse {...HEAD} fill={t.skin} />
-      {/* soft jaw shade, clipped to the face */}
-      <ellipse cx="100" cy="176" rx="50" ry="26" fill={skinShade} opacity=".35" clipPath={`url(#${c('head')})`} />
+      <g filter={`url(#${c('il')})`}>
+        {showEars && <>
+          <circle cx="57" cy="117" r="10" fill={t.skin} />
+          <circle cx="143" cy="117" r="10" fill={t.skin} />
+        </>}
+        <ellipse {...HEAD} fill={t.skin} />
+      </g>
+      {showEars && <><circle cx="58" cy="117" r="5" fill={skinShade} /><circle cx="142" cy="117" r="5" fill={skinShade} /></>}
+      {/* cel shade on the far side and under the jaw, clipped to the face */}
+      <g clipPath={`url(#${c('head')})`}>
+        <ellipse cx="156" cy="108" rx="30" ry="64" fill={skinShade} opacity=".55" />
+        <ellipse cx="100" cy="178" rx="50" ry="26" fill={skinShade} opacity=".4" />
+      </g>
 
       {/* face */}
       <g className={`face mood-${mood}`}>
@@ -136,34 +149,55 @@ export const Figure = memo(function Figure({ id, name, department, mood = 'idle'
           <g stroke={INK} strokeWidth="3.6" strokeLinecap="round" fill="none"><path d="M76 115Q82 108 88 115" /><path d="M112 115Q118 108 124 115" /></g>
         ) : (
           <g>
-            <ellipse cx={82 + t.eyeShift} cy={mood === 'sad' ? EYE_Y + 2 : EYE_Y} rx="4.6" ry="5.6" fill={INK} />
-            <ellipse cx={118 + t.eyeShift} cy={mood === 'sad' ? EYE_Y + 2 : EYE_Y} rx="4.6" ry="5.6" fill={INK} />
-            <circle cx={83.6 + t.eyeShift} cy={EYE_Y - 2} r="1.6" fill="#fff" />
-            <circle cx={119.6 + t.eyeShift} cy={EYE_Y - 2} r="1.6" fill="#fff" />
+            <ellipse cx="82" cy={EYE_Y} rx="7.4" ry="8.6" fill="#fff" stroke={INK} strokeWidth="2.4" />
+            <ellipse cx="118" cy={EYE_Y} rx="7.4" ry="8.6" fill="#fff" stroke={INK} strokeWidth="2.4" />
+            <ellipse cx={82 + t.eyeShift * 1.6} cy={mood === 'sad' ? EYE_Y + 2.5 : EYE_Y + 0.5} rx="4.2" ry="5" fill={INK} />
+            <ellipse cx={118 + t.eyeShift * 1.6} cy={mood === 'sad' ? EYE_Y + 2.5 : EYE_Y + 0.5} rx="4.2" ry="5" fill={INK} />
+            <circle cx={83.6 + t.eyeShift * 1.6} cy={EYE_Y - 1.5} r="1.6" fill="#fff" />
+            <circle cx={119.6 + t.eyeShift * 1.6} cy={EYE_Y - 1.5} r="1.6" fill="#fff" />
           </g>
         )}
         <path d="M96 124Q100 129 104 124" stroke={skinShade} strokeWidth="3.4" strokeLinecap="round" fill="none" />
       </g>
 
-      {t.facial === 'beard' && <path d="M56 114C57 152 76 170 100 170C124 170 143 152 144 114C139 128 128 134 116 134C110 132 105 131 100 131C95 131 90 132 84 134C72 134 61 128 56 114Z" fill={t.hairColor} />}
+      {t.facial === 'beard' && <path filter={`url(#${c('il')})`} d="M56 114C57 152 76 170 100 170C124 170 143 152 144 114C139 128 128 134 116 134C110 132 105 131 100 131C95 131 90 132 84 134C72 134 61 128 56 114Z" fill={t.hairColor} />}
       {t.facial === 'goatee' && <path d="M91 149C93 160 107 160 109 149C105 152 95 152 91 149Z" fill={t.hairColor} />}
 
       <Mouth mood={mood} style={t.mouth} uid={uid} />
       {(t.facial === 'mustache' || t.facial === 'beard') && <path d="M83 135C88 129 96 129 100 133C104 129 112 129 117 135C111 138 105 138 100 137C95 138 89 138 83 135Z" fill={t.facial === 'beard' ? hairShade : t.hairColor} />}
 
       {/* hair cap: one ellipse, clipped to the style's hairline */}
-      <ellipse {...CAP} fill={t.hairColor} clipPath={`url(#${c('hl')})`} />
-      {t.hair === 'quiff' && <path d="M66 82C60 52 86 38 112 42C132 45 146 58 146 76C136 64 120 60 104 66C90 70 76 74 66 82Z" fill={t.hairColor} />}
-      {t.hair === 'tuft' && <path d="M92 64C90 54 96 46 106 46C102 52 104 58 110 62C104 66 96 67 92 64Z" fill={t.hairColor} />}
+      <g filter={t.hair === 'bald' || t.hair === 'tuft' ? undefined : `url(#${c('il')})`}>
+        <g clipPath={`url(#${c('hl')})`}>
+          <ellipse {...CAP} fill={t.hairColor} />
+          <ellipse cx="156" cy="100" rx="28" ry="62" fill={hairShade} clipPath={`url(#${c('cap')})`} />
+        </g>
+        {t.hair === 'quiff' && <path d="M66 82C60 52 86 38 112 42C132 45 146 58 146 76C136 64 120 60 104 66C90 70 76 74 66 82Z" fill={t.hairColor} />}
+        {t.hair === 'tuft' && <path d="M92 64C90 54 96 46 106 46C102 52 104 58 110 62C104 66 96 67 92 64Z" fill={t.hairColor} />}
+      </g>
+      {t.hair !== 'bald' && t.hair !== 'tuft' && <path d="M70 70C78 60 90 55 104 54" stroke="#fff" strokeOpacity=".3" strokeWidth="5" strokeLinecap="round" fill="none" clipPath={`url(#${c('hl')})`} />}
       {t.hair === 'side' && <path d="M118 73C108 86 84 92 62 91C80 86 100 80 112 70Z" fill={hairShade} opacity=".5" />}
 
       {t.glasses === 'round' && <g fill="#ffffff" fillOpacity=".18" stroke={INK} strokeWidth="3"><circle cx="82" cy="113" r="12.5" /><circle cx="118" cy="113" r="12.5" /><path d="M94.5 112Q100 108 105.5 112" fill="none" /></g>}
       {t.glasses === 'square' && <g fill="#ffffff" fillOpacity=".18" stroke={INK} strokeWidth="3" strokeLinejoin="round"><rect x="68" y="103" width="28" height="20" rx="7" /><rect x="104" y="103" width="28" height="20" rx="7" /><path d="M96 111H104" fill="none" /></g>}
 
-      <HatShape hat={t.hat} color={d.color} />
+      <g filter={`url(#${c('il')})`}><HatShape hat={t.hat} color={d.color} /></g>
+      </g>
     </svg>
   );
 });
+
+/** Ink outline around the union of the filtered shapes (dilated alpha under the source) */
+function Outline({ id, r }: { id: string; r: number }) {
+  return (
+    <filter id={id} x="-10%" y="-10%" width="120%" height="120%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius={r} result="d" />
+      <feFlood floodColor={INK} />
+      <feComposite in2="d" operator="in" result="o" />
+      <feMerge><feMergeNode in="o" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  );
+}
 
 function Mouth({ mood, style, uid }: { mood: 'idle' | 'happy' | 'sad'; style: 'smile' | 'grin' | 'open'; uid: string }) {
   if (mood === 'sad') return <path d="M90 145Q100 138 110 145" stroke={INK} strokeWidth="3.6" strokeLinecap="round" fill="none" />;

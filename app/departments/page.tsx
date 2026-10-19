@@ -24,7 +24,7 @@ export default function ClansPage() {
   return (
     <div className="page">
       <header className="head">
-        <h1><span className="title-badge" style={{ background: 'var(--coral)' }}><Icon name="shield" /></span>Clans</h1>
+        <h1><span className="title-badge" style={{ ['--tb' as any]: 'var(--red-2)' }}><Icon name="shield" /></span>Clans</h1>
         <p>Jedes Department ist ein Clan mit eigener Farbe. Der Clan-Krieg ist eine Vorschau auf den kommenden Department-Battle.</p>
       </header>
 
@@ -119,14 +119,14 @@ function Clan({ cls, d, s, value, loaded }: { cls: string; d: DeptStyle; s?: Dep
   );
 }
 
-/** Flat clan crest: a shield split into a light and a shaded half, with the department code */
+/** Clan crest: a shield split into a light and a shaded half, with the department code */
 function Crest({ d }: { d: DeptStyle }) {
   return (
     <svg className="crest" viewBox="0 0 120 136" role="img" aria-label={`D-${d.code}`}>
       <path d="M60 4C80 4 98 10 112 16V62C112 98 86 120 60 132C34 120 8 98 8 62V16C22 10 40 4 60 4Z" fill={d.color} />
       <path d="M60 4C80 4 98 10 112 16V62C112 98 86 120 60 132Z" fill="#000" opacity=".12" />
       <path d="M60 18C75 18 88 22 98 26V62C98 88 80 104 60 114C40 104 22 88 22 62V26C32 22 45 18 60 18Z" fill="#fff" opacity=".16" />
-      <text x="60" y="74" textAnchor="middle" fontSize="26" fill="#fff" style={{ font: '400 26px var(--display)', letterSpacing: '.02em' }}>{d.code}</text>
+      <text x="60" y="74" textAnchor="middle" fill="#fff" stroke="var(--ink)" strokeWidth="6" strokeLinejoin="round" paintOrder="stroke" style={{ font: '400 26px var(--display)', letterSpacing: '.02em' }}>{d.code}</text>
     </svg>
   );
 }

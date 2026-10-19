@@ -14,14 +14,10 @@ const PAIRS: [number, number][] = [[137, 1102], [544, 285], [729, 396], [1028, 6
 const deptFor = (id: number) => DEPARTMENTS[id % DEPARTMENTS.length];
 const CYCLE_MS = 3200;
 
-// Flat confetti scattered on the split background: [left %, top %, size px, shape, colour var, rotation]
-const BITS: [number, number, number, 'dot' | 'sq' | 'tri' | 'bar', string, number][] = [
-  [8, 18, 18, 'dot', '--gold', 0], [16, 70, 22, 'sq', '--blue', 18], [5, 46, 26, 'tri', '--blue', -12], [26, 88, 12, 'dot', '--coral', 0],
-  [90, 22, 22, 'sq', '--coral', -14], [84, 64, 16, 'dot', '--blue', 0], [94, 82, 26, 'tri', '--gold', 20], [74, 10, 30, 'bar', '--gold', 35],
-  [30, 8, 34, 'bar', '--coral', -30], [66, 92, 14, 'sq', '--purple', 10],
-];
+// Flat clouds in the sky: [left %, top %, width px]
+const CLOUDS: [number, number, number][] = [[6, 9, 190], [74, 5, 240], [86, 30, 150], [22, 34, 120]];
 
-/** Title screen: split blue/coral field, the wordmark, a live sample duel, and PLAY */
+/** Title screen: sky, rolling hills and the village lawn, the wordmark, a live sample duel, and PLAY */
 export default function TitlePage() {
   const { user, profile } = useSession();
   const go = useGo();
@@ -50,23 +46,28 @@ export default function TitlePage() {
   return (
     <div className="title-screen">
       <div className="title-bg" aria-hidden="true">
-        <motion.div className="side" initial={{ x: reduced ? 0 : '-30%', opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={MOTION.soft} />
-        {BITS.map(([x, y, s, shape, c, r], k) => (
-          <motion.i key={k} className={`bit ${x > 15 && x < 85 ? 'mid' : ''}`} style={{
-            left: `${x}%`, top: `${y}%`, width: shape === 'bar' ? s * 0.35 : s, height: s, rotate: r, background: shape === 'tri' ? 'none' : `var(${c})`,
-            borderRadius: shape === 'dot' || shape === 'bar' ? 999 : shape === 'sq' ? s * 0.28 : 0, opacity: 0.85,
-          }} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', bounce: 0.4, visualDuration: 0.5, delay: 0.3 + k * 0.04 }}>
-            {shape === 'tri' && <svg viewBox="0 0 24 24" width={s} height={s}><path d="M10.3 3.9a2 2 0 0 1 3.4 0l8 13.6A2 2 0 0 1 20 20.5H4a2 2 0 0 1-1.7-3Z" fill={`var(${c})`} /></svg>}
-          </motion.i>
+        {CLOUDS.map(([x, y, w], k) => (
+          <motion.svg key={k} className="cloud" viewBox="0 0 200 90" style={{ left: `${x}%`, top: `${y}%`, width: w }}
+            initial={{ opacity: 0, x: reduced ? 0 : (x < 50 ? -40 : 40) }} animate={{ opacity: 1, x: 0 }} transition={{ ...MOTION.soft, delay: 0.1 + k * 0.08 }}>
+            <path d="M38 88C17 88 4 76 4 61C4 45 17 34 34 35C38 18 54 6 74 6C92 6 106 16 112 30C118 25 127 22 136 22C158 22 174 37 175 56C188 58 196 67 196 76C196 83 190 88 182 88Z" fill="#fff" />
+            <path d="M4 66C8 79 20 88 38 88H182C190 88 196 83 196 77C150 82 70 82 4 66Z" fill="#d6ebfa" />
+          </motion.svg>
         ))}
+        <svg className="hills" viewBox="0 0 1440 160" preserveAspectRatio="none">
+          <path d="M0 110C160 40 330 40 520 90S900 150 1080 80S1340 30 1440 70V160H0Z" fill="#a9de63" />
+          <path d="M0 140C220 90 420 100 640 130S1100 160 1260 120S1400 105 1440 112V160H0Z" fill="var(--lawn-1)" />
+        </svg>
+        <div className="lawn" />
+        <Flag side={-1} color="var(--blue-2)" />
+        <Flag side={1} color="var(--red-2)" />
       </div>
 
       <div className="title-ui">
         <div className="title-top">
           <span className="chip"><Icon name="cap" size={15} /> ETH Zürich · Studierendenprojekt</span>
           {user
-            ? <GameLink className="btn sm dark" href={profile ? '/battle' : '/setup'}>{profile ? `Level ${profile.level}` : 'Einrichten'}</GameLink>
-            : <GameLink className="btn sm dark" href="/login">Login</GameLink>}
+            ? <GameLink className="btn sm blue" href={profile ? '/battle' : '/setup'}>{profile ? `Level ${profile.level}` : 'Einrichten'}</GameLink>
+            : <GameLink className="btn sm gold" href="/login">Login</GameLink>}
         </div>
 
         <div className="title-main">
@@ -89,8 +90,8 @@ export default function TitlePage() {
               <Icon name="play" size={24} /> PLAY
             </motion.button>
             <motion.div className="ln" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.95 }}>
-              <GameLink className="btn stone" href="/rankings" label="Rankings"><Icon name="trophy" /> Rankings</GameLink>
-              <GameLink className="btn stone" href="/departments" label="Clans"><Icon name="shield" /> Clans</GameLink>
+              <GameLink className="btn blue" href="/rankings" label="Rankings"><Icon name="trophy" /> Rankings</GameLink>
+              <GameLink className="btn red" href="/departments" label="Clans"><Icon name="shield" /> Clans</GameLink>
             </motion.div>
           </div>
         </div>
@@ -119,5 +120,19 @@ function Sample({ id, side }: { id: number; side: -1 | 1 }) {
       </div>
       <span className="tag">D-{d.code}</span>
     </div>
+  );
+}
+
+/** A clan banner on a pole at the edge of the lawn */
+function Flag({ side, color }: { side: -1 | 1; color: string }) {
+  return (
+    <svg className="flag" viewBox="0 0 90 150" style={{ [side < 0 ? 'left' : 'right']: '6%', transform: side > 0 ? 'scaleX(-1)' : undefined }}>
+      <rect x="8" y="6" width="7" height="140" rx="3.5" fill="#8a5a32" />
+      <circle cx="11.5" cy="8" r="7" fill="var(--gold-2)" />
+      <path d="M15 18H82L70 42L82 66H15Z" fill={color} />
+      <path d="M15 52H76L82 66H15Z" fill="#000" opacity=".14" />
+      <path d="M40 30l3.5 7 7.7 1.1-5.6 5.4 1.3 7.6-6.9-3.6-6.9 3.6 1.3-7.6-5.6-5.4 7.7-1.1Z" fill="#fff" />
+      <ellipse cx="11.5" cy="146" rx="14" ry="4" fill="#000" opacity=".18" />
+    </svg>
   );
 }

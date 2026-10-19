@@ -10,7 +10,7 @@ import { GameLink } from './CloudTransition';
 
 const NAV = [['/battle', 'Battle'], ['/rankings', 'Rankings'], ['/departments', 'Clans']] as const;
 
-/** Translucent top bar: logo, nav with a sliding pill, player level */
+/** Dark HUD bar: logo, nav with a sliding gold pill, player level */
 export function TopBar() {
   const path = usePathname();
   const { user, profile, signOut } = useSession();
@@ -32,7 +32,7 @@ export function TopBar() {
         })}
       </nav>
       <div className="me">
-        {!user ? <GameLink className="btn sm dark" href="/login">Login</GameLink> : <>
+        {!user ? <GameLink className="btn sm gold" href="/login">Login</GameLink> : <>
           {profile && (
             <GameLink href="/setup" className="me-link" title="Dein Fortschritt">
               <XpStar level={profile.level} />

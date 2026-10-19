@@ -1,6 +1,6 @@
 'use client';
-// Flat game art: icons, trophies, league shields, level star, logo mark.
-// No outlines and no fake 3D: depth comes from one flat facet per shape.
+// Game art: icons, trophies, league shields, level star, logo mark.
+// Flat fills with one shaded facet; the ink outline comes from CSS so edges stay clean.
 import { useId } from 'react';
 import { LEAGUES, type LeagueKey } from '@/lib/game';
 
@@ -8,7 +8,7 @@ const ICONS = {
   swords: <><path d="M14.5 17.5 3 6V3h3l11.5 11.5" /><path d="m13 19 6-6" /><path d="m16 16 4 4" /><path d="m19 21 2-2" /><path d="M14.5 6.5 18 3h3v3l-3.5 3.5" /><path d="m5 14 4 4" /><path d="m7 17-3 3" /><path d="m3 19 2 2" /></>,
   shield: <path d="M12 21.5s7.5-3.6 7.5-9.5V5.2L12 2.5 4.5 5.2V12c0 5.9 7.5 9.5 7.5 9.5Z" />,
   trophy: <><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" /><path d="M7 6H4.5a2.5 2.5 0 0 0 2.6 3.9M17 6h2.5a2.5 2.5 0 0 1-2.6 3.9" /><path d="M12 14v4M8 21h8M9.5 18h5" /></>,
-  play: <path d="M7.5 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8a1 1 0 0 0-1.5.86Z" fill="currentColor" stroke="none" />,
+  play: <path d="M7.5 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8a1 1 0 0 0-1.5.86Z" fill="currentColor" />,
   left: <><path d="M19 12H5" /><path d="m11 6-6 6 6 6" /></>,
   right: <><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></>,
   lock: <><rect x="5" y="11" width="14" height="10" rx="2.5" /><path d="M8 11V7.5a4 4 0 0 1 8 0V11" /></>,
@@ -36,17 +36,15 @@ export function Icon({ name, size = 18, className = 'icon' }: { name: IconName; 
   );
 }
 
-/** Two halves meeting at a slash: the brand mark */
-export function LogoMark({ size = 34 }: { size?: number }) {
-  const id = useId().replace(/:/g, '');
+/** Brand mark: a red clan shield with crossed swords */
+export function LogoMark({ size = 36 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 40 40" width={size} height={size} aria-hidden="true" className="logo-mark">
-      <clipPath id={`lm${id}`}><rect width="40" height="40" rx="12" /></clipPath>
-      <g clipPath={`url(#lm${id})`}>
-        <rect width="40" height="40" fill="var(--blue)" />
-        <path d="M25 0H40V40H13Z" fill="var(--coral)" />
-        <path d="M23 -2 L27 -2 L15 42 L11 42Z" fill="#fff" />
-      </g>
+    <svg viewBox="0 0 40 44" width={size} height={size * 1.1} aria-hidden="true" className="logo-mark">
+      <path d="M20 1C27 1 33 3 38 5.5V21C38 32 29 39 20 43C11 39 2 32 2 21V5.5C7 3 13 1 20 1Z" fill="#ff7a5e" />
+      <path d="M20 1C27 1 33 3 38 5.5V21C38 32 29 39 20 43Z" fill="#e0412b" />
+      <g stroke="#1e1712" strokeWidth="5.5" strokeLinecap="round"><path d="M12 13 28 29M28 13 12 29" /></g>
+      <g stroke="#fff" strokeWidth="2.6" strokeLinecap="round"><path d="M12 13 28 29M28 13 12 29" /></g>
+      <g fill="#ffc21a" stroke="#1e1712" strokeWidth="1.6"><circle cx="13" cy="28" r="2.6" /><circle cx="27" cy="28" r="2.6" /></g>
     </svg>
   );
 }
