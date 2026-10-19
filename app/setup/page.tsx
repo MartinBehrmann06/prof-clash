@@ -9,9 +9,10 @@ import { currentTerm, isAutumn, termLabel } from '@/lib/terms';
 import { deptById } from '@/lib/departments';
 import { Figure } from '@/components/Figure';
 import type { Department, Meta, Profile, Roster } from '@/lib/types';
+import { Icon } from '@/components/art';
 
 type Step = 1 | 2 | 3;
-const STEPS = ['🛡 Clan', '📅 Semester', '🃏 Deck'];
+const STEPS = ['Clan', 'Semester', 'Deck'];
 
 /**
  * Setup: department (chosen once, then locked) → semester → the professors you actually had,
@@ -44,12 +45,12 @@ export default function SetupPage() {
     try {
       const p = await api<Profile>('/api/profile', { method: 'POST', body: { programId, semester, profIds } });
       setProfile(p);
-      toast(locked ? 'Deck gespeichert ✔' : `🛡 Willkommen im Clan D-${deptById(p.deptId).code}!`);
+      toast(locked ? 'Deck gespeichert' : `Willkommen im Clan D-${deptById(p.deptId).code}!`);
       router.push('/battle');
     } catch (e: any) { toast(e.message, 'err'); }
   }
 
-  if (!meta || !ready || !user) return <div className="loading"><span className="spin">⚔️</span>Lädt</div>;
+  if (!meta || !ready || !user) return <div className="loading"><span className="spin" />Lädt</div>;
 
   return (
     <div className="page">
@@ -58,7 +59,7 @@ export default function SetupPage() {
           const n = (i + 1) as Step, can = n < step && !(locked && n === 1);
           return (
             <button key={n} type="button" disabled={!can} onClick={() => go(n)} className={n === step ? 'on' : n < step ? 'done' : ''} aria-current={n === step ? 'step' : undefined}>
-              <i>{n === 1 && locked ? '🔒' : n < step ? '✓' : n}</i>{label}
+              <i>{n === 1 && locked ? <Icon name="lock" size={13} /> : n < step ? <Icon name="check" size={14} /> : n}</i>{label}
             </button>
           );
         })}
@@ -88,11 +89,9 @@ export default function SetupPage() {
 function DeptHeader({ dept, programId, locked }: { dept: Department; programId: number; locked: boolean }) {
   const d = deptById(dept.id);
   return (
-    <div className="panel wood cta-card" style={{ margin: '0 auto 26px', ['--c' as any]: d.color }}>
-      <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span className="mini-shield">{d.code}</span>
-        <span><b className="toon" style={{ display: 'block', fontSize: 20 }}>{dept.name}</b><small style={{ color: '#fff3d6' }}>{dept.programs.find((p) => p.id === programId)?.name} · Bachelor{locked ? ' · 🔒 festgelegt' : ''}</small></span>
-      </span>
+    <div className="panel wood dept-head" style={{ ['--c' as any]: d.color }}>
+      <span className="mini-shield">{d.code}</span>
+      <span><b>{dept.name}</b><small>{dept.programs.find((p) => p.id === programId)?.name} · Bachelor{locked ? ' · festgelegt' : ''}</small></span>
     </div>
   );
 }
@@ -129,7 +128,7 @@ function DeptStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="duel-bar" style={{ marginTop: 28 }}><button className="btn xl" disabled={!programId} onClick={onNext}>Weiter ➜</button></div>
+      <div className="duel-bar" style={{ marginTop: 28 }}><button className="btn xl" disabled={!programId} onClick={onNext}>Weiter <Icon name="right" /></button></div>
     </>
   );
 }
@@ -152,8 +151,8 @@ function SemesterStep({ dept, programId, semester, min, locked, onPick, onBack, 
         ))}
       </div>
       <div className="duel-bar" style={{ marginTop: 28 }}>
-        {!locked && <button className="btn stone" onClick={onBack}>⬅ Zurück</button>}
-        <button className="btn xl" disabled={!semester} onClick={onNext}>Weiter ➜</button>
+        {!locked && <button className="btn stone" onClick={onBack}><Icon name="left" /> Zurück</button>}
+        <button className="btn xl" disabled={!semester} onClick={onNext}>Weiter <Icon name="right" /></button>
       </div>
     </>
   );
@@ -181,7 +180,7 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
   const toggle = (id: number) => setSelected((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
   if (error) return <div className="empty">{error}</div>;
-  if (!roster) return <div className="loading"><span className="spin">⚔️</span>Profs werden gerufen …</div>;
+  if (!roster) return <div className="loading"><span className="spin" />Profs werden gerufen …</div>;
 
   return (
     <>
@@ -203,7 +202,7 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
                   <motion.button key={prof.id} type="button" disabled={future} role="checkbox" aria-checked={on}
                     className={`pick ${on ? 'on' : ''} ${future && !echo ? 'future' : ''} ${echo ? 'echo' : ''}`}
                     whileTap={!future ? { scale: 0.96 } : undefined} transition={MOTION.press} onClick={() => toggle(prof.id)}>
-                    <AnimatePresence>{on && <motion.span className="tick" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={MOTION.pop}>✓</motion.span>}</AnimatePresence>
+                    <AnimatePresence>{on && <motion.span className="tick" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={MOTION.pop}><Icon name="check" size={16} /></motion.span>}</AnimatePresence>
                     {locked && g.status === 'had' && !previous.has(prof.id) && <span className="new">NEU</span>}
                     <span className="frame" style={{ display: 'block' }}><Figure id={prof.id} name={prof.name} department={prof.department} /></span>
                     <b>{prof.name}</b><small>{courses.slice(0, 2).join(' · ')}</small>
@@ -217,9 +216,9 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
       </div>
       <div style={{ height: 80 }} />
       <motion.div className="dock" initial={{ y: 100, x: '-50%' }} animate={{ y: 0, x: '-50%' }} transition={MOTION.soft}>
-        <button className="btn sm stone" onClick={onBack} aria-label="Zurück">⬅</button>
+        <button className="btn sm stone icon-only" onClick={onBack} aria-label="Zurück"><Icon name="left" /></button>
         <span className="count"><span className="num">{selected.size}</span> Karten</span>
-        <button className="btn" disabled={selected.size < 2} onClick={() => onSave([...selected])}>⚔️ Battle!</button>
+        <button className="btn" disabled={selected.size < 2} onClick={() => onSave([...selected])}><Icon name="swords" /> Battle!</button>
       </motion.div>
     </>
   );
@@ -238,13 +237,13 @@ function LockDialog({ dept, programId, onCancel, onConfirm }: { dept: Department
       <motion.div className="scrim" onClick={onCancel} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={MOTION.fade} />
       <motion.div className="panel modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle" style={{ ['--c' as any]: d.color }}
         initial={{ opacity: 0, scale: 0.94, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.97, transition: MOTION.exit }} transition={MOTION.soft}>
-        <span className="ribbon">🔒 Festlegen?</span>
+        <span className="ribbon"><Icon name="lock" size={14} /> Festlegen?</span>
         <span className="mini-shield" style={{ width: 70, height: 80, fontSize: 18 }}>{d.code}</span>
-        <h2 id="lockTitle" style={{ fontSize: 28, color: 'var(--gold-1)' }}>Clan D-{d.code} beitreten?</h2>
+        <h2 id="lockTitle" style={{ fontSize: 28 }}>Clan D-{d.code} beitreten?</h2>
         <p>{dept.programs.find((p) => p.id === programId)?.name}. Dein Department <b>lässt sich danach nicht mehr ändern</b> — so bleibt jede Department-Wertung fair. Semester und Professorenliste kannst du später anpassen.</p>
         <div className="duel-bar" style={{ marginTop: 6 }}>
           <button className="btn stone" onClick={onCancel}>Zurück</button>
-          <button className="btn gold" autoFocus onClick={onConfirm}>🔒 Beitreten</button>
+          <button className="btn gold" autoFocus onClick={onConfirm}><Icon name="lock" /> Beitreten</button>
         </div>
       </motion.div>
     </div>

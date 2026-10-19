@@ -3,6 +3,7 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion, useAnimate } from 'motion/react';
 import { getSupabase, useSession } from '@/lib/client/session';
+import { Icon } from '@/components/art';
 import { useToast } from '@/lib/client/feedback';
 import { MOTION } from '@/lib/client/motion';
 import { isEthEmail } from '@/lib/game';
@@ -64,7 +65,7 @@ function Login() {
       setDigits(Array(LEN).fill('')); boxes.current[0]?.focus();
       return;
     }
-    toast('🛡 Willkommen in der Arena!');
+    toast('Willkommen in der Arena!');
     await refresh();
   }
 
@@ -89,7 +90,7 @@ function Login() {
       <div className="head"><h1>Tritt der Arena bei</h1>
         <p>Nur mit ETH-Adresse. Wir schicken dir einen 6-stelligen Code — kein Passwort.</p></div>
       <div className="panel login" ref={scope}>
-        <span className="ribbon">🔑 Login</span>
+        <span className="ribbon"><Icon name="key" size={14} /> Login</span>
         <AnimatePresence mode="wait" initial={false}>
           {step === 'email' ? (
             <motion.form key="email" noValidate onSubmit={(e) => { e.preventDefault(); send(); }}
@@ -98,7 +99,7 @@ function Login() {
                 <input className="input" type="email" inputMode="email" autoComplete="email" placeholder="you@student.ethz.ch" autoFocus
                   value={email} onChange={(e) => setEmail(e.target.value)} /></label>
               <p className="msg" role="alert">{msg}</p>
-              <button className="btn" type="submit" disabled={busy}>{busy ? 'Wird gesendet …' : '📨 Code senden'}</button>
+              <button className="btn" type="submit" disabled={busy}>{busy ? 'Wird gesendet …' : <><Icon name="mail" /> Code senden</>}</button>
               <p style={{ margin: '4px 0 0', fontSize: 12, textAlign: 'center' }}>Wir speichern nur, was das Spiel braucht — siehe <a href="/datenschutz" style={{ textDecoration: 'underline' }}>Datenschutz</a>.</p>
             </motion.form>
           ) : (
@@ -117,7 +118,7 @@ function Login() {
                 </div>
               </div>
               <p className="msg" role="alert">{msg}</p>
-              <button className="btn gold" type="submit" disabled={busy || !digits.every(Boolean)}>{busy ? 'Wird geprüft …' : '⚔️ Los geht’s'}</button>
+              <button className="btn gold" type="submit" disabled={busy || !digits.every(Boolean)}>{busy ? 'Wird geprüft …' : <><Icon name="swords" /> Los geht’s</>}</button>
               <div className="links">
                 <button type="button" className="link" disabled={cooldown > 0 || busy}
                   onClick={async () => { if (await send()) toast('Neuer Code gesendet — der alte gilt nicht mehr'); }}>

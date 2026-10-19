@@ -1,19 +1,16 @@
 import { notFound } from 'next/navigation';
-import { getLeaderboard } from '@/lib/server/catalog';
+import { DEPARTMENTS } from '@/lib/departments';
 import { Figure } from '@/components/Figure';
 
-export const dynamic = 'force-dynamic';
-
-// Development-only gallery to review the generated figures
-export default async function Figures() {
+// Development-only gallery to review the generated figures (no database needed)
+export default function Figures() {
   if (process.env.NODE_ENV !== 'development') notFound();
-  const profs = (await getLeaderboard({ limit: 400 })).filter((_, i) => i % 15 === 0).slice(0, 24);
+  const figs = Array.from({ length: 32 }, (_, i) => ({ id: 100 + i * 37, department: DEPARTMENTS[i % DEPARTMENTS.length].name }));
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 12, padding: 20, background: '#5ab8f0' }}>
-      {profs.map((p) => (
-        <div key={p.id} style={{ borderRadius: 18, overflow: 'hidden', border: '4px solid #2a1a0b', background: '#fff' }}>
-          <Figure id={p.id} name={p.name} department={p.department} />
-          <div style={{ font: '700 12px system-ui', padding: 6, color: '#2a1a0b' }}>{p.name}</div>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 12, padding: 20 }}>
+      {figs.map((p, i) => (
+        <div key={p.id} style={{ borderRadius: 18, overflow: 'hidden', background: '#fff' }}>
+          <Figure id={p.id} name={String(p.id)} department={p.department} mood={i % 8 === 6 ? 'happy' : i % 8 === 7 ? 'sad' : 'idle'} />
         </div>
       ))}
     </div>

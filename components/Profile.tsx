@@ -8,7 +8,7 @@ import { deptByName } from '@/lib/departments';
 import { termLabel } from '@/lib/terms';
 import type { Prof, ProfDetail } from '@/lib/types';
 import { Figure } from './Figure';
-import { LeagueBadge, Trophies } from './art';
+import { Icon, LeagueBadge, Trophies } from './art';
 
 type Ctx = { openId: number | null; open: (p: Prof) => void };
 const ProfileCtx = createContext<Ctx>({ openId: null, open: () => {} });
@@ -45,9 +45,9 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
           <motion.div className="profile-wrap" key="wrap" exit={{ opacity: 0, pointerEvents: 'none', transition: MOTION.exit }}>
             <motion.section className="panel profile" role="dialog" aria-modal="true" aria-label={prof.name}
               style={{ ['--accent' as any]: deptByName(prof.department).color }}
-              initial={{ opacity: 0, scale: 0.8, y: 30 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20, transition: MOTION.exit }}
-              transition={{ type: 'spring', bounce: 0.35, visualDuration: 0.4 }}>
-              <button className="btn sm red close" onClick={close} aria-label="Schliessen" autoFocus>✕</button>
+              initial={{ opacity: 0, scale: 0.94, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 12, transition: MOTION.exit }}
+              transition={MOTION.soft}>
+              <button className="btn sm red icon-only close" onClick={close} aria-label="Schliessen" autoFocus><Icon name="close" /></button>
               <motion.div layoutId={`portrait-${prof.id}`} transition={MOTION.snappy} className="frame">
                 <Figure id={prof.id} name={prof.name} department={prof.department} mood="happy" />
               </motion.div>
@@ -67,7 +67,7 @@ function ProfileBody({ p, base }: { p: ProfDetail | null; base: Prof }) {
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.08 }}>
       <div style={{ display: 'grid', gap: 6, justifyItems: 'start' }}>
-        <span className="chip">🛡 {dept.code} · {dept.id ? dept.name : base.department}</span>
+        <span className="chip"><i className="dot" style={{ ['--c' as any]: dept.color }} />{dept.code} · {dept.id ? dept.name : base.department}</span>
         <h2>{base.name}</h2>
         <span className="muted" style={{ fontSize: 14 }}>{base.field || base.relationship}</span>
         {rated
@@ -82,18 +82,18 @@ function ProfileBody({ p, base }: { p: ProfDetail | null; base: Prof }) {
       </div>
       {p && p.depts.some((d) => d.wins + d.losses >= MIN_DUELS) && (
         <div className="list">
-          <span className="h">🛡 Pro Clan (nur Stimmen dieses Departments)</span>
+          <span className="h"><Icon name="shield" size={16} /> Pro Clan (nur Stimmen dieses Departments)</span>
           {p.depts.filter((d) => d.wins + d.losses >= MIN_DUELS).map((d) => <div key={d.name}><span>{d.name}</span><small className="num">{d.elo} · {d.wins}S {d.losses}N</small></div>)}
         </div>
       )}
       <div className="list">
-        <span className="h">📘 Pflichtfächer</span>
+        <span className="h"><Icon name="book" size={16} /> Pflichtfächer</span>
         {!p ? <div><span className="muted">Lädt …</span></div> : p.courses.map((c) => (
           <div key={c.program + c.title}><span>{c.title}</span><small>{c.program}{c.semester ? ` · Sem. ${c.semester}` : ''}{c.term ? ` · ${termLabel(c.term)}` : ''}</small></div>
         ))}
       </div>
       <p style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-        {base.url && <a className="btn sm blue" href={base.url} target="_blank" rel="noopener noreferrer">Webseite ↗</a>}
+        {base.url && <a className="btn sm blue" href={base.url} target="_blank" rel="noopener noreferrer">Webseite <Icon name="external" size={15} /></a>}
         <a className="link-quiet" href="/impressum#entfernen">Sind Sie das? Eintrag entfernen lassen</a>
       </p>
     </motion.div>

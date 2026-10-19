@@ -1,6 +1,6 @@
 'use client';
-// Clash-style loading clouds between pages: two cloud banks close in from the sides,
-// the route changes behind them, and they part again.
+// Clash-style loading clouds between pages: two flat cloud banks close in from the sides,
+// the route changes behind them, and they part again along the same path.
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, useReducedMotion } from 'motion/react';
@@ -47,17 +47,17 @@ export function CloudTransition({ children }: { children: React.ReactNode }) {
   return (
     <Ctx.Provider value={go}>
       {children}
-      <div className="cloud-wipe" aria-hidden={!closed}>
+      <div className="wipe" aria-hidden={!closed}>
         {(['l', 'r'] as const).map((side) => (
           <motion.div key={side} className={`bank ${side}`} initial={false}
             animate={{ x: closed ? '0%' : side === 'l' ? '-115%' : '115%' }}
-            transition={closed ? { type: 'spring', bounce: 0.15, visualDuration: 0.4 } : { type: 'spring', bounce: 0, visualDuration: 0.5 }}>
+            transition={{ type: 'spring', bounce: 0, visualDuration: closed ? 0.4 : 0.5 }}>
             {PUFFS.map(([x, y, s], i) => (
-              <span key={i} className="puff" style={{ left: `${side === 'l' ? x : 100 - x - 0}%`, top: `${y}%`, width: `${s}vmax`, height: `${s}vmax`, translate: '-50% -50%' }} />
+              <span key={i} className="puff" style={{ left: `${side === 'l' ? x : 100 - x}%`, top: `${y}%`, width: `${s}vmax`, height: `${s}vmax`, translate: '-50% -50%' }} />
             ))}
           </motion.div>
         ))}
-        {closed && label && <motion.div className="label" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', bounce: 0.5, visualDuration: 0.3, delay: 0.25 }}>{label}</motion.div>}
+        {closed && label && <motion.div className="label" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', bounce: 0.45, visualDuration: 0.3, delay: 0.25 }}>{label}</motion.div>}
       </div>
     </Ctx.Provider>
   );
