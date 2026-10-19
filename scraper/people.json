@@ -249,6 +249,436 @@
   "image": null,
   "imageSource": null
  },
+ "10014146": {
+  "id": "10014146",
+  "fullName": "Mr Daniel Mettler",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10008620": {
+  "id": "10008620",
+  "fullName": "Mr Daniel Studer",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "http://www.studerarchitekt.ch",
+  "image": null,
+  "imageSource": null
+ },
+ "10003829": {
+  "id": "10003829",
+  "fullName": "Prof. Fabio Gramazio",
+  "field": "Architecture and Digital Design",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10112886": {
+  "id": "10112886",
+  "fullName": "Ms Halima Hassan",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10056645": {
+  "id": "10056645",
+  "fullName": "Prof. Roger Boltshauser",
+  "field": "Architecture and Regenerative Materials",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "http://www.boltshauser.info",
+  "image": "img/profs/10056645.jpg",
+  "imageSource": "https://boltshauser.info/wp-content/uploads/2026/05/PUK-Skizze-RBO-1-1-170x163.jpg"
+ },
+ "10021642": {
+  "id": "10021642",
+  "fullName": "Prof. Martina Voser",
+  "field": "Landscape Architecture",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10084046": {
+  "id": "10084046",
+  "fullName": "Mr Cristiano Aires Teixeira",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10146087": {
+  "id": "10146087",
+  "fullName": "Mr Lorenz Bachmann",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137246": {
+  "id": "10137246",
+  "fullName": "Mr Ivan Bagaturiya",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "http://www.iab.best",
+  "image": null,
+  "imageSource": null
+ },
+ "10132987": {
+  "id": "10132987",
+  "fullName": "Mr Marvin Bienz",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130346": {
+  "id": "10130346",
+  "fullName": "Ms Saida Brückner",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137267": {
+  "id": "10137267",
+  "fullName": "Mr Ueli Brunner",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130270": {
+  "id": "10130270",
+  "fullName": "Mr Dorian Bürgy",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130269": {
+  "id": "10130269",
+  "fullName": "Mr Cosimo Caccia",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10131129": {
+  "id": "10131129",
+  "fullName": "Mr Mário Vicente Fernandes Nequinha",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137236": {
+  "id": "10137236",
+  "fullName": "Ms Zelda Frank",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130268": {
+  "id": "10130268",
+  "fullName": "Ms Bettina Germann",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137237": {
+  "id": "10137237",
+  "fullName": "Ms Louise Grosjean",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130272": {
+  "id": "10130272",
+  "fullName": "Mr Holger Harmeier",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10133167": {
+  "id": "10133167",
+  "fullName": "Mr Daniel Itten",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "http://n.ethz.ch/~daitten",
+  "image": null,
+  "imageSource": null
+ },
+ "10130273": {
+  "id": "10130273",
+  "fullName": "Mr Jens Knöpfel",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130849": {
+  "id": "10130849",
+  "fullName": "Ms Kristina Möhring Szeifert",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137235": {
+  "id": "10137235",
+  "fullName": "Mr Lukas Nussbaumer",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130267": {
+  "id": "10130267",
+  "fullName": "Ms Clara Maria Puglisi",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10133166": {
+  "id": "10133166",
+  "fullName": "Ms Sarah Rohr",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130328": {
+  "id": "10130328",
+  "fullName": "Mr Martin Rösch",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130271": {
+  "id": "10130271",
+  "fullName": "Ms Eva Schneuwly",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130274": {
+  "id": "10130274",
+  "fullName": "Ms Lian Stähelin",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130787": {
+  "id": "10130787",
+  "fullName": "Ms Nora Tahiraj",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10131130": {
+  "id": "10131130",
+  "fullName": "Mr Walter Secondo Toccaceli",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130367": {
+  "id": "10130367",
+  "fullName": "Ms Marija Urbaite",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "https://urbaite.ch/",
+  "image": "img/profs/10130367.png",
+  "imageSource": "https://urbaite.ch/wp-content/uploads/2026/05/maciverekchevroulet_httpss.mj_.runiHr0DFqDdBU_httpss.mj_.run_-Z_2a8137e9-d8f5-443f-bb0b-a0d4f5146c7b_0.png"
+ },
+ "10130790": {
+  "id": "10130790",
+  "fullName": "Ms Anastasia Vaynberg",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130789": {
+  "id": "10130789",
+  "fullName": "Ms Caterina Viguera Andreu",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130329": {
+  "id": "10130329",
+  "fullName": "Mr Nicola Wild",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137227": {
+  "id": "10137227",
+  "fullName": "Ms Nicole Würth",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10133169": {
+  "id": "10133169",
+  "fullName": "Mr Jan Zachmann",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10091848": {
+  "id": "10091848",
+  "fullName": "Mr Leo Bettini Oberkalmsteiner",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10102726": {
+  "id": "10102726",
+  "fullName": "Prof. Dr. Rosa Barba",
+  "field": "Art in Space and Time",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "https://barba.arch.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10107928": {
+  "id": "10107928",
+  "fullName": "Ms Monica Narula",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10066569": {
+  "id": "10066569",
+  "fullName": "Prof. Teresa Galí-Izard",
+  "field": "Landscape Architecture",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "https://gali-izard.arch.ethz.ch/prof-teresa-gali-izard",
+  "image": "img/profs/10066569.jpg",
+  "imageSource": "https://gali-izard.arch.ethz.ch/media/pages/home/prof-teresa-gali-izard/330143d30a-1791801963/1.7.b.1_teresa_sirup-2-400x-crop-x-0-5-y-0-5.jpg"
+ },
+ "10053617": {
+  "id": "10053617",
+  "fullName": "Prof. Jan De Vylder",
+  "field": "Architecture and Design",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10016283": {
+  "id": "10016283",
+  "fullName": "Prof. Momoyo Kaijima",
+  "field": "Architectural Behaviorology",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "https://kaijima.arch.ethz.ch/?post_type=news",
+  "image": "img/profs/10016283.jpg",
+  "imageSource": "https://kaijima.arch.ethz.ch/wp-content/uploads/2026/10/A2_TWW_Plakat_TRYK-768x1072.jpg"
+ },
+ "10122392": {
+  "id": "10122392",
+  "fullName": "Prof. Débora Mesa Molina",
+  "field": "Architecture, Art and Technology",
+  "department": "Architecture",
+  "relationship": "Full Professor",
+  "url": "http://www.mesa-molina.arch.ethz.ch",
+  "image": null,
+  "imageSource": null
+ },
  "10100846": {
   "id": "10100846",
   "fullName": "Mr Oliver Lütjens",
@@ -339,19 +769,9 @@
   "image": null,
   "imageSource": null
  },
- "10056645": {
-  "id": "10056645",
-  "fullName": "Prof. Roger Boltshauser",
-  "field": "Architecture and Regenerative Materials",
-  "department": "Architecture",
-  "relationship": "Full Professor",
-  "url": "http://www.boltshauser.info",
-  "image": "img/profs/10056645.jpg",
-  "imageSource": "https://boltshauser.info/wp-content/uploads/2026/05/PUK-Skizze-RBO-1-1-170x163.jpg"
- },
- "10014146": {
-  "id": "10014146",
-  "fullName": "Mr Daniel Mettler",
+ "10058567": {
+  "id": "10058567",
+  "fullName": "Mr Heiner Eberhard Franzen",
   "field": "",
   "department": "Architecture",
   "relationship": "Lecturer",
@@ -359,29 +779,59 @@
   "image": null,
   "imageSource": null
  },
- "10008620": {
-  "id": "10008620",
-  "fullName": "Mr Daniel Studer",
+ "10137266": {
+  "id": "10137266",
+  "fullName": "Ms Coralie Berchtold",
   "field": "",
   "department": "Architecture",
   "relationship": "Lecturer",
-  "url": "http://www.studerarchitekt.ch",
+  "url": "",
   "image": null,
   "imageSource": null
  },
- "10102726": {
-  "id": "10102726",
-  "fullName": "Prof. Dr. Rosa Barba",
-  "field": "Art in Space and Time",
+ "10137238": {
+  "id": "10137238",
+  "fullName": "Mr Michele Capelli",
+  "field": "",
   "department": "Architecture",
-  "relationship": "Full Professor",
-  "url": "https://barba.arch.ethz.ch/",
+  "relationship": "Lecturer",
+  "url": "https://block.arch.ethz.ch/brg/people/michele-capelli",
   "image": null,
   "imageSource": null
  },
- "10058567": {
-  "id": "10058567",
-  "fullName": "Mr Heiner Eberhard Franzen",
+ "10137234": {
+  "id": "10137234",
+  "fullName": "Mr Stefan Jos",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137226": {
+  "id": "10137226",
+  "fullName": "Mr Juan Orjuela Sepulveda",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10133168": {
+  "id": "10133168",
+  "fullName": "Mr Yves Rechsteiner",
+  "field": "",
+  "department": "Architecture",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130327": {
+  "id": "10130327",
+  "fullName": "Mr Luca Ugolini",
   "field": "",
   "department": "Architecture",
   "relationship": "Lecturer",
@@ -489,15 +939,85 @@
   "image": "img/profs/10022399.jpg",
   "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_b677/image.imageformat.textsingle.dpr3.1432354048.jpg"
  },
- "10036240": {
-  "id": "10036240",
-  "fullName": "Prof. Dr. Karsten Weis",
-  "field": "Cellular Dynamics",
+ "10033691": {
+  "id": "10033691",
+  "fullName": "Prof. Dr. Anton Wutz",
+  "field": "Genetics",
   "department": "Biology",
   "relationship": "Full Professor",
   "url": "",
-  "image": "img/profs/10036240.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item39.imageformat.imagegallery5.1464173049.jpg"
+  "image": "img/profs/10033691.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item43.imageformat.imagegallery5.853750897.jpg"
+ },
+ "10074108": {
+  "id": "10074108",
+  "fullName": "Prof. Dr. Nicola Aceto",
+  "field": "Molekulare Onkologie",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10074108.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item0.imageformat.imagegallery5.210240576.jpg"
+ },
+ "10005086": {
+  "id": "10005086",
+  "fullName": "Prof. Dr. Markus Künzler",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Adjunct Professor",
+  "url": "https://micro.biol.ethz.ch/research/kuenzler.html",
+  "image": "img/profs/10005086.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item19.imageformat.imagegallery5.1760349095.jpg"
+ },
+ "10031562": {
+  "id": "10031562",
+  "fullName": "Dr. Oliver Yves Martin",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10018979": {
+  "id": "10018979",
+  "fullName": "Prof. Dr. Markus Stoffel",
+  "field": "Metabolic Diseases",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10018979.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item34.imageformat.imagegallery5.9623014.jpg"
+ },
+ "10004270": {
+  "id": "10004270",
+  "fullName": "Prof. Dr. Sabine Werner",
+  "field": "Cell Biology",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10004270.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item40.imageformat.imagegallery5.857445020.jpg"
+ },
+ "10015178": {
+  "id": "10015178",
+  "fullName": "Prof. Dr. Samuel C. Zeeman",
+  "field": "Plant Biochemistry",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10015178.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item45.imageformat.imagegallery5.1209132374.jpg"
+ },
+ "10015257": {
+  "id": "10015257",
+  "fullName": "Prof. Dr. Paola Picotti",
+  "field": "Molecular Systems Biology",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10015257.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item27.imageformat.imagegallery5.830744650.jpg"
  },
  "10004850": {
   "id": "10004850",
@@ -508,6 +1028,126 @@
   "url": "",
   "image": "img/profs/10004850.jpg",
   "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item1.imageformat.imagegallery5.1820551077.jpg"
+ },
+ "10038944": {
+  "id": "10038944",
+  "fullName": "Prof. Dr. Volodymyr Korkhov",
+  "field": "Membrane Proteins and Signal Transduction",
+  "department": "Biology",
+  "relationship": "Associate Professor",
+  "url": "",
+  "image": "img/profs/10038944.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item17.imageformat.imagegallery5.556433650.jpg"
+ },
+ "10036184": {
+  "id": "10036184",
+  "fullName": "Prof. Dr. Martin Pilhofer",
+  "field": "Cryo-Electron Microscopy",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10036184.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item30.imageformat.imagegallery5.761907323.jpg"
+ },
+ "10025311": {
+  "id": "10025311",
+  "fullName": "Prof. Dr. Ralph Schlapbach",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Adjunct Professor",
+  "url": "http://www.fgcz.ch",
+  "image": "img/profs/10025311.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item33.imageformat.imagegallery5.700238877.jpg"
+ },
+ "10036240": {
+  "id": "10036240",
+  "fullName": "Prof. Dr. Karsten Weis",
+  "field": "Cellular Dynamics",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10036240.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item39.imageformat.imagegallery5.1464173049.jpg"
+ },
+ "10042566": {
+  "id": "10042566",
+  "fullName": "Dr. Markus Dahinden",
+  "field": "",
+  "department": "Computer Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10036224": {
+  "id": "10036224",
+  "fullName": "Dr. Lukas Emanuel Fässler",
+  "field": "",
+  "department": "Computer Science",
+  "relationship": "Lecturer",
+  "url": "https://et.ethz.ch/",
+  "image": "img/profs/10036224.jpg",
+  "imageSource": "https://inf.ethz.ch/people/senior-scientists-education/_jcr_content/par/twocolumn_733565140/par_left/textimage_943278068/image.imageformat.textsingle.dpr3.951210399.jpg"
+ },
+ "10087926": {
+  "id": "10087926",
+  "fullName": "Dr. Jakob Dambon",
+  "field": "",
+  "department": "Mathematics",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10027228": {
+  "id": "10027228",
+  "fullName": "Prof. Dr. Gunnar Jeschke",
+  "field": "Electron Paramagnetic Resonance",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10027228.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_1557617589/image.imageformat.textsingle.dpr3.1688404314.jpg"
+ },
+ "10078706": {
+  "id": "10078706",
+  "fullName": "Dr. Daniel Klose",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10143246": {
+  "id": "10143246",
+  "fullName": "Dr. Pascal Becker",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10055185": {
+  "id": "10055185",
+  "fullName": "Dr. Bartosz Marcin Lewandowski",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10055185.jpg",
+  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC/people/faculty/_jcr_content/par/twocolumn/par_right/textimage/image.imageformat.textsingle.dpr3.997491042.jpg"
+ },
+ "10032848": {
+  "id": "10032848",
+  "fullName": "Prof. Dr. Helma Wennemers",
+  "field": "Organic Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10032848.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_43b/image.imageformat.textsingle.dpr3.1295950140.jpg"
  },
  "10004402": {
   "id": "10004402",
@@ -649,126 +1289,6 @@
   "image": "img/profs/10004478.jpg",
   "imageSource": "https://biol.ethz.ch/bin/ethz/search/peopleImage?id=OTU4MTc="
  },
- "10005086": {
-  "id": "10005086",
-  "fullName": "Prof. Dr. Markus Künzler",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Adjunct Professor",
-  "url": "https://micro.biol.ethz.ch/research/kuenzler.html",
-  "image": "img/profs/10005086.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item19.imageformat.imagegallery5.1760349095.jpg"
- },
- "10030781": {
-  "id": "10030781",
-  "fullName": "Prof. Dr. Jeffrey W. Bode",
-  "field": "Synthetic Organic Chemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10030781.jpg",
-  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC.person_image.jpeg?persid=ODgwOTk="
- },
- "10090536": {
-  "id": "10090536",
-  "fullName": "Dr. Anna Vagstad",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10090536.jpg",
-  "imageSource": "https://biol.ethz.ch/bin/ethz/search/peopleImage?id=MTkzODA3"
- },
- "10048387": {
-  "id": "10048387",
-  "fullName": "Prof. Dr. Victor Mougel",
-  "field": "Bioinorganic and Bioinspired Chemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Associate Professor",
-  "url": "http://mougel.ethz.ch",
-  "image": "img/profs/10048387.png",
-  "imageSource": "http://mougel.ethz.ch/_jcr_content/siteSettings/footer/addtionalInfo/image.imageformat.text50percent.203453521.png"
- },
- "10033514": {
-  "id": "10033514",
-  "fullName": "Prof. Dr. Ruth Signorell",
-  "field": "Physical Chemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "http://www.aerosol.ethz.ch/",
-  "image": "img/profs/10033514.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_693492449/image.imageformat.textsingle.dpr3.2136516459.jpg"
- },
- "10087926": {
-  "id": "10087926",
-  "fullName": "Dr. Jakob Dambon",
-  "field": "",
-  "department": "Mathematics",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10004562": {
-  "id": "10004562",
-  "fullName": "Prof. Dr. Philippe Henry Hünenberger",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Adjunct Professor",
-  "url": "",
-  "image": "img/profs/10004562.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_left/textimage_1795388753/image.imageformat.textsingle.dpr3.1517156930.jpg"
- },
- "10032848": {
-  "id": "10032848",
-  "fullName": "Prof. Dr. Helma Wennemers",
-  "field": "Organic Chemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10032848.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_43b/image.imageformat.textsingle.dpr3.1295950140.jpg"
- },
- "10004930": {
-  "id": "10004930",
-  "fullName": "Prof. Dr. Tilman Esslinger",
-  "field": "Quanten-Optik",
-  "department": "Physics",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10004930.jpg",
-  "imageSource": "https://phys.ethz.ch/bin/ethz/search/peopleImage?id=MTAzMTYz"
- },
- "10004090": {
-  "id": "10004090",
-  "fullName": "Prof. Dr. Detlef Günther",
-  "field": "Spurenelement- und Mikroanalytik",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10004090.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_90e6/image.imageformat.textsingle.dpr3.2096389861.jpg"
- },
- "10142686": {
-  "id": "10142686",
-  "fullName": "Dr. Jean-Pascal Bourgeois",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10031985": {
-  "id": "10031985",
-  "fullName": "Dr. Marc-Olivier Ebert",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10031985.jpg",
-  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC/people/faculty/_jcr_content/par/twocolumn/par_left/textimage/image.imageformat.textsingle.dpr3.1050981026.jpg"
- },
  "10053621": {
   "id": "10053621",
   "fullName": "Prof. Dr. Stefanie Jonas",
@@ -779,16 +1299,6 @@
   "image": "img/profs/10053621.jpg",
   "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item14.imageformat.imagegallery5.911661653.jpg"
  },
- "10036184": {
-  "id": "10036184",
-  "fullName": "Prof. Dr. Martin Pilhofer",
-  "field": "Cryo-Electron Microscopy",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10036184.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item30.imageformat.imagegallery5.761907323.jpg"
- },
  "10004699": {
   "id": "10004699",
   "fullName": "Prof. Dr. Eilika Weber-Ban",
@@ -798,106 +1308,6 @@
   "url": "https://weber-ban-lab.ethz.ch/",
   "image": "img/profs/10004699.jpg",
   "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item38.imageformat.imagegallery5.323458145.jpg"
- },
- "10081888": {
-  "id": "10081888",
-  "fullName": "Prof. Dr. Michal Wieczorek",
-  "field": "Integrative Approaches in Structural Biology",
-  "department": "Biology",
-  "relationship": "Assistant Professor",
-  "url": "https://wieczorekgroup.ethz.ch/",
-  "image": "img/profs/10081888.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item41.imageformat.imagegallery5.695102356.jpg"
- },
- "10102727": {
-  "id": "10102727",
-  "fullName": "Prof. Dr. Michelle Frei",
-  "field": "Chemical Biology and Molecular Imaging",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Assistant Professor (Tenure Track)",
-  "url": "",
-  "image": "img/profs/10102727.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_3850/image.imageformat.textsingle.dpr3.424271613.jpg"
- },
- "10055185": {
-  "id": "10055185",
-  "fullName": "Dr. Bartosz Marcin Lewandowski",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10055185.jpg",
-  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC/people/faculty/_jcr_content/par/twocolumn/par_right/textimage/image.imageformat.textsingle.dpr3.997491042.jpg"
- },
- "10076578": {
-  "id": "10076578",
-  "fullName": "Prof. Dr. Kathrin Lang",
-  "field": "Chemical Biology",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "https://lang.ethz.ch",
-  "image": "img/profs/10076578.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_2051543781/image.imageformat.textsingle.dpr3.1867863683.jpg"
- },
- "10093128": {
-  "id": "10093128",
-  "fullName": "Dr. Maximilian Fottner",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10093128.jpg",
-  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjkyOTc5"
- },
- "10086188": {
-  "id": "10086188",
-  "fullName": "Dr. Takuya Segawa",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10086188.jpg",
-  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MTIwNTcz"
- },
- "10057073": {
-  "id": "10057073",
-  "fullName": "Prof. Dr. Bill Morandi",
-  "field": "Synthetic Organic Chemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10057073.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_62b7/image.imageformat.textsingle.dpr3.154937061.jpg"
- },
- "10031605": {
-  "id": "10031605",
-  "fullName": "Prof. Dr. Jonathan Home",
-  "field": "Experimental Quantum Information",
-  "department": "Physics",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10031605.jpg",
-  "imageSource": "https://phys.ethz.ch/bin/ethz/search/peopleImage?id=MTczOTE1"
- },
- "10058889": {
-  "id": "10058889",
-  "fullName": "PD Dr. Davide Bleiner",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "http://n.ethz.ch/student/bleinerd",
-  "image": null,
-  "imageSource": null
- },
- "10035983": {
-  "id": "10035983",
-  "fullName": "Dr. Thomas Bucheli",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
  },
  "10003740": {
   "id": "10003740",
@@ -939,25 +1349,385 @@
   "image": "img/profs/10021219.jpg",
   "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item44.imageformat.imagegallery5.1674814004.jpg"
  },
- "10062153": {
-  "id": "10062153",
-  "fullName": "Prof. Dr. Manuela Hospenthal",
-  "field": "Molecular and Structural Biology",
+ "10004933": {
+  "id": "10004933",
+  "fullName": "Prof. em. Dr. Manfred Kopf",
+  "field": "Molecular Biomedicine",
+  "department": "Biology",
+  "relationship": "Professor emeritus",
+  "url": "https://mhs.biol.ethz.ch/research/kopf.html",
+  "image": "img/profs/10004933.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow/images/item11.imageformat.imagegallery5.189574510.jpg"
+ },
+ "10048363": {
+  "id": "10048363",
+  "fullName": "Prof. Dr. Shinichi Sunagawa",
+  "field": "Microbiome Research",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "http://www.micro.biol.ethz.ch/research/sunagawa.html",
+  "image": "img/profs/10048363.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item35.imageformat.imagegallery5.61754846.jpg"
+ },
+ "10062681": {
+  "id": "10062681",
+  "fullName": "Dr. Alessandro Blasimme",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10062681.jpg",
+  "imageSource": "https://hest.ethz.ch/bin/ethz/search/peopleImage?id=MjQxMzQz"
+ },
+ "10060892": {
+  "id": "10060892",
+  "fullName": "Prof. Dr. Kirsten Bomblies",
+  "field": "Plant Evolutionary Genetics",
+  "department": "Biology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10060892.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item6.imageformat.imagegallery5.971611744.jpg"
+ },
+ "10041187": {
+  "id": "10041187",
+  "fullName": "Dr. Ulrich Karl Genick",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10041187.jpg",
+  "imageSource": "https://biol.ethz.ch/bin/ethz/search/peopleImage?id=MjA1NjU3"
+ },
+ "10062148": {
+  "id": "10062148",
+  "fullName": "Prof. Dr. Madhav Jagannathan",
+  "field": "Cellular Dynamics",
   "department": "Biology",
   "relationship": "Assistant Professor",
   "url": "",
-  "image": "img/profs/10062153.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item11.imageformat.imagegallery5.2069112591.jpg"
+  "image": "img/profs/10062148.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item13.imageformat.imagegallery5.1220196828.jpg"
  },
- "10038944": {
-  "id": "10038944",
-  "fullName": "Prof. Dr. Volodymyr Korkhov",
-  "field": "Membrane Proteins and Signal Transduction",
+ "10085466": {
+  "id": "10085466",
+  "fullName": "Dr. Zacharias Kontarakis",
+  "field": "",
   "department": "Biology",
-  "relationship": "Associate Professor",
+  "relationship": "Lecturer",
   "url": "",
-  "image": "img/profs/10038944.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item17.imageformat.imagegallery5.556433650.jpg"
+  "image": null,
+  "imageSource": null
+ },
+ "10039342": {
+  "id": "10039342",
+  "fullName": "Prof. Dr. Gerald Schwank",
+  "field": "Stem Cells and Disease Biology",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10019902": {
+  "id": "10019902",
+  "fullName": "Dr. Hugo Stocker",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10019902.jpg",
+  "imageSource": "https://biol.ethz.ch/bin/ethz/search/peopleImage?id=MTMyMTUx"
+ },
+ "10087911": {
+  "id": "10087911",
+  "fullName": "Dr. Malgorzata Kisielow",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10026759": {
+  "id": "10026759",
+  "fullName": "PD Dr. Werner Kovacs",
+  "field": "Metabolism and Disease",
+  "department": "Biology",
+  "relationship": "Privatdozent",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10056074": {
+  "id": "10056074",
+  "fullName": "Prof. Dr. Alexander Leitner",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Adjunct Professor",
+  "url": "",
+  "image": "img/profs/10056074.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item21.imageformat.imagegallery5.1006688688.jpg"
+ },
+ "10093626": {
+  "id": "10093626",
+  "fullName": "Dr. Florian Mair",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10064586": {
+  "id": "10064586",
+  "fullName": "Dr. Sophie Leslie Masneuf",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10031986": {
+  "id": "10031986",
+  "fullName": "Dr. Elisabeth Beate Truernit",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10080468": {
+  "id": "10080468",
+  "fullName": "Prof. Dr. Máté Bezdek",
+  "field": "Functional Coordination Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Assistant Professor (Tenure Track)",
+  "url": "http://www.bezdek.ethz.ch",
+  "image": "img/profs/10080468.jpg",
+  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjkzODk5"
+ },
+ "10102727": {
+  "id": "10102727",
+  "fullName": "Prof. Dr. Michelle Frei",
+  "field": "Chemical Biology and Molecular Imaging",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Assistant Professor (Tenure Track)",
+  "url": "",
+  "image": "img/profs/10102727.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_3850/image.imageformat.textsingle.dpr3.424271613.jpg"
+ },
+ "10031649": {
+  "id": "10031649",
+  "fullName": "Prof. Dr. Hans Jakob Wörner",
+  "field": "Physical Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "https://www.atto.ethz.ch",
+  "image": "img/profs/10031649.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_602210138/image.imageformat.textsingle.dpr3.1505265354.jpg"
+ },
+ "10115548": {
+  "id": "10115548",
+  "fullName": "Dr. Tadas Balciunas",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10119546": {
+  "id": "10119546",
+  "fullName": "Dr. Carina Geldhauser",
+  "field": "",
+  "department": "Mathematics",
+  "relationship": "Lecturer",
+  "url": "https://cgeldhauser.de/",
+  "image": null,
+  "imageSource": null
+ },
+ "10030781": {
+  "id": "10030781",
+  "fullName": "Prof. Dr. Jeffrey W. Bode",
+  "field": "Synthetic Organic Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10030781.jpg",
+  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC.person_image.jpeg?persid=ODgwOTk="
+ },
+ "10090536": {
+  "id": "10090536",
+  "fullName": "Dr. Anna Vagstad",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10090536.jpg",
+  "imageSource": "https://biol.ethz.ch/bin/ethz/search/peopleImage?id=MTkzODA3"
+ },
+ "10048387": {
+  "id": "10048387",
+  "fullName": "Prof. Dr. Victor Mougel",
+  "field": "Bioinorganic and Bioinspired Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Associate Professor",
+  "url": "http://mougel.ethz.ch",
+  "image": "img/profs/10048387.png",
+  "imageSource": "http://mougel.ethz.ch/_jcr_content/siteSettings/footer/addtionalInfo/image.imageformat.text50percent.203453521.png"
+ },
+ "10033514": {
+  "id": "10033514",
+  "fullName": "Prof. Dr. Ruth Signorell",
+  "field": "Physical Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "http://www.aerosol.ethz.ch/",
+  "image": "img/profs/10033514.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_693492449/image.imageformat.textsingle.dpr3.2136516459.jpg"
+ },
+ "10004562": {
+  "id": "10004562",
+  "fullName": "Prof. Dr. Philippe Henry Hünenberger",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Adjunct Professor",
+  "url": "",
+  "image": "img/profs/10004562.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_left/textimage_1795388753/image.imageformat.textsingle.dpr3.1517156930.jpg"
+ },
+ "10004930": {
+  "id": "10004930",
+  "fullName": "Prof. Dr. Tilman Esslinger",
+  "field": "Quanten-Optik",
+  "department": "Physics",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10004930.jpg",
+  "imageSource": "https://phys.ethz.ch/bin/ethz/search/peopleImage?id=MTAzMTYz"
+ },
+ "10004090": {
+  "id": "10004090",
+  "fullName": "Prof. Dr. Detlef Günther",
+  "field": "Spurenelement- und Mikroanalytik",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10004090.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_90e6/image.imageformat.textsingle.dpr3.2096389861.jpg"
+ },
+ "10142686": {
+  "id": "10142686",
+  "fullName": "Dr. Jean-Pascal Bourgeois",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10031985": {
+  "id": "10031985",
+  "fullName": "Dr. Marc-Olivier Ebert",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10031985.jpg",
+  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC/people/faculty/_jcr_content/par/twocolumn/par_left/textimage/image.imageformat.textsingle.dpr3.1050981026.jpg"
+ },
+ "10081888": {
+  "id": "10081888",
+  "fullName": "Prof. Dr. Michal Wieczorek",
+  "field": "Integrative Approaches in Structural Biology",
+  "department": "Biology",
+  "relationship": "Assistant Professor",
+  "url": "https://wieczorekgroup.ethz.ch/",
+  "image": "img/profs/10081888.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item41.imageformat.imagegallery5.695102356.jpg"
+ },
+ "10076582": {
+  "id": "10076582",
+  "fullName": "Prof. Dr. Patrick Steinegger",
+  "field": "Radiochemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Assistant Professor (Tenure Track)",
+  "url": "https://www.psi.ch/en/lrc",
+  "image": "img/profs/10076582.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_be55/image.imageformat.textsingle.dpr3.1026773091.jpg"
+ },
+ "10057073": {
+  "id": "10057073",
+  "fullName": "Prof. Dr. Bill Morandi",
+  "field": "Synthetic Organic Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10057073.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_62b7/image.imageformat.textsingle.dpr3.154937061.jpg"
+ },
+ "10063267": {
+  "id": "10063267",
+  "fullName": "Prof. Dr. Alexander Barnes",
+  "field": "Solid State NMR Spectroscopy",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10063267.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_bcb9/image.imageformat.textsingle.dpr3.1568329986.jpg"
+ },
+ "10005203": {
+  "id": "10005203",
+  "fullName": "Prof. Dr. Matthias Ernst",
+  "field": "Physikalische Chemie",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Adjunct Professor and Privatdozent",
+  "url": "http://www.nmr.ethz.ch/~maer",
+  "image": "img/profs/10005203.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_left/textimage/image.imageformat.textsingle.dpr3.1751933052.jpg"
+ },
+ "10052421": {
+  "id": "10052421",
+  "fullName": "Prof. Dr. Marc Auer (Professor FHO - HTW Hochschule für Technik und Wirtschaft Chur (bis 2019))",
+  "field": "",
+  "department": "Mathematics",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10076578": {
+  "id": "10076578",
+  "fullName": "Prof. Dr. Kathrin Lang",
+  "field": "Chemical Biology",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "https://lang.ethz.ch",
+  "image": "img/profs/10076578.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_2051543781/image.imageformat.textsingle.dpr3.1867863683.jpg"
+ },
+ "10093128": {
+  "id": "10093128",
+  "fullName": "Dr. Maximilian Fottner",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10093128.jpg",
+  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjkyOTc5"
+ },
+ "10086188": {
+  "id": "10086188",
+  "fullName": "Dr. Takuya Segawa",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10086188.jpg",
+  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MTIwNTcz"
  },
  "10003282": {
   "id": "10003282",
@@ -999,45 +1769,45 @@
   "image": "img/profs/10006217.jpg",
   "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_right/textimage_1945582614/image.imageformat.textsingle.dpr3.808304253.jpg"
  },
- "10080468": {
-  "id": "10080468",
-  "fullName": "Prof. Dr. Máté Bezdek",
-  "field": "Functional Coordination Chemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Assistant Professor (Tenure Track)",
-  "url": "http://www.bezdek.ethz.ch",
-  "image": "img/profs/10080468.jpg",
-  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjkzODk5"
- },
- "10031649": {
-  "id": "10031649",
-  "fullName": "Prof. Dr. Hans Jakob Wörner",
-  "field": "Physical Chemistry",
-  "department": "Chemistry and Applied Biosciences",
+ "10031605": {
+  "id": "10031605",
+  "fullName": "Prof. Dr. Jonathan Home",
+  "field": "Experimental Quantum Information",
+  "department": "Physics",
   "relationship": "Full Professor",
-  "url": "https://www.atto.ethz.ch",
-  "image": "img/profs/10031649.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_602210138/image.imageformat.textsingle.dpr3.1505265354.jpg"
+  "url": "",
+  "image": "img/profs/10031605.jpg",
+  "imageSource": "https://phys.ethz.ch/bin/ethz/search/peopleImage?id=MTczOTE1"
  },
- "10115548": {
-  "id": "10115548",
-  "fullName": "Dr. Tadas Balciunas",
+ "10058889": {
+  "id": "10058889",
+  "fullName": "PD Dr. Davide Bleiner",
   "field": "",
   "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "http://n.ethz.ch/student/bleinerd",
+  "image": null,
+  "imageSource": null
+ },
+ "10035983": {
+  "id": "10035983",
+  "fullName": "Dr. Thomas Bucheli",
+  "field": "",
+  "department": "Environmental Systems Science",
   "relationship": "Lecturer",
   "url": "",
   "image": null,
   "imageSource": null
  },
- "10119546": {
-  "id": "10119546",
-  "fullName": "Dr. Carina Geldhauser",
-  "field": "",
-  "department": "Mathematics",
-  "relationship": "Lecturer",
-  "url": "https://cgeldhauser.de/",
-  "image": null,
-  "imageSource": null
+ "10062153": {
+  "id": "10062153",
+  "fullName": "Prof. Dr. Manuela Hospenthal",
+  "field": "Molecular and Structural Biology",
+  "department": "Biology",
+  "relationship": "Assistant Professor",
+  "url": "",
+  "image": "img/profs/10062153.jpg",
+  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item11.imageformat.imagegallery5.2069112591.jpg"
  },
  "10031341": {
   "id": "10031341",
@@ -1079,45 +1849,195 @@
   "image": null,
   "imageSource": null
  },
- "10076582": {
-  "id": "10076582",
-  "fullName": "Prof. Dr. Patrick Steinegger",
-  "field": "Radiochemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Assistant Professor (Tenure Track)",
-  "url": "https://www.psi.ch/en/lrc",
-  "image": "img/profs/10076582.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_be55/image.imageformat.textsingle.dpr3.1026773091.jpg"
- },
- "10063267": {
-  "id": "10063267",
-  "fullName": "Prof. Dr. Alexander Barnes",
-  "field": "Solid State NMR Spectroscopy",
+ "10032518": {
+  "id": "10032518",
+  "fullName": "Prof. Dr. Andrew de Mello",
+  "field": "Biochemical Engineering",
   "department": "Chemistry and Applied Biosciences",
   "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10063267.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_bcb9/image.imageformat.textsingle.dpr3.1568329986.jpg"
+  "url": "https://www.demellogroup.ethz.ch",
+  "image": null,
+  "imageSource": null
  },
- "10005203": {
-  "id": "10005203",
-  "fullName": "Prof. Dr. Matthias Ernst",
-  "field": "Physikalische Chemie",
+ "10062836": {
+  "id": "10062836",
+  "fullName": "Dr. Stavros Stavrakis",
+  "field": "",
   "department": "Chemistry and Applied Biosciences",
-  "relationship": "Adjunct Professor and Privatdozent",
-  "url": "http://www.nmr.ethz.ch/~maer",
-  "image": "img/profs/10005203.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_left/textimage/image.imageformat.textsingle.dpr3.1751933052.jpg"
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
  },
- "10052421": {
-  "id": "10052421",
-  "fullName": "Prof. Dr. Marc Auer (Professor FHO - HTW Hochschule für Technik und Wirtschaft Chur (bis 2019))",
+ "10050187": {
+  "id": "10050187",
+  "fullName": "Prof. Dr. Mark Tibbitt",
+  "field": "Macromolecular Engineering",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Associate Professor",
+  "url": "",
+  "image": "img/profs/10050187.jpg",
+  "imageSource": "https://mavt.ethz.ch/people/administration/departementsleitung/_jcr_content/par/textimage_0_copy/image.imageformat.textdouble.dpr3.1062356475.jpg"
+ },
+ "10033528": {
+  "id": "10033528",
+  "fullName": "Prof. Dr. Vlasios Mavrantzas (Professor University of Patras (Panepistimion Patron))",
+  "field": "",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10040038": {
+  "id": "10040038",
+  "fullName": "Prof. Dr. Chih-Jen Shih",
+  "field": "Chemical Engineering",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Associate Professor",
+  "url": "",
+  "image": "img/profs/10040038.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_ad54/image.imageformat.textsingle.dpr3.180292505.jpg"
+ },
+ "10033640": {
+  "id": "10033640",
+  "fullName": "Dr. Anna Alexandra Kubik",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10033640.jpg",
+  "imageSource": "https://mavt.ethz.ch/bin/ethz/search/peopleImage?id=OTg1NDA="
+ },
+ "10046043": {
+  "id": "10046043",
+  "fullName": "Prof. Dr. Paolo Arosio",
+  "field": "Biochemical Engineering",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Associate Professor",
+  "url": "",
+  "image": "img/profs/10046043.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_358f/image.imageformat.textsingle.dpr3.332088439.jpg"
+ },
+ "10010879": {
+  "id": "10010879",
+  "fullName": "PD Dr. Markus Schuppler",
+  "field": "Microbiology",
+  "department": "Health Sciences and Technology",
+  "relationship": "Privatdozent",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10085051": {
+  "id": "10085051",
+  "fullName": "Prof. Dr. Serina Robinson",
+  "field": "Environmental Biochemistry",
+  "department": "Environmental Systems Science",
+  "relationship": "Assistant Professor",
+  "url": "",
+  "image": "img/profs/10085051.jpg",
+  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=Mjc3NDA0"
+ },
+ "10032836": {
+  "id": "10032836",
+  "fullName": "Prof. Dr. Gregory Velicer",
+  "field": "Evolutionary Biology",
+  "department": "Environmental Systems Science",
+  "relationship": "Full Professor",
+  "url": "https://evo.ethz.ch",
+  "image": "img/profs/10032836.jpg",
+  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MTgzNTM1"
+ },
+ "10143066": {
+  "id": "10143066",
+  "fullName": "Dr. Alexandre Mösching",
   "field": "",
   "department": "Mathematics",
   "relationship": "Lecturer",
   "url": "",
   "image": null,
   "imageSource": null
+ },
+ "10144590": {
+  "id": "10144590",
+  "fullName": "Dr. Stephan Simonis",
+  "field": "",
+  "department": "Mathematics",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10078814": {
+  "id": "10078814",
+  "fullName": "Dr. Laurens Piet T Vandeweghe",
+  "field": "",
+  "department": "Management, Technology, and Economics",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10059840": {
+  "id": "10059840",
+  "fullName": "Prof. Dr. Gonzalo Guillén Gosálbez",
+  "field": "Chemical Systems Engineering",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10059840.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_457082839/image.imageformat.textsingle.dpr3.277763465.jpg"
+ },
+ "10052003": {
+  "id": "10052003",
+  "fullName": "Dr. Jozica Dolenc",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10146334": {
+  "id": "10146334",
+  "fullName": "Dr. Juan Diego Medrano García",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10146334.jpg",
+  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjkyMzIy"
+ },
+ "10141647": {
+  "id": "10141647",
+  "fullName": "Dr. Emmanuel Meyer",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10038763": {
+  "id": "10038763",
+  "fullName": "Mr Niki Kobert",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10021365": {
+  "id": "10021365",
+  "fullName": "Prof. Dr. Robert Grass",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Adjunct Professor",
+  "url": "https://fml.ethz.ch/people/lecturer.html",
+  "image": "img/profs/10021365.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_left/textimage_396c/image.imageformat.textsingle.dpr3.1994526298.jpg"
  },
  "10032710": {
   "id": "10032710",
@@ -1178,6 +2098,186 @@
   "url": "",
   "image": null,
   "imageSource": null
+ },
+ "10010697": {
+  "id": "10010697",
+  "fullName": "Prof. Dr. Jeroen Anton van Bokhoven",
+  "field": "Heterogeneous Catalysis",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10010697.jpg",
+  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MTA1NTk2"
+ },
+ "10116927": {
+  "id": "10116927",
+  "fullName": "Dr. Vitaly Sushkevich",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10031038": {
+  "id": "10031038",
+  "fullName": "Prof. Dr. Javier Pérez-Ramírez",
+  "field": "Catalysis Engineering",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "http://www.ace.ethz.ch",
+  "image": "img/profs/10031038.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_cc95/image.imageformat.textsingle.dpr3.992442211.jpg"
+ },
+ "10086170": {
+  "id": "10086170",
+  "fullName": "Dr. Antonio José Martín Fernández",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10066567": {
+  "id": "10066567",
+  "fullName": "Prof. Dr. André Bardow",
+  "field": "Energy and Process Systems Engineering",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "https://epse.ethz.ch/",
+  "image": "img/profs/10066567.jpg",
+  "imageSource": "https://mavt.ethz.ch/bin/ethz/search/peopleImage?id=MTI1MDIx"
+ },
+ "10124506": {
+  "id": "10124506",
+  "fullName": "Dr. Luca Bosetti",
+  "field": "",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10136451": {
+  "id": "10136451",
+  "fullName": "Dr. Vasileios Koulocheris",
+  "field": "",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10136451.jpg",
+  "imageSource": "https://mavt.ethz.ch/bin/ethz/search/peopleImage?id=MzUyMTk5"
+ },
+ "10004152": {
+  "id": "10004152",
+  "fullName": "Prof. Dr. Erick M. Carreira",
+  "field": "Organische Chemie",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10004152.jpg",
+  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC/people/faculty/_jcr_content/par/twocolumn_1/par_left/textimage_727527031/image.imageformat.textsingle.dpr3.403849961.jpg"
+ },
+ "10004236": {
+  "id": "10004236",
+  "fullName": "Prof. Dr. Roland Riek",
+  "field": "Physical Chemistry",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10004236.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_662314348/image.imageformat.textsingle.dpr3.2020530314.jpg"
+ },
+ "10143214": {
+  "id": "10143214",
+  "fullName": "Prof. Dr. Nino Wili",
+  "field": "Spin Dynamics and Hyperpolarisation",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Assistant Professor",
+  "url": "https://www.ninowili.ch",
+  "image": "img/profs/10143214.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_602210138_/image.imageformat.textsingle.dpr3.1877761625.jpg"
+ },
+ "10039838": {
+  "id": "10039838",
+  "fullName": "Dr. Aleix Comas Vives",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10134447": {
+  "id": "10134447",
+  "fullName": "Dr. Jessada Mahatthananchai",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10029965": {
+  "id": "10029965",
+  "fullName": "Prof. Dr. Manfred Einsiedler",
+  "field": "Mathematics",
+  "department": "Mathematics",
+  "relationship": "Full Professor",
+  "url": "http://www.math.ethz.ch/~einsiedl",
+  "image": "img/profs/10029965.jpg",
+  "imageSource": "https://math.ethz.ch/research/geometry-groups-dynamics/_jcr_content/par/slideshow/images/item2.imageformat.imagegallery3.1918932626.jpg"
+ },
+ "10033331": {
+  "id": "10033331",
+  "fullName": "Prof. Dr. Lorenz Halbeisen",
+  "field": "",
+  "department": "Mathematics",
+  "relationship": "Adjunct Professor",
+  "url": "http://www.math.ethz.ch/~halorenz",
+  "image": null,
+  "imageSource": null
+ },
+ "10060886": {
+  "id": "10060886",
+  "fullName": "Prof. Dr. Daniela Rupp",
+  "field": "Nanostructures and Ultrafast X-Ray Science",
+  "department": "Physics",
+  "relationship": "Assistant Professor (Tenure Track)",
+  "url": "https://nux.ethz.ch",
+  "image": "img/profs/10060886.jpg",
+  "imageSource": "https://phys.ethz.ch/bin/ethz/search/peopleImage?id=MjU1Mzkw"
+ },
+ "10076584": {
+  "id": "10076584",
+  "fullName": "Prof. Dr. Joaquim Serra",
+  "field": "Mathematics",
+  "department": "Mathematics",
+  "relationship": "Associate Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10024858": {
+  "id": "10024858",
+  "fullName": "Prof. Dr. Paul Biran",
+  "field": "Mathematics",
+  "department": "Mathematics",
+  "relationship": "Full Professor",
+  "url": "http://www.math.ethz.ch/~biranp",
+  "image": null,
+  "imageSource": null
+ },
+ "10031976": {
+  "id": "10031976",
+  "fullName": "Prof. Dr. Rainer Wallny",
+  "field": "Experimental Particle Physics",
+  "department": "Physics",
+  "relationship": "Full Professor",
+  "url": "http://www.wallny-group.phys.ethz.ch/",
+  "image": "img/profs/10031976.jpg",
+  "imageSource": "https://phys.ethz.ch/bin/ethz/search/peopleImage?id=MTc2OTE5"
  },
  "10009238": {
   "id": "10009238",
@@ -1269,86 +2369,6 @@
   "image": "img/profs/10015605.jpg",
   "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_705640788/image.imageformat.textsingle.dpr3.1908348120.jpg"
  },
- "10042566": {
-  "id": "10042566",
-  "fullName": "Dr. Markus Dahinden",
-  "field": "",
-  "department": "Computer Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10036224": {
-  "id": "10036224",
-  "fullName": "Dr. Lukas Emanuel Fässler",
-  "field": "",
-  "department": "Computer Science",
-  "relationship": "Lecturer",
-  "url": "https://et.ethz.ch/",
-  "image": "img/profs/10036224.jpg",
-  "imageSource": "https://inf.ethz.ch/people/senior-scientists-education/_jcr_content/par/twocolumn_733565140/par_left/textimage_943278068/image.imageformat.textsingle.dpr3.951210399.jpg"
- },
- "10033691": {
-  "id": "10033691",
-  "fullName": "Prof. Dr. Anton Wutz",
-  "field": "Genetics",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10033691.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item43.imageformat.imagegallery5.853750897.jpg"
- },
- "10074108": {
-  "id": "10074108",
-  "fullName": "Prof. Dr. Nicola Aceto",
-  "field": "Molekulare Onkologie",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10074108.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item0.imageformat.imagegallery5.210240576.jpg"
- },
- "10031562": {
-  "id": "10031562",
-  "fullName": "Dr. Oliver Yves Martin",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10018979": {
-  "id": "10018979",
-  "fullName": "Prof. Dr. Markus Stoffel",
-  "field": "Metabolic Diseases",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10018979.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item34.imageformat.imagegallery5.9623014.jpg"
- },
- "10004270": {
-  "id": "10004270",
-  "fullName": "Prof. Dr. Sabine Werner",
-  "field": "Cell Biology",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10004270.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item40.imageformat.imagegallery5.857445020.jpg"
- },
- "10015178": {
-  "id": "10015178",
-  "fullName": "Prof. Dr. Samuel C. Zeeman",
-  "field": "Plant Biochemistry",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10015178.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item45.imageformat.imagegallery5.1209132374.jpg"
- },
  "10069359": {
   "id": "10069359",
   "fullName": "Dr. Maria Willecke",
@@ -1399,23 +2419,13 @@
   "image": "img/profs/10048020.jpg",
   "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjI2NDk5"
  },
- "10143246": {
-  "id": "10143246",
-  "fullName": "Dr. Pascal Becker",
+ "10064966": {
+  "id": "10064966",
+  "fullName": "Dr. Elisabeth Giger",
   "field": "",
   "department": "Chemistry and Applied Biosciences",
   "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10027684": {
-  "id": "10027684",
-  "fullName": "Mr Stefan Erni",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
+  "url": "http://n.ethz.ch/~gigere",
   "image": null,
   "imageSource": null
  },
@@ -1428,6 +2438,26 @@
   "url": "https://fraley.ethz.ch/",
   "image": "img/profs/10090535.jpg",
   "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_4495/image.imageformat.textsingle.dpr3.495711909.jpg"
+ },
+ "10062733": {
+  "id": "10062733",
+  "fullName": "Dr. Dominik Stämpfli",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10062733.jpg",
+  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjU2ODcz"
+ },
+ "10127606": {
+  "id": "10127606",
+  "fullName": "Prof. Dr. Christina Ruob",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Professor of Practice",
+  "url": "",
+  "image": "img/profs/10127606.jpg",
+  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_right/textimage_7823_copy_/image.imageformat.textsingle.dpr3.385278369.jpg"
  },
  "10111169": {
   "id": "10111169",
@@ -1449,6 +2479,96 @@
   "image": "img/profs/10019242.jpg",
   "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_1823512696/image.imageformat.textsingle.dpr3.178698828.jpg"
  },
+ "10090531": {
+  "id": "10090531",
+  "fullName": "Dr. Karina Silina",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10090531.jpg",
+  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MzAxMTk5"
+ },
+ "10128747": {
+  "id": "10128747",
+  "fullName": "Prof. Dr. Adrian Egli",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10078948": {
+  "id": "10078948",
+  "fullName": "PD Dr. Linjing Mu",
+  "field": "Radiopharmacy",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Privatdozentin",
+  "url": "",
+  "image": "img/profs/10078948.png",
+  "imageSource": "https://chab.ethz.ch/en/research/institutes/IPW/people/professors/_jcr_content/par/twocolumn_0/par_left/textimage_814764730/image.imageformat.textsingle.dpr3.1270405685.png"
+ },
+ "10060158": {
+  "id": "10060158",
+  "fullName": "Dr. Joshua Abd Alla",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10134106": {
+  "id": "10134106",
+  "fullName": "Dr. Frank Imkamp",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10134126": {
+  "id": "10134126",
+  "fullName": "Dr. Hendrik Koliwer-Brandl",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10134088": {
+  "id": "10134088",
+  "fullName": "PD Dr. Stefano Mancini",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10145036": {
+  "id": "10145036",
+  "fullName": "Ms Bettina Schulthess",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10027684": {
+  "id": "10027684",
+  "fullName": "Mr Stefan Erni",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
  "10031207": {
   "id": "10031207",
   "fullName": "Dr. Elvan Kut Bacs",
@@ -1468,26 +2588,6 @@
   "url": "",
   "image": "img/profs/10032556.jpg",
   "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_right/textimage_5fb6/image.imageformat.textsingle.dpr3.193950110.jpg"
- },
- "10127606": {
-  "id": "10127606",
-  "fullName": "Prof. Dr. Christina Ruob",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Professor of Practice",
-  "url": "",
-  "image": "img/profs/10127606.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_right/textimage_7823_copy_/image.imageformat.textsingle.dpr3.385278369.jpg"
- },
- "10027228": {
-  "id": "10027228",
-  "fullName": "Prof. Dr. Gunnar Jeschke",
-  "field": "Electron Paramagnetic Resonance",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10027228.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_1557617589/image.imageformat.textsingle.dpr3.1688404314.jpg"
  },
  "10033457": {
   "id": "10033457",
@@ -1549,46 +2649,6 @@
   "image": null,
   "imageSource": null
  },
- "10087911": {
-  "id": "10087911",
-  "fullName": "Dr. Malgorzata Kisielow",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10093626": {
-  "id": "10093626",
-  "fullName": "Dr. Florian Mair",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10064586": {
-  "id": "10064586",
-  "fullName": "Dr. Sophie Leslie Masneuf",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10031986": {
-  "id": "10031986",
-  "fullName": "Dr. Elisabeth Beate Truernit",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
  "10125246": {
   "id": "10125246",
   "fullName": "Dr. Philipp Eichenberger",
@@ -1596,6 +2656,86 @@
   "department": "Health Sciences and Technology",
   "relationship": "Lecturer",
   "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10033370": {
+  "id": "10033370",
+  "fullName": "Prof. Martin Hersberger (Professor Universität Zürich (UZH))",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10034161": {
+  "id": "10034161",
+  "fullName": "Dr. Alexander Sterchi",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10105606": {
+  "id": "10105606",
+  "fullName": "Dr. Simon Weidmann",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10009239": {
+  "id": "10009239",
+  "fullName": "Dr. Rolf Heusser",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137190": {
+  "id": "10137190",
+  "fullName": "Dr. Henock Yebyo",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10137270": {
+  "id": "10137270",
+  "fullName": "Dr. Rahel Felicia Mirjam Schmidt",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10121469": {
+  "id": "10121469",
+  "fullName": "Dr. Takeshi Suzuki",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10012342": {
+  "id": "10012342",
+  "fullName": "Dr. Beatrix Falch",
+  "field": "",
+  "department": "Chemistry and Applied Biosciences",
+  "relationship": "Lecturer",
+  "url": "http://www.phytocura.ch",
   "image": null,
   "imageSource": null
  },
@@ -2209,36 +3349,6 @@
   "image": null,
   "imageSource": null
  },
- "10010879": {
-  "id": "10010879",
-  "fullName": "PD Dr. Markus Schuppler",
-  "field": "Microbiology",
-  "department": "Health Sciences and Technology",
-  "relationship": "Privatdozent",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10085051": {
-  "id": "10085051",
-  "fullName": "Prof. Dr. Serina Robinson",
-  "field": "Environmental Biochemistry",
-  "department": "Environmental Systems Science",
-  "relationship": "Assistant Professor",
-  "url": "",
-  "image": "img/profs/10085051.jpg",
-  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=Mjc3NDA0"
- },
- "10032836": {
-  "id": "10032836",
-  "fullName": "Prof. Dr. Gregory Velicer",
-  "field": "Evolutionary Biology",
-  "department": "Environmental Systems Science",
-  "relationship": "Full Professor",
-  "url": "https://evo.ethz.ch",
-  "image": "img/profs/10032836.jpg",
-  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MTgzNTM1"
- },
  "10032107": {
   "id": "10032107",
   "fullName": "Prof. Dr. Martin Raubal",
@@ -2404,16 +3514,6 @@
   "fullName": "Dr. Luiz Gustavo Martins da Silva",
   "field": "",
   "department": "Civil, Environmental and Geomatic Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10038763": {
-  "id": "10038763",
-  "fullName": "Mr Niki Kobert",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
   "relationship": "Lecturer",
   "url": "",
   "image": null,
@@ -2606,6 +3706,86 @@
   "department": "Environmental Systems Science",
   "relationship": "Privatdozent",
   "url": "https://christophkueffer.academia.edu/",
+  "image": null,
+  "imageSource": null
+ },
+ "10069210": {
+  "id": "10069210",
+  "fullName": "Prof. Dr. Benedikt Soja",
+  "field": "Space Geodesy",
+  "department": "Civil, Environmental and Geomatic Engineering",
+  "relationship": "Assistant Professor (Tenure Track)",
+  "url": "",
+  "image": "img/profs/10069210.jpg",
+  "imageSource": "https://baug.ethz.ch/en/studies/rauming/contact/professorships/_jcr_content/par/twocolumn_1476916744/par_left/fullwidthimage/image.imageformat.1286.dpr3.620979104.jpg"
+ },
+ "10137572": {
+  "id": "10137572",
+  "fullName": "Dr. Betty Heller-Kaikov",
+  "field": "",
+  "department": "Civil, Environmental and Geomatic Engineering",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10088247": {
+  "id": "10088247",
+  "fullName": "Dr. Isabel Martinez",
+  "field": "",
+  "department": "Management, Technology, and Economics",
+  "relationship": "Lecturer",
+  "url": "https://www.isabelzmartinez.com/",
+  "image": "img/profs/10088247.jpg",
+  "imageSource": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72twC9oAffIYgv8DwzmgZosZ8WcpMlM6FfVNErHLOy0_9GSXgYS7vpw-kY3G-QHbZ4UN7QxqKA7CHysgk1gBDIf4rjygDdlDQJwzAtXH61e5MK9zA59TQHc9xmgm3Q0OHacSGmV4rEdNDHTd__ZXGkpBE80elb3Pyw61Q8KORqR23DBMxtjZwNjxwSh2Tte0R2fuu4iad8lu-0ZVcbc=w1280"
+ },
+ "10016161": {
+  "id": "10016161",
+  "fullName": "Prof. Dr. Jan-Egbert Sturm",
+  "field": "Wirtschaftsforschung",
+  "department": "Management, Technology, and Economics",
+  "relationship": "Full Professor",
+  "url": "http://www.kof.ethz.ch/sturm",
+  "image": "img/profs/10016161.jpg",
+  "imageSource": "https://mtec.ethz.ch/bin/ethz/search/peopleImage?id=MTI5MTQx"
+ },
+ "10038002": {
+  "id": "10038002",
+  "fullName": "Prof. Dr. Oliver Streiff Gnöpff (Professor Zürcher Hochschule für Angewandte Wissenschaften (ZHAW))",
+  "field": "",
+  "department": "Humanities, Social and Political Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10065266": {
+  "id": "10065266",
+  "fullName": "Dr. Elmar Brockmann",
+  "field": "",
+  "department": "Civil, Environmental and Geomatic Engineering",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10059296": {
+  "id": "10059296",
+  "fullName": "Dr. Stephan Bütikofer van Oordt",
+  "field": "",
+  "department": "Management, Technology, and Economics",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10004441": {
+  "id": "10004441",
+  "fullName": "PD Dr. Christian G. C. Marxt",
+  "field": "Technologie- und Innovationsmanagement",
+  "department": "Management, Technology, and Economics",
+  "relationship": "Privatdozent",
+  "url": "",
   "image": null,
   "imageSource": null
  },
@@ -3129,6 +4309,36 @@
   "image": null,
   "imageSource": null
  },
+ "10063269": {
+  "id": "10063269",
+  "fullName": "Prof. Dr. Cara Magnabosco",
+  "field": "Geobiology",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Assistant Professor (Tenure Track)",
+  "url": "https://geobiology.ethz.ch/",
+  "image": "img/profs/10063269.jpg",
+  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geology/geobiology.person_image.jpeg?persid=MjYxMDgz"
+ },
+ "10050183": {
+  "id": "10050183",
+  "fullName": "Prof. Dr. Motohiko Murakami",
+  "field": "Experimental Mineral Physics",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10050183.jpg",
+  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geochemistry-petrology/experimental-mineral-physics.person_image.jpeg?persid=MjMzMDYx"
+ },
+ "10091310": {
+  "id": "10091310",
+  "fullName": "Dr. Pinku Saha",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
  "10048250": {
   "id": "10048250",
   "fullName": "Dr. Gregory De Souza",
@@ -3138,6 +4348,36 @@
   "url": "",
   "image": "img/profs/10048250.jpg",
   "imageSource": "https://eaps.ethz.ch/bin/ethz/search/peopleImage?id=MTEwMzQ3"
+ },
+ "10038427": {
+  "id": "10038427",
+  "fullName": "Dr. Andrea Zunino",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10004804": {
+  "id": "10004804",
+  "fullName": "Prof. Dr. Max W. Schmidt",
+  "field": "Crystalline Geology",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10004804.jpg",
+  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geochemistry-petrology/experimental-petrology.person_image.jpeg?persid=NDEzOTY="
+ },
+ "10143906": {
+  "id": "10143906",
+  "fullName": "Dr. Giuliano Cesar Camilletti",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
  },
  "10130711": {
   "id": "10130711",
@@ -3179,15 +4419,35 @@
   "image": "img/profs/10004458.jpg",
   "imageSource": "https://eaps.ethz.ch/bin/ethz/search/peopleImage?id=OTU0NDA="
  },
- "10017938": {
-  "id": "10017938",
-  "fullName": "Prof. Dr. Andrew Jackson",
-  "field": "Geophysik",
+ "10097148": {
+  "id": "10097148",
+  "fullName": "Dr. Silvia Volante",
+  "field": "",
   "department": "Earth and Planetary Sciences",
-  "relationship": "Full Professor",
+  "relationship": "Lecturer",
   "url": "",
-  "image": "img/profs/10017938.jpg",
-  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geophysics/earth-planetary-magnetism.person_image.jpeg?persid=MTM0NDUx"
+  "image": null,
+  "imageSource": null
+ },
+ "10067687": {
+  "id": "10067687",
+  "fullName": "Dr. Lukas Nibourel",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10020980": {
+  "id": "10020980",
+  "fullName": "Dr. Maria Giuditta Fellin",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
  },
  "10014878": {
   "id": "10014878",
@@ -3199,13 +4459,113 @@
   "image": "img/profs/10014878.jpg",
   "imageSource": "https://eaps.ethz.ch/bin/ethz/search/peopleImage?id=MTI2MTAz"
  },
- "10117208": {
-  "id": "10117208",
-  "fullName": "Dr. Ali Arslan",
+ "10095707": {
+  "id": "10095707",
+  "fullName": "Dr. Stefano Maffei",
   "field": "",
   "department": "Earth and Planetary Sciences",
   "relationship": "Lecturer",
-  "url": "https://sites.google.com/view/aliarslan",
+  "url": "https://sites.google.com/view/dr-stefano-maffei/home",
+  "image": null,
+  "imageSource": null
+ },
+ "10009290": {
+  "id": "10009290",
+  "fullName": "Mr Christian Klug",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10028843": {
+  "id": "10028843",
+  "fullName": "Dr. Michael Hautmann",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10033679": {
+  "id": "10033679",
+  "fullName": "Dr. Elke Schneebeli-Hermann",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10025798": {
+  "id": "10025798",
+  "fullName": "Dr. Adrian Gilli",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "https://eaps.ethz.ch/personen/profil.adrian-gilli.html",
+  "image": null,
+  "imageSource": null
+ },
+ "10014960": {
+  "id": "10014960",
+  "fullName": "Prof. Dr. Sonia I. Seneviratne",
+  "field": "Land Climate Dynamics",
+  "department": "Environmental Systems Science",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10035844": {
+  "id": "10035844",
+  "fullName": "Dr. Lukas Gudmundsson",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "http://www.iac.ethz.ch/people/lukasgu",
+  "image": null,
+  "imageSource": null
+ },
+ "10095148": {
+  "id": "10095148",
+  "fullName": "Dr. Dominik Schumacher",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "http://n.ethz.ch/~domischu",
+  "image": null,
+  "imageSource": null
+ },
+ "10045805": {
+  "id": "10045805",
+  "fullName": "Dr. Anne Obermann",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10033703": {
+  "id": "10033703",
+  "fullName": "Prof. Dr. Vincenzo Picotti",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Adjunct Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10120308": {
+  "id": "10120308",
+  "fullName": "Dr. Kevin Alexander Frings",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "",
   "image": null,
   "imageSource": null
  },
@@ -3218,6 +4578,26 @@
   "url": "",
   "image": "img/profs/10056536.jpg",
   "imageSource": "https://eaps.ethz.ch/bin/ethz/search/peopleImage?id=NjQxMzM="
+ },
+ "10017938": {
+  "id": "10017938",
+  "fullName": "Prof. Dr. Andrew Jackson",
+  "field": "Geophysik",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10017938.jpg",
+  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geophysics/earth-planetary-magnetism.person_image.jpeg?persid=MTM0NDUx"
+ },
+ "10117208": {
+  "id": "10117208",
+  "fullName": "Dr. Ali Arslan",
+  "field": "",
+  "department": "Earth and Planetary Sciences",
+  "relationship": "Lecturer",
+  "url": "https://sites.google.com/view/aliarslan",
+  "image": null,
+  "imageSource": null
  },
  "10004335": {
   "id": "10004335",
@@ -3236,16 +4616,6 @@
   "department": "Earth and Planetary Sciences",
   "relationship": "Lecturer",
   "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10025798": {
-  "id": "10025798",
-  "fullName": "Dr. Adrian Gilli",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "https://eaps.ethz.ch/personen/profil.adrian-gilli.html",
   "image": null,
   "imageSource": null
  },
@@ -3379,25 +4749,15 @@
   "image": "img/profs/10033824.jpg",
   "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MTkxNDA4"
  },
- "10088247": {
-  "id": "10088247",
-  "fullName": "Dr. Isabel Martinez",
-  "field": "",
-  "department": "Management, Technology, and Economics",
-  "relationship": "Lecturer",
-  "url": "https://www.isabelzmartinez.com/",
-  "image": "img/profs/10088247.jpg",
-  "imageSource": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72twC9oAffIYgv8DwzmgZosZ8WcpMlM6FfVNErHLOy0_9GSXgYS7vpw-kY3G-QHbZ4UN7QxqKA7CHysgk1gBDIf4rjygDdlDQJwzAtXH61e5MK9zA59TQHc9xmgm3Q0OHacSGmV4rEdNDHTd__ZXGkpBE80elb3Pyw61Q8KORqR23DBMxtjZwNjxwSh2Tte0R2fuu4iad8lu-0ZVcbc=w1280"
- },
- "10016161": {
-  "id": "10016161",
-  "fullName": "Prof. Dr. Jan-Egbert Sturm",
-  "field": "Wirtschaftsforschung",
-  "department": "Management, Technology, and Economics",
-  "relationship": "Full Professor",
-  "url": "http://www.kof.ethz.ch/sturm",
-  "image": "img/profs/10016161.jpg",
-  "imageSource": "https://mtec.ethz.ch/bin/ethz/search/peopleImage?id=MTI5MTQx"
+ "10047406": {
+  "id": "10047406",
+  "fullName": "Prof. Dr. Hubert Pausch",
+  "field": "Animal Genomics",
+  "department": "Environmental Systems Science",
+  "relationship": "Associate Professor",
+  "url": "http://www.ag.ethz.ch",
+  "image": "img/profs/10047406.jpg",
+  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MjI2Mjc5"
  },
  "10024038": {
   "id": "10024038",
@@ -3418,6 +4778,46 @@
   "url": "https://michaeldavidkoenig.github.io/",
   "image": "img/profs/10127395.jpg",
   "imageSource": "https://mtec.ethz.ch/bin/ethz/search/peopleImage?id=MTMwMzEz"
+ },
+ "10034381": {
+  "id": "10034381",
+  "fullName": "Prof. Dr. Susanne E. Ulbrich",
+  "field": "Animal Physiology",
+  "department": "Environmental Systems Science",
+  "relationship": "Full Professor",
+  "url": "https://usys.ethz.ch/en/people/profile.susanne-ulbrich.html",
+  "image": "img/profs/10034381.jpg",
+  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MTk0MjM3"
+ },
+ "10063293": {
+  "id": "10063293",
+  "fullName": "Dr. Anna-Katharina Hankele",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10097187": {
+  "id": "10097187",
+  "fullName": "Mr Florian Trepp",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10062270": {
+  "id": "10062270",
+  "fullName": "Dr. Sébastien Goumon",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": "img/profs/10062270.jpg",
+  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MjU2MzAx"
  },
  "10008994": {
   "id": "10008994",
@@ -3468,46 +4868,6 @@
   "url": "https://u.ethz.ch/qntwE",
   "image": "img/profs/10003509.jpg",
   "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MzQwNDU="
- },
- "10034381": {
-  "id": "10034381",
-  "fullName": "Prof. Dr. Susanne E. Ulbrich",
-  "field": "Animal Physiology",
-  "department": "Environmental Systems Science",
-  "relationship": "Full Professor",
-  "url": "https://usys.ethz.ch/en/people/profile.susanne-ulbrich.html",
-  "image": "img/profs/10034381.jpg",
-  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MTk0MjM3"
- },
- "10063293": {
-  "id": "10063293",
-  "fullName": "Dr. Anna-Katharina Hankele",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10097187": {
-  "id": "10097187",
-  "fullName": "Mr Florian Trepp",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10062270": {
-  "id": "10062270",
-  "fullName": "Dr. Sébastien Goumon",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10062270.jpg",
-  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MjU2MzAx"
  },
  "10119706": {
   "id": "10119706",
@@ -3569,6 +4929,36 @@
   "image": null,
   "imageSource": null
  },
+ "10087907": {
+  "id": "10087907",
+  "fullName": "Dr. Naveen Kumar Kadri",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10087909": {
+  "id": "10087909",
+  "fullName": "Dr. Alexander Leonard",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10017882": {
+  "id": "10017882",
+  "fullName": "Dr. Roland Kölliker",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
  "10033702": {
   "id": "10033702",
   "fullName": "Dr. Brigitte Dorn",
@@ -3579,15 +4969,95 @@
   "image": null,
   "imageSource": null
  },
- "10060892": {
-  "id": "10060892",
-  "fullName": "Prof. Dr. Kirsten Bomblies",
-  "field": "Plant Evolutionary Genetics",
-  "department": "Biology",
-  "relationship": "Full Professor",
+ "10043322": {
+  "id": "10043322",
+  "fullName": "Dr. Anna Katarina Gilgen",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
   "url": "",
-  "image": "img/profs/10060892.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item6.imageformat.imagegallery5.971611744.jpg"
+  "image": null,
+  "imageSource": null
+ },
+ "10081531": {
+  "id": "10081531",
+  "fullName": "Dr. Moritz Laub",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10115271": {
+  "id": "10115271",
+  "fullName": "Dr. Jonas Schmitt",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10011142": {
+  "id": "10011142",
+  "fullName": "PD Dr. Federica Tamburini",
+  "field": "Soil Function",
+  "department": "Environmental Systems Science",
+  "relationship": "Privatdozentin",
+  "url": "https://gl.ethz.ch/people/profile.federica.html",
+  "image": null,
+  "imageSource": null
+ },
+ "10134227": {
+  "id": "10134227",
+  "fullName": "Dr. Tobias van Elst",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10046633": {
+  "id": "10046633",
+  "fullName": "Dr. Giovanni Broggini",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10056829": {
+  "id": "10056829",
+  "fullName": "Prof. Dr. Martin Hartmann",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Adjunct Professor",
+  "url": "http://www.microbiome.ch",
+  "image": "img/profs/10056829.jpg",
+  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=NjU0MjQ="
+ },
+ "10144329": {
+  "id": "10144329",
+  "fullName": "Mr Edoardo Henzen",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10057752": {
+  "id": "10057752",
+  "fullName": "Dr. Mara Saenz de Juano Ribes",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
  },
  "10013378": {
   "id": "10013378",
@@ -3649,16 +5119,6 @@
   "image": null,
   "imageSource": null
  },
- "10056829": {
-  "id": "10056829",
-  "fullName": "Prof. Dr. Martin Hartmann",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Adjunct Professor",
-  "url": "http://www.microbiome.ch",
-  "image": "img/profs/10056829.jpg",
-  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=NjU0MjQ="
- },
  "10033771": {
   "id": "10033771",
   "fullName": "Dr. Robert Huber",
@@ -3668,6 +5128,16 @@
   "url": "",
   "image": "img/profs/10033771.jpg",
   "imageSource": "https://mtec.ethz.ch/bin/ethz/search/peopleImage?id=OTIxMDE="
+ },
+ "10002564": {
+  "id": "10002564",
+  "fullName": "Mr Marc Andreas Boessinger",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
  },
  "10010882": {
   "id": "10010882",
@@ -3729,36 +5199,6 @@
   "image": "img/profs/10045542.jpg",
   "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=OTc0Nzc="
  },
- "10047406": {
-  "id": "10047406",
-  "fullName": "Prof. Dr. Hubert Pausch",
-  "field": "Animal Genomics",
-  "department": "Environmental Systems Science",
-  "relationship": "Associate Professor",
-  "url": "http://www.ag.ethz.ch",
-  "image": "img/profs/10047406.jpg",
-  "imageSource": "https://usys.ethz.ch/bin/ethz/search/peopleImage?id=MjI2Mjc5"
- },
- "10002564": {
-  "id": "10002564",
-  "fullName": "Mr Marc Andreas Boessinger",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10017882": {
-  "id": "10017882",
-  "fullName": "Dr. Roland Kölliker",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
  "10062916": {
   "id": "10062916",
   "fullName": "Ms Marlene Mader",
@@ -3819,6 +5259,26 @@
   "image": null,
   "imageSource": null
  },
+ "10034140": {
+  "id": "10034140",
+  "fullName": "Prof. Dr. Eva Lieberherr",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Adjunct Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10059932": {
+  "id": "10059932",
+  "fullName": "Dr. Susanne Hanger-Kopp",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
  "10128148": {
   "id": "10128148",
   "fullName": "Dr. Benjamin Hofmann",
@@ -3859,6 +5319,106 @@
   "image": null,
   "imageSource": null
  },
+ "10079689": {
+  "id": "10079689",
+  "fullName": "Dr. Tim Tröndle",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10030185": {
+  "id": "10030185",
+  "fullName": "Prof. Dr. Kristopher McNeill",
+  "field": "Environmental Chemistry",
+  "department": "Environmental Systems Science",
+  "relationship": "Full Professor",
+  "url": "http://www.envchem.ethz.ch",
+  "image": "img/profs/10030185.jpg",
+  "imageSource": "http://www.envchem.ethz.ch/_jcr_content/siteSettings/footer/addtionalInfo/image.imageformat.textsingle.336134951.jpg"
+ },
+ "10015759": {
+  "id": "10015759",
+  "fullName": "Dr. Christian Frei",
+  "field": "",
+  "department": "Information Technology and Electrical Engineering",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10048350": {
+  "id": "10048350",
+  "fullName": "Prof. Dr. Denis Burdakov",
+  "field": "Neuroscience",
+  "department": "Health Sciences and Technology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10018319": {
+  "id": "10018319",
+  "fullName": "Dr. Daria Peleg-Raibstein",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10060809": {
+  "id": "10060809",
+  "fullName": "Dr. Markus Arnoldini",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10114310": {
+  "id": "10114310",
+  "fullName": "Dr. Yagmur George Turgay",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "https://slacklab.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10030341": {
+  "id": "10030341",
+  "fullName": "Prof. Dr. Laura Nyström",
+  "field": "Food Biochemistry",
+  "department": "Health Sciences and Technology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10057427": {
+  "id": "10057427",
+  "fullName": "Dr. Samy Boulos",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10044900": {
+  "id": "10044900",
+  "fullName": "Dr. Melanie Erzinger",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
  "10004511": {
   "id": "10004511",
   "fullName": "Prof. Dr. Peter Alfons Fischer",
@@ -3868,6 +5428,106 @@
   "url": "",
   "image": "img/profs/10004511.jpg",
   "imageSource": "https://hest.ethz.ch/bin/ethz/search/peopleImage?id=ODc5ODc="
+ },
+ "10053540": {
+  "id": "10053540",
+  "fullName": "Dr. Colette vom Berg-Maurer",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10113366": {
+  "id": "10113366",
+  "fullName": "Dr. Tina Bürki-Thurnherr",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10035758": {
+  "id": "10035758",
+  "fullName": "Dr. Ksenia Groh",
+  "field": "",
+  "department": "Environmental Systems Science",
+  "relationship": "Lecturer",
+  "url": "https://www.eawag.ch/en/aboutus/portrait/organisation/staff/profile/ksenia-groh/",
+  "image": null,
+  "imageSource": null
+ },
+ "10030208": {
+  "id": "10030208",
+  "fullName": "Prof. Dr. Shana J. Sturla",
+  "field": "Toxicology",
+  "department": "Health Sciences and Technology",
+  "relationship": "Full Professor",
+  "url": "http://www.toxicology.ethz.ch",
+  "image": null,
+  "imageSource": null
+ },
+ "10098928": {
+  "id": "10098928",
+  "fullName": "Prof. Dr. Alexander Harms",
+  "field": "Molecular Phage Biology",
+  "department": "Health Sciences and Technology",
+  "relationship": "Assistant Professor",
+  "url": "https://molecularphagebiology.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10070607": {
+  "id": "10070607",
+  "fullName": "Prof. Dr. Nicholas Bokulich",
+  "field": "Microbial Systems and Bioinformatics",
+  "department": "Health Sciences and Technology",
+  "relationship": "Associate Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10121929": {
+  "id": "10121929",
+  "fullName": "Dr. Fengzheng Gao",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10128268": {
+  "id": "10128268",
+  "fullName": "Dr. Vincent Somerville",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10084470": {
+  "id": "10084470",
+  "fullName": "Dr. Georg Aichinger",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10090369": {
+  "id": "10090369",
+  "fullName": "Dr. Alessia Delbrück",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
  },
  "10048542": {
   "id": "10048542",
@@ -3968,16 +5628,6 @@
   "url": "",
   "image": null,
   "imageSource": null
- },
- "10041187": {
-  "id": "10041187",
-  "fullName": "Dr. Ulrich Karl Genick",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10041187.jpg",
-  "imageSource": "https://biol.ethz.ch/bin/ethz/search/peopleImage?id=MjA1NjU3"
  },
  "10031022": {
   "id": "10031022",
@@ -4489,16 +6139,6 @@
   "image": null,
   "imageSource": null
  },
- "10062733": {
-  "id": "10062733",
-  "fullName": "Dr. Dominik Stämpfli",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10062733.jpg",
-  "imageSource": "https://chab.ethz.ch/bin/ethz/search/peopleImage?id=MjU2ODcz"
- },
  "10068710": {
   "id": "10068710",
   "fullName": "Prof. Dr. Andrea Alimonti",
@@ -4569,6 +6209,216 @@
   "image": null,
   "imageSource": null
  },
+ "10030948": {
+  "id": "10030948",
+  "fullName": "Dr. Giovanni Colacicco",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10104147": {
+  "id": "10104147",
+  "fullName": "Prof. Dr. Michael Ganter",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10117466": {
+  "id": "10117466",
+  "fullName": "Prof. Matthias Schieker",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10053523": {
+  "id": "10053523",
+  "fullName": "PD Dr. Matthias Steinwachs",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10050185": {
+  "id": "10050185",
+  "fullName": "Prof. Dr. Gerhard Schratt",
+  "field": "Systems Neuroscience",
+  "department": "Health Sciences and Technology",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10104229": {
+  "id": "10104229",
+  "fullName": "Prof. Dr. Christian Baumann",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10079434": {
+  "id": "10079434",
+  "fullName": "Dr. Roberto Fiore",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10099967": {
+  "id": "10099967",
+  "fullName": "PD Dr. Benjamin Ineichen",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10056196": {
+  "id": "10056196",
+  "fullName": "PD Dr. Zina-Mary Manjaly",
+  "field": "Medicine",
+  "department": "Health Sciences and Technology",
+  "relationship": "Privatdozentin",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10053521": {
+  "id": "10053521",
+  "fullName": "Prof. Dr. Rahel-Antonia Kubik (Professor Universität Zürich (UZH))",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10053522": {
+  "id": "10053522",
+  "fullName": "Dr. Stefan Markun",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10116932": {
+  "id": "10116932",
+  "fullName": "Dr. Julia Katharina Hennemann",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10130635": {
+  "id": "10130635",
+  "fullName": "Dr. Francesc Baixauli Celda",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10058912": {
+  "id": "10058912",
+  "fullName": "Prof. Dr. Christian Stockmann",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10060249": {
+  "id": "10060249",
+  "fullName": "Dr. Alexandre Theocharides",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10129908": {
+  "id": "10129908",
+  "fullName": "Prof. Dr. Christoph Gubler",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10059078": {
+  "id": "10059078",
+  "fullName": "Dr. Lorenzo Käser",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10060528": {
+  "id": "10060528",
+  "fullName": "Prof. Dr. Felix Beuschlein",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10055772": {
+  "id": "10055772",
+  "fullName": "Prof. Andrew Hall",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10131069": {
+  "id": "10131069",
+  "fullName": "Dr. Beatrice Astrid Lauber",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10059076": {
+  "id": "10059076",
+  "fullName": "Dr. Natascha Lier",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
  "10017638": {
   "id": "10017638",
   "fullName": "Prof. Dr. Sebastian Kozerke",
@@ -4598,16 +6448,6 @@
   "url": "",
   "image": null,
   "imageSource": null
- },
- "10062681": {
-  "id": "10062681",
-  "fullName": "Dr. Alessandro Blasimme",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": "img/profs/10062681.jpg",
-  "imageSource": "https://hest.ethz.ch/bin/ethz/search/peopleImage?id=MjQxMzQz"
  },
  "10130514": {
   "id": "10130514",
@@ -4889,6 +6729,216 @@
   "image": null,
   "imageSource": null
  },
+ "10124787": {
+  "id": "10124787",
+  "fullName": "PD Dr. Dominik Carlo Benz",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10124986": {
+  "id": "10124986",
+  "fullName": "PD Dr. David Niederseer",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10124788": {
+  "id": "10124788",
+  "fullName": "Ms Barbara Elisabeth Stähli",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10124966": {
+  "id": "10124966",
+  "fullName": "Prof. Dr. Jan Steffel (Professor Universität Zürich (UZH))",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10085970": {
+  "id": "10085970",
+  "fullName": "PD Dr. Matthias Hilty",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10117366": {
+  "id": "10117366",
+  "fullName": "Dr. Esther Irene Schwarz",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10057532": {
+  "id": "10057532",
+  "fullName": "Prof. Dr. Silvia Ulrich Somaini",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10056115": {
+  "id": "10056115",
+  "fullName": "Prof. Olivier Devuyst (Professor Universität Zürich (UZH))",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10079870": {
+  "id": "10079870",
+  "fullName": "Prof. Dr. Gregor Ludwig Weiss (Professor Universität Zürich (UZH))",
+  "field": "",
+  "department": "Biology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10040461": {
+  "id": "10040461",
+  "fullName": "Prof. Michael Leunig",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Adjunct Professor",
+  "url": "http://www.schulthess-klinik.ch/index.cfm/medizinische-zentren/untere-extremitaeten/team/dr-med-michael-leunig/",
+  "image": null,
+  "imageSource": null
+ },
+ "10069709": {
+  "id": "10069709",
+  "fullName": "Dr. Tamas Fülöp Fekete",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10075987": {
+  "id": "10075987",
+  "fullName": "Dr. Daniel Haschtmann",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10095310": {
+  "id": "10095310",
+  "fullName": "Dr. Hans Manner",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10056114": {
+  "id": "10056114",
+  "fullName": "Prof. Dr. Hannes A. Rüdiger (Professor Universität Zürich (UZH))",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10096250": {
+  "id": "10096250",
+  "fullName": "PD Dr. Joram Ronel",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10063304": {
+  "id": "10063304",
+  "fullName": "Dr. Sabine Goldhahn",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10109189": {
+  "id": "10109189",
+  "fullName": "Dr. Elisabeth Olliges",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10086526": {
+  "id": "10086526",
+  "fullName": "Dr. Senad Tabakovic",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10086826": {
+  "id": "10086826",
+  "fullName": "PD Dr. Monika Brodmann Mäder",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10109230": {
+  "id": "10109230",
+  "fullName": "Dr. Fabian Hartmann",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10109569": {
+  "id": "10109569",
+  "fullName": "Dr. Enrico Zucconi",
+  "field": "",
+  "department": "Health Sciences and Technology",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
  "10003524": {
   "id": "10003524",
   "fullName": "Prof. Dr. Thomas Bernauer",
@@ -5149,21 +7199,31 @@
   "image": null,
   "imageSource": null
  },
- "10016160": {
-  "id": "10016160",
-  "fullName": "Prof. Dr. Frank Schimmelfennig",
-  "field": "Europäische Politik",
-  "department": "Humanities, Social and Political Sciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10016160.jpg",
-  "imageSource": "https://gess.ethz.ch/en/research/faculty/_jcr_content/par/twocolumn/par_left/image_42610423/image.imageformat.1286.dpr3.262493886.jpg"
- },
- "10090467": {
-  "id": "10090467",
-  "fullName": "Mr David Baschung",
+ "10052060": {
+  "id": "10052060",
+  "fullName": "Dr. Reto Müller",
   "field": "",
-  "department": "Management, Technology, and Economics",
+  "department": "Humanities, Social and Political Sciences",
+  "relationship": "Lecturer",
+  "url": "https://ius.unibas.ch/de/personen/reto-mueller/",
+  "image": "img/profs/10052060.jpg",
+  "imageSource": "https://avatar.unibas.ch/image/01D978F9-7B5B-4F94-9432-2710F4650296/m"
+ },
+ "10024765": {
+  "id": "10024765",
+  "fullName": "Dr. Daniel Möckli Weder",
+  "field": "",
+  "department": "Humanities, Social and Political Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10132727": {
+  "id": "10132727",
+  "fullName": "Ms Nina Cadorin",
+  "field": "",
+  "department": "Humanities, Social and Political Sciences",
   "relationship": "Lecturer",
   "url": "",
   "image": null,
@@ -5184,6 +7244,56 @@
   "fullName": "Dr. Florian Demont",
   "field": "",
   "department": "Humanities, Social and Political Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10019241": {
+  "id": "10019241",
+  "fullName": "Dr. Myriam Dunn Cavelty",
+  "field": "",
+  "department": "Humanities, Social and Political Sciences",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10079227": {
+  "id": "10079227",
+  "fullName": "Dr. Florian J. Egloff",
+  "field": "",
+  "department": "Humanities, Social and Political Sciences",
+  "relationship": "Lecturer",
+  "url": "http://www.css.ethz.ch/en/center/people/florian-egloff.html",
+  "image": null,
+  "imageSource": null
+ },
+ "10030731": {
+  "id": "10030731",
+  "fullName": "Dr. Tobias Heilmann",
+  "field": "",
+  "department": "Humanities, Social and Political Sciences",
+  "relationship": "Lecturer",
+  "url": "https://www.linkedin.com/in/tobiasheilmanndr/",
+  "image": null,
+  "imageSource": null
+ },
+ "10016160": {
+  "id": "10016160",
+  "fullName": "Prof. Dr. Frank Schimmelfennig",
+  "field": "Europäische Politik",
+  "department": "Humanities, Social and Political Sciences",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10016160.jpg",
+  "imageSource": "https://gess.ethz.ch/en/research/faculty/_jcr_content/par/twocolumn/par_left/image_42610423/image.imageformat.1286.dpr3.262493886.jpg"
+ },
+ "10090467": {
+  "id": "10090467",
+  "fullName": "Mr David Baschung",
+  "field": "",
+  "department": "Management, Technology, and Economics",
   "relationship": "Lecturer",
   "url": "",
   "image": null,
@@ -5285,16 +7395,6 @@
   "field": "International Relations and Data Science",
   "department": "Humanities, Social and Political Sciences",
   "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10132727": {
-  "id": "10132727",
-  "fullName": "Ms Nina Cadorin",
-  "field": "",
-  "department": "Humanities, Social and Political Sciences",
-  "relationship": "Lecturer",
   "url": "",
   "image": null,
   "imageSource": null
@@ -5699,6 +7799,66 @@
   "image": null,
   "imageSource": null
  },
+ "10033993": {
+  "id": "10033993",
+  "fullName": "Prof. Dr. Pietro Gambardella",
+  "field": "Magnetism and Interface Physics",
+  "department": "Materials",
+  "relationship": "Full Professor",
+  "url": "https://intermag.mat.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10012837": {
+  "id": "10012837",
+  "fullName": "Prof. Dr. Ralph Spolenak",
+  "field": "Nanometallurgy",
+  "department": "Materials",
+  "relationship": "Full Professor",
+  "url": "https://met.mat.ethz.ch/",
+  "image": "img/profs/10012837.jpg",
+  "imageSource": "https://mat.ethz.ch/department/people/management-and-administration/_jcr_content/par/textimage_2/image.imageformat.textsingle.dpr3.1354304930.jpg"
+ },
+ "10005264": {
+  "id": "10005264",
+  "fullName": "Dr. Frank Jörg Clemens",
+  "field": "",
+  "department": "Materials",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10054950": {
+  "id": "10054950",
+  "fullName": "Dr. Michael Schinhammer",
+  "field": "",
+  "department": "Materials",
+  "relationship": "Lecturer",
+  "url": "http://n.ethz.ch/~michschi",
+  "image": null,
+  "imageSource": null
+ },
+ "10009500": {
+  "id": "10009500",
+  "fullName": "Dr. Arne Wahlen",
+  "field": "",
+  "department": "Materials",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10009656": {
+  "id": "10009656",
+  "fullName": "Prof. Dr. Jörg F. Löffler",
+  "field": "Metal Physics and Technology",
+  "department": "Materials",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": "img/profs/10009656.jpg",
+  "imageSource": "https://mat.ethz.ch/department/people/management-and-administration/_jcr_content/par/textimage_1/image.imageformat.textsingle.dpr3.1820985093.jpg"
+ },
  "10030127": {
   "id": "10030127",
   "fullName": "Prof. Dr. Andrey Zheludev",
@@ -5716,8 +7876,8 @@
   "department": "Materials",
   "relationship": "Adjunct Professor",
   "url": "",
-  "image": null,
-  "imageSource": null
+  "image": "img/profs/10033637.jpg",
+  "imageSource": "https://mat.ethz.ch/bin/ethz/search/peopleImage?id=MTg0NDIz"
  },
  "10027881": {
   "id": "10027881",
@@ -5738,16 +7898,6 @@
   "url": "",
   "image": null,
   "imageSource": null
- },
- "10009656": {
-  "id": "10009656",
-  "fullName": "Prof. Dr. Jörg F. Löffler",
-  "field": "Metal Physics and Technology",
-  "department": "Materials",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10009656.jpg",
-  "imageSource": "https://mat.ethz.ch/department/people/management-and-administration/_jcr_content/par/textimage_1/image.imageformat.textsingle.dpr3.1820985093.jpg"
  },
  "10045659": {
   "id": "10045659",
@@ -5899,16 +8049,6 @@
   "image": null,
   "imageSource": null
  },
- "10012837": {
-  "id": "10012837",
-  "fullName": "Prof. Dr. Ralph Spolenak",
-  "field": "Nanometallurgy",
-  "department": "Materials",
-  "relationship": "Full Professor",
-  "url": "https://met.mat.ethz.ch/",
-  "image": "img/profs/10012837.jpg",
-  "imageSource": "https://mat.ethz.ch/department/people/management-and-administration/_jcr_content/par/textimage_2/image.imageformat.textsingle.dpr3.1354304930.jpg"
- },
  "10135809": {
   "id": "10135809",
   "fullName": "Dr. Raphael Schaller",
@@ -5966,36 +8106,6 @@
   "department": "Mechanical and Process Engineering",
   "relationship": "Full Professor",
   "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10029965": {
-  "id": "10029965",
-  "fullName": "Prof. Dr. Manfred Einsiedler",
-  "field": "Mathematics",
-  "department": "Mathematics",
-  "relationship": "Full Professor",
-  "url": "http://www.math.ethz.ch/~einsiedl",
-  "image": "img/profs/10029965.jpg",
-  "imageSource": "https://math.ethz.ch/research/geometry-groups-dynamics/_jcr_content/par/slideshow/images/item2.imageformat.imagegallery3.1918932626.jpg"
- },
- "10060886": {
-  "id": "10060886",
-  "fullName": "Prof. Dr. Daniela Rupp",
-  "field": "Nanostructures and Ultrafast X-Ray Science",
-  "department": "Physics",
-  "relationship": "Assistant Professor (Tenure Track)",
-  "url": "https://nux.ethz.ch",
-  "image": null,
-  "imageSource": null
- },
- "10033331": {
-  "id": "10033331",
-  "fullName": "Prof. Dr. Lorenz Halbeisen",
-  "field": "",
-  "department": "Mathematics",
-  "relationship": "Adjunct Professor",
-  "url": "http://www.math.ethz.ch/~halorenz",
   "image": null,
   "imageSource": null
  },
@@ -6069,22 +8179,152 @@
   "image": null,
   "imageSource": null
  },
- "10024858": {
-  "id": "10024858",
-  "fullName": "Prof. Dr. Paul Biran",
-  "field": "Mathematics",
-  "department": "Mathematics",
+ "10031426": {
+  "id": "10031426",
+  "fullName": "Prof. Dr. David J. Norris",
+  "field": "Materials Engineering",
+  "department": "Mechanical and Process Engineering",
   "relationship": "Full Professor",
-  "url": "http://www.math.ethz.ch/~biranp",
+  "url": "",
   "image": null,
   "imageSource": null
  },
- "10076584": {
-  "id": "10076584",
-  "fullName": "Prof. Dr. Joaquim Serra",
-  "field": "Mathematics",
-  "department": "Mathematics",
+ "10033286": {
+  "id": "10033286",
+  "fullName": "Prof. Dr. Kristina Shea",
+  "field": "Engineering Design und Computing",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "https://edac.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10034075": {
+  "id": "10034075",
+  "fullName": "Dr. Tino Stankovic",
+  "field": "",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Lecturer",
+  "url": "http://www.edac.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10033169": {
+  "id": "10033169",
+  "fullName": "Prof. Dr. Mirko Meboldt",
+  "field": "Product Development and Engineering Design",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10046041": {
+  "id": "10046041",
+  "fullName": "Prof. Dr. Emilio Frazzoli",
+  "field": "Dynamic Systems and Control",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10030782": {
+  "id": "10030782",
+  "fullName": "Prof. Dr. Christoph Müller",
+  "field": "Energy Science and Engineering",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10033685": {
+  "id": "10033685",
+  "fullName": "Prof. Dr. Juerg Leuthold",
+  "field": "Photonics and Communication",
+  "department": "Information Technology and Electrical Engineering",
+  "relationship": "Full Professor",
+  "url": "http://www.ief.ee.ethz.ch/people/leuthold.html",
+  "image": "img/profs/10033685.jpg",
+  "imageSource": "http://www.ief.ee.ethz.ch/people/leuthold/_jcr_content/par/textimage_0/image.imageformat.textdouble.293278161.jpg"
+ },
+ "10067770": {
+  "id": "10067770",
+  "fullName": "Dr. Carlos Cotrini Jimenez",
+  "field": "",
+  "department": "Computer Science",
+  "relationship": "Lecturer",
+  "url": "https://inf.ethz.ch/personal/ccarlos",
+  "image": "img/profs/10067770.jpg",
+  "imageSource": "https://inf.ethz.ch/people/senior-scientists-education/_jcr_content/par/twocolumn/par_right/textimage/image.imageformat.textsingle.dpr3.1079654857.jpg"
+ },
+ "10033238": {
+  "id": "10033238",
+  "fullName": "Prof. Dr. Lukas Gallmann",
+  "field": "",
+  "department": "Physics",
+  "relationship": "Adjunct Professor",
+  "url": "https://attophys.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10035638": {
+  "id": "10035638",
+  "fullName": "Dr. Quentin Lohmeyer",
+  "field": "",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Lecturer",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10038941": {
+  "id": "10038941",
+  "fullName": "Prof. Dr. Nicolas Noiray",
+  "field": "Combustion, Acoustics and Flow Physics",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "http://www.caps.ethz.ch",
+  "image": null,
+  "imageSource": null
+ },
+ "10035330": {
+  "id": "10035330",
+  "fullName": "Prof. Dr. Giovanni Sansavini",
+  "field": "Reliability and Risk Engineering",
+  "department": "Mechanical and Process Engineering",
   "relationship": "Associate Professor",
+  "url": "http://www.rre.ethz.ch/",
+  "image": null,
+  "imageSource": null
+ },
+ "10031382": {
+  "id": "10031382",
+  "fullName": "Prof. Dr. Annalisa Manera",
+  "field": "Nuclear Safety and Multiphase Flows",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10068712": {
+  "id": "10068712",
+  "fullName": "Prof. Dr. Markus Bambach",
+  "field": "Advanced Manufacturing",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Full Professor",
+  "url": "",
+  "image": null,
+  "imageSource": null
+ },
+ "10075848": {
+  "id": "10075848",
+  "fullName": "Dr. Léa Deillon",
+  "field": "",
+  "department": "Mechanical and Process Engineering",
+  "relationship": "Lecturer",
   "url": "",
   "image": null,
   "imageSource": null
@@ -6129,26 +8369,6 @@
   "image": null,
   "imageSource": null
  },
- "10067770": {
-  "id": "10067770",
-  "fullName": "Dr. Carlos Cotrini Jimenez",
-  "field": "",
-  "department": "Computer Science",
-  "relationship": "Lecturer",
-  "url": "https://inf.ethz.ch/personal/ccarlos",
-  "image": "img/profs/10067770.jpg",
-  "imageSource": "https://inf.ethz.ch/people/senior-scientists-education/_jcr_content/par/twocolumn/par_right/textimage/image.imageformat.textsingle.dpr3.1079654857.jpg"
- },
- "10031976": {
-  "id": "10031976",
-  "fullName": "Prof. Dr. Rainer Wallny",
-  "field": "Experimental Particle Physics",
-  "department": "Physics",
-  "relationship": "Full Professor",
-  "url": "http://www.wallny-group.phys.ethz.ch/",
-  "image": null,
-  "imageSource": null
- },
  "10035178": {
   "id": "10035178",
   "fullName": "Dr. Johannes Brödel",
@@ -6165,526 +8385,6 @@
   "field": "Theoretical Condensed Matter Physics",
   "department": "Physics",
   "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10015257": {
-  "id": "10015257",
-  "fullName": "Prof. Dr. Paola Picotti",
-  "field": "Molecular Systems Biology",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10015257.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item27.imageformat.imagegallery5.830744650.jpg"
- },
- "10025311": {
-  "id": "10025311",
-  "fullName": "Prof. Dr. Ralph Schlapbach",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Adjunct Professor",
-  "url": "http://www.fgcz.ch",
-  "image": "img/profs/10025311.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item33.imageformat.imagegallery5.700238877.jpg"
- },
- "10078706": {
-  "id": "10078706",
-  "fullName": "Dr. Daniel Klose",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10004933": {
-  "id": "10004933",
-  "fullName": "Prof. em. Dr. Manfred Kopf",
-  "field": "Molecular Biomedicine",
-  "department": "Biology",
-  "relationship": "Professor emeritus",
-  "url": "https://mhs.biol.ethz.ch/research/kopf.html",
-  "image": "img/profs/10004933.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow/images/item11.imageformat.imagegallery5.189574510.jpg"
- },
- "10048363": {
-  "id": "10048363",
-  "fullName": "Prof. Dr. Shinichi Sunagawa",
-  "field": "Microbiome Research",
-  "department": "Biology",
-  "relationship": "Full Professor",
-  "url": "http://www.micro.biol.ethz.ch/research/sunagawa.html",
-  "image": "img/profs/10048363.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item35.imageformat.imagegallery5.61754846.jpg"
- },
- "10062148": {
-  "id": "10062148",
-  "fullName": "Prof. Dr. Madhav Jagannathan",
-  "field": "Cellular Dynamics",
-  "department": "Biology",
-  "relationship": "Assistant Professor",
-  "url": "",
-  "image": "img/profs/10062148.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item13.imageformat.imagegallery5.1220196828.jpg"
- },
- "10085466": {
-  "id": "10085466",
-  "fullName": "Dr. Zacharias Kontarakis",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10039342": {
-  "id": "10039342",
-  "fullName": "Prof. Dr. Gerald Schwank",
-  "field": "Stem Cells and Disease Biology",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10019902": {
-  "id": "10019902",
-  "fullName": "Dr. Hugo Stocker",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10026759": {
-  "id": "10026759",
-  "fullName": "PD Dr. Werner Kovacs",
-  "field": "Metabolism and Disease",
-  "department": "Biology",
-  "relationship": "Privatdozent",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10056074": {
-  "id": "10056074",
-  "fullName": "Prof. Dr. Alexander Leitner",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Adjunct Professor",
-  "url": "",
-  "image": "img/profs/10056074.jpg",
-  "imageSource": "https://biol.ethz.ch/en/the-department/fakultaet/_jcr_content/par/slideshow_333703839_/images/item21.imageformat.imagegallery5.1006688688.jpg"
- },
- "10032518": {
-  "id": "10032518",
-  "fullName": "Prof. Dr. Andrew de Mello",
-  "field": "Biochemical Engineering",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "https://www.demellogroup.ethz.ch",
-  "image": null,
-  "imageSource": null
- },
- "10062836": {
-  "id": "10062836",
-  "fullName": "Dr. Stavros Stavrakis",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10050187": {
-  "id": "10050187",
-  "fullName": "Prof. Dr. Mark Tibbitt",
-  "field": "Macromolecular Engineering",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Associate Professor",
-  "url": "",
-  "image": "img/profs/10050187.jpg",
-  "imageSource": "https://mavt.ethz.ch/people/administration/departementsleitung/_jcr_content/par/textimage_0_copy/image.imageformat.textdouble.dpr3.1062356475.jpg"
- },
- "10033528": {
-  "id": "10033528",
-  "fullName": "Prof. Dr. Vlasios Mavrantzas (Professor University of Patras (Panepistimion Patron))",
-  "field": "",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10040038": {
-  "id": "10040038",
-  "fullName": "Prof. Dr. Chih-Jen Shih",
-  "field": "Chemical Engineering",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Associate Professor",
-  "url": "",
-  "image": "img/profs/10040038.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_ad54/image.imageformat.textsingle.dpr3.180292505.jpg"
- },
- "10033640": {
-  "id": "10033640",
-  "fullName": "Dr. Anna Alexandra Kubik",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10046043": {
-  "id": "10046043",
-  "fullName": "Prof. Dr. Paolo Arosio",
-  "field": "Biochemical Engineering",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Associate Professor",
-  "url": "",
-  "image": "img/profs/10046043.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_358f/image.imageformat.textsingle.dpr3.332088439.jpg"
- },
- "10143066": {
-  "id": "10143066",
-  "fullName": "Dr. Alexandre Mösching",
-  "field": "",
-  "department": "Mathematics",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10144590": {
-  "id": "10144590",
-  "fullName": "Dr. Stephan Simonis",
-  "field": "",
-  "department": "Mathematics",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10010697": {
-  "id": "10010697",
-  "fullName": "Prof. Dr. Jeroen Anton van Bokhoven",
-  "field": "Heterogeneous Catalysis",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10116927": {
-  "id": "10116927",
-  "fullName": "Dr. Vitaly Sushkevich",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10031038": {
-  "id": "10031038",
-  "fullName": "Prof. Dr. Javier Pérez-Ramírez",
-  "field": "Catalysis Engineering",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "http://www.ace.ethz.ch",
-  "image": "img/profs/10031038.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_cc95/image.imageformat.textsingle.dpr3.992442211.jpg"
- },
- "10086170": {
-  "id": "10086170",
-  "fullName": "Dr. Antonio José Martín Fernández",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10066567": {
-  "id": "10066567",
-  "fullName": "Prof. Dr. André Bardow",
-  "field": "Energy and Process Systems Engineering",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "https://epse.ethz.ch/",
-  "image": null,
-  "imageSource": null
- },
- "10124506": {
-  "id": "10124506",
-  "fullName": "Dr. Luca Bosetti",
-  "field": "",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10136451": {
-  "id": "10136451",
-  "fullName": "Dr. Vasileios Koulocheris",
-  "field": "",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10021365": {
-  "id": "10021365",
-  "fullName": "Prof. Dr. Robert Grass",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Adjunct Professor",
-  "url": "https://fml.ethz.ch/people/lecturer.html",
-  "image": "img/profs/10021365.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn_0/par_left/textimage_396c/image.imageformat.textsingle.dpr3.1994526298.jpg"
- },
- "10059840": {
-  "id": "10059840",
-  "fullName": "Prof. Dr. Gonzalo Guillén Gosálbez",
-  "field": "Chemical Systems Engineering",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10059840.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_left/textimage_457082839/image.imageformat.textsingle.dpr3.277763465.jpg"
- },
- "10004152": {
-  "id": "10004152",
-  "fullName": "Prof. Dr. Erick M. Carreira",
-  "field": "Organische Chemie",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10004152.jpg",
-  "imageSource": "https://chab.ethz.ch/en/research/institutes/LOC/people/faculty/_jcr_content/par/twocolumn_1/par_left/textimage_727527031/image.imageformat.textsingle.dpr3.403849961.jpg"
- },
- "10004236": {
-  "id": "10004236",
-  "fullName": "Prof. Dr. Roland Riek",
-  "field": "Physical Chemistry",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10004236.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_662314348/image.imageformat.textsingle.dpr3.2020530314.jpg"
- },
- "10143214": {
-  "id": "10143214",
-  "fullName": "Prof. Dr. Nino Wili",
-  "field": "Spin Dynamics and Hyperpolarisation",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Assistant Professor",
-  "url": "https://www.ninowili.ch",
-  "image": "img/profs/10143214.jpg",
-  "imageSource": "https://chab.ethz.ch/en/the-department/people/faculty/_jcr_content/par/twocolumn/par_right/textimage_602210138_/image.imageformat.textsingle.dpr3.1877761625.jpg"
- },
- "10039838": {
-  "id": "10039838",
-  "fullName": "Dr. Aleix Comas Vives",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10134447": {
-  "id": "10134447",
-  "fullName": "Dr. Jessada Mahatthananchai",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10064966": {
-  "id": "10064966",
-  "fullName": "Dr. Elisabeth Giger",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "http://n.ethz.ch/~gigere",
-  "image": null,
-  "imageSource": null
- },
- "10090531": {
-  "id": "10090531",
-  "fullName": "Dr. Karina Silina",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10128747": {
-  "id": "10128747",
-  "fullName": "Prof. Dr. Adrian Egli",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10033370": {
-  "id": "10033370",
-  "fullName": "Prof. Martin Hersberger (Professor Universität Zürich (UZH))",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10034161": {
-  "id": "10034161",
-  "fullName": "Dr. Alexander Sterchi",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10105606": {
-  "id": "10105606",
-  "fullName": "Dr. Simon Weidmann",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10069210": {
-  "id": "10069210",
-  "fullName": "Prof. Dr. Benedikt Soja",
-  "field": "Space Geodesy",
-  "department": "Civil, Environmental and Geomatic Engineering",
-  "relationship": "Assistant Professor (Tenure Track)",
-  "url": "",
-  "image": "img/profs/10069210.jpg",
-  "imageSource": "https://baug.ethz.ch/en/studies/rauming/contact/professorships/_jcr_content/par/twocolumn_1476916744/par_left/fullwidthimage/image.imageformat.1286.dpr3.620979104.jpg"
- },
- "10137572": {
-  "id": "10137572",
-  "fullName": "Dr. Betty Heller-Kaikov",
-  "field": "",
-  "department": "Civil, Environmental and Geomatic Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10038002": {
-  "id": "10038002",
-  "fullName": "Prof. Dr. Oliver Streiff Gnöpff (Professor Zürcher Hochschule für Angewandte Wissenschaften (ZHAW))",
-  "field": "",
-  "department": "Humanities, Social and Political Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10065266": {
-  "id": "10065266",
-  "fullName": "Dr. Elmar Brockmann",
-  "field": "",
-  "department": "Civil, Environmental and Geomatic Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10059296": {
-  "id": "10059296",
-  "fullName": "Dr. Stephan Bütikofer van Oordt",
-  "field": "",
-  "department": "Management, Technology, and Economics",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10004441": {
-  "id": "10004441",
-  "fullName": "PD Dr. Christian G. C. Marxt",
-  "field": "Technologie- und Innovationsmanagement",
-  "department": "Management, Technology, and Economics",
-  "relationship": "Privatdozent",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10063269": {
-  "id": "10063269",
-  "fullName": "Prof. Dr. Cara Magnabosco",
-  "field": "Geobiology",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Assistant Professor (Tenure Track)",
-  "url": "https://geobiology.ethz.ch/",
-  "image": "img/profs/10063269.jpg",
-  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geology/geobiology.person_image.jpeg?persid=MjYxMDgz"
- },
- "10050183": {
-  "id": "10050183",
-  "fullName": "Prof. Dr. Motohiko Murakami",
-  "field": "Experimental Mineral Physics",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10050183.jpg",
-  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geochemistry-petrology/experimental-mineral-physics.person_image.jpeg?persid=MjMzMDYx"
- },
- "10091310": {
-  "id": "10091310",
-  "fullName": "Dr. Pinku Saha",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10038427": {
-  "id": "10038427",
-  "fullName": "Dr. Andrea Zunino",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10004804": {
-  "id": "10004804",
-  "fullName": "Prof. Dr. Max W. Schmidt",
-  "field": "Crystalline Geology",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": "img/profs/10004804.jpg",
-  "imageSource": "https://eaps.ethz.ch/en/research/institutes/geochemistry-petrology/experimental-petrology.person_image.jpeg?persid=NDEzOTY="
- },
- "10143906": {
-  "id": "10143906",
-  "fullName": "Dr. Giuliano Cesar Camilletti",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
   "url": "",
   "image": null,
   "imageSource": null
@@ -6709,16 +8409,6 @@
   "image": null,
   "imageSource": null
  },
- "10014960": {
-  "id": "10014960",
-  "fullName": "Prof. Dr. Sonia I. Seneviratne",
-  "field": "Land Climate Dynamics",
-  "department": "Environmental Systems Science",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
  "10035740": {
   "id": "10035740",
   "fullName": "Dr. Oliver Stebler",
@@ -6729,161 +8419,11 @@
   "image": null,
   "imageSource": null
  },
- "10097148": {
-  "id": "10097148",
-  "fullName": "Dr. Silvia Volante",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10067687": {
-  "id": "10067687",
-  "fullName": "Dr. Lukas Nibourel",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10020980": {
-  "id": "10020980",
-  "fullName": "Dr. Maria Giuditta Fellin",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10095707": {
-  "id": "10095707",
-  "fullName": "Dr. Stefano Maffei",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "https://sites.google.com/view/dr-stefano-maffei/home",
-  "image": null,
-  "imageSource": null
- },
- "10009290": {
-  "id": "10009290",
-  "fullName": "Mr Christian Klug",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10028843": {
-  "id": "10028843",
-  "fullName": "Dr. Michael Hautmann",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10033679": {
-  "id": "10033679",
-  "fullName": "Dr. Elke Schneebeli-Hermann",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10035844": {
-  "id": "10035844",
-  "fullName": "Dr. Lukas Gudmundsson",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "http://www.iac.ethz.ch/people/lukasgu",
-  "image": null,
-  "imageSource": null
- },
- "10095148": {
-  "id": "10095148",
-  "fullName": "Dr. Dominik Schumacher",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "http://n.ethz.ch/~domischu",
-  "image": null,
-  "imageSource": null
- },
- "10045805": {
-  "id": "10045805",
-  "fullName": "Dr. Anne Obermann",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10033703": {
-  "id": "10033703",
-  "fullName": "Prof. Dr. Vincenzo Picotti",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Adjunct Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10120308": {
-  "id": "10120308",
-  "fullName": "Dr. Kevin Alexander Frings",
-  "field": "",
-  "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
  "10138986": {
   "id": "10138986",
   "fullName": "Dr. Vanille Ritz",
   "field": "",
   "department": "Earth and Planetary Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10034140": {
-  "id": "10034140",
-  "fullName": "Prof. Dr. Eva Lieberherr",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Adjunct Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10059932": {
-  "id": "10059932",
-  "fullName": "Dr. Susanne Hanger-Kopp",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10079689": {
-  "id": "10079689",
-  "fullName": "Dr. Tim Tröndle",
-  "field": "",
-  "department": "Environmental Systems Science",
   "relationship": "Lecturer",
   "url": "",
   "image": null,
@@ -6968,16 +8508,6 @@
   "url": "",
   "image": null,
   "imageSource": null
- },
- "10030185": {
-  "id": "10030185",
-  "fullName": "Prof. Dr. Kristopher McNeill",
-  "field": "Environmental Chemistry",
-  "department": "Environmental Systems Science",
-  "relationship": "Full Professor",
-  "url": "http://www.envchem.ethz.ch",
-  "image": "img/profs/10030185.jpg",
-  "imageSource": "http://www.envchem.ethz.ch/_jcr_content/siteSettings/footer/addtionalInfo/image.imageformat.textsingle.336134951.jpg"
  },
  "10102728": {
   "id": "10102728",
@@ -7074,616 +8604,6 @@
   "fullName": "Dr. Oliver Reutimann",
   "field": "",
   "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10015759": {
-  "id": "10015759",
-  "fullName": "Dr. Christian Frei",
-  "field": "",
-  "department": "Information Technology and Electrical Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10048350": {
-  "id": "10048350",
-  "fullName": "Prof. Dr. Denis Burdakov",
-  "field": "Neuroscience",
-  "department": "Health Sciences and Technology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10018319": {
-  "id": "10018319",
-  "fullName": "Dr. Daria Peleg-Raibstein",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10060809": {
-  "id": "10060809",
-  "fullName": "Dr. Markus Arnoldini",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10114310": {
-  "id": "10114310",
-  "fullName": "Dr. Yagmur George Turgay",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "https://slacklab.ethz.ch/",
-  "image": null,
-  "imageSource": null
- },
- "10030341": {
-  "id": "10030341",
-  "fullName": "Prof. Dr. Laura Nyström",
-  "field": "Food Biochemistry",
-  "department": "Health Sciences and Technology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10057427": {
-  "id": "10057427",
-  "fullName": "Dr. Samy Boulos",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10044900": {
-  "id": "10044900",
-  "fullName": "Dr. Melanie Erzinger",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10053540": {
-  "id": "10053540",
-  "fullName": "Dr. Colette vom Berg-Maurer",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10113366": {
-  "id": "10113366",
-  "fullName": "Dr. Tina Bürki-Thurnherr",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10035758": {
-  "id": "10035758",
-  "fullName": "Dr. Ksenia Groh",
-  "field": "",
-  "department": "Environmental Systems Science",
-  "relationship": "Lecturer",
-  "url": "https://www.eawag.ch/en/aboutus/portrait/organisation/staff/profile/ksenia-groh/",
-  "image": null,
-  "imageSource": null
- },
- "10030208": {
-  "id": "10030208",
-  "fullName": "Prof. Dr. Shana J. Sturla",
-  "field": "Toxicology",
-  "department": "Health Sciences and Technology",
-  "relationship": "Full Professor",
-  "url": "http://www.toxicology.ethz.ch",
-  "image": null,
-  "imageSource": null
- },
- "10084470": {
-  "id": "10084470",
-  "fullName": "Dr. Georg Aichinger",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10090369": {
-  "id": "10090369",
-  "fullName": "Dr. Alessia Delbrück",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10030948": {
-  "id": "10030948",
-  "fullName": "Dr. Giovanni Colacicco",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10104147": {
-  "id": "10104147",
-  "fullName": "Prof. Dr. Michael Ganter",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10117466": {
-  "id": "10117466",
-  "fullName": "Prof. Matthias Schieker",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10053523": {
-  "id": "10053523",
-  "fullName": "PD Dr. Matthias Steinwachs",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10050185": {
-  "id": "10050185",
-  "fullName": "Prof. Dr. Gerhard Schratt",
-  "field": "Systems Neuroscience",
-  "department": "Health Sciences and Technology",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10104229": {
-  "id": "10104229",
-  "fullName": "Prof. Dr. Christian Baumann",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10079434": {
-  "id": "10079434",
-  "fullName": "Dr. Roberto Fiore",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10099967": {
-  "id": "10099967",
-  "fullName": "PD Dr. Benjamin Ineichen",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10056196": {
-  "id": "10056196",
-  "fullName": "PD Dr. Zina-Mary Manjaly",
-  "field": "Medicine",
-  "department": "Health Sciences and Technology",
-  "relationship": "Privatdozentin",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10078948": {
-  "id": "10078948",
-  "fullName": "PD Dr. Linjing Mu",
-  "field": "Radiopharmacy",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Privatdozentin",
-  "url": "",
-  "image": "img/profs/10078948.png",
-  "imageSource": "https://chab.ethz.ch/en/research/institutes/IPW/people/professors/_jcr_content/par/twocolumn_0/par_left/textimage_814764730/image.imageformat.textsingle.dpr3.1270405685.png"
- },
- "10130635": {
-  "id": "10130635",
-  "fullName": "Dr. Francesc Baixauli Celda",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10058912": {
-  "id": "10058912",
-  "fullName": "Prof. Dr. Christian Stockmann",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10060249": {
-  "id": "10060249",
-  "fullName": "Dr. Alexandre Theocharides",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10129908": {
-  "id": "10129908",
-  "fullName": "Prof. Dr. Christoph Gubler",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10059078": {
-  "id": "10059078",
-  "fullName": "Dr. Lorenzo Käser",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10060528": {
-  "id": "10060528",
-  "fullName": "Prof. Dr. Felix Beuschlein",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10055772": {
-  "id": "10055772",
-  "fullName": "Prof. Andrew Hall",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10124787": {
-  "id": "10124787",
-  "fullName": "PD Dr. Dominik Carlo Benz",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10124986": {
-  "id": "10124986",
-  "fullName": "PD Dr. David Niederseer",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10124788": {
-  "id": "10124788",
-  "fullName": "Ms Barbara Elisabeth Stähli",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10124966": {
-  "id": "10124966",
-  "fullName": "Prof. Dr. Jan Steffel (Professor Universität Zürich (UZH))",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10085970": {
-  "id": "10085970",
-  "fullName": "PD Dr. Matthias Hilty",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10117366": {
-  "id": "10117366",
-  "fullName": "Dr. Esther Irene Schwarz",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10057532": {
-  "id": "10057532",
-  "fullName": "Prof. Dr. Silvia Ulrich Somaini",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10056115": {
-  "id": "10056115",
-  "fullName": "Prof. Olivier Devuyst (Professor Universität Zürich (UZH))",
-  "field": "",
-  "department": "Health Sciences and Technology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10060158": {
-  "id": "10060158",
-  "fullName": "Dr. Joshua Abd Alla",
-  "field": "",
-  "department": "Chemistry and Applied Biosciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10079870": {
-  "id": "10079870",
-  "fullName": "Prof. Dr. Gregor Ludwig Weiss (Professor Universität Zürich (UZH))",
-  "field": "",
-  "department": "Biology",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10052060": {
-  "id": "10052060",
-  "fullName": "Dr. Reto Müller",
-  "field": "",
-  "department": "Humanities, Social and Political Sciences",
-  "relationship": "Lecturer",
-  "url": "https://ius.unibas.ch/de/personen/reto-mueller/",
-  "image": "img/profs/10052060.jpg",
-  "imageSource": "https://avatar.unibas.ch/image/01D978F9-7B5B-4F94-9432-2710F4650296/m"
- },
- "10024765": {
-  "id": "10024765",
-  "fullName": "Dr. Daniel Möckli Weder",
-  "field": "",
-  "department": "Humanities, Social and Political Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10019241": {
-  "id": "10019241",
-  "fullName": "Dr. Myriam Dunn Cavelty",
-  "field": "",
-  "department": "Humanities, Social and Political Sciences",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10079227": {
-  "id": "10079227",
-  "fullName": "Dr. Florian J. Egloff",
-  "field": "",
-  "department": "Humanities, Social and Political Sciences",
-  "relationship": "Lecturer",
-  "url": "http://www.css.ethz.ch/en/center/people/florian-egloff.html",
-  "image": null,
-  "imageSource": null
- },
- "10033993": {
-  "id": "10033993",
-  "fullName": "Prof. Dr. Pietro Gambardella",
-  "field": "Magnetism and Interface Physics",
-  "department": "Materials",
-  "relationship": "Full Professor",
-  "url": "https://intermag.mat.ethz.ch/",
-  "image": null,
-  "imageSource": null
- },
- "10005264": {
-  "id": "10005264",
-  "fullName": "Dr. Frank Jörg Clemens",
-  "field": "",
-  "department": "Materials",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10054950": {
-  "id": "10054950",
-  "fullName": "Dr. Michael Schinhammer",
-  "field": "",
-  "department": "Materials",
-  "relationship": "Lecturer",
-  "url": "http://n.ethz.ch/~michschi",
-  "image": null,
-  "imageSource": null
- },
- "10009500": {
-  "id": "10009500",
-  "fullName": "Dr. Arne Wahlen",
-  "field": "",
-  "department": "Materials",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10031426": {
-  "id": "10031426",
-  "fullName": "Prof. Dr. David J. Norris",
-  "field": "Materials Engineering",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10046041": {
-  "id": "10046041",
-  "fullName": "Prof. Dr. Emilio Frazzoli",
-  "field": "Dynamic Systems and Control",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10030782": {
-  "id": "10030782",
-  "fullName": "Prof. Dr. Christoph Müller",
-  "field": "Energy Science and Engineering",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10033685": {
-  "id": "10033685",
-  "fullName": "Prof. Dr. Juerg Leuthold",
-  "field": "Photonics and Communication",
-  "department": "Information Technology and Electrical Engineering",
-  "relationship": "Full Professor",
-  "url": "http://www.ief.ee.ethz.ch/people/leuthold.html",
-  "image": "img/profs/10033685.jpg",
-  "imageSource": "http://www.ief.ee.ethz.ch/people/leuthold/_jcr_content/par/textimage_0/image.imageformat.textdouble.293278161.jpg"
- },
- "10033169": {
-  "id": "10033169",
-  "fullName": "Prof. Dr. Mirko Meboldt",
-  "field": "Product Development and Engineering Design",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10033238": {
-  "id": "10033238",
-  "fullName": "Prof. Dr. Lukas Gallmann",
-  "field": "",
-  "department": "Physics",
-  "relationship": "Adjunct Professor",
-  "url": "https://attophys.ethz.ch/",
-  "image": null,
-  "imageSource": null
- },
- "10035638": {
-  "id": "10035638",
-  "fullName": "Dr. Quentin Lohmeyer",
-  "field": "",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Lecturer",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10038941": {
-  "id": "10038941",
-  "fullName": "Prof. Dr. Nicolas Noiray",
-  "field": "Combustion, Acoustics and Flow Physics",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "http://www.caps.ethz.ch",
-  "image": null,
-  "imageSource": null
- },
- "10035330": {
-  "id": "10035330",
-  "fullName": "Prof. Dr. Giovanni Sansavini",
-  "field": "Reliability and Risk Engineering",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Associate Professor",
-  "url": "http://www.rre.ethz.ch/",
-  "image": null,
-  "imageSource": null
- },
- "10031382": {
-  "id": "10031382",
-  "fullName": "Prof. Dr. Annalisa Manera",
-  "field": "Nuclear Safety and Multiphase Flows",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10068712": {
-  "id": "10068712",
-  "fullName": "Prof. Dr. Markus Bambach",
-  "field": "Advanced Manufacturing",
-  "department": "Mechanical and Process Engineering",
-  "relationship": "Full Professor",
-  "url": "",
-  "image": null,
-  "imageSource": null
- },
- "10075848": {
-  "id": "10075848",
-  "fullName": "Dr. Léa Deillon",
-  "field": "",
-  "department": "Mechanical and Process Engineering",
   "relationship": "Lecturer",
   "url": "",
   "image": null,

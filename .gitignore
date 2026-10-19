@@ -13,3 +13,5 @@ scraper/__pycache__/
 scraper/courses.before_augment.json
 # contains contact details of ~13k ETH staff — never publish
 scraper/photo_index.json
+scraper/courses.v1.json
+scraper/*.partial

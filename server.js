@@ -69,7 +69,8 @@ async function requireUser(req) {
 }
 
 async function getProfile(userId) {
-  return one(`SELECT v.*, p.dept_id, p.name AS program_name FROM profiles v JOIN programs p ON p.id = v.program_id WHERE v.user_id = $1`, [userId]);
+  return one(`SELECT v.*, p.dept_id, p.name AS program_name, d.name AS dept_name FROM profiles v
+    JOIN programs p ON p.id = v.program_id JOIN departments d ON d.id = p.dept_id WHERE v.user_id = $1`, [userId]);
 }
 async function requireProfile(req) {
   const u = await requireUser(req);
@@ -81,13 +82,13 @@ async function requireProfile(req) {
 async function voterSummary(v) {
   const { n } = await one('SELECT COUNT(*)::int AS n FROM votes WHERE user_id = $1', [v.user_id]);
   const k = v.profs.length;
-  return { email: v.email, programId: v.program_id, programName: v.program_name, deptId: v.dept_id, semester: v.semester,
+  return { email: v.email, programId: v.program_id, programName: v.program_name, deptId: v.dept_id, deptName: v.dept_name, semester: v.semester,
     profIds: v.profs, xp: v.xp, level: voterLevel(v.xp), votes: n, totalPairs: (k * (k - 1)) / 2 };
 }
 
 // Courses a professor taught in the voter's programme (shown on the battle card)
-const coursesFor = (profId, programId) => all(`SELECT c.title, c.code, c.semester_type AS sem, c.year FROM courses c
-  JOIN course_professors cp ON cp.course_id = c.id WHERE cp.prof_id = $1 AND c.program_id = $2 ORDER BY c.year`, [profId, programId]);
+const coursesFor = (profId, programId) => all(`SELECT c.title, c.code, c.semester_type AS sem, c.year, c.semester FROM courses c
+  JOIN course_professors cp ON cp.course_id = c.id WHERE cp.prof_id = $1 AND c.program_id = $2 ORDER BY c.semester NULLS LAST`, [profId, programId]);
 
 const lastVote = new Map();
 
@@ -109,12 +110,12 @@ const routes = {
     const id = Number(url.searchParams.get('id'));
     const prog = await one('SELECT * FROM programs WHERE id = $1', [id]);
     if (!prog) throw new HttpError(404, 'unknown programme');
-    const rows = await all(`SELECT c.id AS course_id, c.title, c.code, c.semester_type, c.year, p.* FROM courses c
+    const rows = await all(`SELECT c.id AS course_id, c.title, c.code, c.semester_type, c.year, c.semester AS course_semester, p.* FROM courses c
       JOIN course_professors cp ON cp.course_id = c.id JOIN professors p ON p.id = cp.prof_id
-      WHERE c.program_id = $1 ORDER BY COALESCE(c.year, 9), c.semester_type DESC, c.title`, [id]);
+      WHERE c.program_id = $1 ORDER BY COALESCE(c.semester, 99), c.title`, [id]);
     const courses = new Map();
     for (const r of rows) {
-      if (!courses.has(r.course_id)) courses.set(r.course_id, { id: r.course_id, title: r.title, code: r.code, sem: r.semester_type, year: r.year, profs: [] });
+      if (!courses.has(r.course_id)) courses.set(r.course_id, { id: r.course_id, title: r.title, code: r.code, sem: r.semester_type, year: r.year, semester: r.course_semester, profs: [] });
       courses.get(r.course_id).profs.push(profRow(r));
     }
     return { program: prog, courses: [...courses.values()] };
@@ -131,12 +132,19 @@ const routes = {
   'POST /api/session': async (req) => {
     const u = await requireUser(req);
     const b = await readBody(req);
-    const programId = Number(b.programId), semester = Number(b.semester);
+    const existing = await getProfile(u.id);
+    // The clan (programme → department) is chosen once; afterwards it is locked so nobody can
+    // hop departments to vote on more professors. Semester may only move forward.
+    const programId = existing ? existing.program_id : Number(b.programId);
+    const semester = Number(b.semester);
+    if (existing && Number(b.programId) && Number(b.programId) !== existing.program_id) throw new HttpError(403, 'Your clan is locked — you can’t change your programme');
+    if (existing && semester < existing.semester) throw new HttpError(400, 'Your semester can only go up');
     if (!(await one('SELECT 1 FROM programs WHERE id = $1', [programId]))) throw new HttpError(400, 'unknown programme');
     if (!(semester >= 1 && semester <= 12)) throw new HttpError(400, 'semester must be 1–12');
-    // Only professors who actually teach mandatory courses in this programme may be picked.
+    // Only professors of mandatory courses in this programme that you can already have had
+    // (course semester ≤ your semester; courses with unknown semester are allowed).
     const allowed = new Set((await all(`SELECT DISTINCT cp.prof_id AS id FROM courses c JOIN course_professors cp ON cp.course_id = c.id
-      WHERE c.program_id = $1`, [programId])).map((r) => r.id));
+      WHERE c.program_id = $1 AND (c.semester IS NULL OR c.semester <= $2)`, [programId, semester])).map((r) => r.id));
     const profIds = [...new Set((b.profIds || []).map(Number))].filter((id) => allowed.has(id));
     if (profIds.length < 2) throw new HttpError(400, 'pick at least two professors you had');
     await one(`INSERT INTO profiles (user_id, email, program_id, semester, profs) VALUES ($1, $2, $3, $4, $5)

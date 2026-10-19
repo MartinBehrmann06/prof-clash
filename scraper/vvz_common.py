@@ -7,19 +7,26 @@ _op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(_jar))
 _op.addheaders = [('User-Agent', UA)]
 _primed = False
 
+def _open(url):
+    """GET with patient retries: VVZ refuses connections when hit too fast."""
+    for wait in (0, 5, 20, 60, 120, 240):
+        if wait:
+            print(f'  VVZ busy, retrying in {wait}s', flush=True)
+            time.sleep(wait)
+        try:
+            return _op.open(url, timeout=30).read().decode('utf-8', 'replace')
+        except Exception:
+            continue
+    raise RuntimeError(url)
+
 def get(path, **params):
     global _primed
     if not _primed:
-        _op.open('https://www.vvz.ethz.ch/').read(); _primed = True
+        _open('https://www.vvz.ethz.ch/'); _primed = True
     url = BASE + path + ('?' + urllib.parse.urlencode(params) if params else '')
-    for attempt in range(3):
-        try:
-            r = _op.open(url, timeout=30).read().decode('utf-8', 'replace')
-            time.sleep(0.25)
-            return r
-        except Exception as e:
-            time.sleep(2)
-    raise RuntimeError(url)
+    r = _open(url)
+    time.sleep(0.4)
+    return r
 
 def text(s):
     return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s))).strip()

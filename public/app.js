@@ -389,109 +389,192 @@ async function setup() {
   if (!state.user) { location.hash = '#/login/setup'; return; }
   const meta = state.meta || (state.meta = await api('/api/meta'));
   const me = state.me;
-  let dept = me ? meta.depts.find((d) => d.programs.some((p) => p.id === me.programId)) : null;
-  let programId = me?.programId || null;
-  let semester = me?.semester || null;
-  let program = null;
-  let selected = new Set(me?.profIds || []);
-  let touched = !!me;
+  const locked = !!me; // the clan is chosen once, then locked
+  const s = {
+    step: locked ? 2 : 1,
+    dept: me ? meta.depts.find((d) => d.id === me.deptId) : null,
+    programId: me?.programId || null,
+    semester: me?.semester || null,
+    selected: new Set(me?.profIds || []),
+    touched: locked,
+    program: null,
+  };
+  const STEPS = [['🛡️', 'Clan'], ['📅', 'Semester'], ['⚔️', 'Roster']];
 
-  app.innerHTML = `<div class="view view-enter">
-    <div class="setup-head"><h1>Choose your clan</h1><p>Your department decides which professors you can battle — and which ladder your votes shape.</p></div>
-    <div class="panel"><div class="panel-title stroke">Department</div><div class="dept-grid" id="depts"></div>
-      <div class="field-row" id="progRow" hidden>
-        <label class="field"><span>Programme</span><select class="select" id="prog"></select></label>
-        <div class="field"><span>Your current semester</span><div class="sem-picker" id="sems"></div></div>
-      </div>
-    </div>
-    <div id="rosterWrap"></div>
+  app.innerHTML = `<div class="view setup-view">
+    <ol class="stepper" id="stepper" aria-label="Setup steps"></ol>
+    <div id="stage"></div>
   </div>`;
 
-  const depts = $('#depts');
-  depts.innerHTML = meta.depts.map((d) => `<div class="dept-tile" role="button" tabindex="0" data-id="${d.id}">${deptCrest(d)}<div class="dn">${esc(d.name)}</div>
-    <div class="dc">${d.programs.length} programme${d.programs.length > 1 ? 's' : ''}</div></div>`).join('');
-  const chooseDept = (id) => {
-    dept = meta.depts.find((d) => d.id === id);
-    $$('.dept-tile', depts).forEach((t) => t.classList.toggle('sel', Number(t.dataset.id) === id));
-    const sel = $('#prog');
-    sel.innerHTML = dept.programs.map((p) => `<option value="${p.id}">${esc(p.name)} (${p.profs} profs)</option>`).join('');
-    if (!dept.programs.some((p) => p.id === programId)) { programId = dept.programs[0].id; touched = false; }
-    sel.value = programId;
-    $('#progRow').hidden = false;
-    loadProgram();
+  const paintStepper = () => {
+    $('#stepper').innerHTML = STEPS.map(([ico, label], i) => {
+      const n = i + 1, st = n < s.step ? 'done' : n === s.step ? 'now' : 'todo';
+      const canGo = n < s.step && !(locked && n === 1);
+      return `<li class="step-node ${st}">${i ? '<span class="step-rope"></span>' : ''}
+        <button type="button" data-step="${n}" ${canGo ? '' : 'disabled'} aria-current="${st === 'now' ? 'step' : 'false'}">
+          <span class="shield">${n === 1 && locked ? '🔒' : st === 'done' ? '✔' : ico}</span><span class="lbl">${label}</span></button></li>`;
+    }).join('');
   };
-  depts.addEventListener('click', (e) => { const t = e.target.closest('.dept-tile'); if (t) chooseDept(Number(t.dataset.id)); });
-  depts.addEventListener('keydown', (e) => { const t = e.target.closest('.dept-tile'); if (t && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); chooseDept(Number(t.dataset.id)); } });
-  $('#prog').addEventListener('change', (e) => { programId = Number(e.target.value); touched = false; loadProgram(); });
+  $('#stepper').addEventListener('click', (e) => { const b = e.target.closest('button[data-step]'); if (b && !b.disabled) go(Number(b.dataset.step)); });
 
-  const sems = $('#sems');
-  sems.innerHTML = [1, 2, 3, 4, 5, 6].map((s) => `<button type="button" data-s="${s}" aria-pressed="false">${s}${s === 6 ? '+' : ''}</button>`).join('');
-  sems.addEventListener('click', (e) => {
-    const b = e.target.closest('button'); if (!b) return;
-    semester = Number(b.dataset.s); touched = false; paintSems(); renderRoster();
-  });
-  const paintSems = () => $$('button', sems).forEach((b) => { const on = Number(b.dataset.s) === semester; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', on); });
-
-  async function loadProgram() {
-    program = await api(`/api/program?id=${programId}`);
-    program.courses.forEach((c) => remember(c.profs));
-    renderRoster();
+  function go(step) {
+    const dir = step >= s.step ? 'fwd' : 'back';
+    s.step = step; paintStepper();
+    const stage = $('#stage');
+    stage.className = `stage-${dir}`; void stage.offsetWidth; stage.classList.add('stage-in');
+    ({ 1: stepClan, 2: stepSemester, 3: stepRoster })[step]();
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
   }
 
-  function renderRoster() {
-    const wrap = $('#rosterWrap');
-    if (!program || !semester) { wrap.innerHTML = semester ? '' : `<p class="battle-sub" style="margin-top:30px">👆 Now pick your semester.</p>`; return; }
-    const year = Math.ceil(semester / 2);
-    // Group professors by the earliest study year in which they teach a mandatory course
-    const groups = new Map();
+  const clanBanner = () => `<div class="clan-banner panel wood nails">${deptCrest(s.dept)}
+    <div><div class="cb-kicker">Your clan${locked ? ' · 🔒 locked' : ''}</div><div class="cb-name">${esc(s.dept.name)}</div>
+    <div class="cb-prog">${esc(s.dept.programs.find((p) => p.id === s.programId)?.name || '')} Bachelor</div></div></div>`;
+
+  /* ---- Step 1: department + programme ---- */
+  function stepClan() {
+    $('#stage').innerHTML = `<div class="setup-head"><h1>Choose your clan</h1>
+      <p>Your department decides which professors you can battle — and which ladder your votes shape. <b>You pick it once.</b></p></div>
+      <div class="panel"><div class="panel-title stroke">Department</div><div class="dept-grid" id="depts">
+      ${meta.depts.map((d) => `<button type="button" class="dept-tile ${s.dept?.id === d.id ? 'sel' : ''}" data-id="${d.id}">${deptCrest(d)}
+        <span class="dn">${esc(d.name)}</span><span class="dc">${d.programs.length} programme${d.programs.length > 1 ? 's' : ''}</span></button>`).join('')}
+      </div><div id="progPick"></div></div>
+      <div class="step-actions"><button class="btn huge" id="next1" ${s.programId ? '' : 'disabled'}>Next ➜</button></div>`;
+    const paintProg = () => {
+      const box = $('#progPick');
+      if (!s.dept || s.dept.programs.length < 2) { box.innerHTML = ''; return; }
+      box.innerHTML = `<h3 class="sub-h">Which programme?</h3><div class="prog-grid">${s.dept.programs.map((p) =>
+        `<button type="button" class="prog-tile ${p.id === s.programId ? 'sel' : ''}" data-id="${p.id}">${esc(p.name)}<small>${p.profs} professors</small></button>`).join('')}</div>`;
+    };
+    paintProg();
+    $('#depts').addEventListener('click', (e) => {
+      const t = e.target.closest('.dept-tile'); if (!t) return;
+      s.dept = meta.depts.find((d) => d.id === Number(t.dataset.id));
+      $$('.dept-tile').forEach((x) => x.classList.toggle('sel', x === t));
+      s.programId = s.dept.programs.length === 1 ? s.dept.programs[0].id : (s.dept.programs.some((p) => p.id === s.programId) ? s.programId : null);
+      s.touched = false; s.program = null;
+      paintProg();
+      $('#next1').disabled = !s.programId;
+      if (s.dept.programs.length > 1) $('#progPick').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'center' });
+    });
+    $('#progPick').addEventListener('click', (e) => {
+      const t = e.target.closest('.prog-tile'); if (!t) return;
+      s.programId = Number(t.dataset.id); s.touched = false; s.program = null;
+      $$('.prog-tile').forEach((x) => x.classList.toggle('sel', x === t));
+      $('#next1').disabled = false;
+    });
+    $('#next1').addEventListener('click', () => go(2));
+  }
+
+  /* ---- Step 2: semester ---- */
+  function stepSemester() {
+    const autumn = new Date().getMonth() >= 7 || new Date().getMonth() === 0; // Aug–Jan = HS
+    $('#stage').innerHTML = `${clanBanner()}
+      <div class="setup-head"><h1>Which semester are you in?</h1>
+      <p>It's ${autumn ? 'autumn (HS)' : 'spring (FS)'} — so most of you are in semester ${autumn ? '1, 3 or 5' : '2, 4 or 6'}. Courses of your current semester count.</p></div>
+      <div class="sem-board">${[1, 2, 3, 4, 5, 6].map((n) => {
+        const off = locked && n < me.semester;
+        return `<button type="button" class="sem-plaque ${n === s.semester ? 'sel' : ''} ${(n % 2 === 1) === autumn ? 'now-term' : ''}" data-s="${n}" ${off ? 'disabled title="Your semester can only go up"' : ''}>
+          <span class="sn">${n}${n === 6 ? '+' : ''}</span><span class="st">${n % 2 ? 'HS' : 'FS'} · Year ${Math.ceil(n / 2)}</span></button>`;
+      }).join('')}</div>
+      <div class="step-actions">${locked ? '' : '<button class="btn stone" id="back2">⬅ Back</button>'}<button class="btn huge" id="next2" ${s.semester ? '' : 'disabled'}>Next ➜</button></div>`;
+    $('.sem-board').addEventListener('click', (e) => {
+      const b = e.target.closest('.sem-plaque'); if (!b || b.disabled) return;
+      s.semester = Number(b.dataset.s); s.touched = false;
+      $$('.sem-plaque').forEach((x) => x.classList.toggle('sel', x === b));
+      $('#next2').disabled = false;
+    });
+    $('#back2')?.addEventListener('click', () => go(1));
+    $('#next2').addEventListener('click', () => go(3));
+  }
+
+  /* ---- Step 3: roster, grouped by the semester the course is taught ---- */
+  async function stepRoster() {
+    $('#stage').innerHTML = `${clanBanner()}<div class="panel roster"><div class="empty">Summoning your professors…</div></div>`;
+    if (!s.program || s.program.program.id !== s.programId) {
+      s.program = await api(`/api/program?id=${s.programId}`);
+      s.program.courses.forEach((c) => remember(c.profs));
+    }
+    const sem = s.semester;
+    // place each professor at the earliest semester they teach you
     const placed = new Map();
-    for (const c of program.courses) {
-      const y = c.year || 0;
-      const reachable = c.year ? (c.year < year || (c.year === year && (semester % 2 === 0 || c.sem === 'HS'))) : semester >= 3;
+    for (const c of s.program.courses) {
       for (const p of c.profs) {
-        const prev = placed.get(p.id);
-        if (prev) { prev.courses.push(c.title); prev.reachable ||= reachable; continue; }
-        const entry = { p, courses: [c.title], reachable, y };
-        placed.set(p.id, entry);
-        if (!groups.has(y)) groups.set(y, []);
-        groups.get(y).push(entry);
+        const k = c.semester ?? 99;
+        const e = placed.get(p.id);
+        if (!e) placed.set(p.id, { p, k, courses: [c.title] });
+        else { e.courses.push(c.title); if (k < e.k) e.k = k; }
       }
     }
-    if (!touched) selected = new Set([...placed.values()].filter((e) => e.reachable).map((e) => e.p.id));
-    selected = new Set([...selected].filter((id) => placed.has(id)));
-    const label = { 1: ['Year 1', 'Semester 1–2 · first-year exams'], 2: ['Year 2', 'Semester 3–4'], 3: ['Year 3', 'Semester 5–6'], 0: ['More mandatory courses', 'year not specified in VVZ'] };
-    const order = [1, 2, 3, 0].filter((y) => groups.has(y));
-    wrap.innerHTML = `<div class="panel roster view-enter"><div class="panel-title stroke">Your roster</div>
-      <p style="text-align:center;margin:10px 0 0;color:var(--ink-soft)">We pre-selected professors you've most likely had by semester ${semester}. <b>Tap to toggle</b> — only keep the ones you really sat through.</p>
-      ${order.map((y) => `<div class="year-group"><h3>${label[y][0]} <span class="pill">${label[y][1]}</span></h3><div class="prof-grid">
-        ${groups.get(y).map(({ p, courses }) => `<div class="prof-pick ${selected.has(p.id) ? 'sel' : ''}" role="checkbox" tabindex="0" aria-checked="${selected.has(p.id)}" data-id="${p.id}">
-          <div class="check">✔</div>${portrait(p)}<div class="nm">${esc(p.name)}</div><div class="cs">${esc([...new Set(courses)].slice(0, 2).join(' · '))}</div></div>`).join('')}
-      </div></div>`).join('')}
-    </div>
-    <div class="dock"><span class="count" id="selCount"></span><button class="btn" id="go">⚔️ To battle!</button></div>`;
-    const updateCount = () => {
-      $('#selCount').textContent = `${selected.size} professors selected`;
-      $('#go').disabled = selected.size < 2;
-    };
-    updateCount();
-    const toggle = (el) => {
-      const id = Number(el.dataset.id); touched = true;
-      selected.has(id) ? selected.delete(id) : selected.add(id);
-      el.classList.toggle('sel', selected.has(id)); el.setAttribute('aria-checked', selected.has(id));
-      updateCount();
-    };
-    wrap.addEventListener('click', (e) => { const el = e.target.closest('.prof-pick'); if (el) toggle(el); });
-    wrap.addEventListener('keydown', (e) => { const el = e.target.closest('.prof-pick'); if (el && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); toggle(el); } });
+    const entries = [...placed.values()];
+    const had = (e) => e.k <= sem;           // course semester reached
+    const unknown = (e) => e.k === 99;
+    if (!s.touched) s.selected = new Set(entries.filter(had).map((e) => e.p.id));
+    s.selected = new Set([...s.selected].filter((id) => { const e = placed.get(id); return e && (had(e) || unknown(e)); }));
+
+    const groups = new Map();
+    for (const e of entries) { if (!groups.has(e.k)) groups.set(e.k, []); groups.get(e.k).push(e); }
+    const keys = [...groups.keys()].sort((a, b) => a - b);
+    const card = (e, lockedCard) => `<button type="button" class="prof-pick ${s.selected.has(e.p.id) ? 'sel' : ''} ${lockedCard ? 'future' : ''}"
+        role="checkbox" aria-checked="${s.selected.has(e.p.id)}" data-id="${e.p.id}" ${lockedCard ? 'disabled' : ''}>
+        <span class="check">✔</span>${portrait(e.p)}<span class="nm">${esc(e.p.name)}</span><span class="cs">${esc([...new Set(e.courses)].slice(0, 2).join(' · '))}</span></button>`;
+
+    $('#stage').innerHTML = `${clanBanner()}
+      <div class="setup-head"><h1>Your roster</h1><p>Everyone you had up to semester ${sem} is ready for battle. <b>Tap to remove</b> anyone you skipped.</p></div>
+      <div class="panel roster">
+      ${keys.map((k) => {
+        const list = groups.get(k);
+        if (k === 99) return `<div class="year-group"><h3>Other mandatory courses <span class="pill">semester not listed in the VVZ — tap the ones you had</span></h3>
+          <div class="prof-grid">${list.map((e) => card(e, false)).join('')}</div></div>`;
+        const future = k > sem;
+        return `<div class="year-group ${future ? 'future-group' : ''}"><h3>${future ? '🔒 ' : ''}Semester ${k} <span class="pill">${k % 2 ? 'HS' : 'FS'} · ${future ? 'unlocks when you get there' : `${list.length} professor${list.length > 1 ? 's' : ''}`}</span></h3>
+          <div class="prof-grid">${list.map((e) => card(e, future)).join('')}</div></div>`;
+      }).join('')}
+      </div>
+      <div class="dock"><button class="btn stone small" id="back3">⬅ Semester</button><span class="count" id="selCount"></span><button class="btn" id="go">⚔️ To battle!</button></div>`;
+
+    const update = () => { $('#selCount').textContent = `${s.selected.size} selected`; $('#go').disabled = s.selected.size < 2; };
+    update();
+    $('.roster').addEventListener('click', (e) => {
+      const el = e.target.closest('.prof-pick'); if (!el || el.disabled) return;
+      const id = Number(el.dataset.id); s.touched = true;
+      s.selected.has(id) ? s.selected.delete(id) : s.selected.add(id);
+      el.classList.toggle('sel', s.selected.has(id)); el.setAttribute('aria-checked', s.selected.has(id));
+      update();
+    });
+    $('#back3').addEventListener('click', () => go(2));
     $('#go').addEventListener('click', async () => {
+      if (!locked && !(await confirmLock())) return;
       try {
-        state.me = await api('/api/session', { method: 'POST', body: { programId, semester, profIds: [...selected] } });
-        renderMe(); location.hash = '#/battle';
+        state.me = await api('/api/session', { method: 'POST', body: { programId: s.programId, semester: s.semester, profIds: [...s.selected] } });
+        renderMe();
+        if (!locked) { toast(`🛡️ Welcome to clan ${s.dept.name}!`); confetti(innerWidth / 2, innerHeight / 3, 50); }
+        location.hash = '#/battle';
       } catch (e) { toast(e.message, 'err'); }
     });
   }
 
-  if (semester) paintSems();
-  if (dept) chooseDept(dept.id);
+  /* irreversible choice → one honest confirmation */
+  function confirmLock() {
+    return new Promise((resolve) => {
+      const prog = s.dept.programs.find((p) => p.id === s.programId)?.name;
+      const wrap = document.createElement('div');
+      wrap.className = 'modal-wrap';
+      wrap.innerHTML = `<div class="modal-scrim"></div><div class="panel modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle">
+        <div class="panel-title stroke">Lock in?</div>${deptCrest(s.dept)}
+        <h2 id="lockTitle">Join clan ${esc(s.dept.name)}?</h2>
+        <p>Programme: <b>${esc(prog)}</b>. Your clan <b>can't be changed later</b> — that keeps every department's ladder fair. You can still move up a semester and edit your roster.</p>
+        <div class="step-actions"><button class="btn stone" data-a="0">Go back</button><button class="btn" data-a="1">🔒 Lock in &amp; battle</button></div></div>`;
+      document.body.append(wrap);
+      const done = (v) => { wrap.classList.add('out'); setTimeout(() => wrap.remove(), 220); resolve(v); removeEventListener('keydown', esc_); };
+      const esc_ = (e) => { if (e.key === 'Escape') done(false); };
+      addEventListener('keydown', esc_);
+      wrap.addEventListener('click', (e) => { const b = e.target.closest('[data-a]'); if (b) done(b.dataset.a === '1'); else if (e.target.classList.contains('modal-scrim')) done(false); });
+      $('[data-a="1"]', wrap).focus();
+    });
+  }
+
+  paintStepper();
+  go(s.step);
 }
 
 /* ============================================================
@@ -532,7 +615,7 @@ async function battle() {
     const card = (p, side) => `<article class="fight-card ${side}" data-side="${side}" tabindex="0" aria-label="Vote for ${esc(p.name)}">
       ${leagueBadge(p.league)}${portrait(p)}
       <div class="fname">${esc(p.name)}</div><div class="frole">${esc(p.relationship || 'Lecturer')}</div>
-      <div class="courses">${p.courses.slice(0, 3).map((c) => `<span class="chip">📘 ${esc(c.title)}</span>`).join('')}</div>
+      <div class="courses">${p.courses.slice(0, 3).map((c) => `<span class="chip">📘 ${esc(c.title)}${c.semester ? ` · Sem ${c.semester}` : ''}</span>`).join('')}</div>
       ${trophies(p.elo)}<div class="wl">${p.wins}W · ${p.losses}L</div>
       <div class="pick-hint"><span class="btn small ${side === 'left' ? 'blue' : 'red'}">Pick</span></div>
       <div class="delta"></div></article>`;

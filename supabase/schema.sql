@@ -126,3 +126,27 @@ alter table course_professors enable row level security;
 alter table dept_ratings enable row level security;
 alter table profiles enable row level security;
 alter table votes enable row level security;
+
+-- ---------------------------------------------------------------
+-- v2: exact study semester per course, and the "clan lock"
+-- ---------------------------------------------------------------
+alter table courses add column if not exists semester integer;   -- 1..6, null = unknown
+
+-- A student's programme (and so department) is fixed after the first choice,
+-- and their semester can only move forward. Prevents hopping between
+-- departments to vote on more professors.
+create or replace function public.lock_profile()
+returns trigger language plpgsql as $$
+begin
+  if new.program_id <> old.program_id then
+    raise exception 'Your clan (programme) is locked and cannot be changed';
+  end if;
+  if new.semester < old.semester then
+    raise exception 'Your semester can only go up';
+  end if;
+  return new;
+end $$;
+
+drop trigger if exists lock_profile on profiles;
+create trigger lock_profile before update on profiles
+  for each row execute function public.lock_profile();

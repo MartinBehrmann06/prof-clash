@@ -2,7 +2,7 @@
 fill in courses hidden in deeper VVZ levels and to determine the study year.
 Usage: python3 augment.py courses.json"""
 import json, re, sys
-from scrape_courses import search, year_of, SEMS, SKIP
+from scrape_courses import search, semester_of, SEMS, SKIP
 from vvz_common import get, options, text, reset_session
 
 def offered_section(le_id, sem, prog_name):
@@ -29,12 +29,14 @@ def main(f):
             for c in search(sem, did, spid):
                 key = (pid, c['code'])
                 cur = by.get(key)
-                if cur and cur['year']: continue
+                if cur and cur.get('semester'): continue
                 sec, typ = offered_section(c['leId'], sem, prog['name'])
                 if sec and SKIP.search(sec): continue
+                sm = semester_of(sec or '', sem)
                 if cur:
-                    cur['year'] = year_of(sec or '', sem); continue
-                c.update(program=pid, dept=did, section=sec or '', year=year_of(sec or '', sem))
+                    if sm: cur.update(semester=sm, year=(sm + 1) // 2)
+                    continue
+                c.update(program=pid, dept=did, section=sec or '', semester=sm, year=(sm + 1) // 2 if sm else None)
                 by[key] = c; added += 1
             print(prog['name'], sem, '+', added, flush=True)
     D['courses'] = list(by.values())
