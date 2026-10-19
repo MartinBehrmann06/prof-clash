@@ -77,8 +77,8 @@ export default function RankingsPage() {
                   <motion.button key={p.id} type="button" className={`row ${top ? 'top' : ''}`} onClick={() => open(p)}
                     layout="position" transition={MOTION.soft} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: MOTION.fade }}>
                     <span className="rk num">{top ? <span className={`medal m${p.rank}`}>{p.rank}</span> : p.rank ?? '–'}</span>
-                    {away.has(p.id) ? <span className="frame round" style={{ width: 52 }} /> : (
-                      <motion.span layoutId={portraitId(p.id)} transition={MOTION.snappy} className="frame round" style={{ width: 52, borderRadius: '50%' }}
+                    {away.has(p.id) ? <span className="frame round" /> : (
+                      <motion.span layoutId={portraitId(p.id)} transition={MOTION.snappy} className="frame round" style={{ borderRadius: '50%' }}
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <motion.span layoutId={`${portraitId(p.id)}-fig`} transition={MOTION.snappy} className="fig">
                           <Figure id={p.id} name={p.name} department={p.department} />
