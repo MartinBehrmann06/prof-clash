@@ -283,8 +283,8 @@ h3 { --sw: 4px; --sh: 2px; }
 .list small { color: var(--ink-2); text-align: right; }
 
 /* ---------------- CLANS ---------------- */
-.war { margin-top: 36px; padding: clamp(36px, 5vw, 52px) clamp(14px, 4vw, 40px) 24px; overflow-x: clip; overflow-y: visible; }
-.war-in { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: start; gap: 12px; }
+.war { margin-top: 36px; padding: clamp(36px, 5vw, 52px) clamp(14px, 4vw, 40px) 24px; }
+.war-in { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: start; gap: 12px; overflow: hidden; padding-bottom: 6px; }
 .clan { display: grid; justify-items: center; gap: 8px; text-align: center; min-width: 0; }
 .clan .code { font-size: clamp(28px, 4.6vw, 42px); }
 .clan small { max-width: 24ch; min-height: 2.9em; font-size: 13px; color: var(--ink-2); }
