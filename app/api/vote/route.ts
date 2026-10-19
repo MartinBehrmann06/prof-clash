@@ -27,7 +27,8 @@ export const POST = handler(async (req): Promise<VoteResult> => {
       await db.query('INSERT INTO votes (user_id, dept_id, winner, loser, pair) VALUES ($1, $2, $3, $4, $5)', [v.user_id, v.dept_id, w, l, pair]);
 
       // global ladder — lock both rows in id order to avoid deadlocks
-      const g = await db.query('SELECT id, elo FROM professors WHERE id = ANY($1) ORDER BY id FOR UPDATE', [[w, l]]);
+      const g = await db.query('SELECT id, elo FROM professors WHERE id = ANY($1) AND NOT hidden ORDER BY id FOR UPDATE', [[w, l]]);
+      if (g.rowCount !== 2) throw new HttpError(410, 'this professor is no longer listed');
       const ge = Object.fromEntries(g.rows.map((r) => [r.id, r.elo]));
       const [nw, nl, delta] = eloUpdate(ge[w], ge[l]);
       await db.query('UPDATE professors SET elo = $1, wins = wins + 1 WHERE id = $2', [nw, w]);

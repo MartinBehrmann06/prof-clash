@@ -2,6 +2,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { api } from '@/lib/client/session';
+import { MIN_DUELS } from '@/lib/game';
 import { MOTION } from '@/lib/client/motion';
 import { deptByName } from '@/lib/departments';
 import { termLabel } from '@/lib/terms';
@@ -62,24 +63,27 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
 function ProfileBody({ p, base }: { p: ProfDetail | null; base: Prof }) {
   const dept = deptByName(base.department);
   const duels = base.wins + base.losses;
+  const rated = duels >= MIN_DUELS; // fewer duels are noise, so no number is shown yet
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.08 }}>
       <div style={{ display: 'grid', gap: 6, justifyItems: 'start' }}>
         <span className="chip">🛡 {dept.code} · {dept.id ? dept.name : base.department}</span>
         <h2>{base.name}</h2>
         <span className="muted" style={{ fontSize: 14 }}>{base.field || base.relationship}</span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}><LeagueBadge league={base.league} style={{ width: 40, height: 46 }} /><Trophies n={base.elo} /></span>
+        {rated
+          ? <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}><LeagueBadge league={base.league} style={{ width: 40, height: 46 }} /><Trophies n={base.elo} /></span>
+          : <span className="chip unranked">Neu · Rang ab {MIN_DUELS} Duellen</span>}
       </div>
       <div className="stats">
-        <div className="stat"><b className="num">{base.elo}</b><small>Trophäen</small></div>
-        <div className="stat"><b className="num">{p ? `#${p.rank}` : '…'}</b><small>Rang gesamt</small></div>
+        <div className="stat"><b className="num">{rated ? base.elo : '–'}</b><small>Trophäen</small></div>
+        <div className="stat"><b className="num">{!p ? '…' : p.rank != null ? `#${p.rank}` : '–'}</b><small>Rang gesamt</small></div>
         <div className="stat"><b className="num">{duels}</b><small>Duelle</small></div>
-        <div className="stat"><b className="num">{duels ? `${Math.round((100 * base.wins) / duels)}%` : '–'}</b><small>Siegquote</small></div>
+        <div className="stat"><b className="num">{rated ? `${Math.round((100 * base.wins) / duels)}%` : '–'}</b><small>Siegquote</small></div>
       </div>
-      {p && p.depts.length > 0 && (
+      {p && p.depts.some((d) => d.wins + d.losses >= MIN_DUELS) && (
         <div className="list">
           <span className="h">🛡 Pro Clan (nur Stimmen dieses Departments)</span>
-          {p.depts.map((d) => <div key={d.name}><span>{d.name}</span><small className="num">{d.elo} · {d.wins}S {d.losses}N</small></div>)}
+          {p.depts.filter((d) => d.wins + d.losses >= MIN_DUELS).map((d) => <div key={d.name}><span>{d.name}</span><small className="num">{d.elo} · {d.wins}S {d.losses}N</small></div>)}
         </div>
       )}
       <div className="list">
@@ -88,7 +92,10 @@ function ProfileBody({ p, base }: { p: ProfDetail | null; base: Prof }) {
           <div key={c.program + c.title}><span>{c.title}</span><small>{c.program}{c.semester ? ` · Sem. ${c.semester}` : ''}{c.term ? ` · ${termLabel(c.term)}` : ''}</small></div>
         ))}
       </div>
-      {base.url && <p style={{ marginTop: 14 }}><a className="btn sm blue" href={base.url} target="_blank" rel="noopener noreferrer">Webseite ↗</a></p>}
+      <p style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+        {base.url && <a className="btn sm blue" href={base.url} target="_blank" rel="noopener noreferrer">Webseite ↗</a>}
+        <a className="link-quiet" href="/impressum#entfernen">Sind Sie das? Eintrag entfernen lassen</a>
+      </p>
     </motion.div>
   );
 }

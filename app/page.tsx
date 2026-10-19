@@ -1,4 +1,5 @@
 'use client';
+import { LegalLinks } from '@/components/Chrome';
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
@@ -66,6 +67,7 @@ export default function TitlePage() {
             <GameLink className="btn red" href="/departments" label="🛡️ Clans">🛡️ Clans</GameLink>
           </motion.div>
           <p className="tagline">Zwei Profs, eine Wahl. Ohne Login spielst du im Training — mit ETH-Mail zählt deine Stimme. Figuren sind gezeichnet, keine echten Fotos.</p>
+          <LegalLinks className="title-legal" />
         </div>
       </motion.div>
     </div>

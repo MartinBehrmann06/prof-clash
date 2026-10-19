@@ -69,10 +69,11 @@ export type VoteResult = {
   levelUp: boolean;
 };
 
-export type RankedProf = Prof & { rank: number };
+/** rank is null until the professor has MIN_DUELS counted duels */
+export type RankedProf = Prof & { rank: number | null };
 
 export type ProfDetail = Prof & {
-  rank: number;
+  rank: number | null;
   courses: (CourseRef & { program: string })[];
   depts: { name: string; elo: number; wins: number; losses: number; league: LeagueKey }[];
 };

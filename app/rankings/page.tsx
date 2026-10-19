@@ -7,10 +7,11 @@ import { DEPARTMENTS, deptByName } from '@/lib/departments';
 import { useProfile } from '@/components/Profile';
 import { Figure } from '@/components/Figure';
 import { LeagueBadge, Trophies } from '@/components/art';
+import { MIN_DUELS } from '@/lib/game';
 import type { RankedProf } from '@/lib/types';
 
 const REFRESH_MS = 15000; // rankings stay in sync; rank changes glide into place
-const PAGE = 100;
+const PAGE = 50;
 
 export default function RankingsPage() {
   const { profile } = useSession();
@@ -36,7 +37,6 @@ export default function RankingsPage() {
     const s = q.trim().toLowerCase();
     return s ? rows.filter((p) => `${p.name} ${p.department} ${p.field}`.toLowerCase().includes(s)) : rows;
   }, [rows, q]);
-  const anyVotes = !!rows?.some((p) => p.wins + p.losses > 0);
   const deptName = DEPARTMENTS.find((d) => d.id === dept)?.name;
 
   return (
@@ -67,24 +67,23 @@ export default function RankingsPage() {
         <span className="ribbon">{scope === 'all' ? 'Hall of Fame' : `Clan D-${DEPARTMENTS.find((d) => d.id === dept)?.code}`}</span>
         {!rows ? <div className="loading" style={{ minHeight: 240, color: 'var(--ink)' }}><span className="spin">🏆</span></div> : (
           <LayoutGroup>
-            {!anyVotes && !q && <div className="empty">Noch keine gezählten Duelle — alle starten mit 1200 🏆.</div>}
+            {!rows.some((p) => p.rank != null) && !q && <div className="empty">Noch niemand hat {MIN_DUELS} gezählte Duelle — dann gibt es die ersten Ränge.</div>}
             {list.length === 0 && q && <div className="empty">Keine Treffer.</div>}
             <AnimatePresence initial={false}>
               {list.slice(0, limit).map((p) => {
                 const d = deptByName(p.department);
-                const top = anyVotes && p.rank <= 3 && !q;
+                const top = p.rank != null && p.rank <= 3 && !q;
                 return (
                   <motion.button key={p.id} type="button" className={`row ${top ? 'top' : ''}`} onClick={() => open(p)}
                     layout="position" transition={MOTION.soft} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: MOTION.fade }}>
-                    <span className="rk num">{top ? <span className={`medal m${p.rank}`}>{p.rank}</span> : p.rank}</span>
+                    <span className="rk num">{top ? <span className={`medal m${p.rank}`}>{p.rank}</span> : p.rank ?? '–'}</span>
                     {openId === p.id ? <span className="frame round" style={{ width: 52 }} /> : (
                       <motion.span layoutId={`portrait-${p.id}`} transition={MOTION.snappy} className="frame round" style={{ width: 52 }}>
                         <Figure id={p.id} name={p.name} department={p.department} />
                       </motion.span>
                     )}
                     <span className="who"><b>{p.name}</b><small>🛡 D-{d.code} · {p.field || p.relationship}</small></span>
-                    <LeagueBadge league={p.league} />
-                    <Trophies n={p.elo} />
+                    {p.rank != null ? <><LeagueBadge league={p.league} /><Trophies n={p.elo} /></> : <span className="chip unranked" title={`Rang ab ${MIN_DUELS} Duellen`}>Neu</span>}
                     <span className="n num">{p.wins + p.losses} Duelle</span>
                   </motion.button>
                 );
@@ -94,7 +93,7 @@ export default function RankingsPage() {
         )}
       </div>
       {rows && list.length > limit && <div style={{ textAlign: 'center', marginTop: 18 }}><button className="btn sm blue" onClick={() => setLimit(limit + PAGE)}>Mehr anzeigen</button></div>}
-      <p className="legend">Trophäen = Elo der Profs. Dein eigener Fortschritt (Level ⭐) steht oben rechts und zählt hier nicht mit. Training-Duelle ohne Login werden nicht gezählt.</p>
+      <p className="legend">Trophäen = Elo der Profs. Einen Rang gibt es erst ab {MIN_DUELS} gezählten Duellen; wer weniger hat, steht als „Neu“ alphabetisch darunter. Dein eigener Fortschritt (Level ⭐) steht oben rechts und zählt hier nicht mit. Training-Duelle ohne Login werden nicht gezählt.</p>
     </div>
   );
 }

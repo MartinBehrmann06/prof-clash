@@ -31,6 +31,12 @@ scraper/          VVZ scraper (Python)
 
 In development, `/dev/figures` shows a gallery of generated figures.
 
+## Fairness and legal
+
+- A professor only gets a rank (and a visible trophy count) after `MIN_DUELS` (5) counted duels (`lib/game.ts`). Below that they show as “Neu”, listed alphabetically.
+- Removal requests: `npm run hide -- <id or name>` hides a professor everywhere (rankings, rosters, duels, profile). Use `--undo` to show them again and `--list` to see all hidden professors. Re-seeding keeps them hidden.
+- `/impressum` and `/datenschutz` read the operator's name, place and contact email from `NEXT_PUBLIC_OPERATOR_NAME`, `NEXT_PUBLIC_OPERATOR_PLACE` and `NEXT_PUBLIC_CONTACT_EMAIL`. Set these in Vercel.
+
 ## Run locally
 
 ```bash

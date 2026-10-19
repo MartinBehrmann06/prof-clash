@@ -42,7 +42,7 @@ export default function BattlePage() {
             : <><p>Wähle Studiengang und Semester, damit du über deine eigenen Professoren abstimmst.</p><GameLink className="btn sm gold" href="/setup">Einrichten</GameLink></>}
         </div>
       )}
-      <p className="note">Unabhängiges Studierendenprojekt, nicht offiziell von der ETH Zürich. Daten aus dem Vorlesungsverzeichnis; Figuren sind gezeichnet.</p>
+      <p className="note">Daten aus dem Vorlesungsverzeichnis der ETH; alle Figuren sind gezeichnet.</p>
     </div>
   );
 }

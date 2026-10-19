@@ -2,6 +2,8 @@
 
 export const START_ELO = 1200;
 export const K = 32;
+/** A professor only gets a rank after this many counted duels — a few votes are noise, not a verdict */
+export const MIN_DUELS = 5;
 
 export function expected(a: number, b: number) {
   return 1 / (1 + 10 ** ((b - a) / 400));

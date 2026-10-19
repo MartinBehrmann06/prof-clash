@@ -5,7 +5,7 @@ import { ToastProvider } from '@/lib/client/feedback';
 import { ProfileProvider } from '@/components/Profile';
 import { CloudTransition } from '@/components/CloudTransition';
 import { Motion } from '@/components/Motion';
-import { Chrome } from '@/components/Chrome';
+import { Chrome, Footer } from '@/components/Chrome';
 import './globals.css';
 
 const display = Lilita_One({ weight: '400', subsets: ['latin'], variable: '--font-display' });
@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ProfileProvider>
                 <Chrome />
                 <main id="app">{children}</main>
+                <Footer />
               </ProfileProvider>
             </CloudTransition>
           </ToastProvider>

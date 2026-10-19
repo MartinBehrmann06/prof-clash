@@ -7,14 +7,15 @@ import type { Matchup } from '@/lib/types';
 
 export const GET = handler(async (req): Promise<Matchup> => {
   const v = await requireProfile(await requireUser(req));
-  const ids = v.profs;
+  // professors who asked to be removed drop out of existing rosters too
+  const profs = new Map((await all<any>('SELECT * FROM professors WHERE id = ANY($1) AND NOT hidden', [v.profs])).map((p) => [p.id as number, p]));
+  const ids = v.profs.filter((id) => profs.has(id));
   const voted = new Set((await all<{ pair: string }>('SELECT pair FROM votes WHERE user_id = $1', [v.user_id])).map((r) => r.pair));
   const open: [number, number][] = [];
   for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) if (!voted.has(pairKey(ids[i], ids[j]))) open.push([ids[i], ids[j]]);
   if (!open.length) return { done: true, me: await profileSummary(v) };
 
   // Prefer professors this student has judged least, then close Elo for exciting battles.
-  const profs = new Map((await all<any>('SELECT * FROM professors WHERE id = ANY($1)', [ids])).map((p) => [p.id as number, p]));
   const seen = new Map(ids.map((id) => [id, 0]));
   for (const pr of voted) for (const id of pr.split('-').map(Number)) seen.set(id, (seen.get(id) || 0) + 1);
   const score = ([a, b]: [number, number]) =>

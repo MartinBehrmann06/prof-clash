@@ -9,3 +9,21 @@ export function Chrome() {
   if (path === '/') return null;
   return <><Sky /><TopBar /></>;
 }
+
+/** Legal links at the bottom of every page except the title screen (it has its own) */
+export function Footer() {
+  const path = usePathname();
+  if (path === '/') return null;
+  return <LegalLinks className="site-foot" />;
+}
+
+export function LegalLinks({ className }: { className?: string }) {
+  return (
+    <footer className={className}>
+      <span>Unabhängiges Studierendenprojekt · nicht offiziell von der ETH Zürich</span>
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <a href="/impressum#entfernen">Eintrag entfernen</a>
+    </footer>
+  );
+}

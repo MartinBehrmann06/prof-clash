@@ -170,3 +170,10 @@ alter table profiles add column if not exists eth_user text;
 update profiles set eth_user = lower(split_part(email, '@', 1)) where eth_user is null;
 alter table profiles alter column eth_user set not null;
 create unique index if not exists profiles_eth_user on profiles (eth_user);
+
+-- ---------------------------------------------------------------
+-- v5: professors can ask to be removed. Hidden professors disappear from
+-- rankings, rosters, matchups and profiles (scripts/hide.mjs). Kept as a
+-- flag so a re-seed from the VVZ doesn't bring them back.
+-- ---------------------------------------------------------------
+alter table professors add column if not exists hidden boolean not null default false;

@@ -59,7 +59,7 @@ type OfferingRow = ProfRow & { title: string; course_semester: number | null; te
 export async function buildRoster(programId: number, semester: number, startTerm: string): Promise<Roster & { allowed: Set<number> }> {
   const rows = await all<OfferingRow>(`SELECT c.title, c.semester AS course_semester, c.term, p.* FROM courses c
     JOIN course_professors cp ON cp.course_id = c.id JOIN professors p ON p.id = cp.prof_id
-    WHERE c.program_id = $1 ORDER BY c.title`, [programId]);
+    WHERE c.program_id = $1 AND NOT p.hidden ORDER BY c.title`, [programId]);
   const termsWithData = [...new Set(rows.map((r) => r.term).filter(Boolean) as string[])].sort();
   const maxSem = Math.max(6, semester, ...rows.map((r) => r.course_semester || 0));
   const groups: RosterGroup[] = [];

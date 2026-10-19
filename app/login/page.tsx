@@ -99,6 +99,7 @@ function Login() {
                   value={email} onChange={(e) => setEmail(e.target.value)} /></label>
               <p className="msg" role="alert">{msg}</p>
               <button className="btn" type="submit" disabled={busy}>{busy ? 'Wird gesendet …' : '📨 Code senden'}</button>
+              <p style={{ margin: '4px 0 0', fontSize: 12, textAlign: 'center' }}>Wir speichern nur, was das Spiel braucht — siehe <a href="/datenschutz" style={{ textDecoration: 'underline' }}>Datenschutz</a>.</p>
             </motion.form>
           ) : (
             <motion.form key="code" noValidate onSubmit={(e) => { e.preventDefault(); if (digits.every(Boolean)) verify(digits.join('')); }}
