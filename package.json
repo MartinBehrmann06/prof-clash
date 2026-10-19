@@ -4,10 +4,17 @@
   "private": true,
   "description": "1v1 Elo battles between ETH Zurich bachelor professors",
   "type": "module",
-  "engines": { "node": ">=22.5" },
+  "engines": {
+    "node": ">=22.9"
+  },
   "scripts": {
-    "start": "node server.js",
-    "seed": "node seed.js",
+    "start": "node --env-file-if-exists=.env server.js",
+    "db:setup": "node --env-file-if-exists=.env seed.js --schema",
+    "seed": "node --env-file-if-exists=.env seed.js",
     "scrape": "cd scraper && python3 dump_sections.py sections.json && python3 scrape_courses.py sections.json courses.json && python3 augment.py courses.json && python3 photo_index.py photo_index.json && python3 scrape_people.py courses.json people.json ../public/img/profs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "pg": "^8.23.1"
   }
 }

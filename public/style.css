@@ -353,6 +353,18 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
 @keyframes dockIn { from { transform: translateY(110%); } }
 .dock .count { font-family: var(--display); font-size: 20px; color: #fff; -webkit-text-stroke: 1px var(--ink); paint-order: stroke fill; text-shadow: 0 2px 0 var(--ink); }
 
+/* ---------------- LOGIN ---------------- */
+.login-panel { max-width: 520px; margin: 0 auto; padding-top: 40px; }
+.login-step { display: grid; gap: 14px; }
+.login-step .search { max-width: none; }
+.code-input { font: 400 34px var(--display); letter-spacing: .35em; text-align: center; padding: 10px; }
+.login-msg { margin: 0; min-height: 1.2em; color: var(--red-3); font-size: 14px; }
+.login-sent { margin: 0; color: var(--ink-soft); }
+.login-links { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.linkish { background: none; border: 0; padding: 4px 0; cursor: pointer; text-decoration: underline; color: var(--ink-soft); font-weight: 900; }
+.linkish:disabled { cursor: default; text-decoration: none; opacity: .6; }
+.me-chip #logout { padding: 6px 12px; }
+
 /* ---------------- BATTLE ---------------- */
 .battle-wrap { max-width: 1040px; margin: 0 auto; padding: 18px 16px 60px; }
 .hud { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }

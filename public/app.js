@@ -6,8 +6,16 @@ const app = $('#app');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+/* Supabase handles the ETH email login; the Node API trusts its access token */
+let sb = null;
+const ETH_EMAIL = /^[^@\s]+@([a-z0-9-]+\.)*ethz\.ch$/i;
+async function authHeader() {
+  const { data } = sb ? await sb.auth.getSession() : { data: {} };
+  return data?.session ? { Authorization: `Bearer ${data.session.access_token}` } : {};
+}
+
 async function api(path, opts = {}) {
-  const res = await fetch(path, { headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin', ...opts,
+  const res = await fetch(path, { headers: { 'Content-Type': 'application/json', ...(await authHeader()) }, credentials: 'same-origin', ...opts,
     body: opts.body ? JSON.stringify(opts.body) : undefined });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw Object.assign(new Error(data.error || 'Something went wrong'), { status: res.status });
@@ -158,14 +166,21 @@ function confetti(x = innerWidth / 2, y = innerHeight / 3, n = 36) {
 /* ============================================================
    State & top bar
    ============================================================ */
-const state = { meta: null, me: null };
+const state = { meta: null, user: null, me: null }; // user = logged-in ETH account, me = their roster/profile
+
+async function refreshMe() {
+  try { const r = await api('/api/me'); state.user = r.user; state.me = r.profile; } catch { state.user = null; state.me = null; }
+  renderMe();
+}
 
 function renderMe() {
   const chip = $('#meChip');
-  if (!state.me) { chip.hidden = true; return; }
   chip.hidden = false;
-  chip.innerHTML = `<a href="#/setup" title="Edit your roster" style="display:flex;align-items:center;gap:8px;text-decoration:none">${xpStar(state.me.level)}
-    <div class="xp-bar" aria-label="XP progress"><i style="width:${Math.round(levelProgress(state.me.xp) * 100)}%"></i></div></a>`;
+  if (!state.user) { chip.innerHTML = `<a class="btn small gold" href="#/login">Log in</a>`; return; }
+  chip.innerHTML = `${state.me ? `<a href="#/setup" title="Edit your roster" style="display:flex;align-items:center;gap:8px;text-decoration:none">${xpStar(state.me.level)}
+    <div class="xp-bar" aria-label="XP progress"><i style="width:${Math.round(levelProgress(state.me.xp) * 100)}%"></i></div></a>` : ''}
+    <button class="btn small stone" id="logout" title="Log out ${esc(state.user.email)}" aria-label="Log out">⏻</button>`;
+  $('#logout').addEventListener('click', async () => { await sb.auth.signOut(); toast('Logged out — see you on the battlefield'); });
 }
 
 function setNav(name) {
@@ -175,7 +190,7 @@ function setNav(name) {
 /* ============================================================
    Router
    ============================================================ */
-const routes = { '': landing, setup, battle, leaderboard };
+const routes = { '': landing, login, setup, battle, leaderboard };
 let cleanup = null;
 async function route() {
   cleanup?.(); cleanup = null;
@@ -221,7 +236,7 @@ async function landing() {
           <div class="fighter right">${mini(f2)}</div>
         </div>
         <div class="hero-ctas">
-          <a class="btn huge pulse" href="${state.me ? '#/battle' : '#/setup'}">⚔️ ${state.me ? 'Continue battle' : 'Start battle'}</a>
+          <a class="btn huge pulse" href="${state.me ? '#/battle' : state.user ? '#/setup' : '#/login/setup'}">⚔️ ${state.me ? 'Continue battle' : 'Start battle'}</a>
           <a class="btn gold" href="#/leaderboard" style="align-self:center">🏆 Leaderboard</a>
         </div>
       </div>
@@ -295,9 +310,83 @@ function podiumCol(p, place) {
 function bindPodium(root) { $$('[data-prof]', root).forEach((el) => el.addEventListener('click', () => openProf(Number(el.dataset.prof)))); }
 
 /* ============================================================
+   LOGIN — ETH email + 6-digit confirmation code
+   ============================================================ */
+async function login(next) {
+  const go = () => { location.hash = `#/${next || (state.me ? 'battle' : 'setup')}`; };
+  if (state.user) return go();
+  let email = '', cooldown = 0, timer = 0;
+  app.innerHTML = `<div class="view view-enter">
+    <div class="setup-head"><h1>Join the clan</h1><p>Only ETH Zurich students and staff can battle. We'll email you a code to confirm it's really you.</p></div>
+    <div class="panel login-panel"><div class="panel-title stroke">Log in</div>
+      <form id="emailForm" class="login-step" novalidate>
+        <label class="field"><span>Your ETH email</span>
+          <input class="search" id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@student.ethz.ch" required /></label>
+        <p class="login-msg" id="emailMsg" role="alert"></p>
+        <button class="btn" id="sendBtn" type="submit">📨 Send me a code</button>
+      </form>
+      <form id="codeForm" class="login-step" novalidate hidden>
+        <p class="login-sent">We sent a code to <b id="sentTo"></b>. It can take a minute — check spam too.</p>
+        <label class="field"><span>Confirmation code</span>
+          <input class="search code-input" id="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="8" placeholder="••••••" required /></label>
+        <p class="login-msg" id="codeMsg" role="alert"></p>
+        <button class="btn" id="verifyBtn" type="submit">⚔️ Confirm &amp; enter</button>
+        <div class="login-links"><button type="button" class="linkish" id="resend"></button><button type="button" class="linkish" id="changeEmail">Use another email</button></div>
+      </form>
+    </div></div>`;
+
+  const emailIn = $('#email'), codeIn = $('#code');
+  const paintResend = () => { const b = $('#resend'); b.disabled = cooldown > 0; b.textContent = cooldown > 0 ? `Resend code in ${cooldown}s` : 'Resend code'; };
+  const startCooldown = () => {
+    cooldown = 60; paintResend(); clearInterval(timer);
+    timer = setInterval(() => { cooldown--; paintResend(); if (cooldown <= 0) clearInterval(timer); }, 1000);
+  };
+  cleanup = () => clearInterval(timer);
+
+  async function send() {
+    const msg = $('#emailMsg');
+    email = emailIn.value.trim().toLowerCase();
+    if (!ETH_EMAIL.test(email)) { msg.textContent = 'That needs to be an ETH address, e.g. you@student.ethz.ch'; emailIn.focus(); return false; }
+    if (!sb) { msg.textContent = 'Login is not configured on this server yet.'; return false; }
+    msg.textContent = ''; $('#sendBtn').disabled = true;
+    const { error } = await sb.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
+    $('#sendBtn').disabled = false;
+    if (error) {
+      // the database rejects non-ETH signups; Supabase surfaces that as a generic "Database error"
+      msg.textContent = /database/i.test(error.message) ? 'Only ETH Zurich email addresses can sign up.'
+        : /rate|seconds/i.test(error.message) ? 'Too many codes requested — wait a minute and try again.' : error.message;
+      return false;
+    }
+    $('#sentTo').textContent = email;
+    $('#emailForm').hidden = true; $('#codeForm').hidden = false;
+    startCooldown(); codeIn.value = ''; codeIn.focus();
+    return true;
+  }
+
+  $('#emailForm').addEventListener('submit', (e) => { e.preventDefault(); send(); });
+  $('#resend').addEventListener('click', async () => { if (cooldown <= 0 && await send()) toast('New code sent 📨'); });
+  $('#changeEmail').addEventListener('click', () => { $('#codeForm').hidden = true; $('#emailForm').hidden = false; emailIn.focus(); });
+  codeIn.addEventListener('input', () => { codeIn.value = codeIn.value.replace(/\D/g, ''); });
+  $('#codeForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = $('#codeMsg'), token = codeIn.value.trim();
+    if (!/^\d{6,8}$/.test(token)) { msg.textContent = 'Enter the code from the email.'; return; }
+    msg.textContent = ''; $('#verifyBtn').disabled = true;
+    const { error } = await sb.auth.verifyOtp({ email, token, type: 'email' });
+    $('#verifyBtn').disabled = false;
+    if (error) { msg.textContent = /expired|invalid/i.test(error.message) ? 'That code is wrong or expired — try again or resend.' : error.message; return; }
+    await refreshMe();
+    toast('Welcome to the clan! 🛡️'); confetti(innerWidth / 2, innerHeight / 3, 40);
+    go();
+  });
+  emailIn.focus();
+}
+
+/* ============================================================
    SETUP — department, programme, semester, roster
    ============================================================ */
 async function setup() {
+  if (!state.user) { location.hash = '#/login/setup'; return; }
   const meta = state.meta || (state.meta = await api('/api/meta'));
   const me = state.me;
   let dept = me ? meta.depts.find((d) => d.programs.some((p) => p.id === me.programId)) : null;
@@ -409,6 +498,7 @@ async function setup() {
    BATTLE
    ============================================================ */
 async function battle() {
+  if (!state.user) { location.hash = '#/login/battle'; return; }
   if (!state.me) { location.hash = '#/setup'; return; }
   app.innerHTML = `<div class="battle-wrap view-enter">
     <div class="hud">
@@ -658,7 +748,16 @@ function bindSheetDrag() {
    Boot
    ============================================================ */
 (async () => {
-  try { state.me = await api('/api/me'); } catch { state.me = null; }
-  renderMe();
+  try {
+    const cfg = await api('/api/config');
+    sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true } });
+    sb.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_OUT') {
+        state.user = null; state.me = null; renderMe();
+        if (/^#\/(setup|battle)/.test(location.hash)) location.hash = '#/';
+      }
+    });
+  } catch (e) { console.error('auth unavailable', e); }
+  await refreshMe();
   route();
 })();

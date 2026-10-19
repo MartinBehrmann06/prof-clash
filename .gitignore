@@ -1,10 +1,11 @@
 node_modules/
 .DS_Store
 
-# local database (re-create with: npm run seed)
-profclash.db
-profclash.db-shm
-profclash.db-wal
+# secrets
+.env
+
+# old local SQLite database
+profclash.db*
 
 # scraper intermediates & logs
 scraper/*.log
