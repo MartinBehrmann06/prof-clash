@@ -181,6 +181,7 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
   }, [programId, semester]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const previous = useMemo(() => new Set(profile?.profIds ?? []), [profile]);
+  const allowed = useMemo(() => new Set(roster?.groups.filter((g) => g.status !== 'future').flatMap((g) => g.entries.map((e) => e.prof.id)) ?? []), [roster]);
   const toggle = (id: number) => setSelected((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
   if (error) return <div className="panel done-panel"><p>{error}</p></div>;
@@ -205,9 +206,12 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
               <div className="prof-grid">
                 {g.entries.map(({ prof, courses }) => {
                   const sel = selected.has(prof.id);
+                  // in a locked future semester, someone you already had stays shown as picked
+                  const alreadyHad = future && allowed.has(prof.id);
                   return (
-                    <button type="button" key={prof.id} className={`prof-pick ${sel ? 'sel' : ''} ${future ? 'future' : ''}`} disabled={future}
-                      role="checkbox" aria-checked={sel} onClick={() => toggle(prof.id)}>
+                    <button type="button" key={prof.id} className={`prof-pick ${sel ? 'sel' : ''} ${future && !alreadyHad ? 'future' : ''} ${alreadyHad ? 'echo' : ''}`}
+                      disabled={future} role="checkbox" aria-checked={sel} onClick={() => toggle(prof.id)}
+                      title={alreadyHad ? 'You already had this professor — picked in an earlier semester' : undefined}>
                       <span className="check">✔</span>
                       {locked && !future && g.status === 'had' && !previous.has(prof.id) && <span className="new-badge">NEW</span>}
                       <Portrait p={prof} /><span className="nm">{prof.name}</span><span className="cs">{courses.slice(0, 2).join(' · ')}</span>

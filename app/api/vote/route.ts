@@ -9,7 +9,7 @@ import type { VoteResult } from '@/lib/types';
 const lastVote = new Map<string, number>();
 
 export const POST = handler(async (req): Promise<VoteResult> => {
-  const v = await requireProfile((await requireUser(req)).id);
+  const v = await requireProfile(await requireUser(req));
   const { winner, loser } = await body<{ winner: number; loser: number }>(req);
   const w = Number(winner), l = Number(loser);
   const pair = pairKey(w, l);

@@ -13,7 +13,7 @@ import type { Profile } from '@/lib/types';
 export const POST = handler(async (req): Promise<Profile> => {
   const user = await requireUser(req);
   const b = await body<{ programId?: number; semester?: number; profIds?: number[] }>(req);
-  const existing = await getProfile(user.id);
+  const existing = await getProfile(user);
   const semester = Number(b.semester);
   if (existing && b.programId && Number(b.programId) !== existing.program_id) throw new HttpError(403, 'Your clan is locked — you can’t change your programme');
   if (existing && semester < existing.semester) throw new HttpError(400, 'Your semester can only go up');
@@ -26,8 +26,12 @@ export const POST = handler(async (req): Promise<Profile> => {
   const profIds = [...new Set((b.profIds || []).map(Number))].filter((id) => allowed.has(id));
   if (profIds.length < 2) throw new HttpError(400, 'pick at least two professors you had');
 
-  await one(`INSERT INTO profiles (user_id, email, program_id, semester, start_term, profs) VALUES ($1, $2, $3, $4, $5, $6)
-    ON CONFLICT (user_id) DO UPDATE SET semester = excluded.semester, profs = excluded.profs, pending_pair = NULL`,
-    [user.id, user.email, programId, semester, startTerm, profIds]);
-  return profileSummary((await getProfile(user.id))!);
+  if (existing) {
+    await one('UPDATE profiles SET semester = $1, profs = $2, pending_pair = NULL WHERE eth_user = $3', [semester, profIds, user.ethUser]);
+  } else {
+    // eth_user is unique: a second address of the same person can't open a second profile
+    await one(`INSERT INTO profiles (user_id, email, eth_user, program_id, semester, start_term, profs) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+      [user.id, user.email, user.ethUser, programId, semester, startTerm, profIds]);
+  }
+  return profileSummary((await getProfile(user))!);
 });

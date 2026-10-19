@@ -6,7 +6,7 @@ import { pairKey } from '@/lib/server/pairs';
 import type { Matchup } from '@/lib/types';
 
 export const GET = handler(async (req): Promise<Matchup> => {
-  const v = await requireProfile((await requireUser(req)).id);
+  const v = await requireProfile(await requireUser(req));
   const ids = v.profs;
   const voted = new Set((await all<{ pair: string }>('SELECT pair FROM votes WHERE user_id = $1', [v.user_id])).map((r) => r.pair));
   const open: [number, number][] = [];

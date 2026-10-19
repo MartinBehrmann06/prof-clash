@@ -6,6 +6,6 @@ import type { Me } from '@/lib/types';
 export const GET = handler(async (req): Promise<Me> => {
   const user = await authUser(req);
   if (!user) return { user: null, profile: null };
-  const v = await getProfile(user.id);
+  const v = await getProfile(user);
   return { user, profile: v ? await profileSummary(v) : null };
 });

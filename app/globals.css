@@ -602,3 +602,5 @@ h1, h2, h3 { margin: 0; line-height: 1.05; }
 .modal { animation: none; }
 .lb-row { width: 100%; font: inherit; color: inherit; text-align: left; background: none; }
 .pod { cursor: pointer; }
+.prof-pick.echo { opacity: .75; cursor: default; }
+.prof-pick.echo:not(.sel) { filter: grayscale(.85); opacity: .45; }

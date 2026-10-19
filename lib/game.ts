@@ -39,5 +39,8 @@ export const levelProgress = (xp: number) => {
   return (xp - a) / (b - a);
 };
 
+/** ETH username: name@ethz.ch and name@student.ethz.ch are the same person */
+export const ethUser = (email: string) => email.split('@')[0].toLowerCase();
+
 /** Same rule as public.is_eth_email() in supabase/schema.sql */
 export const isEthEmail = (email?: string | null) => /^[^@\s]+@([a-z0-9-]+\.)*ethz\.ch$/i.test(email || '');

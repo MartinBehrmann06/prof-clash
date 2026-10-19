@@ -1,4 +1,4 @@
-import re, html, time, http.cookiejar, urllib.request, urllib.parse
+import os, re, html, time, http.cookiejar, urllib.request, urllib.parse
 
 BASE = 'https://www.vvz.ethz.ch/Vorlesungsverzeichnis/'
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36'
@@ -6,6 +6,8 @@ _jar = http.cookiejar.CookieJar()
 _op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(_jar))
 _op.addheaders = [('User-Agent', UA)]
 _primed = False
+# seconds between requests; raise it if the VVZ starts refusing connections
+DELAY = float(os.environ.get('VVZ_DELAY', '0.4'))
 
 def _open(url):
     """GET with patient retries: VVZ refuses connections when hit too fast."""
@@ -25,7 +27,7 @@ def get(path, **params):
         _open('https://www.vvz.ethz.ch/'); _primed = True
     url = BASE + path + ('?' + urllib.parse.urlencode(params) if params else '')
     r = _open(url)
-    time.sleep(0.4)
+    time.sleep(DELAY)
     return r
 
 def text(s):

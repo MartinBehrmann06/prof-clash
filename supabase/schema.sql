@@ -161,3 +161,12 @@ create index if not exists idx_courses_program_term on courses (program_id, term
 
 -- term in which the student took semester 1; semester k = start_term + (k-1) terms
 alter table profiles add column if not exists start_term text;
+
+-- ---------------------------------------------------------------
+-- v4: one player per ETH username. name@ethz.ch and name@student.ethz.ch
+-- are the same person, so both logins resolve to the same profile/votes.
+-- ---------------------------------------------------------------
+alter table profiles add column if not exists eth_user text;
+update profiles set eth_user = lower(split_part(email, '@', 1)) where eth_user is null;
+alter table profiles alter column eth_user set not null;
+create unique index if not exists profiles_eth_user on profiles (eth_user);

@@ -1,6 +1,7 @@
 import 'server-only';
 import { all, one } from './db';
 import { HttpError } from './http';
+import type { AuthUser } from './auth';
 import { league, levelFor } from '@/lib/game';
 import { termOfSemester } from '@/lib/terms';
 import type { Prof, Profile, Roster, RosterGroup } from '@/lib/types';
@@ -20,16 +21,17 @@ export function toProf(p: ProfRow): Prof {
 // ---------------- profiles ----------------
 
 export type ProfileRow = {
-  user_id: string; email: string; program_id: number; semester: number; start_term: string;
+  user_id: string; email: string; eth_user: string; program_id: number; semester: number; start_term: string;
   profs: number[]; xp: number; pending_pair: string | null; dept_id: number; program_name: string; dept_name: string;
 };
 
-export const getProfile = (userId: string) =>
+/** The player behind a login. Looked up by ETH username, so @ethz.ch and @student.ethz.ch share one profile. */
+export const getProfile = (user: AuthUser) =>
   one<ProfileRow>(`SELECT v.*, p.dept_id, p.name AS program_name, d.name AS dept_name FROM profiles v
-    JOIN programs p ON p.id = v.program_id JOIN departments d ON d.id = p.dept_id WHERE v.user_id = $1`, [userId]);
+    JOIN programs p ON p.id = v.program_id JOIN departments d ON d.id = p.dept_id WHERE v.eth_user = $1`, [user.ethUser]);
 
-export async function requireProfile(userId: string) {
-  const v = await getProfile(userId);
+export async function requireProfile(user: AuthUser) {
+  const v = await getProfile(user);
   if (!v) throw new HttpError(428, 'Set up your roster first');
   return v;
 }
@@ -60,17 +62,18 @@ export async function buildRoster(programId: number, semester: number, startTerm
   const termsWithData = [...new Set(rows.map((r) => r.term).filter(Boolean) as string[])].sort();
   const maxSem = Math.max(6, semester, ...rows.map((r) => r.course_semester || 0));
   const groups: RosterGroup[] = [];
-  const placed = new Set<number>();
+  const inSemesterGroups = new Set<number>();
 
-  const collect = (subset: OfferingRow[]) => {
+  // one card per professor and group, listing the courses they taught in that semester;
+  // a professor who taught you in several semesters (or teaches a later one now) appears in each
+  const collect = (subset: OfferingRow[], skip?: Set<number>) => {
     const byProf = new Map<number, { prof: Prof; courses: string[] }>();
     for (const r of subset) {
-      if (placed.has(r.id) && !byProf.has(r.id)) continue; // already shown in an earlier semester
+      if (skip?.has(r.id)) continue;
       const e = byProf.get(r.id) ?? { prof: toProf(r), courses: [] };
       if (!e.courses.includes(r.title)) e.courses.push(r.title);
       byProf.set(r.id, e);
     }
-    byProf.forEach((_, id) => placed.add(id));
     return [...byProf.values()];
   };
 
@@ -87,13 +90,14 @@ export async function buildRoster(programId: number, semester: number, startTerm
       pick = ofSem.filter((r) => r.term === fallbackTerm);
     }
     const entries = collect(pick);
+    entries.forEach((e) => inSemesterGroups.add(e.prof.id));
     if (entries.length) groups.push({ semester: k, term, status: k <= semester ? 'had' : 'future', fallbackTerm, entries });
   }
 
   // courses whose semester the VVZ doesn't state, from the terms the student was studying
   const studied = new Set(Array.from({ length: semester }, (_, i) => termOfSemester(startTerm, i + 1)));
   const unknown = rows.filter((r) => r.course_semester == null && (studied.has(r.term!) || !termsWithData.some((t) => studied.has(t))));
-  const unknownEntries = collect(unknown);
+  const unknownEntries = collect(unknown, inSemesterGroups); // only people not already listed above
   if (unknownEntries.length) groups.push({ semester: null, term: null, status: 'unknown', entries: unknownEntries });
 
   const allowed = new Set<number>();

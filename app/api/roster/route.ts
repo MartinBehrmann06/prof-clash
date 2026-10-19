@@ -9,7 +9,7 @@ import type { Roster } from '@/lib/types';
 export const GET = handler(async (req): Promise<Roster> => {
   const user = await requireUser(req);
   const url = new URL(req.url);
-  const existing = await getProfile(user.id);
+  const existing = await getProfile(user);
   const programId = existing ? existing.program_id : Number(url.searchParams.get('program'));
   const semester = Number(url.searchParams.get('semester')) || existing?.semester || 1;
   if (!(await one('SELECT 1 FROM programs WHERE id = $1', [programId]))) throw new HttpError(400, 'unknown programme');
