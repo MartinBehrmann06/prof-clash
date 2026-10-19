@@ -38,6 +38,8 @@ export default function ClansPage() {
         <ClanWar key={`${lg.week}-${featured.a.id}`} lg={lg} m={featured} />
       )}
 
+      {lg && <HowItWorks lg={lg} />}
+
       {lg && <WeekendLeague lg={lg} myDept={profile?.deptId} />}
 
       <section style={{ marginTop: 50 }}>
@@ -217,5 +219,33 @@ function MatchRow({ m, i, myDept, showScore, running }: { m: Match; i: number; m
         : `${running ? '' : 'Sieg '}D-${deptById(m.result === 'a' ? m.a.id : m.b.id).code}${running ? ' führt' : ''}`}</small>
       {side(m.b, m.result === 'b')}
     </motion.div>
+  );
+}
+
+/** Plain explanation of the Weekend League rules, in the order a student experiences them */
+function HowItWorks({ lg }: { lg: LeagueData }) {
+  const steps: [string, string][] = [
+    ['Paarung', 'Jedes Wochenende bekommt jeder Clan einen Gegner, zum Beispiel D-INFK gegen D-ITET. Der Spielplan steht fest und ist unten schon sichtbar.'],
+    ['Spielen', 'Du musst nichts Besonderes tun: Spiel einfach normale Duelle. Von Freitag 18:00 bis Sonntag 24:00 zählt jedes Duell auch für deinen Clan.'],
+    ['Limit', `Pro Person zählen nur die ersten ${lg.cap} Duelle des Wochenendes. So kann niemand allein gewinnen, es kommt darauf an, dass viele mitmachen.`],
+    ['Wertung', 'Gezählte Duelle geteilt durch die Mitglieder des Clans. Beispiel: 6 Mitglieder mit zusammen 30 Duellen ergeben 5.0, 3 Mitglieder mit 12 Duellen ergeben 4.0.'],
+    ['Punkte', `Höhere Wertung gewinnt: Sieg 3 Punkte, Unentschieden 1, Niederlage 0. In ${lg.rounds} Wochenenden trifft jeder Clan einmal auf jeden anderen, die Saisontabelle zeigt den Stand.`],
+  ];
+  return (
+    <section style={{ marginTop: 50 }}>
+      <div className="head" style={{ marginBottom: 6 }}>
+        <h2 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>So funktioniert die Weekend League</h2>
+        <p style={{ fontSize: 13 }}>Jedes Wochenende Clan gegen Clan, entschieden durch eure ganz normalen Duelle.</p>
+      </div>
+      <div className="clan-grid">
+        {steps.map(([t, d], i) => (
+          <motion.div key={t} className="panel how-step" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            transition={{ ...MOTION.soft, delay: i * 0.04 }}>
+            <span className="rk num">{i + 1}</span>
+            <span><b>{t}</b><small>{d}</small></span>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 }

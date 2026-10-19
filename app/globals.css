@@ -188,7 +188,7 @@ h3 { --sw: 4px; --sh: 2px; }
 .vs-chip, .vs-shield { padding-bottom: 9%; }
 .title-cta { display: grid; justify-items: center; gap: 14px; }
 .title-cta .ln { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-.tagline { margin: 0; max-width: 540px; text-align: center; color: #fff; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 14px; background: var(--hud); }
+.tagline { margin: 18px 0 0; max-width: 540px; text-align: center; color: #fff; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 14px; background: var(--hud); }
 
 /* ---------------- BATTLE ---------------- */
 .battle { max-width: 1040px; margin: 0 auto; padding: 22px 16px 30px; }
@@ -315,6 +315,10 @@ h3 { --sw: 4px; --sh: 2px; }
 .match-row .mside:last-child { flex-direction: row-reverse; }
 .mside b { font: 400 24px var(--display); color: #fff; -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; text-shadow: 0 2px 0 var(--ink); }
 .mside.lost { opacity: .55; }
+.how-step { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 14px; border-radius: 18px; }
+.how-step .rk { font: 400 22px var(--display); color: #fff; -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; text-align: center; }
+.how-step b { display: block; font: 400 17px/1.15 var(--display); margin-bottom: 4px; }
+.how-step small { font-size: 13px; line-height: 1.4; color: var(--ink-2); }
 
 /* ---------------- LOGIN / SETUP ---------------- */
 .login { max-width: 440px; margin: 30px auto 0; padding-top: 36px; }
