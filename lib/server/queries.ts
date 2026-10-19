@@ -7,14 +7,14 @@ import { termOfSemester } from '@/lib/terms';
 import type { Prof, Profile, Roster, RosterGroup } from '@/lib/types';
 
 type ProfRow = {
-  id: number; name: string; full_name: string; relationship: string; department: string;
+  id: number; name: string; full_name: string; relationship: string; department: string; field: string;
   image: string | null; url: string; elo: number; wins: number; losses: number;
 };
 
 export function toProf(p: ProfRow): Prof {
   return {
     id: p.id, name: p.name, fullName: p.full_name, relationship: p.relationship, department: p.department,
-    image: p.image, url: p.url, elo: Math.round(p.elo), wins: p.wins, losses: p.losses, league: league(p.elo),
+    field: p.field || '', image: p.image, url: p.url, elo: Math.round(p.elo), wins: p.wins, losses: p.losses, league: league(p.elo),
   };
 }
 

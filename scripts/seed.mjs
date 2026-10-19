@@ -16,7 +16,7 @@ const read = (f) => JSON.parse(fs.readFileSync(path.join(scraper, f), 'utf8'));
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 
 const isProf = (p) => /professor/i.test(p.relationship || '') || /^Prof\./.test(p.fullName || '');
-const cleanName = (n) => n.replace(/\(.*?\)/g, '').replace(/^((Prof\.|Dr\.|PD|em\.)\s*)+/g, '').trim();
+const cleanName = (n) => n.replace(/\(.*?\)/g, '').replace(/[()]/g, '').replace(/^((Prof\.|Dr\.|PD|em\.)\s*)+/g, '').replace(/\s+/g, ' ').trim();
 const termIdx = (t) => Number(t.slice(0, 4)) * 2 + (t.endsWith('W') ? 1 : 0);
 
 // --- gather offerings from all term files ---

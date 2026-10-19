@@ -6,6 +6,7 @@ export type Prof = {
   fullName: string;
   relationship: string;
   department: string;
+  field: string;
   image: string | null;
   url: string;
   elo: number;

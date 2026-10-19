@@ -3,8 +3,8 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion, useAnimate } from 'motion/react';
 import { getSupabase, useSession } from '@/lib/client/session';
-import { confetti, useToast } from '@/lib/client/feedback';
-import { spring } from '@/lib/client/motion';
+import { useToast } from '@/lib/client/feedback';
+import { MOTION } from '@/lib/client/motion';
 import { isEthEmail } from '@/lib/game';
 
 export default function LoginPage() {
@@ -28,7 +28,7 @@ function Login() {
   const boxes = useRef<(HTMLInputElement | null)[]>([]);
   const [scope, animate] = useAnimate();
 
-  useEffect(() => { if (user) router.replace(`/${next || (profile ? 'battle' : 'setup')}`); }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (user) router.replace(next ? `/${next}` : profile ? '/' : '/setup'); }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (cooldown <= 0) return;
     const t = setTimeout(() => setCooldown(cooldown - 1), 1000);
@@ -40,14 +40,14 @@ function Login() {
 
   async function send() {
     const e = email.trim().toLowerCase();
-    if (!isEthEmail(e)) { fail('That needs to be an ETH address, e.g. you@student.ethz.ch'); return false; }
+    if (!isEthEmail(e)) { fail('Bitte eine ETH-Adresse verwenden, z. B. name@student.ethz.ch'); return false; }
     setMsg(''); setBusy(true);
     const { error } = await (await getSupabase()).auth.signInWithOtp({ email: e, options: { shouldCreateUser: true } });
     setBusy(false);
     if (error) {
       // the database rejects non-ETH signups; Supabase reports that as a generic "Database error"
-      fail(/database/i.test(error.message) ? 'Only ETH Zurich email addresses can sign up.'
-        : /rate|seconds/i.test(error.message) ? 'Too many codes requested — wait a minute and try again.' : error.message);
+      fail(/database/i.test(error.message) ? 'Nur ETH-Adressen können sich anmelden.'
+        : /rate|seconds/i.test(error.message) ? 'Zu viele Codes angefordert — bitte kurz warten.' : error.message);
       return false;
     }
     setEmail(e); setStep('code'); setDigits(Array(LEN).fill('')); setCooldown(RESEND_AFTER);
@@ -60,12 +60,11 @@ function Login() {
     const { error } = await (await getSupabase()).auth.verifyOtp({ email, token: code, type: 'email' });
     setBusy(false);
     if (error) {
-      fail(/expired|invalid/i.test(error.message) ? 'Wrong or expired code — use the newest email, or resend.' : error.message);
+      fail(/expired|invalid/i.test(error.message) ? 'Code falsch oder abgelaufen — neueste Mail verwenden oder neu senden.' : error.message);
       setDigits(Array(LEN).fill('')); boxes.current[0]?.focus();
       return;
     }
-    confetti(innerWidth / 2, innerHeight / 3, 50);
-    toast('Welcome to the arena! 🛡️');
+    toast('Willkommen in der Prof Arena');
     await refresh();
   }
 
@@ -87,28 +86,28 @@ function Login() {
 
   return (
     <div className="page">
-      <div className="page-head"><span className="eyebrow">Player login</span><h1 className="grad-text">Enter the arena</h1>
-        <p>ETH Zurich students and staff only. We email you a code to prove it’s really you.</p></div>
-      <div className="glass login" ref={scope}>
+      <div className="head center"><span className="eyebrow">Anmelden</span><h1 className="display">Deine Stimme zählen lassen</h1>
+        <p className="muted" style={{ margin: 0, maxWidth: '44ch' }}>Nur mit ETH-Adresse. Wir schicken dir einen 6-stelligen Code — kein Passwort.</p></div>
+      <div className="panel" ref={scope}>
         <AnimatePresence mode="wait" initial={false}>
           {step === 'email' ? (
             <motion.form key="email" noValidate onSubmit={(e) => { e.preventDefault(); send(); }}
-              initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={spring(1, 0.3)}>
-              <label className="field"><span>ETH email</span>
+              initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={MOTION.snappy}>
+              <label className="field"><span>ETH-E-Mail</span>
                 <input className="input" type="email" inputMode="email" autoComplete="email" placeholder="you@student.ethz.ch" autoFocus
                   value={email} onChange={(e) => setEmail(e.target.value)} /></label>
               <p className="msg" role="alert">{msg}</p>
-              <button className="gbtn" type="submit" disabled={busy}>{busy ? 'Sending…' : 'Send code'}</button>
+              <button className="btn" type="submit" disabled={busy}>{busy ? 'Wird gesendet …' : 'Code senden'}</button>
             </motion.form>
           ) : (
             <motion.form key="code" noValidate onSubmit={(e) => { e.preventDefault(); if (digits.every(Boolean)) verify(digits.join('')); }}
-              initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={spring(1, 0.3)}>
-              <p className="muted" style={{ margin: 0 }}>Code sent to <b style={{ color: 'var(--text)' }}>{email}</b>. ETH mail can take 1–2 minutes — check junk too. Use the <b>newest</b> email.</p>
-              <div className="field"><span>6-digit code</span>
+              initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={MOTION.snappy}>
+              <p className="muted" style={{ margin: 0, fontSize: '.9rem' }}>Code an <b style={{ color: 'var(--ink)' }}>{email}</b> gesendet. ETH-Mails brauchen manchmal 1–2 Minuten — auch Junk prüfen. Immer den Code aus der <b>neuesten</b> Mail nehmen.</p>
+              <div className="field"><span>6-stelliger Code</span>
                 <div className="otp">
                   {digits.map((d, i) => (
                     <input key={i} ref={(el) => { boxes.current[i] = el; }} className={d ? 'filled' : ''} inputMode="numeric" autoComplete={i === 0 ? 'one-time-code' : 'off'}
-                      aria-label={`Digit ${i + 1}`} value={d} maxLength={LEN} disabled={busy}
+                      aria-label={`Ziffer ${i + 1}`} value={d} maxLength={LEN} disabled={busy}
                       onChange={(e) => setAt(i, e.target.value)}
                       onKeyDown={(e) => { if (e.key === 'Backspace' && !d && i > 0) boxes.current[i - 1]?.focus(); }}
                       onFocus={(e) => e.target.select()} />
@@ -116,12 +115,12 @@ function Login() {
                 </div>
               </div>
               <p className="msg" role="alert">{msg}</p>
-              <button className="gbtn" type="submit" disabled={busy || !digits.every(Boolean)}>{busy ? 'Checking…' : 'Confirm'}</button>
+              <button className="btn" type="submit" disabled={busy || !digits.every(Boolean)}>{busy ? 'Wird geprüft …' : 'Bestätigen'}</button>
               <div className="links">
                 <button type="button" className="link" disabled={cooldown > 0 || busy}
-                  onClick={async () => { if (await send()) toast('New code sent — the old one no longer works'); }}>
-                  {cooldown > 0 ? `Resend in ${cooldown}s` : 'Resend code'}</button>
-                <button type="button" className="link" onClick={() => { setStep('email'); setMsg(''); }}>Other email</button>
+                  onClick={async () => { if (await send()) toast('Neuer Code gesendet — der alte gilt nicht mehr'); }}>
+                  {cooldown > 0 ? `Erneut senden in ${cooldown}s` : 'Code erneut senden'}</button>
+                <button type="button" className="link" onClick={() => { setStep('email'); setMsg(''); }}>Andere Adresse</button>
               </div>
             </motion.form>
           )}

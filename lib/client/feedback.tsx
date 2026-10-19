@@ -15,7 +15,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   return (
     <Ctx.Provider value={toast}>
       {children}
-      <div className="toast-layer" aria-live="polite">
+      <div className="toasts" aria-live="polite">
         <AnimatePresence>
           {toasts.map((t) => (
             <motion.div key={t.id} className={`toast ${t.kind}`} layout

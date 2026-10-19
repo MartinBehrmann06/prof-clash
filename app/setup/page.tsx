@@ -3,27 +3,32 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'motion/react';
 import { api, useSession } from '@/lib/client/session';
-import { confetti, useToast } from '@/lib/client/feedback';
-import { spring } from '@/lib/client/motion';
+import { useToast } from '@/lib/client/feedback';
+import { MOTION } from '@/lib/client/motion';
 import { currentTerm, isAutumn, termLabel } from '@/lib/terms';
-import { DeptEmblem, Portrait } from '@/components/art';
+import { deptById } from '@/lib/departments';
+import { Portrait } from '@/components/Portrait';
 import type { Department, Meta, Profile, Roster } from '@/lib/types';
 
 type Step = 1 | 2 | 3;
-const STEPS: [string, string][] = [['🛡️', 'Clan'], ['📅', 'Semester'], ['⚔️', 'Roster']];
+const STEPS = ['Department', 'Semester', 'Professoren'];
 
+/**
+ * Setup: department (chosen once, then locked) → semester → the professors you actually had,
+ * looked up per semester in the VVZ of the term you took it.
+ */
 export default function SetupPage() {
   const router = useRouter();
   const { ready, user, profile, setProfile } = useSession();
   const toast = useToast();
-  const locked = !!profile; // the clan is chosen once, then locked
+  const locked = !!profile;
   const [meta, setMeta] = useState<Meta | null>(null);
   const [step, setStep] = useState<Step>(1);
   const [dir, setDir] = useState(1);
   const [deptId, setDeptId] = useState<number | null>(null);
   const [programId, setProgramId] = useState<number | null>(null);
   const [semester, setSemester] = useState<number | null>(null);
-  const [confirming, setConfirming] = useState(false);
+  const [confirm, setConfirm] = useState<number[] | null>(null);
 
   useEffect(() => { if (ready && !user) router.replace('/login?next=setup'); }, [ready, user, router]);
   useEffect(() => { api<Meta>('/api/meta').then(setMeta); }, []);
@@ -35,142 +40,127 @@ export default function SetupPage() {
   const dept = meta?.depts.find((d) => d.id === deptId) ?? null;
   const go = (s: Step) => { setDir(s >= step ? 1 : -1); setStep(s); window.scrollTo({ top: 0 }); };
 
-  if (!meta || !ready || !user) return <div className="loading"><div className="loader" />Loading</div>;
-
-  return (
-    <div className="page">
-      <Stepper step={step} locked={locked} onGo={go} />
-      <AnimatePresence mode="wait" custom={dir} initial={false}>
-        <motion.div key={step} custom={dir} variants={{ enter: (d: number) => ({ opacity: 0, x: 60 * d }), center: { opacity: 1, x: 0 }, exit: (d: number) => ({ opacity: 0, x: -60 * d }) }}
-          initial="enter" animate="center" exit="exit" transition={spring(1, 0.3)}>
-          {step === 1 && <ClanStep meta={meta} deptId={deptId} programId={programId}
-            onDept={(d) => { setDeptId(d.id); setProgramId(d.programs.length === 1 ? d.programs[0].id : null); }}
-            onProgram={setProgramId} onNext={() => go(2)} />}
-          {step === 2 && dept && <SemesterStep dept={dept} programId={programId!} semester={semester} minSemester={profile?.semester ?? 1} locked={locked}
-            onPick={setSemester} onBack={() => go(1)} onNext={() => go(3)} />}
-          {step === 3 && dept && programId && semester && (
-            <RosterStep dept={dept} programId={programId} semester={semester} profile={profile} locked={locked}
-              onBack={() => go(2)}
-              onSave={async (profIds) => {
-                if (!locked) { setConfirming(true); return; }
-                await save(profIds);
-              }}
-              confirming={confirming} onCancelConfirm={() => setConfirming(false)}
-              onConfirmed={async (profIds) => { setConfirming(false); await save(profIds); }} />
-          )}
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-
   async function save(profIds: number[]) {
     try {
       const p = await api<Profile>('/api/profile', { method: 'POST', body: { programId, semester, profIds } });
       setProfile(p);
-      if (!locked) { toast(`🛡️ Welcome to clan ${dept?.name}!`); confetti(innerWidth / 2, innerHeight / 3, 50); }
-      else toast('Roster saved ✔');
-      router.push('/battle');
+      toast(locked ? 'Gespeichert' : `Willkommen bei D-${deptById(p.deptId).code}`);
+      router.push('/');
     } catch (e: any) { toast(e.message, 'err'); }
   }
-}
 
-function Stepper({ step, locked, onGo }: { step: Step; locked: boolean; onGo: (s: Step) => void }) {
+  if (!meta || !ready || !user) return <div className="loading"><div className="spinner" />Lädt</div>;
+
   return (
-    <ol className="stepper" aria-label="Setup steps">
-      {STEPS.map(([ico, label], i) => {
-        const n = (i + 1) as Step, st = n < step ? 'done' : n === step ? 'now' : 'todo';
-        const canGo = n < step && !(locked && n === 1);
-        return (
-          <li key={n} className={st}>
-            {i > 0 && <span className="rail"><motion.i initial={false} animate={{ width: n <= step ? '100%' : '0%' }} transition={spring(1, 0.5)} /></span>}
-            <button type="button" disabled={!canGo} onClick={() => onGo(n)} aria-current={st === 'now' ? 'step' : undefined}>
-              <motion.span className="node" animate={{ scale: st === 'now' ? 1.12 : 1 }} transition={spring(0.6, 0.35)}>{n === 1 && locked ? '🔒' : st === 'done' ? '✓' : ico}</motion.span>
-              <span className="lbl">{label}</span>
+    <div className="page">
+      <nav className="steps" aria-label="Schritte">
+        {STEPS.map((label, i) => {
+          const n = (i + 1) as Step, can = n < step && !(locked && n === 1);
+          return (
+            <button key={n} type="button" disabled={!can} onClick={() => go(n)} className={n === step ? 'on' : n < step ? 'done' : ''} aria-current={n === step ? 'step' : undefined}>
+              <i>{n === 1 && locked ? '🔒' : n < step ? '✓' : n}</i>{label}
             </button>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
-function ClanBanner({ dept, programId, locked }: { dept: Department; programId: number; locked: boolean }) {
-  return (
-    <div className="glass clan-card"><DeptEmblem id={dept.id} />
-      <div><span className="k">Your clan{locked ? ' · 🔒 locked' : ''}</span><b>{dept.name}</b>
-        <small>{dept.programs.find((p) => p.id === programId)?.name} Bachelor</small></div>
+          );
+        })}
+      </nav>
+      <AnimatePresence mode="wait" custom={dir} initial={false}>
+        <motion.div key={step} custom={dir}
+          variants={{ enter: (d: number) => ({ opacity: 0, x: 40 * d }), center: { opacity: 1, x: 0 }, exit: (d: number) => ({ opacity: 0, x: -40 * d, transition: MOTION.exit }) }}
+          initial="enter" animate="center" exit="exit" transition={MOTION.soft}>
+          {step === 1 && <DeptStep meta={meta} deptId={deptId} programId={programId}
+            onDept={(d) => { setDeptId(d.id); setProgramId(d.programs.length === 1 ? d.programs[0].id : null); }}
+            onProgram={setProgramId} onNext={() => go(2)} />}
+          {step === 2 && dept && <SemesterStep dept={dept} programId={programId!} semester={semester} min={profile?.semester ?? 1} locked={locked}
+            onPick={setSemester} onBack={() => go(1)} onNext={() => go(3)} />}
+          {step === 3 && dept && programId && semester && (
+            <RosterStep dept={dept} programId={programId} semester={semester} profile={profile} locked={locked}
+              onBack={() => go(2)} onSave={(ids) => (locked ? save(ids) : setConfirm(ids))} />
+          )}
+        </motion.div>
+      </AnimatePresence>
+      <AnimatePresence>
+        {confirm && dept && <LockDialog dept={dept} programId={programId!} onCancel={() => setConfirm(null)} onConfirm={() => { const ids = confirm; setConfirm(null); save(ids); }} />}
+      </AnimatePresence>
     </div>
   );
 }
 
-const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.03 } } };
-const pop = { hidden: { opacity: 0, y: 16, scale: 0.96 }, show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, bounce: 0.3, visualDuration: 0.4 } } };
+function DeptHeader({ dept, programId, locked }: { dept: Department; programId: number; locked: boolean }) {
+  const d = deptById(dept.id);
+  return (
+    <div className="cta-card" style={{ margin: '0 auto 22px', ['--c' as any]: d.color }}>
+      <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <span className="coinlet">{d.code}</span>
+        <span><b style={{ display: 'block' }}>{dept.name}</b><small className="muted">{dept.programs.find((p) => p.id === programId)?.name} · Bachelor{locked ? ' · festgelegt' : ''}</small></span>
+      </span>
+    </div>
+  );
+}
 
-function ClanStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
-  meta: Meta; deptId: number | null; programId: number | null;
-  onDept: (d: Department) => void; onProgram: (id: number) => void; onNext: () => void;
+function DeptStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
+  meta: Meta; deptId: number | null; programId: number | null; onDept: (d: Department) => void; onProgram: (id: number) => void; onNext: () => void;
 }) {
   const dept = meta.depts.find((d) => d.id === deptId);
   return (
     <>
-      <div className="page-head"><span className="eyebrow">Step 1 · Clan</span><h1>Choose your clan</h1>
-        <p>Your department decides who you can battle — and which ladder your votes shape. <b>You choose once.</b></p></div>
-      <motion.div className="dept-grid" variants={stagger} initial="hidden" animate="show">
-        {meta.depts.map((d) => (
-          <motion.button type="button" variants={pop} key={d.id} className={`dept ${d.id === deptId ? 'sel' : ''}`} onClick={() => onDept(d)}>
-            <DeptEmblem id={d.id} /><b>{d.name}</b><small>{d.programs.length} programme{d.programs.length > 1 ? 's' : ''}</small>
-          </motion.button>
-        ))}
-      </motion.div>
+      <header className="head center"><h1 className="display">Dein Department</h1>
+        <p className="muted" style={{ margin: 0, maxWidth: '50ch' }}>Es bestimmt, über wen du abstimmst und in welche Department-Wertung deine Stimmen fliessen. <b style={{ color: 'var(--ink)' }}>Du wählst es einmal.</b></p></header>
+      <div className="choice-grid">
+        {meta.depts.map((d) => {
+          const s = deptById(d.id);
+          return (
+            <button key={d.id} type="button" className={`choice ${d.id === deptId ? 'on' : ''}`} style={{ ['--c' as any]: s.color }} onClick={() => onDept(d)}>
+              <span className="coinlet">{s.code}</span><span><b>{d.name}</b><small>{d.programs.length} Studiengang{d.programs.length > 1 ? 'e' : ''}</small></span>
+            </button>
+          );
+        })}
+      </div>
       <AnimatePresence>
         {dept && dept.programs.length > 1 && (
-          <motion.div key={dept.id} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={spring(1, 0.35)} style={{ overflow: 'hidden' }}>
-            <h3 className="sub-head">Which programme?</h3>
-            <div className="prog-grid">
+          <motion.div key={dept.id} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={MOTION.soft} style={{ overflow: 'hidden' }}>
+            <h2 className="title" style={{ textAlign: 'center', margin: '30px 0 14px', fontSize: '1.3rem' }}>Studiengang</h2>
+            <div className="choice-grid">
               {dept.programs.map((p) => (
-                <button type="button" key={p.id} className={`prog ${p.id === programId ? 'sel' : ''}`} onClick={() => onProgram(p.id)}>
-                  <b>{p.name}</b><small>{p.profs} professors</small></button>
+                <button key={p.id} type="button" className={`choice ${p.id === programId ? 'on' : ''}`} style={{ ['--c' as any]: deptById(dept.id).color }} onClick={() => onProgram(p.id)}>
+                  <span><b>{p.name}</b><small>{p.profs} Professor:innen</small></span>
+                </button>
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="step-actions"><button className="gbtn xl" disabled={!programId} onClick={onNext}>Next ➜</button></div>
+      <div className="duel-bar" style={{ marginTop: 28 }}><button className="btn" disabled={!programId} onClick={onNext}>Weiter</button></div>
     </>
   );
 }
 
-function SemesterStep({ dept, programId, semester, minSemester, locked, onPick, onBack, onNext }: {
-  dept: Department; programId: number; semester: number | null; minSemester: number; locked: boolean;
-  onPick: (n: number) => void; onBack: () => void; onNext: () => void;
+function SemesterStep({ dept, programId, semester, min, locked, onPick, onBack, onNext }: {
+  dept: Department; programId: number; semester: number | null; min: number; locked: boolean; onPick: (n: number) => void; onBack: () => void; onNext: () => void;
 }) {
   const autumn = isAutumn(currentTerm());
   return (
     <>
-      <ClanBanner dept={dept} programId={programId} locked={locked} />
-      <div className="page-head"><span className="eyebrow">Step 2 · Level</span><h1>Which semester are you in?</h1>
-        <p>It’s {autumn ? 'autumn (HS)' : 'spring (FS)'} — most players are in semester {autumn ? '1, 3 or 5' : '2, 4 or 6'}.
-          We look up who taught each semester back when <b>you</b> took it.</p></div>
-      <motion.div className="levels" variants={stagger} initial="hidden" animate="show">
+      <DeptHeader dept={dept} programId={programId} locked={locked} />
+      <header className="head center"><h1 className="display">In welchem Semester bist du?</h1>
+        <p className="muted" style={{ margin: 0, maxWidth: '50ch' }}>Wir suchen für jedes Semester die Dozierenden aus dem Semester, in dem du es tatsächlich besucht hast.</p></header>
+      <div className="sems">
         {[1, 2, 3, 4, 5, 6].map((n) => (
-          <motion.button type="button" variants={pop} key={n} className={`lvl ${n === semester ? 'sel' : ''} ${(n % 2 === 1) === autumn ? 'now' : ''}`}
-            disabled={locked && n < minSemester} title={locked && n < minSemester ? 'Your semester can only go up' : undefined} onClick={() => onPick(n)}
-            whileHover={{ y: -4 }} transition={spring(0.8, 0.3)}>
-            <span className="n">{n}{n === 6 ? '+' : ''}</span><small>{n % 2 ? 'HS' : 'FS'} · Year {Math.ceil(n / 2)}</small>
-          </motion.button>
+          <button key={n} type="button" className={`sem ${n === semester ? 'on' : ''} ${(n % 2 === 1) === autumn ? 'now' : ''}`}
+            disabled={locked && n < min} title={locked && n < min ? 'Das Semester kann nur steigen' : undefined} onClick={() => onPick(n)}>
+            <b>{n}{n === 6 ? '+' : ''}</b><small>{n % 2 ? 'HS' : 'FS'} · JAHR {Math.ceil(n / 2)}</small>
+          </button>
         ))}
-      </motion.div>
-      <div className="step-actions">
-        {!locked && <button className="gbtn ghost" onClick={onBack}>⬅ Back</button>}
-        <button className="gbtn xl" disabled={!semester} onClick={onNext}>Next ➜</button>
+      </div>
+      <div className="duel-bar" style={{ marginTop: 28 }}>
+        {!locked && <button className="btn ghost" onClick={onBack}>Zurück</button>}
+        <button className="btn" disabled={!semester} onClick={onNext}>Weiter</button>
       </div>
     </>
   );
 }
 
-function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave, confirming, onCancelConfirm, onConfirmed }: {
-  dept: Department; programId: number; semester: number; profile: Profile | null; locked: boolean;
-  onBack: () => void; onSave: (ids: number[]) => void; confirming: boolean; onCancelConfirm: () => void; onConfirmed: (ids: number[]) => void;
+function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave }: {
+  dept: Department; programId: number; semester: number; profile: Profile | null; locked: boolean; onBack: () => void; onSave: (ids: number[]) => void;
 }) {
   const [roster, setRoster] = useState<Roster | null>(null);
   const [selected, setSelected] = useState<Set<number>>(new Set());
@@ -181,9 +171,8 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
     api<Roster>(`/api/roster?program=${programId}&semester=${semester}`).then((r) => {
       setRoster(r);
       const had = r.groups.filter((g) => g.status === 'had').flatMap((g) => g.entries.map((e) => e.prof.id));
-      const allowed = new Set(r.groups.filter((g) => g.status !== 'future').flatMap((g) => g.entries.map((e) => e.prof.id)));
-      // everyone you had is in; previously chosen extras (e.g. "semester unknown") stay picked
-      setSelected(new Set([...had, ...(profile?.profIds ?? []).filter((id) => allowed.has(id))]));
+      const ok = new Set(r.groups.filter((g) => g.status !== 'future').flatMap((g) => g.entries.map((e) => e.prof.id)));
+      setSelected(new Set([...had, ...(profile?.profIds ?? []).filter((id) => ok.has(id))]));
     }).catch((e) => setError(e.message));
   }, [programId, semester]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -191,62 +180,52 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
   const allowed = useMemo(() => new Set(roster?.groups.filter((g) => g.status !== 'future').flatMap((g) => g.entries.map((e) => e.prof.id)) ?? []), [roster]);
   const toggle = (id: number) => setSelected((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
-  if (error) return <div className="glass pad empty">{error}</div>;
-  if (!roster) return <div className="loading"><div className="loader" />Drafting your deck</div>;
+  if (error) return <div className="empty">{error}</div>;
+  if (!roster) return <div className="loading"><div className="spinner" />Professoren werden geladen</div>;
 
   return (
     <>
-      <ClanBanner dept={dept} programId={programId} locked={locked} />
-      <div className="page-head"><span className="eyebrow">Step 3 · Deck</span><h1>Your deck</h1>
-        <p>Everyone who taught you up to semester {semester}, from the VVZ of the term you took each course. <b>Tap to remove</b> anyone you skipped.</p></div>
-      <div className="glass pad">
-        {roster.groups.map((g) => {
-          const future = g.status === 'future';
-          const title = g.semester ? `${future ? '🔒 ' : ''}Semester ${g.semester}` : 'Other mandatory courses';
-          const pill = g.status === 'unknown' ? 'semester not in the VVZ — tap the ones you had'
-            : future ? 'unlocks when you get there'
-            : `${g.term ? termLabel(g.term) : ''} · ${g.entries.length} professor${g.entries.length > 1 ? 's' : ''}`;
-          return (
-            <div key={`${g.semester}-${g.status}`} className={`roster-group ${future ? 'future' : ''}`}>
-              <h3>{title} <span className="chip">{pill}</span></h3>
-              {g.fallbackTerm && !future && <p className="term-note">No VVZ data for {termLabel(g.term!)} yet — showing lecturers from {termLabel(g.fallbackTerm)}.</p>}
-              <motion.div className="pick-grid" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -60px 0px' }}>
-                {g.entries.map(({ prof, courses }) => {
-                  const sel = selected.has(prof.id);
-                  // in a locked future semester, someone you already had stays shown as picked
-                  const alreadyHad = future && allowed.has(prof.id);
-                  return (
-                    <motion.button type="button" variants={pop} key={prof.id} disabled={future}
-                      className={`pick ${sel ? 'sel' : ''} ${future && !alreadyHad ? 'future' : ''} ${alreadyHad ? 'echo' : ''}`}
-                      role="checkbox" aria-checked={sel} onClick={() => toggle(prof.id)} whileTap={!future ? { scale: 0.95 } : undefined}
-                      title={alreadyHad ? 'Already in your deck from an earlier semester' : undefined}>
-                      <AnimatePresence>{sel && <motion.span className="tick" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={spring(0.6, 0.3)}>✓</motion.span>}</AnimatePresence>
-                      {locked && g.status === 'had' && !previous.has(prof.id) && <span className="new">NEW</span>}
-                      <Portrait p={prof} />
-                      <span className="meta"><b>{prof.name}</b><small>{courses.slice(0, 2).join(' · ')}</small></span>
-                    </motion.button>
-                  );
-                })}
-              </motion.div>
+      <DeptHeader dept={dept} programId={programId} locked={locked} />
+      <header className="head center"><h1 className="display">Deine Professor:innen</h1>
+        <p className="muted" style={{ margin: 0, maxWidth: '54ch' }}>Alle aus deinen Pflichtfächern bis Semester {semester}. Tippe auf jemanden, um ihn zu entfernen, falls du die Vorlesung nicht besucht hast.</p></header>
+      {roster.groups.map((g) => {
+        const future = g.status === 'future';
+        return (
+          <section key={`${g.semester}-${g.status}`} className={`group ${future ? 'future' : ''}`}>
+            <h3>{g.semester ? `Semester ${g.semester}` : 'Weitere Pflichtfächer'}
+              <small>{g.status === 'unknown' ? 'Semester im VVZ nicht angegeben — wähle selbst' : future ? 'noch nicht besucht' : g.term ? termLabel(g.term) : ''}</small></h3>
+            {g.fallbackTerm && !future && <p className="term-note">Für {termLabel(g.term!)} noch keine VVZ-Daten — Dozierende aus {termLabel(g.fallbackTerm)}.</p>}
+            <div className="picks">
+              {g.entries.map(({ prof, courses }) => {
+                const on = selected.has(prof.id), echo = future && allowed.has(prof.id);
+                return (
+                  <motion.button key={prof.id} type="button" disabled={future} role="checkbox" aria-checked={on}
+                    className={`pick ${on ? 'on' : ''} ${future && !echo ? 'future' : ''} ${echo ? 'echo' : ''}`}
+                    whileTap={!future ? { scale: 0.96 } : undefined} transition={MOTION.press} onClick={() => toggle(prof.id)}>
+                    <AnimatePresence>{on && <motion.span className="tick" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={MOTION.pop}>✓</motion.span>}</AnimatePresence>
+                    {locked && g.status === 'had' && !previous.has(prof.id) && <span className="new">NEU</span>}
+                    <Portrait p={prof} />
+                    <span className="meta"><b>{prof.name}</b><small>{courses.slice(0, 2).join(' · ')}</small></span>
+                  </motion.button>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-      <motion.div className="dock" initial={{ y: 120 }} animate={{ y: 0 }} transition={spring(0.8, 0.45)} style={{ x: '-50%' }}>
-        <button className="gbtn ghost sm" onClick={onBack}>⬅</button>
-        <span className="count"><motion.span key={selected.size} initial={{ scale: 1.4 }} animate={{ scale: 1 }} transition={spring(0.6, 0.3)} style={{ display: 'inline-block' }}>{selected.size}</motion.span><small>cards in deck</small></span>
-        <button className="gbtn" disabled={selected.size < 2} onClick={() => onSave([...selected])}>⚔ Battle</button>
+          </section>
+        );
+      })}
+      <div style={{ height: 80 }} />
+      <motion.div className="dock" initial={{ y: 100, x: '-50%' }} animate={{ y: 0, x: '-50%' }} transition={MOTION.soft}>
+        <button className="icon-btn" onClick={onBack} aria-label="Zurück">‹</button>
+        <span className="count"><b className="num">{selected.size}</b> ausgewählt</span>
+        <button className="btn" disabled={selected.size < 2} onClick={() => onSave([...selected])}>Speichern & spielen</button>
       </motion.div>
-      <AnimatePresence>
-        {confirming && <LockDialog dept={dept} programId={programId} onCancel={onCancelConfirm} onConfirm={() => onConfirmed([...selected])} />}
-      </AnimatePresence>
     </>
   );
 }
 
 /** The one irreversible step gets one honest confirmation */
 function LockDialog({ dept, programId, onCancel, onConfirm }: { dept: Department; programId: number; onCancel: () => void; onConfirm: () => void }) {
-  const [sealing, setSealing] = useState(false);
+  const d = deptById(dept.id);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onCancel(); };
     addEventListener('keydown', onKey);
@@ -254,21 +233,16 @@ function LockDialog({ dept, programId, onCancel, onConfirm }: { dept: Department
   }, [onCancel]);
   return (
     <div className="modal-wrap">
-      <motion.div className="scrim" onClick={onCancel} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
-      <motion.div className="glass modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle"
-        initial={{ opacity: 0, y: 30, scale: 0.9, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-        exit={{ opacity: 0, y: 20, scale: 0.95, filter: 'blur(6px)' }} transition={spring(0.85, 0.4)}>
-        <DeptEmblem id={dept.id} />
-        <h2 id="lockTitle">Join clan {dept.name}?</h2>
-        <p>Programme: <b style={{ color: 'var(--text)' }}>{dept.programs.find((p) => p.id === programId)?.name}</b>. Your clan <b style={{ color: 'var(--text)' }}>can’t be changed later</b> — that keeps every ladder fair.
-          You can still level up your semester and edit your deck.</p>
-        <div className="step-actions">
-          <button className="gbtn ghost" onClick={onCancel} disabled={sealing}>Go back</button>
-          <button className="gbtn gold" autoFocus disabled={sealing} onClick={() => { setSealing(true); setTimeout(onConfirm, 650); }}>🔒 Lock in</button>
+      <motion.div className="scrim" onClick={onCancel} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={MOTION.fade} />
+      <motion.div className="modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle" style={{ ['--c' as any]: d.color }}
+        initial={{ opacity: 0, scale: 0.94, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.97, transition: MOTION.exit }} transition={MOTION.soft}>
+        <span className="coinlet" style={{ width: 56, height: 56, fontSize: '.8rem' }}>{d.code}</span>
+        <h2 id="lockTitle" className="title" style={{ fontSize: '1.4rem' }}>D-{d.code} festlegen?</h2>
+        <p>{dept.programs.find((p) => p.id === programId)?.name}. Dein Department <b style={{ color: 'var(--ink)' }}>lässt sich danach nicht mehr ändern</b> — so bleibt jede Department-Wertung fair. Semester und Professorenliste kannst du später anpassen.</p>
+        <div className="duel-bar" style={{ marginTop: 6 }}>
+          <button className="btn ghost" onClick={onCancel}>Zurück</button>
+          <button className="btn" autoFocus onClick={onConfirm}>Festlegen</button>
         </div>
-        <AnimatePresence>
-          {sealing && <motion.div className="seal" initial={{ scale: 3, opacity: 0, rotate: -30 }} animate={{ scale: 1, opacity: 1, rotate: 0 }} transition={{ type: 'spring', bounce: 0.5, visualDuration: 0.4 }}>🔒</motion.div>}
-        </AnimatePresence>
       </motion.div>
     </div>
   );

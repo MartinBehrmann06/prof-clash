@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
   // pg is a Node-only dependency used by the API route handlers
   serverExternalPackages: ['pg'],
   images: { unoptimized: true },
+  // old routes from earlier versions
+  async redirects() {
+    return [
+      { source: '/battle', destination: '/', permanent: false },
+      { source: '/leaderboard', destination: '/rankings', permanent: false },
+      { source: '/dev/arena', destination: '/', permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;
