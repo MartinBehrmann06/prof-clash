@@ -238,7 +238,7 @@ function LockDialog({ dept, programId, onCancel, onConfirm }: { dept: Department
       <motion.div className="panel modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle" style={{ ['--c' as any]: d.color }}
         initial={{ opacity: 0, scale: 0.94, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.97, transition: MOTION.exit }} transition={MOTION.soft}>
         <span className="ribbon"><Icon name="lock" size={14} /> Festlegen?</span>
-        <span className="mini-shield" style={{ width: 70, height: 80, fontSize: 18 }}>{d.code}</span>
+        <span className="mini-shield lg">{d.code}</span>
         <h2 id="lockTitle" style={{ fontSize: 28 }}>Clan D-{d.code} beitreten?</h2>
         <p>{dept.programs.find((p) => p.id === programId)?.name}. Dein Department <b>lässt sich danach nicht mehr ändern</b> — so bleibt jede Department-Wertung fair. Semester und Professorenliste kannst du später anpassen.</p>
         <div className="duel-bar" style={{ marginTop: 6 }}>
