@@ -40,7 +40,8 @@ In development, `/dev/figures` shows a gallery of generated figures (no database
 ## Run locally
 
 ```bash
-cp .env.example .env       # Supabase URL, anon key, session-pooler DATABASE_URL
+# create .env with SUPABASE_URL, SUPABASE_ANON_KEY, DATABASE_URL (session pooler)
+# and NEXT_PUBLIC_OPERATOR_NAME / _PLACE / NEXT_PUBLIC_CONTACT_EMAIL
 npm install
 npm run db:setup           # apply schema + load data
 npm run dev                # http://localhost:3000
