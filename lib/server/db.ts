@@ -7,7 +7,7 @@ declare global {
 }
 
 function createPool() {
-  if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not set — copy .env.example to .env');
+  if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not set — add it to .env (see README)');
   return new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     // Supabase requires TLS; its pooler certificate isn't in Node's default CA store
