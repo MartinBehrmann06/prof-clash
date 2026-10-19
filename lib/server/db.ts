@@ -16,7 +16,9 @@ function createPool() {
   });
 }
 
-export const pool = globalThis.__pgPool ?? (globalThis.__pgPool = createPool());
+// created on first query, so `next build` works without DATABASE_URL
+const getPool = () => globalThis.__pgPool ?? (globalThis.__pgPool = createPool());
+export const pool = { query: ((...args: any[]) => (getPool().query as any)(...args)) as pg.Pool['query'], connect: () => getPool().connect() };
 
 export async function all<T = Record<string, any>>(sql: string, params: unknown[] = []): Promise<T[]> {
   return (await pool.query(sql, params)).rows as T[];

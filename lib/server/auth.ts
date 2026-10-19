@@ -5,9 +5,11 @@ import { HttpError } from './http';
 
 export type AuthUser = { id: string; email: string; ethUser: string };
 
-const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_ANON_KEY!, {
+// created on first use, so `next build` works without the environment variables
+let client: ReturnType<typeof createClient> | undefined;
+const supabase = () => (client ??= createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_ANON_KEY!, {
   auth: { persistSession: false, autoRefreshToken: false },
-});
+}));
 
 const cache = new Map<string, { user: AuthUser; until: number }>();
 
@@ -18,7 +20,7 @@ export async function authUser(req: Request): Promise<AuthUser | null> {
   const token = m[1];
   const hit = cache.get(token);
   if (hit && hit.until > Date.now()) return hit.user;
-  const { data, error } = await supabase.auth.getUser(token);
+  const { data, error } = await supabase().auth.getUser(token);
   const u = data?.user;
   // the DB trigger already blocks non-ETH signups; checked again here
   if (error || !u || !u.email_confirmed_at || !isEthEmail(u.email)) return null;
