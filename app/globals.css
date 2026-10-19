@@ -287,6 +287,11 @@ a { color: inherit; }
 .clan-row > span { min-width: 0; }
 .clan-row .v { text-align: right; font: 400 22px var(--display); }
 .clan-row .v small { display: block; font: 800 11px var(--body); }
+.match-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; padding: 10px 12px; text-align: center; }
+.match-row > small { font: 800 12px var(--body); color: var(--ink-2); }
+.mside { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.match-row .mside:last-child { flex-direction: row-reverse; }
+.mside b { font: 400 22px var(--display); }
 
 /* ---------------- LOGIN / SETUP ---------------- */
 .login { max-width: 460px; margin: 30px auto 0; padding-top: 34px; }
