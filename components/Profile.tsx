@@ -10,8 +10,12 @@ import type { Prof, ProfDetail } from '@/lib/types';
 import { Figure } from './Figure';
 import { Icon, LeagueBadge, Trophies } from './art';
 
-type Ctx = { openId: number | null; open: (p: Prof) => void };
-const ProfileCtx = createContext<Ctx>({ openId: null, open: () => {} });
+/**
+ * away: professors whose portrait is in an open or still-closing profile (their row shows an empty frame meanwhile).
+ * portraitId: the shared layoutId a row gives its portrait so it can fly into the profile.
+ */
+type Ctx = { away: ReadonlySet<number>; portraitId: (id: number) => string; open: (p: Prof) => void };
+const ProfileCtx = createContext<Ctx>({ away: new Set(), portraitId: (id) => `portrait-${id}`, open: () => {} });
 export const useProfile = () => useContext(ProfileCtx);
 
 /**
@@ -21,14 +25,22 @@ export const useProfile = () => useContext(ProfileCtx);
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const [prof, setProf] = useState<Prof | null>(null);
   const [detail, setDetail] = useState<ProfDetail | null>(null);
+  const [away, setAway] = useState<ReadonlySet<number>>(new Set());
+  // bumped once a profile has fully closed: the row's portrait comes back under a fresh layoutId,
+  // otherwise Motion would fly it back from wherever the profile's portrait last was
+  const [gen, setGen] = useState(0);
+  const portraitId = useCallback((id: number) => `portrait-${id}-${gen}`, [gen]);
   const trigger = useRef<HTMLElement | null>(null);
+  const current = useRef<number | null>(null);
 
   const open = useCallback((p: Prof) => {
     trigger.current = document.activeElement as HTMLElement;
-    setProf(p); setDetail(null);
-    api<ProfDetail>(`/api/professors/${p.id}`).then((d) => setDetail((cur) => cur ?? d)).catch(() => {});
+    current.current = p.id;
+    setProf(p); setDetail(null); setAway((s) => new Set(s).add(p.id));
+    // a slow answer for a professor opened earlier must not take the place of this one's
+    api<ProfDetail>(`/api/professors/${p.id}`).then((d) => { if (current.current === p.id) setDetail(d); }).catch(() => {});
   }, []);
-  const close = useCallback(() => { setProf(null); setTimeout(() => trigger.current?.focus?.(), 0); }, []);
+  const close = useCallback(() => { current.current = null; setProf(null); setTimeout(() => trigger.current?.focus?.(), 0); }, []);
   useEffect(() => {
     if (!prof) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
@@ -37,23 +49,31 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   }, [prof, close]);
 
   return (
-    <ProfileCtx.Provider value={{ openId: prof?.id ?? null, open }}>
+    <ProfileCtx.Provider value={{ away, portraitId, open }}>
       {children}
-      <AnimatePresence>
+      {/* the portrait flies out of its row on open; on close the panel leaves first and the row gets its
+          portrait back once it's gone, so nothing flies back underneath the fading scrim */}
+      <AnimatePresence onExitComplete={() => { setAway(current.current == null ? new Set() : new Set([current.current])); if (current.current == null) setGen((g) => g + 1); }}>
         {prof && <>
-          <motion.div key="scrim" className="scrim" onClick={close} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, pointerEvents: 'none' }} transition={MOTION.fade} />
-          <motion.div className="profile-wrap" key="wrap" exit={{ opacity: 0, pointerEvents: 'none', transition: MOTION.exit }}>
+          {/* the scrim stays one element, so reopening while it fades out just fades it back in */}
+          <motion.div key="scrim" className="scrim" onClick={close} initial={{ opacity: 0 }} animate={{ opacity: 1, pointerEvents: 'auto' }} exit={{ opacity: 0, pointerEvents: 'none' }} transition={MOTION.fade} />
+          {/* one panel per professor: opening another while the last one leaves gives a fresh panel, not a half-faded one */}
+          <div className="profile-wrap" key={`wrap-${prof.id}`}>
             <motion.section className="panel profile" role="dialog" aria-modal="true" aria-label={prof.name}
               style={{ ['--accent' as any]: deptByName(prof.department).color }}
-              initial={{ opacity: 0, scale: 0.94, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 12, transition: MOTION.exit }}
-              transition={MOTION.soft}>
-              <button className="btn sm red icon-only close" onClick={close} aria-label="Schliessen" autoFocus><Icon name="close" /></button>
-              <motion.div layoutId={`portrait-${prof.id}`} transition={MOTION.snappy} className="frame">
-                <Figure id={prof.id} name={prof.name} department={prof.department} mood="happy" />
+              initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0, pointerEvents: 'auto' }}
+              exit={{ opacity: 0, scale: 0.97, y: 8, pointerEvents: 'none', transition: MOTION.exit }}
+              transition={{ ...MOTION.soft, opacity: MOTION.fade }}>
+              <button className="btn sm red icon-only close" onClick={close} aria-label="Schliessen" autoFocus><Icon name="close" size={22} className="icon x" /></button>
+              {/* radius inline and the figure as its own layout box, so Motion keeps both undistorted on the way */}
+              <motion.div layoutId={portraitId(prof.id)} transition={MOTION.snappy} className="frame" style={{ borderRadius: 16 }}>
+                <motion.span layoutId={`${portraitId(prof.id)}-fig`} transition={MOTION.snappy} className="fig">
+                  <Figure id={prof.id} name={prof.name} department={prof.department} mood="happy" />
+                </motion.span>
               </motion.div>
               <ProfileBody p={detail && detail.id === prof.id ? detail : null} base={prof} />
             </motion.section>
-          </motion.div>
+          </div>
         </>}
       </AnimatePresence>
     </ProfileCtx.Provider>
@@ -65,8 +85,8 @@ function ProfileBody({ p, base }: { p: ProfDetail | null; base: Prof }) {
   const duels = base.wins + base.losses;
   const rated = duels >= MIN_DUELS; // fewer duels are noise, so no number is shown yet
   return (
-    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.08 }}>
-      <div style={{ display: 'grid', gap: 6, justifyItems: 'start' }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={MOTION.fade}>
+      <div className="profile-head">
         <span className="chip"><i className="dot" style={{ ['--c' as any]: dept.color }} />{dept.code} · {dept.id ? dept.name : base.department}</span>
         <h2>{base.name}</h2>
         <span className="muted" style={{ fontSize: 14 }}>{base.field || base.relationship}</span>

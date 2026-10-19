@@ -58,7 +58,7 @@ export default function ClansPage() {
                   transition={{ ...MOTION.soft, delay: Math.min(i, 8) * 0.04 }}>
                   <span className="rk num">{i + 1}</span>
                   <span className="mini-shield">{d.code}</span>
-                  <span><b>{s.name}</b><small>{mine ? 'Dein Clan · ' : ''}{s.players} Mitglieder{s.top ? <> · <Icon name="crown" size={12} /> {s.top.name}</> : ''}</small></span>
+                  <span><b title={s.name}>{s.name}</b><small>{mine ? 'Dein Clan · ' : ''}{s.players} Mitglieder</small>{s.top && <small title={s.top.name}><Icon name="crown" size={12} /> {s.top.name}</small>}</span>
                   <span className="v num">{s.duels7}<small>Duelle</small></span>
                 </motion.div>
               );
