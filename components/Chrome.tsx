@@ -3,7 +3,7 @@ import { usePathname } from 'next/navigation';
 import { Sky } from './Sky';
 import { TopBar } from './TopBar';
 
-/** Sky + top bar everywhere except the immersive 3D title screen */
+/** Backdrop + top bar everywhere except the title screen (it has its own) */
 export function Chrome() {
   const path = usePathname();
   if (path === '/') return null;

@@ -5,6 +5,7 @@ import { api, useSession } from '@/lib/client/session';
 import { MOTION } from '@/lib/client/motion';
 import { deptById, type DeptStyle } from '@/lib/departments';
 import type { DeptStats } from '@/app/api/departments/route';
+import { Icon } from '@/components/art';
 import type { LeagueData, Match, Side } from '@/lib/league';
 
 const fmtDay = (iso: string, plus = 0) =>
@@ -29,11 +30,11 @@ export default function ClansPage() {
   return (
     <div className="page">
       <header className="head">
-        <h1>🛡️ Clans</h1>
+        <h1><span className="title-badge" style={{ ['--tb' as any]: 'var(--red-2)' }}><Icon name="shield" /></span>Clans</h1>
         <p>Jedes Department ist ein Clan mit eigener Farbe. In der Weekend League tritt jedes Wochenende jeder Clan gegen einen anderen an.</p>
       </header>
 
-      {!lg || !featured ? <div className="panel war loading" style={{ minHeight: 320 }}><span className="spin">⚔️</span></div> : (
+      {!lg || !featured ? <div className="panel war loading" style={{ minHeight: 320 }}><span className="spin" /></div> : (
         <ClanWar key={`${lg.week}-${featured.a.id}`} lg={lg} m={featured} />
       )}
 
@@ -44,18 +45,18 @@ export default function ClansPage() {
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>Aktivste Clans diese Woche</h2>
           <p style={{ fontSize: 13 }}>Gezählte Duelle der Mitglieder in den letzten 7 Tagen — Aktivität, keine Stärke-Wertung.</p>
         </div>
-        {!stats ? <div className="loading" style={{ minHeight: 200 }}><span className="spin">🛡️</span></div> : (
+        {!stats ? <div className="loading" style={{ minHeight: 200 }}><span className="spin" /></div> : (
           <div className="clan-grid">
             {ranked.map((s, i) => {
               const d = deptById(s.id);
               const mine = profile?.deptId === s.id;
               return (
-                <motion.div key={s.id} className={`panel clan-row`} style={{ ['--c' as any]: d.color, background: mine ? 'linear-gradient(180deg, #fffbe6, var(--gold-1))' : undefined }}
-                  initial={{ opacity: 0, y: 24, scale: 0.94 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }}
-                  transition={{ type: 'spring', bounce: 0.35, visualDuration: 0.45, delay: Math.min(i, 8) * 0.04 }}>
+                <motion.div key={s.id} className={`panel clan-row ${mine ? 'mine' : ''}`} style={{ ['--c' as any]: d.color }}
+                  initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                  transition={{ ...MOTION.soft, delay: Math.min(i, 8) * 0.04 }}>
                   <span className="rk num">{i + 1}</span>
                   <span className="mini-shield">{d.code}</span>
-                  <span><b>{s.name}{mine ? ' ⭐' : ''}</b><small>{s.players} Mitglieder{s.top ? ` · 👑 ${s.top.name}` : ''}</small></span>
+                  <span><b>{s.name}</b><small>{mine ? 'Dein Clan · ' : ''}{s.players} Mitglieder{s.top ? <> · <Icon name="crown" size={12} /> {s.top.name}</> : ''}</small></span>
                   <span className="v num">{s.duels7}<small>Duelle</small></span>
                 </motion.div>
               );
@@ -69,8 +70,8 @@ export default function ClansPage() {
 }
 
 /**
- * The cinematic moment: two clan shields fly in and turn in 3D to face each other,
- * VS slams down, the bar fills and the numbers count up. Plays once when the page opens.
+ * The headline moment: two clan crests slide in from their sides, VS pops in between,
+ * the bar fills and the numbers count up. Plays once when the page opens.
  */
 function ClanWar({ lg, m }: { lg: LeagueData; m: Match }) {
   const [scope, run] = useAnimate();
@@ -81,12 +82,11 @@ function ClanWar({ lg, m }: { lg: LeagueData; m: Match }) {
   const live = lg.status === 'live';
 
   useEffect(() => {
-    if (reduced) { run('.clan-a, .clan-b, .vs-big, .bar-a, .bar-b', { opacity: 1, x: 0, scale: 1, scaleX: 1 }, { duration: 0 }); run('.coin', { rotateY: 0, scale: 1 }, { duration: 0 }); return; }
+    if (reduced) { run('.clan-a, .clan-b, .vs-big, .bar-a, .bar-b', { opacity: 1, x: 0, scale: 1, scaleX: 1 }, { duration: 0 }); return; }
     run([
-      ['.clan-a', { opacity: [0, 1], x: [-120, 0] }, { type: 'spring', bounce: 0.35, visualDuration: 0.6 }],
-      ['.clan-b', { opacity: [0, 1], x: [120, 0] }, { type: 'spring', bounce: 0.35, visualDuration: 0.6, at: '<' }],
-      ['.coin', { rotateY: [-540, 0], scale: [0.5, 1] }, { type: 'spring', bounce: 0.3, visualDuration: 1, at: 0.05 }],
-      ['.vs-big', { opacity: [0, 1], scale: [3, 1], rotate: [-25, 0] }, { type: 'spring', bounce: 0.55, visualDuration: 0.45, at: 0.6 }],
+      ['.clan-a', { opacity: [0, 1], x: [-80, 0] }, { type: 'spring', bounce: 0, visualDuration: 0.55 }],
+      ['.clan-b', { opacity: [0, 1], x: [80, 0] }, { type: 'spring', bounce: 0, visualDuration: 0.55, at: '<' }],
+      ['.vs-big', { opacity: [0, 1], scale: [0.4, 1] }, { type: 'spring', bounce: 0.35, visualDuration: 0.4, at: 0.35 }],
       ['.bar-a', { scaleX: [0, 1] }, { duration: 0.8, ease: [0.16, 1, 0.3, 1], at: 0.8 }],
       ['.bar-b', { scaleX: [0, 1] }, { duration: 0.8, ease: [0.16, 1, 0.3, 1], at: 0.8 }],
     ]);
@@ -94,11 +94,11 @@ function ClanWar({ lg, m }: { lg: LeagueData; m: Match }) {
 
   return (
     <section className="panel war" ref={scope} aria-label={`Clan-Krieg D-${a.code} gegen D-${b.code}`}>
-      <span className="ribbon">⚔️ Weekend League · Runde {lg.round}/{lg.rounds}</span>
+      <span className="ribbon"><Icon name="swords" size={15} /> Weekend League · Runde {lg.round}/{lg.rounds}</span>
       <div className="war-in">
         <Clan cls="clan-a" d={a} s={m.a} />
         <div className="mid">
-          <span className="chip demo">{live ? '🔴 Live' : 'Fr 18:00'}</span>
+          <span className="chip demo">{live ? 'Live' : 'Fr 18:00'}</span>
           <span className="vs-shield vs-big" style={{ opacity: 0 }}>VS</span>
         </div>
         <Clan cls="clan-b" d={b} s={m.b} />
@@ -121,14 +121,24 @@ function Clan({ cls, d, s }: { cls: string; d: DeptStyle; s: Side }) {
   useEffect(() => { const c = animate(n, s.score, { duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.9 }); return () => c.stop(); }, [s.score, n]);
   return (
     <div className={`clan ${cls}`} style={{ opacity: 0 }}>
-      <div className="coin3d" style={{ ['--c' as any]: d.color }}>
-        <div className="coin"><div className="face"><span>{d.code}</span></div><div className="face back"><span>{d.code}</span></div></div>
-      </div>
+      <Crest d={d} />
       <h3 className="code">D-{d.code}</h3>
       <small>{d.name}</small>
       <motion.span className="score num toon">{shown}</motion.span>
       <small style={{ display: 'block' }}>{s.active} aktiv · {s.members} Mitglieder</small>
     </div>
+  );
+}
+
+/** Clan crest: a shield split into a light and a shaded half, with the department code */
+function Crest({ d }: { d: DeptStyle }) {
+  return (
+    <svg className="crest" viewBox="0 0 120 136" role="img" aria-label={`D-${d.code}`}>
+      <path d="M60 4C80 4 98 10 112 16V62C112 98 86 120 60 132C34 120 8 98 8 62V16C22 10 40 4 60 4Z" fill={d.color} />
+      <path d="M60 4C80 4 98 10 112 16V62C112 98 86 120 60 132Z" fill="#000" opacity=".12" />
+      <path d="M60 18C75 18 88 22 98 26V62C98 88 80 104 60 114C40 104 22 88 22 62V26C32 22 45 18 60 18Z" fill="#fff" opacity=".16" />
+      <text x="60" y="74" textAnchor="middle" fill="#fff" stroke="var(--ink)" strokeWidth="6" strokeLinejoin="round" paintOrder="stroke" style={{ font: '400 26px var(--display)', letterSpacing: '.02em' }}>{d.code}</text>
+    </svg>
   );
 }
 
@@ -158,13 +168,14 @@ function WeekendLeague({ lg, myDept }: { lg: LeagueData; myDept?: number }) {
       <LeagueSection title={`Saisontabelle · Saison ${lg.season}`} sub={`Jeder Clan trifft in ${lg.rounds} Runden einmal auf jeden anderen. Bei Punktgleichheit entscheidet die Summe der Wertungen.`}>
         {lg.table.map((r, i) => {
           const d = deptById(r.id);
+          const mine = myDept === r.id;
           return (
-            <motion.div key={r.id} className="panel clan-row" style={{ ['--c' as any]: d.color, background: myDept === r.id ? 'linear-gradient(180deg, #fffbe6, var(--gold-1))' : undefined }}
-              initial={{ opacity: 0, y: 24, scale: 0.94 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }}
-              transition={{ type: 'spring', bounce: 0.35, visualDuration: 0.45, delay: Math.min(i, 8) * 0.04 }}>
+            <motion.div key={r.id} className={`panel clan-row ${mine ? 'mine' : ''}`} style={{ ['--c' as any]: d.color }}
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              transition={{ ...MOTION.soft, delay: Math.min(i, 8) * 0.04 }}>
               <span className="rk num">{i + 1}</span>
               <span className="mini-shield">{d.code}</span>
-              <span><b>D-{d.code}{myDept === r.id ? ' ⭐' : ''}</b><small>{r.played} gespielt · {r.w}S {r.d}U {r.l}N · Σ {r.score.toFixed(1)}</small></span>
+              <span><b>D-{d.code}</b><small>{mine ? 'Dein Clan · ' : ''}{r.played} gespielt · {r.w}S {r.d}U {r.l}N · Σ {r.score.toFixed(1)}</small></span>
               <span className="v num">{r.pts}<small>Punkte</small></span>
             </motion.div>
           );
@@ -191,16 +202,16 @@ function MatchRow({ m, i, myDept, showScore, running }: { m: Match; i: number; m
   const side = (s: Side, won: boolean) => {
     const d = deptById(s.id);
     return (
-      <span className="mside" style={{ ['--c' as any]: d.color, opacity: m.result !== 'none' && m.result !== 'draw' && !won ? 0.55 : 1 }}>
+      <span className={`mside ${m.result !== 'none' && m.result !== 'draw' && !won ? 'lost' : ''}`} style={{ ['--c' as any]: d.color }}>
         <span className="mini-shield">{d.code}</span>
         {showScore && <b className="num">{s.score.toFixed(1)}</b>}
       </span>
     );
   };
   return (
-    <motion.div className="panel match-row" style={{ background: mine ? 'linear-gradient(180deg, #fffbe6, var(--gold-1))' : undefined }}
-      initial={{ opacity: 0, y: 24, scale: 0.94 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }}
-      transition={{ type: 'spring', bounce: 0.35, visualDuration: 0.45, delay: Math.min(i, 8) * 0.04 }}>
+    <motion.div className={`panel match-row ${mine ? 'mine' : ''}`}
+      initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+      transition={{ ...MOTION.soft, delay: Math.min(i, 8) * 0.04 }}>
       {side(m.a, m.result === 'a')}
       <small>{!showScore ? 'VS' : m.result === 'draw' || m.result === 'none' ? (running ? (m.result === 'draw' ? 'Gleichstand' : 'Noch offen') : RESULT[m.result])
         : `${running ? '' : 'Sieg '}D-${deptById(m.result === 'a' ? m.a.id : m.b.id).code}${running ? ' führt' : ''}`}</small>

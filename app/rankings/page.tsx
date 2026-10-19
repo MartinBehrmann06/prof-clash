@@ -6,7 +6,7 @@ import { MOTION } from '@/lib/client/motion';
 import { DEPARTMENTS, deptByName } from '@/lib/departments';
 import { useProfile } from '@/components/Profile';
 import { Figure } from '@/components/Figure';
-import { LeagueBadge, Trophies } from '@/components/art';
+import { Icon, LeagueBadge, Trophies } from '@/components/art';
 import { MIN_DUELS } from '@/lib/game';
 import type { RankedProf } from '@/lib/types';
 
@@ -42,13 +42,13 @@ export default function RankingsPage() {
   return (
     <div className="page">
       <header className="head">
-        <h1 className="gold">🏆 Rankings</h1>
+        <h1><span className="title-badge" style={{ ['--tb' as any]: 'var(--gold-2)' }}><Icon name="trophy" /></span>Rankings</h1>
         <p>{scope === 'all' ? 'Trophäen aller Profs aus gezählten Duellen eingeloggter ETH-Studierender.' : `Nur Stimmen aus dem Clan ${deptName} — jede Clan-Wertung ist unabhängig.`}</p>
         <div className="tabs" role="tablist" aria-label="Wertung">
           {(['all', 'dept'] as const).map((s) => (
             <button key={s} role="tab" aria-selected={scope === s} onClick={() => setScope(s)}>
               {scope === s && <motion.span layoutId="rank-tab" className="pill" transition={MOTION.snappy} />}
-              {s === 'all' ? '🌍 Gesamt' : '🛡 Clan'}
+              {s === 'all' ? <><Icon name="globe" size={16} /> Gesamt</> : <><Icon name="shield" size={16} /> Clan</>}
             </button>
           ))}
         </div>
@@ -60,12 +60,12 @@ export default function RankingsPage() {
             {DEPARTMENTS.map((d) => <option key={d.id} value={d.id}>D-{d.code} · {d.name}</option>)}
           </select>
         )}
-        <input className="input" type="search" placeholder="🔎 Prof suchen" aria-label="Professor suchen" value={q} onChange={(e) => setQ(e.target.value)} style={{ width: 280 }} />
+        <label className="search"><Icon name="search" /><input className="input" type="search" placeholder="Prof suchen" aria-label="Professor suchen" value={q} onChange={(e) => setQ(e.target.value)} style={{ width: 280 }} /></label>
       </div>
 
       <div className="panel board">
         <span className="ribbon">{scope === 'all' ? 'Hall of Fame' : `Clan D-${DEPARTMENTS.find((d) => d.id === dept)?.code}`}</span>
-        {!rows ? <div className="loading" style={{ minHeight: 240, color: 'var(--ink)' }}><span className="spin">🏆</span></div> : (
+        {!rows ? <div className="loading" style={{ minHeight: 240 }}><span className="spin" /></div> : (
           <LayoutGroup>
             {!rows.some((p) => p.rank != null) && !q && <div className="empty">Noch niemand hat {MIN_DUELS} gezählte Duelle — dann gibt es die ersten Ränge.</div>}
             {list.length === 0 && q && <div className="empty">Keine Treffer.</div>}
@@ -82,7 +82,7 @@ export default function RankingsPage() {
                         <Figure id={p.id} name={p.name} department={p.department} />
                       </motion.span>
                     )}
-                    <span className="who"><b>{p.name}</b><small>🛡 D-{d.code} · {p.field || p.relationship}</small></span>
+                    <span className="who"><b>{p.name}</b><small><i className="dot" style={{ ['--c' as any]: d.color }} />D-{d.code} · {p.field || p.relationship}</small></span>
                     {p.rank != null ? <><LeagueBadge league={p.league} /><Trophies n={p.elo} /></> : <span className="chip unranked" title={`Rang ab ${MIN_DUELS} Duellen`}>Neu</span>}
                     <span className="n num">{p.wins + p.losses} Duelle</span>
                   </motion.button>
