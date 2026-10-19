@@ -1,106 +1,151 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { useSession } from '@/lib/client/session';
-import { LeagueBadge, Portrait, TrophyIcon, Trophies } from '@/components/art';
+import { spring } from '@/lib/client/motion';
+import { LeagueBadge, Portrait, Trophies } from '@/components/art';
+import { ProfCard } from '@/components/ProfCard';
 import { Podium } from '@/components/Podium';
+import { useOpenProf } from '@/components/ProfSheet';
 import type { Meta, RankedProf } from '@/lib/types';
 
 export function Landing({ meta, top, fighters }: { meta: Meta; top: RankedProf[]; fighters: RankedProf[] }) {
   const { user, profile } = useSession();
+  const reduced = useReducedMotion();
+  const open = useOpenProf();
   const root = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 600], [0, -120]);
+  const heroFade = useTransform(scrollY, [0, 500], [1, 0.2]);
   const anyVotes = top.some((p) => p.wins + p.losses > 0);
   const cta = profile ? '/battle' : user ? '/setup' : '/login?next=setup';
 
   // scroll reveals + count-up numbers
   useEffect(() => {
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const io = new IntersectionObserver((entries) => entries.forEach((e) => {
       if (!e.isIntersecting) return;
       e.target.classList.add('in');
       io.unobserve(e.target);
-      const num = e.target.querySelector<HTMLElement>('.num');
-      if (num) countUp(num, reduced);
+      const num = e.target.querySelector<HTMLElement>('[data-count]');
+      if (num) countUp(num, !!reduced);
     }), { threshold: 0.2 });
-    root.current?.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el); });
+    root.current?.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 80}ms`; io.observe(el); });
     return () => io.disconnect();
-  }, []);
+  }, [reduced]);
 
-  const letters = (s: string, d0: number) => [...s].map((c, i) => <span key={i} className="ch" style={{ animationDelay: `${d0 + i * 0.06}s` }}>{c}</span>);
-  const sparks = Array.from({ length: 14 }, (_, i) => {
-    const a = (i / 14) * Math.PI * 2, r = 90 + (i % 3) * 30;
-    return <i key={i} style={{ ['--x' as any]: `${Math.cos(a) * r}px`, ['--y' as any]: `${Math.sin(a) * r}px`, animationDelay: `${(i % 4) * 0.02}s` }} />;
-  });
+  const word = (text: string, delay: number, className = '') => (
+    <span className={`row ${className}`}>
+      {[...text].map((c, i) => (
+        <motion.span key={i} initial={{ y: '110%', rotate: 8 }} animate={{ y: 0, rotate: 0 }}
+          transition={{ type: 'spring', bounce: 0.35, visualDuration: 0.6, delay: delay + i * 0.05 }}>{c}</motion.span>
+      ))}
+    </span>
+  );
+  const ticker = [...top.slice(0, 20), ...top.slice(0, 20)];
 
   return (
-    <div className="view-enter" ref={root}>
+    <div ref={root}>
       <section className="hero">
-        <div className="hero-inner">
-          <span className="kicker">🎓 ETH Zurich · Bachelor mandatory courses · {meta.stats.profs} professors</span>
-          <h1 className="title" aria-label="Prof Clash"><span className="line">{letters('PROF', 0.1)}</span><span className="line l2">{letters('CLASH', 0.4)}</span></h1>
-          <p className="tagline">Two professors enter. One leaves with the trophies. Vote 1v1 on who taught you better — and watch the Elo ladder decide who rules the lecture hall.</p>
-          <div className="arena-preview" aria-hidden="true">
-            {fighters.map((p, i) => (
-              <div key={p.id} className={`fighter ${i ? 'right' : 'left'}`}>
-                <div className="mini-card"><Portrait p={p} /><div className="nm">{p.name}</div><Trophies n={p.elo} /></div>
-              </div>
-            ))}
-            <div className="vs-emblem"><div className="burst" /><div className="vs">VS</div></div>
-            <div className="sparks">{sparks}</div>
-          </div>
-          <div className="hero-ctas">
-            <Link className="btn huge pulse" href={cta}>⚔️ {profile ? 'Continue battle' : 'Start battle'}</Link>
-            <Link className="btn gold" href="/leaderboard" style={{ alignSelf: 'center' }}>🏆 Leaderboard</Link>
-          </div>
-        </div>
-        <div className="scroll-hint">▼ scroll</div>
+        <motion.div className="hero-in" style={{ y: heroY, opacity: heroFade }}>
+          <motion.span className="eyebrow" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            ETH Zurich · {meta.stats.profs} professors · {meta.depts.length} clans
+          </motion.span>
+          <h1 className="hero-title" aria-label="Prof Clash">
+            {word('PROF', 0.15)}
+            {word('CLASH', 0.4, 'clash')}
+          </h1>
+          <motion.p className="hero-sub" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>
+            Two professors enter the arena. You decide who taught better. Every vote moves the trophies — in your department and across ETH.
+          </motion.p>
+
+          {fighters.length === 2 && (
+            <div className="hero-cards" aria-hidden="true">
+              {fighters.map((p, i) => (
+                <motion.div key={p.id} style={{ order: i ? 3 : 1 }}
+                  initial={{ x: i ? 300 : -300, rotate: i ? 20 : -20, opacity: 0 }}
+                  animate={{ x: 0, rotate: i ? 6 : -6, opacity: 1 }}
+                  transition={{ type: 'spring', bounce: 0.35, visualDuration: 0.7, delay: 1 }}>
+                  <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: i * 2 }}>
+                    <ProfCard p={p} />
+                  </motion.div>
+                </motion.div>
+              ))}
+              <motion.div className="vs" style={{ order: 2 }} initial={{ scale: 3, opacity: 0, rotate: -40 }} animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                transition={{ type: 'spring', bounce: 0.5, visualDuration: 0.5, delay: 1.45 }}>
+                <span className="vs-ring" /><span className="vs-ring b" /><span className="vs-core">VS</span>
+              </motion.div>
+            </div>
+          )}
+
+          <motion.div className="ctas" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring(0.8, 0.5), delay: 1.6 }}>
+            <Link className="gbtn xl" href={cta}>⚔ {profile ? 'Continue battle' : 'Enter the arena'}</Link>
+            <Link className="gbtn ghost" href="/leaderboard" style={{ alignSelf: 'center' }}>Rankings</Link>
+          </motion.div>
+          <span className="press-start">Press start</span>
+        </motion.div>
       </section>
 
-      <div className="ground">
-        <section className="section">
-          <div className="stats">
-            {[['🧙', meta.stats.profs, 'Professors'], ['📚', meta.stats.courses, 'Mandatory courses'], ['⚔️', meta.stats.votes, 'Battles fought'], ['🛡️', meta.stats.voters, 'Students in clans']].map(([ico, n, lbl]) => (
-              <div key={lbl as string} className="panel wood stat reveal nails"><div className="ico">{ico}</div><div className="num" data-count={n}>0</div><div className="lbl">{lbl}</div></div>
+      {top.length > 0 && (
+        <div className="ticker" aria-label="Top professors">
+          <div className="ticker-track">
+            {ticker.map((p, i) => (
+              <button type="button" key={i} className="tick-item" onClick={() => open(p.id)} style={{ background: 'none', border: 0, color: 'inherit', cursor: 'pointer' }}>
+                <span className="rk">#{p.rank}</span><Portrait p={p} /><span>{p.name}</span><Trophies n={p.elo} />
+              </button>
             ))}
           </div>
-        </section>
+        </div>
+      )}
 
+      <section className="section">
+        <div className="stats">
+          {([['Professors', meta.stats.profs, 'rgba(255,62,165,.35)'], ['Mandatory courses', meta.stats.courses, 'rgba(62,230,255,.3)'],
+            ['Battles fought', meta.stats.votes, 'rgba(255,204,77,.3)'], ['Players', meta.stats.voters, 'rgba(139,92,255,.4)']] as const).map(([lbl, n, glow]) => (
+            <div key={lbl} className="glass stat reveal" style={{ ['--glow' as any]: glow }}>
+              <div className="num grad-text" data-count={n}>0</div><div className="lbl">{lbl}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-head reveal"><span className="eyebrow">How it works</span><h2>Three steps to glory</h2></div>
+        <div className="steps">
+          {[
+            ['🛡️', 'Join a clan', 'Log in with your ETH email and pick your department — once. Your votes shape its ladder.'],
+            ['🃏', 'Draft your deck', 'We pull who taught each of your semesters from the VVZ of the term you actually took it.'],
+            ['⚔️', 'Battle', 'Two cards, one choice. Tap or flick the better teacher. Trophies move with every duel.'],
+          ].map(([ico, h, p], i) => (
+            <div key={h} className="glass step reveal"><span className="ico">{ico}</span><div className="num">0{i + 1}</div><h3>{h}</h3><p>{p}</p></div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-head reveal"><span className="eyebrow">Rarity = league</span><h2>Climb the leagues</h2>
+          <p className="muted">Every professor starts at 1200 trophies. Win duels, rise in rarity.</p></div>
+        <div className="ladder">
+          {meta.leagues.map((l, i) => (
+            <div key={l.key} className="rung reveal" style={{ paddingBottom: 14 + i * 8 }}>
+              <LeagueBadge league={l.key} /><b>{l.name}</b><small>{l.min ? `${l.min}+` : 'start'}</small>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {anyVotes && (
         <section className="section">
-          <h2 className="reveal">How the clash works</h2>
-          <div className="steps">
-            {[
-              ['🛡️', 'Join your clan', 'Log in with your ETH email and pick your department — once. Your votes shape your department’s ladder.'],
-              ['🧑‍🏫', 'Pick your roster', 'We look up who taught your mandatory courses in the semester you actually took them — even if the lecturer has changed since.'],
-              ['🏆', 'Battle!', 'Two cards, one choice. Tap or flick the better teacher. Trophies move per department and globally.'],
-            ].map(([art, h, p], i) => (
-              <div key={h} className="panel step reveal"><div className="badge-num">{i + 1}</div><div className="art">{art}</div><h3>{h}</h3><p>{p}</p></div>
-            ))}
-          </div>
+          <div className="section-head reveal"><span className="eyebrow">Hall of fame</span><h2>Current champions</h2></div>
+          <Podium top={top} />
+          <div style={{ textAlign: 'center', marginTop: 40 }}><Link className="gbtn cyan" href="/leaderboard">Full rankings</Link></div>
         </section>
+      )}
 
-        <section className="section">
-          <h2 className="reveal">Climb the leagues</h2>
-          <div className="leagues">
-            {meta.leagues.map((l) => (
-              <div key={l.key} className="league-tile reveal"><LeagueBadge league={l.key} /><div className="lname">{l.name}</div>
-                <div className="lmin"><TrophyIcon size={16} /> {l.min ? `${l.min}+` : 'start'}</div></div>
-            ))}
-          </div>
-        </section>
-
-        {anyVotes && (
-          <section className="section">
-            <h2 className="reveal">Current champions</h2>
-            <Podium top={top} />
-            <div style={{ textAlign: 'center', marginTop: 40 }}><Link className="btn blue" href="/leaderboard">See the full ladder →</Link></div>
-          </section>
-        )}
-
-        <footer className="footer">
-          Course &amp; lecturer data from the ETH Zurich <a href="https://www.vvz.ethz.ch" target="_blank" rel="noopener noreferrer">Vorlesungsverzeichnis</a> (HS 2023 – HS 2026).
-          Portraits from public ETH pages.<br />Unofficial student project — not affiliated with ETH Zurich. Be kind: it’s about teaching, not people.
-        </footer>
-      </div>
+      <footer className="footer">
+        Course &amp; lecturer data from the ETH Zurich <a href="https://www.vvz.ethz.ch" target="_blank" rel="noopener noreferrer">Vorlesungsverzeichnis</a>. Portraits from public ETH pages.
+        <br />Unofficial student project — not affiliated with ETH Zurich. It’s about teaching, not people: play fair.
+      </footer>
     </div>
   );
 }
@@ -108,7 +153,7 @@ export function Landing({ meta, top, fighters }: { meta: Meta; top: RankedProf[]
 function countUp(el: HTMLElement, reduced: boolean) {
   const to = Number(el.dataset.count) || 0;
   if (reduced) { el.textContent = to.toLocaleString(); return; }
-  const t0 = performance.now(), dur = 1200;
+  const t0 = performance.now(), dur = 1300;
   const step = (t: number) => {
     const k = Math.min(1, (t - t0) / dur);
     el.textContent = Math.round(to * (1 - (1 - k) ** 3)).toLocaleString();

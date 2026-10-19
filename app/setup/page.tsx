@@ -6,7 +6,7 @@ import { api, useSession } from '@/lib/client/session';
 import { confetti, useToast } from '@/lib/client/feedback';
 import { spring } from '@/lib/client/motion';
 import { currentTerm, isAutumn, termLabel } from '@/lib/terms';
-import { DeptCrest, Portrait } from '@/components/art';
+import { DeptEmblem, Portrait } from '@/components/art';
 import type { Department, Meta, Profile, Roster } from '@/lib/types';
 
 type Step = 1 | 2 | 3;
@@ -35,10 +35,10 @@ export default function SetupPage() {
   const dept = meta?.depts.find((d) => d.id === deptId) ?? null;
   const go = (s: Step) => { setDir(s >= step ? 1 : -1); setStep(s); window.scrollTo({ top: 0 }); };
 
-  if (!meta || !ready || !user) return <div className="loading-crest"><span><span className="spin">⚔️</span><br />Loading…</span></div>;
+  if (!meta || !ready || !user) return <div className="loading"><div className="loader" />Loading</div>;
 
   return (
-    <div className="view setup-view">
+    <div className="page">
       <Stepper step={step} locked={locked} onGo={go} />
       <AnimatePresence mode="wait" custom={dir} initial={false}>
         <motion.div key={step} custom={dir} variants={{ enter: (d: number) => ({ opacity: 0, x: 60 * d }), center: { opacity: 1, x: 0 }, exit: (d: number) => ({ opacity: 0, x: -60 * d }) }}
@@ -81,10 +81,11 @@ function Stepper({ step, locked, onGo }: { step: Step; locked: boolean; onGo: (s
         const n = (i + 1) as Step, st = n < step ? 'done' : n === step ? 'now' : 'todo';
         const canGo = n < step && !(locked && n === 1);
         return (
-          <li key={n} className={`step-node ${st}`}>
-            {i > 0 && <span className="step-rope" />}
+          <li key={n} className={st}>
+            {i > 0 && <span className="rail"><motion.i initial={false} animate={{ width: n <= step ? '100%' : '0%' }} transition={spring(1, 0.5)} /></span>}
             <button type="button" disabled={!canGo} onClick={() => onGo(n)} aria-current={st === 'now' ? 'step' : undefined}>
-              <span className="shield">{n === 1 && locked ? '🔒' : st === 'done' ? '✔' : ico}</span><span className="lbl">{label}</span>
+              <motion.span className="node" animate={{ scale: st === 'now' ? 1.12 : 1 }} transition={spring(0.6, 0.35)}>{n === 1 && locked ? '🔒' : st === 'done' ? '✓' : ico}</motion.span>
+              <span className="lbl">{label}</span>
             </button>
           </li>
         );
@@ -95,12 +96,15 @@ function Stepper({ step, locked, onGo }: { step: Step; locked: boolean; onGo: (s
 
 function ClanBanner({ dept, programId, locked }: { dept: Department; programId: number; locked: boolean }) {
   return (
-    <div className="clan-banner panel wood nails"><DeptCrest id={dept.id} />
-      <div><div className="cb-kicker">Your clan{locked ? ' · 🔒 locked' : ''}</div><div className="cb-name">{dept.name}</div>
-        <div className="cb-prog">{dept.programs.find((p) => p.id === programId)?.name} Bachelor</div></div>
+    <div className="glass clan-card"><DeptEmblem id={dept.id} />
+      <div><span className="k">Your clan{locked ? ' · 🔒 locked' : ''}</span><b>{dept.name}</b>
+        <small>{dept.programs.find((p) => p.id === programId)?.name} Bachelor</small></div>
     </div>
   );
 }
+
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.03 } } };
+const pop = { hidden: { opacity: 0, y: 16, scale: 0.96 }, show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, bounce: 0.3, visualDuration: 0.4 } } };
 
 function ClanStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
   meta: Meta; deptId: number | null; programId: number | null;
@@ -109,27 +113,29 @@ function ClanStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
   const dept = meta.depts.find((d) => d.id === deptId);
   return (
     <>
-      <div className="setup-head"><h1>Choose your clan</h1>
-        <p>Your department decides which professors you can battle — and which ladder your votes shape. <b>You pick it once.</b></p></div>
-      <div className="panel"><div className="panel-title stroke">Department</div>
-        <div className="dept-grid">
-          {meta.depts.map((d) => (
-            <button type="button" key={d.id} className={`dept-tile ${d.id === deptId ? 'sel' : ''}`} onClick={() => onDept(d)}>
-              <DeptCrest id={d.id} /><span className="dn">{d.name}</span><span className="dc">{d.programs.length} programme{d.programs.length > 1 ? 's' : ''}</span>
-            </button>
-          ))}
-        </div>
-        {dept && dept.programs.length > 1 && <>
-          <h3 className="sub-h">Which programme?</h3>
-          <div className="prog-grid">
-            {dept.programs.map((p) => (
-              <button type="button" key={p.id} className={`prog-tile ${p.id === programId ? 'sel' : ''}`} onClick={() => onProgram(p.id)}>
-                {p.name}<small>{p.profs} professors</small></button>
-            ))}
-          </div>
-        </>}
-      </div>
-      <div className="step-actions"><button className="btn huge" disabled={!programId} onClick={onNext}>Next ➜</button></div>
+      <div className="page-head"><span className="eyebrow">Step 1 · Clan</span><h1>Choose your clan</h1>
+        <p>Your department decides who you can battle — and which ladder your votes shape. <b>You choose once.</b></p></div>
+      <motion.div className="dept-grid" variants={stagger} initial="hidden" animate="show">
+        {meta.depts.map((d) => (
+          <motion.button type="button" variants={pop} key={d.id} className={`dept ${d.id === deptId ? 'sel' : ''}`} onClick={() => onDept(d)}>
+            <DeptEmblem id={d.id} /><b>{d.name}</b><small>{d.programs.length} programme{d.programs.length > 1 ? 's' : ''}</small>
+          </motion.button>
+        ))}
+      </motion.div>
+      <AnimatePresence>
+        {dept && dept.programs.length > 1 && (
+          <motion.div key={dept.id} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={spring(1, 0.35)} style={{ overflow: 'hidden' }}>
+            <h3 className="sub-head">Which programme?</h3>
+            <div className="prog-grid">
+              {dept.programs.map((p) => (
+                <button type="button" key={p.id} className={`prog ${p.id === programId ? 'sel' : ''}`} onClick={() => onProgram(p.id)}>
+                  <b>{p.name}</b><small>{p.profs} professors</small></button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div className="step-actions"><button className="gbtn xl" disabled={!programId} onClick={onNext}>Next ➜</button></div>
     </>
   );
 }
@@ -142,20 +148,21 @@ function SemesterStep({ dept, programId, semester, minSemester, locked, onPick, 
   return (
     <>
       <ClanBanner dept={dept} programId={programId} locked={locked} />
-      <div className="setup-head"><h1>Which semester are you in?</h1>
-        <p>It’s {autumn ? 'autumn (HS)' : 'spring (FS)'} — most of you are in semester {autumn ? '1, 3 or 5' : '2, 4 or 6'}.
-          We look up who taught each of your semesters back when <b>you</b> took them.</p></div>
-      <div className="sem-board">
+      <div className="page-head"><span className="eyebrow">Step 2 · Level</span><h1>Which semester are you in?</h1>
+        <p>It’s {autumn ? 'autumn (HS)' : 'spring (FS)'} — most players are in semester {autumn ? '1, 3 or 5' : '2, 4 or 6'}.
+          We look up who taught each semester back when <b>you</b> took it.</p></div>
+      <motion.div className="levels" variants={stagger} initial="hidden" animate="show">
         {[1, 2, 3, 4, 5, 6].map((n) => (
-          <button type="button" key={n} className={`sem-plaque ${n === semester ? 'sel' : ''} ${(n % 2 === 1) === autumn ? 'now-term' : ''}`}
-            disabled={locked && n < minSemester} title={locked && n < minSemester ? 'Your semester can only go up' : undefined} onClick={() => onPick(n)}>
-            <span className="sn">{n}{n === 6 ? '+' : ''}</span><span className="st">{n % 2 ? 'HS' : 'FS'} · Year {Math.ceil(n / 2)}</span>
-          </button>
+          <motion.button type="button" variants={pop} key={n} className={`lvl ${n === semester ? 'sel' : ''} ${(n % 2 === 1) === autumn ? 'now' : ''}`}
+            disabled={locked && n < minSemester} title={locked && n < minSemester ? 'Your semester can only go up' : undefined} onClick={() => onPick(n)}
+            whileHover={{ y: -4 }} transition={spring(0.8, 0.3)}>
+            <span className="n">{n}{n === 6 ? '+' : ''}</span><small>{n % 2 ? 'HS' : 'FS'} · Year {Math.ceil(n / 2)}</small>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
       <div className="step-actions">
-        {!locked && <button className="btn stone" onClick={onBack}>⬅ Back</button>}
-        <button className="btn huge" disabled={!semester} onClick={onNext}>Next ➜</button>
+        {!locked && <button className="gbtn ghost" onClick={onBack}>⬅ Back</button>}
+        <button className="gbtn xl" disabled={!semester} onClick={onNext}>Next ➜</button>
       </div>
     </>
   );
@@ -184,50 +191,52 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
   const allowed = useMemo(() => new Set(roster?.groups.filter((g) => g.status !== 'future').flatMap((g) => g.entries.map((e) => e.prof.id)) ?? []), [roster]);
   const toggle = (id: number) => setSelected((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
-  if (error) return <div className="panel done-panel"><p>{error}</p></div>;
-  if (!roster) return <div className="loading-crest"><span><span className="spin">⚔️</span><br />Summoning your professors…</span></div>;
+  if (error) return <div className="glass pad empty">{error}</div>;
+  if (!roster) return <div className="loading"><div className="loader" />Drafting your deck</div>;
 
   return (
     <>
       <ClanBanner dept={dept} programId={programId} locked={locked} />
-      <div className="setup-head"><h1>Your roster</h1>
-        <p>Everyone who taught you up to semester {semester} — from the VVZ of the term you actually took each course. <b>Tap to remove</b> anyone you skipped.</p></div>
-      <div className="panel roster">
+      <div className="page-head"><span className="eyebrow">Step 3 · Deck</span><h1>Your deck</h1>
+        <p>Everyone who taught you up to semester {semester}, from the VVZ of the term you took each course. <b>Tap to remove</b> anyone you skipped.</p></div>
+      <div className="glass pad">
         {roster.groups.map((g) => {
           const future = g.status === 'future';
           const title = g.semester ? `${future ? '🔒 ' : ''}Semester ${g.semester}` : 'Other mandatory courses';
-          const pill = g.status === 'unknown' ? 'semester not listed in the VVZ — tap the ones you had'
+          const pill = g.status === 'unknown' ? 'semester not in the VVZ — tap the ones you had'
             : future ? 'unlocks when you get there'
             : `${g.term ? termLabel(g.term) : ''} · ${g.entries.length} professor${g.entries.length > 1 ? 's' : ''}`;
           return (
-            <div key={`${g.semester}-${g.status}`} className={`year-group ${future ? 'future-group' : ''}`}>
-              <h3>{title} <span className="pill">{pill}</span></h3>
+            <div key={`${g.semester}-${g.status}`} className={`roster-group ${future ? 'future' : ''}`}>
+              <h3>{title} <span className="chip">{pill}</span></h3>
               {g.fallbackTerm && !future && <p className="term-note">No VVZ data for {termLabel(g.term!)} yet — showing lecturers from {termLabel(g.fallbackTerm)}.</p>}
-              <div className="prof-grid">
+              <motion.div className="pick-grid" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -60px 0px' }}>
                 {g.entries.map(({ prof, courses }) => {
                   const sel = selected.has(prof.id);
                   // in a locked future semester, someone you already had stays shown as picked
                   const alreadyHad = future && allowed.has(prof.id);
                   return (
-                    <button type="button" key={prof.id} className={`prof-pick ${sel ? 'sel' : ''} ${future && !alreadyHad ? 'future' : ''} ${alreadyHad ? 'echo' : ''}`}
-                      disabled={future} role="checkbox" aria-checked={sel} onClick={() => toggle(prof.id)}
-                      title={alreadyHad ? 'You already had this professor — picked in an earlier semester' : undefined}>
-                      <span className="check">✔</span>
-                      {locked && !future && g.status === 'had' && !previous.has(prof.id) && <span className="new-badge">NEW</span>}
-                      <Portrait p={prof} /><span className="nm">{prof.name}</span><span className="cs">{courses.slice(0, 2).join(' · ')}</span>
-                    </button>
+                    <motion.button type="button" variants={pop} key={prof.id} disabled={future}
+                      className={`pick ${sel ? 'sel' : ''} ${future && !alreadyHad ? 'future' : ''} ${alreadyHad ? 'echo' : ''}`}
+                      role="checkbox" aria-checked={sel} onClick={() => toggle(prof.id)} whileTap={!future ? { scale: 0.95 } : undefined}
+                      title={alreadyHad ? 'Already in your deck from an earlier semester' : undefined}>
+                      <AnimatePresence>{sel && <motion.span className="tick" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={spring(0.6, 0.3)}>✓</motion.span>}</AnimatePresence>
+                      {locked && g.status === 'had' && !previous.has(prof.id) && <span className="new">NEW</span>}
+                      <Portrait p={prof} />
+                      <span className="meta"><b>{prof.name}</b><small>{courses.slice(0, 2).join(' · ')}</small></span>
+                    </motion.button>
                   );
                 })}
-              </div>
+              </motion.div>
             </div>
           );
         })}
       </div>
-      <div className="dock">
-        <button className="btn stone small" onClick={onBack}>⬅ Semester</button>
-        <span className="count">{selected.size} selected</span>
-        <button className="btn" disabled={selected.size < 2} onClick={() => onSave([...selected])}>⚔️ To battle!</button>
-      </div>
+      <motion.div className="dock" initial={{ y: 120 }} animate={{ y: 0 }} transition={spring(0.8, 0.45)} style={{ x: '-50%' }}>
+        <button className="gbtn ghost sm" onClick={onBack}>⬅</button>
+        <span className="count"><motion.span key={selected.size} initial={{ scale: 1.4 }} animate={{ scale: 1 }} transition={spring(0.6, 0.3)} style={{ display: 'inline-block' }}>{selected.size}</motion.span><small>cards in deck</small></span>
+        <button className="gbtn" disabled={selected.size < 2} onClick={() => onSave([...selected])}>⚔ Battle</button>
+      </motion.div>
       <AnimatePresence>
         {confirming && <LockDialog dept={dept} programId={programId} onCancel={onCancelConfirm} onConfirm={() => onConfirmed([...selected])} />}
       </AnimatePresence>
@@ -237,6 +246,7 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
 
 /** The one irreversible step gets one honest confirmation */
 function LockDialog({ dept, programId, onCancel, onConfirm }: { dept: Department; programId: number; onCancel: () => void; onConfirm: () => void }) {
+  const [sealing, setSealing] = useState(false);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onCancel(); };
     addEventListener('keydown', onKey);
@@ -244,18 +254,21 @@ function LockDialog({ dept, programId, onCancel, onConfirm }: { dept: Department
   }, [onCancel]);
   return (
     <div className="modal-wrap">
-      <motion.div className="modal-scrim" onClick={onCancel} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
-      <motion.div className="panel modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle"
-        initial={{ opacity: 0, y: 30, scale: 0.92 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.95 }} transition={spring(0.85, 0.35)}>
-        <div className="panel-title stroke">Lock in?</div>
-        <DeptCrest id={dept.id} />
+      <motion.div className="scrim" onClick={onCancel} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+      <motion.div className="glass modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle"
+        initial={{ opacity: 0, y: 30, scale: 0.9, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, y: 20, scale: 0.95, filter: 'blur(6px)' }} transition={spring(0.85, 0.4)}>
+        <DeptEmblem id={dept.id} />
         <h2 id="lockTitle">Join clan {dept.name}?</h2>
-        <p>Programme: <b>{dept.programs.find((p) => p.id === programId)?.name}</b>. Your clan <b>can’t be changed later</b> — that keeps every department’s ladder fair.
-          You can still move up a semester and edit your roster.</p>
+        <p>Programme: <b style={{ color: 'var(--text)' }}>{dept.programs.find((p) => p.id === programId)?.name}</b>. Your clan <b style={{ color: 'var(--text)' }}>can’t be changed later</b> — that keeps every ladder fair.
+          You can still level up your semester and edit your deck.</p>
         <div className="step-actions">
-          <button className="btn stone" onClick={onCancel}>Go back</button>
-          <button className="btn" autoFocus onClick={onConfirm}>🔒 Lock in &amp; battle</button>
+          <button className="gbtn ghost" onClick={onCancel} disabled={sealing}>Go back</button>
+          <button className="gbtn gold" autoFocus disabled={sealing} onClick={() => { setSealing(true); setTimeout(onConfirm, 650); }}>🔒 Lock in</button>
         </div>
+        <AnimatePresence>
+          {sealing && <motion.div className="seal" initial={{ scale: 3, opacity: 0, rotate: -30 }} animate={{ scale: 1, opacity: 1, rotate: 0 }} transition={{ type: 'spring', bounce: 0.5, visualDuration: 0.4 }}>🔒</motion.div>}
+        </AnimatePresence>
       </motion.div>
     </div>
   );

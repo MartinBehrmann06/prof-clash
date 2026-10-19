@@ -39,10 +39,10 @@ function Sheet({ p, onClose }: { p: ProfDetail; onClose: () => void }) {
   const winRate = p.wins + p.losses ? `${Math.round((100 * p.wins) / (p.wins + p.losses))}%` : '—';
   return (
     <>
-      <motion.div className="sheet-scrim" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+      <motion.div className="scrim" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
       <motion.section
-        ref={ref} className="sheet" role="dialog" aria-modal="true" aria-label={`${p.name} details`}
-        style={{ x: '-50%' }}
+        ref={ref} className={`sheet`} role="dialog" aria-modal="true" aria-label={`${p.name} details`}
+        style={{ x: '-50%', ['--rc' as any]: `var(--r-${p.league})` }}
         initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={spring(1, 0.35)}
         drag="y" dragListener={false} dragControls={drag}
         dragConstraints={{ top: 0, bottom: 0 }} dragElastic={{ top: 0.08, bottom: 1 }}
@@ -52,17 +52,18 @@ function Sheet({ p, onClose }: { p: ProfDetail; onClose: () => void }) {
           if (info.offset.y + project(info.velocity.y) > h * 0.4) onClose();
         }}
       >
-        <div className="grabber" onPointerDown={(e) => drag.start(e)} />
-        <button className="btn stone small close" onClick={onClose} aria-label="Close" autoFocus>✕</button>
+        <div className="grab-zone" onPointerDown={(e) => drag.start(e)}><div className="grabber" /></div>
+        <button className="icon-btn close" onClick={onClose} aria-label="Close" autoFocus>✕</button>
         <div className="sheet-body">
           <div className="sheet-top">
             <Portrait p={p} />
             <div>
+              <span className="eyebrow">#{p.rank} global</span>
               <h2>{p.name}</h2>
               <div className="meta">{p.relationship}{p.department ? ` · ${p.department}` : ''}</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 8 }}>
                 <LeagueBadge league={p.league} style={{ width: 44, height: 50, margin: 0 }} />
-                <Trophies n={p.elo} /><span className="chip">#{p.rank} global</span>
+                <Trophies n={p.elo} />
               </div>
             </div>
           </div>

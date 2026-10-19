@@ -1,7 +1,8 @@
 'use client';
 import { createContext, useCallback, useContext, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 
-type Toast = { id: number; msg: string; kind: '' | 'err'; out?: boolean };
+type Toast = { id: number; msg: string; kind: '' | 'err' };
 const Ctx = createContext<(msg: string, kind?: '' | 'err') => void>(() => {});
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
@@ -9,14 +10,19 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const toast = useCallback((msg: string, kind: '' | 'err' = '') => {
     const id = Date.now() + Math.random();
     setToasts((t) => [...t, { id, msg, kind }]);
-    setTimeout(() => setToasts((t) => t.map((x) => (x.id === id ? { ...x, out: true } : x))), 2200);
-    setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 2500);
+    setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 2600);
   }, []);
   return (
     <Ctx.Provider value={toast}>
       {children}
       <div className="toast-layer" aria-live="polite">
-        {toasts.map((t) => <div key={t.id} className={`toast ${t.kind} ${t.out ? 'out' : ''}`}>{t.msg}</div>)}
+        <AnimatePresence>
+          {toasts.map((t) => (
+            <motion.div key={t.id} className={`toast ${t.kind}`} layout
+              initial={{ opacity: 0, y: -16, scale: 0.92 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.96 }}
+              transition={{ type: 'spring', bounce: 0.25, visualDuration: 0.35 }}>{t.msg}</motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </Ctx.Provider>
   );
@@ -29,10 +35,11 @@ const reduced = () => typeof window !== 'undefined' && matchMedia('(prefers-redu
 /** Little physics confetti burst (skipped with reduced motion) */
 export function confetti(x = innerWidth / 2, y = innerHeight / 3, n = 36) {
   if (reduced()) return;
-  const colors = ['#ffd23f', '#2f95e6', '#e8402a', '#4fbf20', '#c13edc', '#fff'];
+  const colors = ['#ff3ea5', '#3ee6ff', '#8b5cff', '#ffcc4d', '#a6ff4d', '#fff'];
   for (let i = 0; i < n; i++) {
     const c = document.createElement('i');
-    c.className = 'confetti';
+    c.className = 'spark';
+    c.style.boxShadow = `0 0 10px ${colors[i % colors.length]}`;
     c.style.background = colors[i % colors.length];
     c.style.left = `${x}px`;
     c.style.top = `${y}px`;
@@ -46,5 +53,6 @@ export function confetti(x = innerWidth / 2, y = innerHeight / 3, n = 36) {
       if (life < 90) requestAnimationFrame(step); else c.remove();
     };
     requestAnimationFrame(step);
+    setTimeout(() => c.remove(), 2500); // rAF pauses in background tabs — never leave sparks behind
   }
 }

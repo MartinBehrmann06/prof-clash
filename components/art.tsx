@@ -42,27 +42,22 @@ export function LeagueBadge({ league, className = 'league-badge', style }: { lea
   );
 }
 
-export function XpStar({ level }: { level: number }) {
-  return (
-    <div className="xp-star" title={`Student level ${level}`}>
-      <svg viewBox="0 0 50 50"><path d="M25 2l6.5 14.5L47 18l-11.5 10.5L39 45 25 37 11 45l3.5-16.5L3 18l15.5-1.5Z" fill="#2f95e6" stroke="#2a1a0b" strokeWidth="3.5" strokeLinejoin="round" /><path d="M25 8l4.6 10.3 10.9 1.1" fill="none" stroke="#bfe8ff" strokeWidth="3" strokeLinecap="round" /></svg>
-      <span>{level}</span>
-    </div>
-  );
-}
-
 const hash = (s: string | number) => [...String(s)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
-const CREST_COLORS = [['#2f95e6', '#135aa0'], ['#e8402a', '#9a1e10'], ['#4fbf20', '#2d7d0f'], ['#c13edc', '#6c1785'], ['#ffb40a', '#c97a00'], ['#14b8a6', '#0f766e'], ['#f97316', '#9a3412']];
+const CREST_COLORS = [['#ff3ea5', '#8b5cff'], ['#3ee6ff', '#3d8bff'], ['#a6ff4d', '#14b8a6'], ['#ffcc4d', '#ff6b3d'], ['#b07bff', '#ff3ea5'], ['#57e8ff', '#8b5cff'], ['#ff4d6d', '#ffcc4d']];
 
 const DEPT_ICON: Record<number, string> = { 1: '🏛️', 2: '🌉', 11: '🧬', 23: '🔬', 20: '⚗️', 13: '🌋', 17: '📜', 24: '❤️', 5: '💻', 18: '⚡', 7: '📈', 3: '⚙️', 19: '🧱', 8: '➗', 9: '⚛️', 25: '🌳' };
 
-export function DeptCrest({ id, className = 'crest' }: { id: number; className?: string }) {
+/** Department emblem: a neon hexagon with the department's icon */
+export function DeptEmblem({ id, className = 'emblem' }: { id: number; className?: string }) {
+  const gid = useId();
   const [a, b] = CREST_COLORS[hash(id * 7) % CREST_COLORS.length];
   return (
-    <svg className={className} viewBox="0 0 58 66" aria-hidden="true">
-      <path d="M29 3 54 12v20c0 16-11 26-25 31C15 58 4 48 4 32V12Z" fill={a} stroke="#2a1a0b" strokeWidth="3.5" strokeLinejoin="round" />
-      <path d="M29 3 54 12v20c0 16-11 26-25 31Z" fill={b} opacity=".45" />
-      <text x="29" y="41" textAnchor="middle" fontSize="24">{DEPT_ICON[id] || '🎓'}</text>
+    <svg className={className} viewBox="0 0 56 62" aria-hidden="true">
+      <defs><linearGradient id={gid} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={a} /><stop offset="1" stopColor={b} /></linearGradient></defs>
+      <path d="M28 2 53 16v30L28 60 3 46V16Z" fill={`url(#${gid})`} opacity=".9" />
+      <path d="M28 2 53 16v30L28 60 3 46V16Z" fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="1.5" />
+      <path d="M28 8 47 19v24L28 54 9 43V19Z" fill="rgba(7,5,26,.35)" />
+      <text x="28" y="39" textAnchor="middle" fontSize="22">{DEPT_ICON[id] || '🎓'}</text>
     </svg>
   );
 }
@@ -74,11 +69,12 @@ function CrestAvatar({ id, name }: { id: number; name: string }) {
   const ini = ((w[0]?.[0] || '') + (w.length > 1 ? w[w.length - 1][0] : '')).toUpperCase();
   return (
     <svg viewBox="0 0 120 120" role="img" aria-label={name}>
-      <rect width="120" height="120" fill={a} />
-      <path d="M-10 90 L130 30 V140 H-10Z" fill={b} opacity=".55" />
-      <circle cx="60" cy="50" r="22" fill="#ffe0bd" stroke="#2a1a0b" strokeWidth="4" />
-      <path d="M22 118c4-26 20-38 38-38s34 12 38 38" fill="#fff5d9" stroke="#2a1a0b" strokeWidth="4" />
-      <text x="60" y="112" textAnchor="middle" fontFamily="var(--display)" fontSize="26" fill="#fff" stroke="#2a1a0b" strokeWidth="5" paintOrder="stroke">{ini}</text>
+      <defs><linearGradient id={`av${id}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={a} /><stop offset="1" stopColor={b} /></linearGradient></defs>
+      <rect width="120" height="120" fill="#1b1446" />
+      <circle cx="60" cy="48" r="44" fill={`url(#av${id})`} opacity=".35" />
+      <circle cx="60" cy="46" r="20" fill={`url(#av${id})`} opacity=".9" />
+      <path d="M20 120c4-28 20-42 40-42s36 14 40 42" fill={`url(#av${id})`} opacity=".9" />
+      <text x="60" y="54" textAnchor="middle" fontFamily="var(--display)" fontSize="20" fill="#fff">{ini}</text>
     </svg>
   );
 }

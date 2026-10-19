@@ -2,24 +2,23 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { api, useSession } from '@/lib/client/session';
 import { confetti, useToast } from '@/lib/client/feedback';
-import { FightCard, type Outcome } from '@/components/FightCard';
-import { TrophyIcon } from '@/components/art';
-import type { Matchup, VoteResult } from '@/lib/types';
-
-const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
-const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+import { spring } from '@/lib/client/motion';
+import { BattleRing, type Pair, type VoteFn } from '@/components/BattleRing';
+import type { Matchup, Profile, VoteResult } from '@/lib/types';
 
 export default function BattlePage() {
   const router = useRouter();
   const { ready, user, profile, setProfile } = useSession();
   const toast = useToast();
-  const [m, setM] = useState<Matchup | null>(null);
-  const [outcomes, setOutcomes] = useState<{ left: Outcome; right: Outcome }>({ left: null, right: null });
-  const busy = useRef(false);
-  const arena = useRef<HTMLDivElement>(null);
+  const [pair, setPair] = useState<Pair | null>(null);
+  const [done, setDone] = useState<Profile | null>(null);
+  const [remaining, setRemaining] = useState(0);
+  const round = useRef(0);
+  const profileRef = useRef(profile);
+  profileRef.current = profile;
 
   useEffect(() => {
     if (!ready) return;
@@ -28,92 +27,72 @@ export default function BattlePage() {
   }, [ready, user, profile, router]);
 
   const next = useCallback(async () => {
-    setOutcomes({ left: null, right: null });
-    setM(await api<Matchup>('/api/matchup'));
+    const m = await api<Matchup>('/api/matchup');
+    if (m.done) { setDone(m.me); setPair(null); return; }
+    round.current += 1;
+    setRemaining(m.remaining);
+    setPair({ left: m.left, right: m.right, round: round.current });
   }, []);
-  useEffect(() => { if (profile) next(); }, [!!profile]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (profile && !pair && !done) next().catch((e) => toast(e.message, 'err')); }, [!!profile]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const choose = useCallback(async (side: 'left' | 'right') => {
-    if (busy.current || !m || m.done) return;
-    busy.current = true;
+  const vote: VoteFn = useCallback(async (side) => {
+    if (!pair) return null;
     const other = side === 'left' ? 'right' : 'left';
     try {
-      const res = await api<VoteResult>('/api/vote', { method: 'POST', body: { winner: m[side].id, loser: m[other].id } });
-      setOutcomes({ [side]: { won: true, delta: res.delta, elo: res.winner.elo }, [other]: { won: false, delta: res.delta, elo: res.loser.elo } } as any);
-      const card = arena.current?.querySelector(`.fight-card.${side}`)?.getBoundingClientRect();
-      if (card) confetti(card.left + card.width / 2, card.top + card.height * 0.35, 26);
-      setProfile(profile && { ...profile, xp: res.xp, level: res.level, votes: profile.votes + 1 });
-      if (res.levelUp) { toast(`⭐ Level up! You’re now level ${res.level}`); confetti(innerWidth / 2, 120, 60); }
-      await wait(reduced() ? 350 : 1050);
-      await next();
+      const res = await api<VoteResult>('/api/vote', { method: 'POST', body: { winner: pair[side].id, loser: pair[other].id } });
+      const p = profileRef.current;
+      if (p) setProfile({ ...p, xp: res.xp, level: res.level, votes: p.votes + 1 });
+      if (res.levelUp) { toast(`⭐ Level up — you’re level ${res.level}!`); confetti(innerWidth / 2, 120, 70); }
+      return { delta: res.delta, winnerElo: res.winner.elo, loserElo: res.loser.elo };
     } catch (e: any) {
       toast(e.message, 'err');
       await next();
-    } finally {
-      busy.current = false;
+      return null;
     }
-  }, [m, next, profile, setProfile, toast]);
+  }, [pair, next, setProfile, toast]);
 
   const skip = useCallback(async () => {
-    if (busy.current) return;
     await api('/api/skip', { method: 'POST' });
-    next();
+    await next();
   }, [next]);
-
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement).closest('input,select,textarea')) return;
-      if (e.key === 'ArrowLeft') choose('left');
-      else if (e.key === 'ArrowRight') choose('right');
-      else if (e.key.toLowerCase() === 's') skip();
-    };
+    const onKey = (e: KeyboardEvent) => { if (e.key.toLowerCase() === 's' && !(e.target as HTMLElement).closest('input')) skip(); };
     addEventListener('keydown', onKey);
     return () => removeEventListener('keydown', onKey);
-  }, [choose, skip]);
+  }, [skip]);
 
-  if (!profile) return <div className="loading-crest"><span><span className="spin">⚔️</span><br />Loading…</span></div>;
-  const done = profile.votes, total = Math.max(profile.totalPairs, 1);
+  if (!profile) return <div className="loading"><div className="loader" />Loading</div>;
+  const total = Math.max(profile.totalPairs, 1);
 
   return (
-    <div className="battle-wrap view-enter">
-      <div className="hud">
-        <div className="panel"><span className="label">🛡️ {profile.programName} · Sem {profile.semester}</span></div>
-        <div className="panel" style={{ flex: 1, maxWidth: 360 }}>
+    <div className="battle">
+      <div className="battle-hud">
+        <div className="glass"><span className="label">Clan</span><b>{profile.programName}</b><span className="chip">Sem {profile.semester}</span></div>
+        <div className="glass">
           <span className="label">Battles</span>
-          <div className="progress-bar" aria-label={`${done} of ${total} battles`}><i style={{ width: `${Math.min(100, (100 * done) / total)}%` }} /></div>
-          <span className="trophies"><TrophyIcon />{m && !m.done ? m.remaining : 0}</span>
+          <span className="bar"><motion.i initial={false} animate={{ width: `${Math.min(100, (100 * profile.votes) / total)}%` }} transition={spring(1, 0.5)} /></span>
+          <b>{profile.votes}/{profile.totalPairs}</b>
         </div>
       </div>
-      <h1 className="battle-title">Who taught you better?</h1>
-      <p className="battle-sub">Tap a card — or grab it and flick it up — to crown the winner.</p>
 
-      <div ref={arena}>
-        {!m ? <div className="loading-crest"><span className="spin">⚔️</span></div>
-          : m.done ? (
-            <div className="panel done-panel view-enter"><div className="panel-title stroke">Victory!</div><div className="big">🏰</div>
-              <h2 style={{ color: 'var(--gold-1)', fontSize: 36 }}>Every duel fought!</h2>
-              <p>You judged all {m.me.totalPairs} matchups in your roster. Your clan salutes you, level {m.me.level} scholar.</p>
-              <div className="battle-actions"><Link className="btn gold" href="/leaderboard">🏆 See the ladder</Link><Link className="btn blue" href="/setup">Add professors</Link></div>
-            </div>
-          ) : (
-            <div className="arena">
-              <AnimatePresence mode="popLayout">
-                <FightCard key={`L${m.left.id}-${m.right.id}`} card={m.left} side="left" outcome={outcomes.left} disabled={busy.current} onPick={() => choose('left')} />
-              </AnimatePresence>
-              <div className="vs-emblem"><div className="burst" /><div className="vs">VS</div></div>
-              <AnimatePresence mode="popLayout">
-                <FightCard key={`R${m.left.id}-${m.right.id}`} card={m.right} side="right" outcome={outcomes.right} disabled={busy.current} onPick={() => choose('right')} />
-              </AnimatePresence>
-            </div>
-          )}
-      </div>
-
-      <div className="battle-actions">
-        <button className="btn stone small" onClick={skip}>🤷 Can’t decide <span className="kbd">S</span></button>
-        <Link className="btn blue small" href="/setup">✏️ Edit roster</Link>
-        <Link className="btn gold small" href="/leaderboard">🏆 Ladder</Link>
-      </div>
-      <p className="hint-line">Keyboard: <span className="kbd">←</span> left wins · <span className="kbd">→</span> right wins</p>
+      {done ? (
+        <motion.div className="glass victory" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={spring(0.7, 0.45)}>
+          <div className="big">🏆</div>
+          <h1 className="grad-text" style={{ fontSize: 44 }}>Victory!</h1>
+          <p className="muted">You judged all {done.totalPairs} matchups in your roster. Level {done.level} scholar — the arena salutes you.</p>
+          <div className="battle-actions"><Link className="gbtn gold" href="/leaderboard">See rankings</Link><Link className="gbtn ghost" href="/setup">Edit roster</Link></div>
+        </motion.div>
+      ) : (
+        <>
+          <div className="round"><h1>Who taught you better?</h1><p>Tap a card — or grab it and flick it up. {remaining} duels left.</p></div>
+          {pair ? <BattleRing pair={pair} onVote={vote} onNext={next} /> : <div className="loading"><div className="loader" />Summoning fighters</div>}
+          <div className="battle-actions">
+            <button className="gbtn ghost sm" onClick={skip}>Can’t decide <span className="kbd">S</span></button>
+            <Link className="gbtn ghost sm" href="/setup">Edit roster</Link>
+          </div>
+          <p className="hint"><span className="kbd">←</span> left wins · <span className="kbd">→</span> right wins</p>
+        </>
+      )}
     </div>
   );
 }
