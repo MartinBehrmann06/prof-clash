@@ -7,11 +7,11 @@ import { useToast } from '@/lib/client/feedback';
 import { MOTION } from '@/lib/client/motion';
 import { currentTerm, isAutumn, termLabel } from '@/lib/terms';
 import { deptById } from '@/lib/departments';
-import { Portrait } from '@/components/Portrait';
+import { Figure } from '@/components/Figure';
 import type { Department, Meta, Profile, Roster } from '@/lib/types';
 
 type Step = 1 | 2 | 3;
-const STEPS = ['Department', 'Semester', 'Professoren'];
+const STEPS = ['🛡 Clan', '📅 Semester', '🃏 Deck'];
 
 /**
  * Setup: department (chosen once, then locked) → semester → the professors you actually had,
@@ -44,12 +44,12 @@ export default function SetupPage() {
     try {
       const p = await api<Profile>('/api/profile', { method: 'POST', body: { programId, semester, profIds } });
       setProfile(p);
-      toast(locked ? 'Gespeichert' : `Willkommen bei D-${deptById(p.deptId).code}`);
-      router.push('/');
+      toast(locked ? 'Deck gespeichert ✔' : `🛡 Willkommen im Clan D-${deptById(p.deptId).code}!`);
+      router.push('/battle');
     } catch (e: any) { toast(e.message, 'err'); }
   }
 
-  if (!meta || !ready || !user) return <div className="loading"><div className="spinner" />Lädt</div>;
+  if (!meta || !ready || !user) return <div className="loading"><span className="spin">⚔️</span>Lädt</div>;
 
   return (
     <div className="page">
@@ -88,10 +88,10 @@ export default function SetupPage() {
 function DeptHeader({ dept, programId, locked }: { dept: Department; programId: number; locked: boolean }) {
   const d = deptById(dept.id);
   return (
-    <div className="cta-card" style={{ margin: '0 auto 22px', ['--c' as any]: d.color }}>
+    <div className="panel wood cta-card" style={{ margin: '0 auto 26px', ['--c' as any]: d.color }}>
       <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span className="coinlet">{d.code}</span>
-        <span><b style={{ display: 'block' }}>{dept.name}</b><small className="muted">{dept.programs.find((p) => p.id === programId)?.name} · Bachelor{locked ? ' · festgelegt' : ''}</small></span>
+        <span className="mini-shield">{d.code}</span>
+        <span><b className="toon" style={{ display: 'block', fontSize: 20 }}>{dept.name}</b><small style={{ color: '#fff3d6' }}>{dept.programs.find((p) => p.id === programId)?.name} · Bachelor{locked ? ' · 🔒 festgelegt' : ''}</small></span>
       </span>
     </div>
   );
@@ -103,14 +103,14 @@ function DeptStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
   const dept = meta.depts.find((d) => d.id === deptId);
   return (
     <>
-      <header className="head center"><h1 className="display">Dein Department</h1>
-        <p className="muted" style={{ margin: 0, maxWidth: '50ch' }}>Es bestimmt, über wen du abstimmst und in welche Department-Wertung deine Stimmen fliessen. <b style={{ color: 'var(--ink)' }}>Du wählst es einmal.</b></p></header>
+      <header className="head"><h1>Wähle deinen Clan</h1>
+        <p>Dein Department bestimmt, über wen du abstimmst und für welchen Clan deine Stimmen zählen. <b>Du wählst ihn einmal.</b></p></header>
       <div className="choice-grid">
         {meta.depts.map((d) => {
           const s = deptById(d.id);
           return (
             <button key={d.id} type="button" className={`choice ${d.id === deptId ? 'on' : ''}`} style={{ ['--c' as any]: s.color }} onClick={() => onDept(d)}>
-              <span className="coinlet">{s.code}</span><span><b>{d.name}</b><small>{d.programs.length} Studiengang{d.programs.length > 1 ? 'e' : ''}</small></span>
+              <span className="mini-shield" style={{ ['--c' as any]: s.color }}>{s.code}</span><span><b>{d.name}</b><small>{d.programs.length} Studiengang{d.programs.length > 1 ? 'e' : ''}</small></span>
             </button>
           );
         })}
@@ -118,7 +118,7 @@ function DeptStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
       <AnimatePresence>
         {dept && dept.programs.length > 1 && (
           <motion.div key={dept.id} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={MOTION.soft} style={{ overflow: 'hidden' }}>
-            <h2 className="title" style={{ textAlign: 'center', margin: '30px 0 14px', fontSize: '1.3rem' }}>Studiengang</h2>
+            <h2 style={{ textAlign: 'center', margin: '30px 0 14px', fontSize: 28 }}>Studiengang</h2>
             <div className="choice-grid">
               {dept.programs.map((p) => (
                 <button key={p.id} type="button" className={`choice ${p.id === programId ? 'on' : ''}`} style={{ ['--c' as any]: deptById(dept.id).color }} onClick={() => onProgram(p.id)}>
@@ -129,7 +129,7 @@ function DeptStep({ meta, deptId, programId, onDept, onProgram, onNext }: {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="duel-bar" style={{ marginTop: 28 }}><button className="btn" disabled={!programId} onClick={onNext}>Weiter</button></div>
+      <div className="duel-bar" style={{ marginTop: 28 }}><button className="btn xl" disabled={!programId} onClick={onNext}>Weiter ➜</button></div>
     </>
   );
 }
@@ -141,8 +141,8 @@ function SemesterStep({ dept, programId, semester, min, locked, onPick, onBack, 
   return (
     <>
       <DeptHeader dept={dept} programId={programId} locked={locked} />
-      <header className="head center"><h1 className="display">In welchem Semester bist du?</h1>
-        <p className="muted" style={{ margin: 0, maxWidth: '50ch' }}>Wir suchen für jedes Semester die Dozierenden aus dem Semester, in dem du es tatsächlich besucht hast.</p></header>
+      <header className="head"><h1>In welchem Semester bist du?</h1>
+        <p>Für jedes Semester holen wir die Profs aus dem Semester, in dem du es wirklich besucht hast.</p></header>
       <div className="sems">
         {[1, 2, 3, 4, 5, 6].map((n) => (
           <button key={n} type="button" className={`sem ${n === semester ? 'on' : ''} ${(n % 2 === 1) === autumn ? 'now' : ''}`}
@@ -152,8 +152,8 @@ function SemesterStep({ dept, programId, semester, min, locked, onPick, onBack, 
         ))}
       </div>
       <div className="duel-bar" style={{ marginTop: 28 }}>
-        {!locked && <button className="btn ghost" onClick={onBack}>Zurück</button>}
-        <button className="btn" disabled={!semester} onClick={onNext}>Weiter</button>
+        {!locked && <button className="btn stone" onClick={onBack}>⬅ Zurück</button>}
+        <button className="btn xl" disabled={!semester} onClick={onNext}>Weiter ➜</button>
       </div>
     </>
   );
@@ -181,13 +181,14 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
   const toggle = (id: number) => setSelected((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
   if (error) return <div className="empty">{error}</div>;
-  if (!roster) return <div className="loading"><div className="spinner" />Professoren werden geladen</div>;
+  if (!roster) return <div className="loading"><span className="spin">⚔️</span>Profs werden gerufen …</div>;
 
   return (
     <>
       <DeptHeader dept={dept} programId={programId} locked={locked} />
-      <header className="head center"><h1 className="display">Deine Professor:innen</h1>
-        <p className="muted" style={{ margin: 0, maxWidth: '54ch' }}>Alle aus deinen Pflichtfächern bis Semester {semester}. Tippe auf jemanden, um ihn zu entfernen, falls du die Vorlesung nicht besucht hast.</p></header>
+      <header className="head"><h1>Dein Deck</h1>
+        <p>Alle Profs aus deinen Pflichtfächern bis Semester {semester}. Tippe auf eine Karte, um sie zu entfernen, falls du die Vorlesung nicht besucht hast.</p></header>
+      <div className="panel" style={{ paddingTop: 10 }}>
       {roster.groups.map((g) => {
         const future = g.status === 'future';
         return (
@@ -204,8 +205,8 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
                     whileTap={!future ? { scale: 0.96 } : undefined} transition={MOTION.press} onClick={() => toggle(prof.id)}>
                     <AnimatePresence>{on && <motion.span className="tick" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={MOTION.pop}>✓</motion.span>}</AnimatePresence>
                     {locked && g.status === 'had' && !previous.has(prof.id) && <span className="new">NEU</span>}
-                    <Portrait p={prof} />
-                    <span className="meta"><b>{prof.name}</b><small>{courses.slice(0, 2).join(' · ')}</small></span>
+                    <span className="frame" style={{ display: 'block' }}><Figure id={prof.id} name={prof.name} department={prof.department} /></span>
+                    <b>{prof.name}</b><small>{courses.slice(0, 2).join(' · ')}</small>
                   </motion.button>
                 );
               })}
@@ -213,11 +214,12 @@ function RosterStep({ dept, programId, semester, profile, locked, onBack, onSave
           </section>
         );
       })}
+      </div>
       <div style={{ height: 80 }} />
       <motion.div className="dock" initial={{ y: 100, x: '-50%' }} animate={{ y: 0, x: '-50%' }} transition={MOTION.soft}>
-        <button className="icon-btn" onClick={onBack} aria-label="Zurück">‹</button>
-        <span className="count"><b className="num">{selected.size}</b> ausgewählt</span>
-        <button className="btn" disabled={selected.size < 2} onClick={() => onSave([...selected])}>Speichern & spielen</button>
+        <button className="btn sm stone" onClick={onBack} aria-label="Zurück">⬅</button>
+        <span className="count"><span className="num">{selected.size}</span> Karten</span>
+        <button className="btn" disabled={selected.size < 2} onClick={() => onSave([...selected])}>⚔️ Battle!</button>
       </motion.div>
     </>
   );
@@ -234,14 +236,15 @@ function LockDialog({ dept, programId, onCancel, onConfirm }: { dept: Department
   return (
     <div className="modal-wrap">
       <motion.div className="scrim" onClick={onCancel} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={MOTION.fade} />
-      <motion.div className="modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle" style={{ ['--c' as any]: d.color }}
+      <motion.div className="panel modal" role="alertdialog" aria-modal="true" aria-labelledby="lockTitle" style={{ ['--c' as any]: d.color }}
         initial={{ opacity: 0, scale: 0.94, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.97, transition: MOTION.exit }} transition={MOTION.soft}>
-        <span className="coinlet" style={{ width: 56, height: 56, fontSize: '.8rem' }}>{d.code}</span>
-        <h2 id="lockTitle" className="title" style={{ fontSize: '1.4rem' }}>D-{d.code} festlegen?</h2>
-        <p>{dept.programs.find((p) => p.id === programId)?.name}. Dein Department <b style={{ color: 'var(--ink)' }}>lässt sich danach nicht mehr ändern</b> — so bleibt jede Department-Wertung fair. Semester und Professorenliste kannst du später anpassen.</p>
+        <span className="ribbon">🔒 Festlegen?</span>
+        <span className="mini-shield" style={{ width: 70, height: 80, fontSize: 18 }}>{d.code}</span>
+        <h2 id="lockTitle" style={{ fontSize: 28, color: 'var(--gold-1)' }}>Clan D-{d.code} beitreten?</h2>
+        <p>{dept.programs.find((p) => p.id === programId)?.name}. Dein Department <b>lässt sich danach nicht mehr ändern</b> — so bleibt jede Department-Wertung fair. Semester und Professorenliste kannst du später anpassen.</p>
         <div className="duel-bar" style={{ marginTop: 6 }}>
-          <button className="btn ghost" onClick={onCancel}>Zurück</button>
-          <button className="btn" autoFocus onClick={onConfirm}>Festlegen</button>
+          <button className="btn stone" onClick={onCancel}>Zurück</button>
+          <button className="btn gold" autoFocus onClick={onConfirm}>🔒 Beitreten</button>
         </div>
       </motion.div>
     </div>

@@ -28,7 +28,7 @@ function Login() {
   const boxes = useRef<(HTMLInputElement | null)[]>([]);
   const [scope, animate] = useAnimate();
 
-  useEffect(() => { if (user) router.replace(next ? `/${next}` : profile ? '/' : '/setup'); }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (user) router.replace(next ? `/${next}` : profile ? '/battle' : '/setup'); }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (cooldown <= 0) return;
     const t = setTimeout(() => setCooldown(cooldown - 1), 1000);
@@ -64,7 +64,7 @@ function Login() {
       setDigits(Array(LEN).fill('')); boxes.current[0]?.focus();
       return;
     }
-    toast('Willkommen in der Prof Arena');
+    toast('🛡 Willkommen in der Arena!');
     await refresh();
   }
 
@@ -86,9 +86,10 @@ function Login() {
 
   return (
     <div className="page">
-      <div className="head center"><span className="eyebrow">Anmelden</span><h1 className="display">Deine Stimme zählen lassen</h1>
-        <p className="muted" style={{ margin: 0, maxWidth: '44ch' }}>Nur mit ETH-Adresse. Wir schicken dir einen 6-stelligen Code — kein Passwort.</p></div>
-      <div className="panel" ref={scope}>
+      <div className="head"><h1>Tritt der Arena bei</h1>
+        <p>Nur mit ETH-Adresse. Wir schicken dir einen 6-stelligen Code — kein Passwort.</p></div>
+      <div className="panel login" ref={scope}>
+        <span className="ribbon">🔑 Login</span>
         <AnimatePresence mode="wait" initial={false}>
           {step === 'email' ? (
             <motion.form key="email" noValidate onSubmit={(e) => { e.preventDefault(); send(); }}
@@ -97,12 +98,12 @@ function Login() {
                 <input className="input" type="email" inputMode="email" autoComplete="email" placeholder="you@student.ethz.ch" autoFocus
                   value={email} onChange={(e) => setEmail(e.target.value)} /></label>
               <p className="msg" role="alert">{msg}</p>
-              <button className="btn" type="submit" disabled={busy}>{busy ? 'Wird gesendet …' : 'Code senden'}</button>
+              <button className="btn" type="submit" disabled={busy}>{busy ? 'Wird gesendet …' : '📨 Code senden'}</button>
             </motion.form>
           ) : (
             <motion.form key="code" noValidate onSubmit={(e) => { e.preventDefault(); if (digits.every(Boolean)) verify(digits.join('')); }}
               initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={MOTION.snappy}>
-              <p className="muted" style={{ margin: 0, fontSize: '.9rem' }}>Code an <b style={{ color: 'var(--ink)' }}>{email}</b> gesendet. ETH-Mails brauchen manchmal 1–2 Minuten — auch Junk prüfen. Immer den Code aus der <b>neuesten</b> Mail nehmen.</p>
+              <p className="muted" style={{ margin: 0, fontSize: '.9rem' }}>Code an <b>{email}</b> gesendet. ETH-Mails brauchen manchmal 1–2 Minuten — auch Junk prüfen. Immer den Code aus der <b>neuesten</b> Mail nehmen.</p>
               <div className="field"><span>6-stelliger Code</span>
                 <div className="otp">
                   {digits.map((d, i) => (
@@ -115,7 +116,7 @@ function Login() {
                 </div>
               </div>
               <p className="msg" role="alert">{msg}</p>
-              <button className="btn" type="submit" disabled={busy || !digits.every(Boolean)}>{busy ? 'Wird geprüft …' : 'Bestätigen'}</button>
+              <button className="btn gold" type="submit" disabled={busy || !digits.every(Boolean)}>{busy ? 'Wird geprüft …' : '⚔️ Los geht’s'}</button>
               <div className="links">
                 <button type="button" className="link" disabled={cooldown > 0 || busy}
                   onClick={async () => { if (await send()) toast('Neuer Code gesendet — der alte gilt nicht mehr'); }}>

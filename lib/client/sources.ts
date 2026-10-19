@@ -44,7 +44,7 @@ export function practiceSource(): DuelSource {
   return {
     eloNote: 'Elo · Training',
     next: async () => {
-      pool ??= (await api<RankedProf[]>('/api/leaderboard?limit=1000')).filter((p) => p.image);
+      pool ??= await api<RankedProf[]>('/api/leaderboard?limit=1000');
       if (pool.length < 2) return null;
       const [left, right] = pick();
       return { key: `${left.id}-${right.id}-${Date.now()}`, left, right };

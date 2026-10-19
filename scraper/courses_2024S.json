@@ -1,0 +1,8640 @@
+{
+ "programs": {
+  "122764": {
+   "dept": "1",
+   "deptName": "Architecture",
+   "name": "Architecture Bachelor",
+   "sections": [
+    [
+     "123620",
+     "Bachelor Studies (Programme Regulations 2017)"
+    ],
+    [
+     "123621",
+     "Bachelor Studies (Programme Regulations 2025)"
+    ],
+    [
+     "123277",
+     "Science in Perspective"
+    ],
+    [
+     "123622",
+     "Seminar Weeks"
+    ]
+   ]
+  },
+  "122758": {
+   "dept": "11",
+   "deptName": "Biology",
+   "name": "Biology Bachelor",
+   "sections": [
+    [
+     "123529",
+     "First Year Courses"
+    ],
+    [
+     "123029",
+     "Science in Perspective"
+    ],
+    [
+     "123534",
+     "Second Year Courses"
+    ],
+    [
+     "123542",
+     "Third Year Courses"
+    ]
+   ]
+  },
+  "122886": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Biochemistry – Chemical Biology Bachelor",
+   "sections": [
+    [
+     "123432",
+     "Block Courses"
+    ],
+    [
+     "123408",
+     "Core Courses First Year Examination"
+    ],
+    [
+     "123411",
+     "Electives"
+    ],
+    [
+     "123409",
+     "Laboratory Courses"
+    ],
+    [
+     "123410",
+     "Science in Perspective"
+    ],
+    [
+     "123431",
+     "Second and Third Year Core Courses"
+    ]
+   ]
+  },
+  "122790": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Chemical Engineering Bachelor",
+   "sections": [
+    [
+     "123416",
+     "1. Semester"
+    ],
+    [
+     "123429",
+     "3. Semester"
+    ],
+    [
+     "123430",
+     "5. Semester"
+    ],
+    [
+     "122994",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122750": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Chemistry Bachelor",
+   "sections": [
+    [
+     "123353",
+     "1. Semester"
+    ],
+    [
+     "123394",
+     "3. Semester"
+    ],
+    [
+     "123354",
+     "5. Semester"
+    ],
+    [
+     "123278",
+     "Electives"
+    ],
+    [
+     "122938",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122765": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Interdisciplinary Sciences Bachelor",
+   "sections": [
+    [
+     "123310",
+     "Biochemical-Physical Direction"
+    ],
+    [
+     "122966",
+     "Physical-Chemical Direction"
+    ],
+    [
+     "123060",
+     "Science in Perspective"
+    ],
+    [
+     "123073",
+     "Second and Third Year Additional Subjects"
+    ]
+   ]
+  },
+  "122757": {
+   "dept": "20",
+   "deptName": "Chemistry and Applied Biosciences",
+   "name": "Pharmaceutical Sciences Bachelor",
+   "sections": [
+    [
+     "123192",
+     "Compensatory Courses"
+    ],
+    [
+     "123543",
+     "Electives"
+    ],
+    [
+     "123528",
+     "First Year Compulsory Subjects"
+    ],
+    [
+     "122934",
+     "Science in Perspective"
+    ],
+    [
+     "123535",
+     "Second Year Courses"
+    ],
+    [
+     "123541",
+     "Third Year Courses"
+    ]
+   ]
+  },
+  "122752": {
+   "dept": "2",
+   "deptName": "Civil, Environmental and Geomatic Engineering",
+   "name": "Civil Engineering Bachelor",
+   "sections": [
+    [
+     "123282",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123502",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ],
+    [
+     "122935",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122753": {
+   "dept": "2",
+   "deptName": "Civil, Environmental and Geomatic Engineering",
+   "name": "Environmental Engineering Bachelor",
+   "sections": [
+    [
+     "122990",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123501",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ],
+    [
+     "122937",
+     "Electives"
+    ],
+    [
+     "122989",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122872": {
+   "dept": "2",
+   "deptName": "Civil, Environmental and Geomatic Engineering",
+   "name": "Geospatial Engineering Bachelor",
+   "sections": [
+    [
+     "123448",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123303",
+     "Basic Courses"
+    ],
+    [
+     "123346",
+     "Compulsory Courses"
+    ],
+    [
+     "123404",
+     "Elective Blocks"
+    ],
+    [
+     "123304",
+     "Electives"
+    ],
+    [
+     "123320",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122754": {
+   "dept": "5",
+   "deptName": "Computer Science",
+   "name": "Computer Science Bachelor",
+   "sections": [
+    [
+     "123105",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123287",
+     "Basic Courses"
+    ],
+    [
+     "123288",
+     "Core Courses"
+    ],
+    [
+     "123289",
+     "Electives"
+    ],
+    [
+     "123283",
+     "First Year Examinations"
+    ],
+    [
+     "123309",
+     "Minor Courses"
+    ],
+    [
+     "123220",
+     "Science in Perspective"
+    ],
+    [
+     "123308",
+     "Seminar"
+    ]
+   ]
+  },
+  "122759": {
+   "dept": "13",
+   "deptName": "Earth and Planetary Sciences",
+   "name": "Earth and Climate Sciences Bachelor",
+   "sections": [
+    [
+     "123033",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123384",
+     "Basic Courses I"
+    ],
+    [
+     "123371",
+     "Basic Courses II"
+    ],
+    [
+     "123372",
+     "General Earth Sciences Courses"
+    ],
+    [
+     "123385",
+     "Integrated Earth Systems"
+    ],
+    [
+     "123386",
+     "Majors"
+    ],
+    [
+     "123286",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122761": {
+   "dept": "25",
+   "deptName": "Environmental Systems Science",
+   "name": "Agricultural Sciences Bachelor",
+   "sections": [
+    [
+     "123360",
+     "1. Semester"
+    ],
+    [
+     "123373",
+     "Agricultural Sciences Basic Courses"
+    ],
+    [
+     "123363",
+     "Agricultural Sciences Disciplines"
+    ],
+    [
+     "123375",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123362",
+     "Basic Courses (Second Year)"
+    ],
+    [
+     "123391",
+     "Electives"
+    ],
+    [
+     "123374",
+     "Methods"
+    ]
+   ]
+  },
+  "122760": {
+   "dept": "25",
+   "deptName": "Environmental Systems Science",
+   "name": "Environmental Sciences Bachelor",
+   "sections": [
+    [
+     "123119",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123359",
+     "Basic Courses I"
+    ],
+    [
+     "123364",
+     "Basic Courses II"
+    ],
+    [
+     "123367",
+     "Highly recommended Natural Science and Technical Electives"
+    ],
+    [
+     "123369",
+     "Natural Science and Technical Electives"
+    ],
+    [
+     "123361",
+     "Social Sciences and Humanities"
+    ],
+    [
+     "123370",
+     "Specialization in an Environmental System"
+    ]
+   ]
+  },
+  "122762": {
+   "dept": "24",
+   "deptName": "Health Sciences and Technology",
+   "name": "Food Science and Nutrition Bachelor",
+   "sections": [
+    [
+     "123155",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123582",
+     "Bachelor Studies (Programme Regulations 2016)"
+    ],
+    [
+     "123583",
+     "Bachelor Studies (Programme Regulations 2024)"
+    ]
+   ]
+  },
+  "122833": {
+   "dept": "24",
+   "deptName": "Health Sciences and Technology",
+   "name": "Health Sciences and Technology Bachelor",
+   "sections": [
+    [
+     "123407",
+     "Bachelor Studies (Programme Regulations 2020)"
+    ],
+    [
+     "123125",
+     "Electives"
+    ],
+    [
+     "123221",
+     "Science in Perspective"
+    ],
+    [
+     "123130",
+     "Sports Practice"
+    ]
+   ]
+  },
+  "122862": {
+   "dept": "24",
+   "deptName": "Health Sciences and Technology",
+   "name": "Human Medicine Bachelor",
+   "sections": [
+    [
+     "123500",
+     "Bachelor Studies (Programme Regulations 2018)"
+    ],
+    [
+     "123499",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ]
+   ]
+  },
+  "122749": {
+   "dept": "17",
+   "deptName": "Humanities, Social and Political Sciences",
+   "name": "Public Policy Bachelor",
+   "sections": [
+    [
+     "123355",
+     "1. Semester"
+    ],
+    [
+     "123356",
+     "3. Semester"
+    ],
+    [
+     "123357",
+     "5. Semester"
+    ],
+    [
+     "123158",
+     "Electives"
+    ]
+   ]
+  },
+  "122763": {
+   "dept": "18",
+   "deptName": "Information Technology and Electrical Engineering",
+   "name": "Electrical Engineering and Information Technology Bachelor",
+   "sections": [
+    [
+     "123358",
+     "1st semester: foundation year"
+    ],
+    [
+     "123627",
+     "3rd semester: second year courses"
+    ],
+    [
+     "123412",
+     "5th semester: third year additional foundation courses"
+    ],
+    [
+     "123626",
+     "5th semester: third year core courses"
+    ],
+    [
+     "123436",
+     "Bachelor's Project"
+    ],
+    [
+     "123231",
+     "Electives"
+    ],
+    [
+     "123230",
+     "Laboratory Courses, Projects, Seminars"
+    ],
+    [
+     "123247",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122751": {
+   "dept": "19",
+   "deptName": "Materials",
+   "name": "Materials Science Bachelor",
+   "sections": [
+    [
+     "123618",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123615",
+     "Basis Courses Part 1"
+    ],
+    [
+     "122933",
+     "Science in Perspective"
+    ],
+    [
+     "123617",
+     "Second Year Basic Courses"
+    ],
+    [
+     "123619",
+     "Third Year Basic Courses"
+    ]
+   ]
+  },
+  "122747": {
+   "dept": "8",
+   "deptName": "Mathematics",
+   "name": "Computational Science and Engineering Bachelor",
+   "sections": [
+    [
+     "123420",
+     "Additional Electives from the Fields of Specialization (CSE Master)"
+    ],
+    [
+     "123427",
+     "Bachelor's Thesis"
+    ],
+    [
+     "123426",
+     "Basic Courses"
+    ],
+    [
+     "123414",
+     "Case Studies"
+    ],
+    [
+     "123415",
+     "Colloquia"
+    ],
+    [
+     "123428",
+     "Core Courses"
+    ],
+    [
+     "123419",
+     "Electives"
+    ],
+    [
+     "123418",
+     "Fields of Specialization"
+    ],
+    [
+     "123421",
+     "First Year Compulsory Courses"
+    ],
+    [
+     "123417",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122755": {
+   "dept": "8",
+   "deptName": "Mathematics",
+   "name": "Mathematics Bachelor",
+   "sections": [
+    [
+     "122964",
+     "Additional Courses"
+    ],
+    [
+     "122963",
+     "Bachelor's Thesis"
+    ],
+    [
+     "124225",
+     "Compulsory Elective Courses"
+    ],
+    [
+     "125101",
+     "Core Courses and Elective Courses"
+    ],
+    [
+     "123522",
+     "Electives (only conditionally recognised)"
+    ],
+    [
+     "123679",
+     "First Year Compulsory Courses"
+    ],
+    [
+     "123611",
+     "Further Electives (Programme Regulations 2021 and 2016)"
+    ],
+    [
+     "124224",
+     "Minor Courses"
+    ],
+    [
+     "123222",
+     "Science in Perspective"
+    ],
+    [
+     "124348",
+     "Second and Third Year Compulsory Courses"
+    ],
+    [
+     "125102",
+     "Seminars and Semester Papers"
+    ]
+   ]
+  },
+  "122748": {
+   "dept": "3",
+   "deptName": "Mechanical and Process Engineering",
+   "name": "Mechanical Engineering Bachelor",
+   "sections": [
+    [
+     "123505",
+     "Bachelor Studies (Programme Regulations 2010)"
+    ],
+    [
+     "123504",
+     "Bachelor Studies (Programme Regulations 2022)"
+    ],
+    [
+     "122932",
+     "Science in Perspective"
+    ]
+   ]
+  },
+  "122756": {
+   "dept": "9",
+   "deptName": "Physics",
+   "name": "Physics Bachelor",
+   "sections": [
+    [
+     "122955",
+     "Additional Courses, Seminars and Colloquia"
+    ],
+    [
+     "123227",
+     "Core Courses"
+    ],
+    [
+     "123569",
+     "Electives"
+    ],
+    [
+     "123226",
+     "First Year"
+    ],
+    [
+     "123526",
+     "First Year Compulsory Courses"
+    ],
+    [
+     "123305",
+     "Practical Courses"
+    ],
+    [
+     "123225",
+     "Proseminars, Experimental and Theoretical Semester Papers"
+    ],
+    [
+     "123223",
+     "Science in Perspective"
+    ],
+    [
+     "123540",
+     "Second and Third Year Compulsory Courses"
+    ],
+    [
+     "123041",
+     "Selection of Higher Semester Courses"
+    ]
+   ]
+  }
+ },
+ "depts": [
+  [
+   "1",
+   "Architecture"
+  ],
+  [
+   "11",
+   "Biology"
+  ],
+  [
+   "23",
+   "Biosystems Science and Engineering"
+  ],
+  [
+   "20",
+   "Chemistry and Applied Biosciences"
+  ],
+  [
+   "2",
+   "Civil, Environmental and Geomatic Engineering"
+  ],
+  [
+   "5",
+   "Computer Science"
+  ],
+  [
+   "13",
+   "Earth and Planetary Sciences"
+  ],
+  [
+   "25",
+   "Environmental Systems Science"
+  ],
+  [
+   "24",
+   "Health Sciences and Technology"
+  ],
+  [
+   "17",
+   "Humanities, Social and Political Sciences"
+  ],
+  [
+   "18",
+   "Information Technology and Electrical Engineering"
+  ],
+  [
+   "7",
+   "Management, Technology, and Economics"
+  ],
+  [
+   "19",
+   "Materials"
+  ],
+  [
+   "8",
+   "Mathematics"
+  ],
+  [
+   "3",
+   "Mechanical and Process Engineering"
+  ],
+  [
+   "9",
+   "Physics"
+  ]
+ ],
+ "courses": [
+  {
+   "code": "052-0608-00L",
+   "title": "Structural Design IV",
+   "leId": "178172",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10062910",
+     "J. Pauli"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 1",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0806-00L",
+   "title": "History and Theory of Architecture IV",
+   "leId": "178875",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004545",
+     "L. Stalder"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 1",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0636-00L",
+   "title": "Computational Design IV",
+   "leId": "178284",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003829",
+     "F. Gramazio"
+    ],
+    [
+     "10016157",
+     "M. Kohler"
+    ],
+    [
+     "10079429",
+     "J. Medina Ibañez"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 1",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "151-8004-00L",
+   "title": "Building Physics III: Building Energy Demand and Urban Physics",
+   "leId": "177409",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10027190",
+     "J. Carmeliet"
+    ],
+    [
+     "10062912",
+     "A. Rubin"
+    ],
+    [
+     "10094207",
+     "N. Vulic"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 2",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0802-00L",
+   "title": "Global History of Urban Design II",
+   "leId": "178484",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057870",
+     "T. Avermaete"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 2",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0708-00L",
+   "title": "Urban Design IV",
+   "leId": "178461",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031591",
+     "H. Klumpner"
+    ],
+    [
+     "10108750",
+     "F. T. Salva Rocha Franco"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 2",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0808-00L",
+   "title": "History and Theory of Architecture VI (Ursprung)",
+   "leId": "178267",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003230",
+     "P. Ursprung"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0652-00L",
+   "title": "Building Process II",
+   "leId": "178266",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10013457",
+     "S. Menz"
+    ],
+    [
+     "10030913",
+     "A. Paulus"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0706-00L",
+   "title": "Landscape Architecture II",
+   "leId": "178922",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10071535",
+     "A. Bucher"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0610-00L",
+   "title": "Energy and Climate Design II",
+   "leId": "178489",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031984",
+     "A. Schlüter"
+    ],
+    [
+     "10059656",
+     "I. Hischier"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0508-00L",
+   "title": "Architectural Technology VI",
+   "leId": "178082",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004923",
+     "C. Kerez"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Examination Blocks > Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0604-00L",
+   "title": "Structural Design II",
+   "leId": "178286",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10030183",
+     "P. Block"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "First Year Examinations > Examination Block 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "052-0704-00L",
+   "title": "Sociology II",
+   "leId": "177940",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004937",
+     "C. Schmid"
+    ],
+    [
+     "10071452",
+     "I. Apostol"
+    ],
+    [
+     "10079046",
+     "N. Bathla"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "First Year Examinations > Examination Block 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "052-0902-00L",
+   "title": "Construction History II",
+   "leId": "177060",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10047400",
+     "S. Holzer"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "First Year Examinations > Examination Block 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "052-0804-00L",
+   "title": "History and Theory of Architecture II",
+   "leId": "177667",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10051242",
+     "M. Delbeke"
+    ],
+    [
+     "10057870",
+     "T. Avermaete"
+    ],
+    [
+     "10004545",
+     "L. Stalder"
+    ],
+    [
+     "10003230",
+     "P. Ursprung"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "First Year Examinations > Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "151-8002-00L",
+   "title": "Building Physics I: Heat and Acoustics",
+   "leId": "176815",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10027190",
+     "J. Carmeliet"
+    ],
+    [
+     "10030756",
+     "M. Ettlin"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "First Year Examinations > Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "052-0606-00L",
+   "title": "Computational Design II",
+   "leId": "177394",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10045082",
+     "B. Dillenburger"
+    ],
+    [
+     "10105726",
+     "A. Savov"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "First Year Examinations > Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "052-0710-00L",
+   "title": "Perspectives on Landscape and Urban Transformation II",
+   "leId": "179519",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10060891",
+     "F. Persyn"
+    ],
+    [
+     "10104486",
+     "L. Fink"
+    ],
+    [
+     "10104466",
+     "C. Schaeben"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "First Year Examinations > Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "052-0502-00L",
+   "title": "Design and Construction II",
+   "leId": "177238",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003966",
+     "A. Deplazes"
+    ],
+    [
+     "10014146",
+     "D. Mettler"
+    ],
+    [
+     "10008620",
+     "D. Studer"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Subjects with Semester Grade",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "052-0504-00L",
+   "title": "Art in Space and Time II",
+   "leId": "177346",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10102726",
+     "R. Barba"
+    ],
+    [
+     "10058567",
+     "H. E. Franzen"
+    ],
+    [
+     "10107928",
+     "M. Narula"
+    ]
+   ],
+   "program": "122764",
+   "dept": "1",
+   "section": "Subjects with Semester Grade",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "551-0126-00L",
+   "title": "Fundamentals of Biology II: Cells",
+   "leId": "178817",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10036240",
+     "K. Weis"
+    ],
+    [
+     "10004850",
+     "F. Allain"
+    ],
+    [
+     "10004402",
+     "Y. Barral"
+    ],
+    [
+     "10004815",
+     "W.‑D. Hardt"
+    ],
+    [
+     "10004403",
+     "U. Kutay"
+    ],
+    [
+     "10004852",
+     "M. Peter"
+    ],
+    [
+     "10048544",
+     "I. Zemp"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "First Year Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0074-00L",
+   "title": "Physics II",
+   "leId": "178796",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004259",
+     "T. M. Ihn"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "First Year Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0292-00L",
+   "title": "Mathematics II",
+   "leId": "177154",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031315",
+     "A. Caspar"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "First Year Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-1012-00L",
+   "title": "Organic Chemistry II (for Biol./Pharm.Sc./HST)",
+   "leId": "177725",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003585",
+     "C. Thilgen"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "First Year Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0643-00L",
+   "title": "Statistics I",
+   "leId": "178101",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10029989",
+     "M. Kalisch"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "First Year Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0128-00L",
+   "title": "Fundamentals of Biology I",
+   "leId": "178551",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021218",
+     "M. Gstaiger"
+    ],
+    [
+     "10036982",
+     "A. Cléry"
+    ],
+    [
+     "10045980",
+     "E. Dultz"
+    ],
+    [
+     "10045981",
+     "C. H. Giese"
+    ],
+    [
+     "10004478",
+     "R. Kroschewski"
+    ],
+    [
+     "10005086",
+     "M. Künzler"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "First Year Courses > First Year Laboratory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-02L",
+   "title": "General Chemistry (Inorganic Chemistry) II",
+   "leId": "177704",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003531",
+     "H. Grützmacher"
+    ],
+    [
+     "10032924",
+     "J. Cvengros"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Courses First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-03L",
+   "title": "General Chemistry (Organic Chemistry) II",
+   "leId": "177630",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003246",
+     "P. Chen"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Courses First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-01L",
+   "title": "Physical Chemistry I: Thermodynamics",
+   "leId": "177475",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10063267",
+     "A. Barnes"
+    ],
+    [
+     "10005203",
+     "M. Ernst"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Courses First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0126-00L",
+   "title": "Fundamentals of Biology II: Cells",
+   "leId": "178817",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10036240",
+     "K. Weis"
+    ],
+    [
+     "10004850",
+     "F. Allain"
+    ],
+    [
+     "10004402",
+     "Y. Barral"
+    ],
+    [
+     "10004815",
+     "W.‑D. Hardt"
+    ],
+    [
+     "10004403",
+     "U. Kutay"
+    ],
+    [
+     "10004852",
+     "M. Peter"
+    ],
+    [
+     "10048544",
+     "I. Zemp"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Courses First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0272-00L",
+   "title": "Mathematical Foundations I: Analysis B",
+   "leId": "176972",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10049120",
+     "L. Kobel-Keller"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Courses First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0643-00L",
+   "title": "Statistics I",
+   "leId": "178101",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10029989",
+     "M. Kalisch"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Courses First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0622-24L",
+   "title": "Mathematical Foundations II: Linear Algebra",
+   "leId": "179619",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10052421",
+     "M. Auer"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Courses First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0128-00L",
+   "title": "Fundamentals of Biology I",
+   "leId": "178551",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021218",
+     "M. Gstaiger"
+    ],
+    [
+     "10036982",
+     "A. Cléry"
+    ],
+    [
+     "10045980",
+     "E. Dultz"
+    ],
+    [
+     "10045981",
+     "C. H. Giese"
+    ],
+    [
+     "10004478",
+     "R. Kroschewski"
+    ],
+    [
+     "10005086",
+     "M. Künzler"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0074-00L",
+   "title": "BCB IV: Analytical Biochemistry and Biophysics",
+   "leId": "178929",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10076578",
+     "K. Lang"
+    ],
+    [
+     "10093128",
+     "M. Fottner"
+    ],
+    [
+     "10045981",
+     "C. H. Giese"
+    ],
+    [
+     "10086188",
+     "T. Segawa"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0012-02L",
+   "title": "General Chemistry (Inorganic Chemistry) II",
+   "leId": "177704",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003531",
+     "H. Grützmacher"
+    ],
+    [
+     "10032924",
+     "J. Cvengros"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-03L",
+   "title": "General Chemistry (Organic Chemistry) II",
+   "leId": "177630",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003246",
+     "P. Chen"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-01L",
+   "title": "Physical Chemistry I: Thermodynamics",
+   "leId": "177475",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10063267",
+     "A. Barnes"
+    ],
+    [
+     "10005203",
+     "M. Ernst"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0044-00L",
+   "title": "Physics II",
+   "leId": "177080",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033238",
+     "L. Gallmann"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0272-00L",
+   "title": "Mathematical Foundations I: Analysis B",
+   "leId": "176972",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10049120",
+     "L. Kobel-Keller"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0622-00L",
+   "title": "Mathematical Foundations II: Linear Algebra and Statistics",
+   "leId": "177866",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10052421",
+     "M. Auer"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0230-00L",
+   "title": "Inorganic and Organic Chemistry I",
+   "leId": "178253",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057073",
+     "B. Morandi"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "2. Semester > Laboratory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-02L",
+   "title": "General Chemistry (Inorganic Chemistry) II",
+   "leId": "177704",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003531",
+     "H. Grützmacher"
+    ],
+    [
+     "10032924",
+     "J. Cvengros"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-03L",
+   "title": "General Chemistry (Organic Chemistry) II",
+   "leId": "177630",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003246",
+     "P. Chen"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-01L",
+   "title": "Physical Chemistry I: Thermodynamics",
+   "leId": "177475",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10063267",
+     "A. Barnes"
+    ],
+    [
+     "10005203",
+     "M. Ernst"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0044-00L",
+   "title": "Physics II",
+   "leId": "177080",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033238",
+     "L. Gallmann"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0272-00L",
+   "title": "Mathematical Foundations I: Analysis B",
+   "leId": "176972",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10049120",
+     "L. Kobel-Keller"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0622-00L",
+   "title": "Mathematical Foundations II: Linear Algebra and Statistics",
+   "leId": "177866",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10052421",
+     "M. Auer"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "2. Semester > Compulsory Subjects First Year Examination",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0230-00L",
+   "title": "Inorganic and Organic Chemistry I",
+   "leId": "178253",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057073",
+     "B. Morandi"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "2. Semester > Laboratory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0044-00L",
+   "title": "Physics II",
+   "leId": "177080",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033238",
+     "L. Gallmann"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0126-00L",
+   "title": "Fundamentals of Biology II: Cells",
+   "leId": "178817",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10036240",
+     "K. Weis"
+    ],
+    [
+     "10004850",
+     "F. Allain"
+    ],
+    [
+     "10004402",
+     "Y. Barral"
+    ],
+    [
+     "10004815",
+     "W.‑D. Hardt"
+    ],
+    [
+     "10004403",
+     "U. Kutay"
+    ],
+    [
+     "10004852",
+     "M. Peter"
+    ],
+    [
+     "10048544",
+     "I. Zemp"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0272-00L",
+   "title": "Mathematical Foundations I: Analysis B",
+   "leId": "176972",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10049120",
+     "L. Kobel-Keller"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0622-00L",
+   "title": "Mathematical Foundations II: Linear Algebra and Statistics",
+   "leId": "177866",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10052421",
+     "M. Auer"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-02L",
+   "title": "General Chemistry (Inorganic Chemistry) II",
+   "leId": "177704",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003531",
+     "H. Grützmacher"
+    ],
+    [
+     "10032924",
+     "J. Cvengros"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-03L",
+   "title": "General Chemistry (Organic Chemistry) II",
+   "leId": "177630",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003246",
+     "P. Chen"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0012-01L",
+   "title": "Physical Chemistry I: Thermodynamics",
+   "leId": "177475",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10063267",
+     "A. Barnes"
+    ],
+    [
+     "10005203",
+     "M. Ernst"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0128-00L",
+   "title": "Fundamentals of Biology I",
+   "leId": "178551",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021218",
+     "M. Gstaiger"
+    ],
+    [
+     "10036982",
+     "A. Cléry"
+    ],
+    [
+     "10045980",
+     "E. Dultz"
+    ],
+    [
+     "10045981",
+     "C. H. Giese"
+    ],
+    [
+     "10004478",
+     "R. Kroschewski"
+    ],
+    [
+     "10005086",
+     "M. Künzler"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 2. Semester (Biochemical-Physical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-0431-00L",
+   "title": "Physical Chemistry III: Molecular Quantum Mechanics",
+   "leId": "177814",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003532",
+     "F. Merkt"
+    ],
+    [
+     "10057750",
+     "U. Hollenstein"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 4. Semester (Biochemical-Physical Direction)",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0222-00L",
+   "title": "Organic Chemistry II",
+   "leId": "178293",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057073",
+     "B. Morandi"
+    ],
+    [
+     "10030781",
+     "J. W. Bode"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 4. Semester (Biochemical-Physical Direction)",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0400-00L",
+   "title": "Bachelor's Thesis",
+   "leId": "177717",
+   "sem": "2024S",
+   "lecturers": [],
+   "program": "122765",
+   "dept": "20",
+   "section": "Biochemical-Physical Direction > 6. Semester (Biochemical-Physical Direction)",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "401-1262-07L",
+   "title": "Analysis II: Several Variables",
+   "leId": "178279",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10076584",
+     "J. Serra"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Physical-Chemical Direction > 2. Semester (Physical-Chemical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-1152-02L",
+   "title": "Linear Algebra II",
+   "leId": "178316",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10081889",
+     "S. Zerbes"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Physical-Chemical Direction > 2. Semester (Physical-Chemical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-1782-00L",
+   "title": "Physics II",
+   "leId": "177909",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031976",
+     "R. Wallny"
+    ]
+   ],
+   "program": "122765",
+   "dept": "20",
+   "section": "Physical-Chemical Direction > 2. Semester (Physical-Chemical Direction)",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "535-0002-00L",
+   "title": "Introduction to Pharmaceutical Sciences II",
+   "leId": "178417",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10022399",
+     "J. Hall"
+    ],
+    [
+     "10057076",
+     "A. Burden"
+    ],
+    [
+     "10027684",
+     "S. Erni"
+    ],
+    [
+     "10019242",
+     "C. Halin Winter"
+    ],
+    [
+     "10009238",
+     "S.‑D. Krämer"
+    ],
+    [
+     "10031207",
+     "E. Kut Bacs"
+    ],
+    [
+     "10032556",
+     "C. Müller"
+    ],
+    [
+     "10048020",
+     "C. Steuer"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "First Year Compulsory Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0292-00L",
+   "title": "Mathematics II",
+   "leId": "177154",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031315",
+     "A. Caspar"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "First Year Compulsory Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-1012-00L",
+   "title": "Organic Chemistry II (for Biol./Pharm.Sc./HST)",
+   "leId": "177725",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003585",
+     "C. Thilgen"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "First Year Compulsory Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0126-00L",
+   "title": "Fundamentals of Biology II: Cells",
+   "leId": "178817",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10036240",
+     "K. Weis"
+    ],
+    [
+     "10004850",
+     "F. Allain"
+    ],
+    [
+     "10004402",
+     "Y. Barral"
+    ],
+    [
+     "10004815",
+     "W.‑D. Hardt"
+    ],
+    [
+     "10004403",
+     "U. Kutay"
+    ],
+    [
+     "10004852",
+     "M. Peter"
+    ],
+    [
+     "10048544",
+     "I. Zemp"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "First Year Compulsory Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0074-00L",
+   "title": "Physics II",
+   "leId": "178796",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004259",
+     "T. M. Ihn"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "First Year Compulsory Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0643-00L",
+   "title": "Statistics I",
+   "leId": "178101",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10029989",
+     "M. Kalisch"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "First Year Compulsory Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "101-0126-01L",
+   "title": "Structural Concrete II",
+   "leId": "178176",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003975",
+     "W. Kaufmann"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2014) > Compulsory Courses 6. Semester",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "101-0556-01L",
+   "title": "Construction Methods",
+   "leId": "176773",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031617",
+     "S. Moser"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2014) > Compulsory Courses 6. Semester",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "101-0326-03L",
+   "title": "Rock Mechanics and Tunnelling",
+   "leId": "178040",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003008",
+     "G. Anagnostou"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2014) > Compulsory Courses 6. Semester",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "101-0416-10L",
+   "title": "Road Transport Systems",
+   "leId": "178418",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057629",
+     "A. Kouvelas"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2014) > Compulsory Courses 6. Semester",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "101-0206-00L",
+   "title": "Hydraulic Engineering",
+   "leId": "177980",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10029224",
+     "R. Boes"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2014) > Compulsory Courses 6. Semester",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "401-0242-00L",
+   "title": "Analysis II",
+   "leId": "177161",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021166",
+     "M. Akveld"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0612-00L",
+   "title": "Statistics and Probability Theory",
+   "leId": "177871",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003978",
+     "P. L. Bühlmann"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "151-0502-00L",
+   "title": "Mechanics II",
+   "leId": "177742",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10040000",
+     "D. Mohr"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "101-0603-01L",
+   "title": "Chemistry for Civil Engineers",
+   "leId": "177376",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031806",
+     "R. J. Flatt"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "101-0710-00L",
+   "title": "Digital Engineering",
+   "leId": "177999",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10023161",
+     "F. Wittel"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "101-0314-00L",
+   "title": "Soil Mechanics",
+   "leId": "177297",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10045298",
+     "I. Anastasopoulos"
+    ],
+    [
+     "10027131",
+     "R. Herzog"
+    ],
+    [
+     "10049683",
+     "A. Marin"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "101-6615-10L",
+   "title": "Materials in Civil Engineering II",
+   "leId": "179127",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031806",
+     "R. J. Flatt"
+    ],
+    [
+     "10033608",
+     "U. Angst"
+    ],
+    [
+     "10032721",
+     "I. Burgert"
+    ],
+    [
+     "10058617",
+     "D. Kammer"
+    ],
+    [
+     "10023161",
+     "F. Wittel"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "103-0849-00L",
+   "title": "Multivariate Statistics and Machine Learning",
+   "leId": "177446",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031621",
+     "K. Schindler"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "103-0132-00L",
+   "title": "Geodetic Metrology Fundamentals",
+   "leId": "176983",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033517",
+     "A. Wieser"
+    ],
+    [
+     "10097167",
+     "H. Laasch"
+    ],
+    [
+     "10097166",
+     "N. Ryter"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "101-0414-00L",
+   "title": "Transport Planning (Transportation I)",
+   "leId": "177263",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10107027",
+     "L. Meyer de Freitas"
+    ],
+    [
+     "10107008",
+     "L. Ballo"
+    ],
+    [
+     "10059155",
+     "A. Erath Rusterholtz"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "101-0114-10L",
+   "title": "Theory of Structures II",
+   "leId": "179321",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031775",
+     "E. Chatzi"
+    ],
+    [
+     "10108306",
+     "A. Egger"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "101-0134-00L",
+   "title": "Steel Structures I",
+   "leId": "177899",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10060895",
+     "A. Taras"
+    ]
+   ],
+   "program": "122752",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "851-0705-01L",
+   "title": "Environmental Law II: Fields of Law and Case Studies",
+   "leId": "177738",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10067251",
+     "M. Pflüger"
+    ],
+    [
+     "10067252",
+     "A. Gossweiler"
+    ],
+    [
+     "10030621",
+     "C. Jäger"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2010) > 6. Semester",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "102-0526-01L",
+   "title": "Laboratory Course in Environmental Engineering II",
+   "leId": "180018",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004954",
+     "D. Braun"
+    ],
+    [
+     "10051743",
+     "M. Floriancic"
+    ],
+    [
+     "10031202",
+     "H. P. Füchslin"
+    ],
+    [
+     "10086233",
+     "C. Oberschelp"
+    ],
+    [
+     "10037842",
+     "B. Schäppi"
+    ],
+    [
+     "10092426",
+     "M. Vogt"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2010) > 6. Semester",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "401-0242-00L",
+   "title": "Analysis II",
+   "leId": "177161",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021166",
+     "M. Akveld"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-2002-02L",
+   "title": "Chemistry II",
+   "leId": "178155",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032924",
+     "J. Cvengros"
+    ],
+    [
+     "10004979",
+     "J. E. E. Buschmann"
+    ],
+    [
+     "10002929",
+     "P. Funck"
+    ],
+    [
+     "10032923",
+     "R. Verel"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "252-0846-00L",
+   "title": "Computer Science II",
+   "leId": "177637",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10083871",
+     "M. Fischer"
+    ],
+    [
+     "10106767",
+     "M. Lüthi"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0612-00L",
+   "title": "Statistics and Probability Theory",
+   "leId": "177871",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003978",
+     "P. L. Bühlmann"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "102-0635-10L",
+   "title": "Air Pollution Control",
+   "leId": "178834",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10093628",
+     "C. Hüglin"
+    ],
+    [
+     "10093629",
+     "L. Emmenegger"
+    ],
+    [
+     "10093627",
+     "J. Mohn"
+    ],
+    [
+     "10049363",
+     "S. Reimann Bhend"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "102-0510-00L",
+   "title": "Introduction to Environmental Monitoring",
+   "leId": "178836",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004954",
+     "D. Braun"
+    ],
+    [
+     "10005098",
+     "M. Maurer"
+    ],
+    [
+     "10031595",
+     "J. Wang"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "102-0530-00L",
+   "title": "Integrated Laboratory Basics Chemistry",
+   "leId": "178835",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10038763",
+     "N. Kobert"
+    ],
+    [
+     "10004954",
+     "D. Braun"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "102-0324-01L",
+   "title": "Ecological Systems Analysis",
+   "leId": "177248",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005239",
+     "S. Hellweg"
+    ],
+    [
+     "10091812",
+     "L. D'Olif"
+    ],
+    [
+     "10075971",
+     "T. Sonderegger"
+    ],
+    [
+     "10030661",
+     "N. von Götz"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "102-0214-02L",
+   "title": "Introduction to Urban Water Management",
+   "leId": "177253",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10029344",
+     "E. Morgenroth"
+    ],
+    [
+     "10005098",
+     "M. Maurer"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "102-0455-10L",
+   "title": "Groundwater I",
+   "leId": "179120",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10050283",
+     "J. Jimenez-Martinez"
+    ],
+    [
+     "10029121",
+     "M. Willmann"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "103-0849-00L",
+   "title": "Multivariate Statistics and Machine Learning",
+   "leId": "177446",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031621",
+     "K. Schindler"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "102-0474-10L",
+   "title": "Introduction to Water Resources Management",
+   "leId": "179478",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003781",
+     "P. Burlando"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "102-0526-10L",
+   "title": "Environmental Laboratory II",
+   "leId": "179485",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004954",
+     "D. Braun"
+    ],
+    [
+     "10051743",
+     "M. Floriancic"
+    ],
+    [
+     "10031202",
+     "H. P. Füchslin"
+    ],
+    [
+     "10033399",
+     "P. M. Kienzler"
+    ],
+    [
+     "10086233",
+     "C. Oberschelp"
+    ],
+    [
+     "10037842",
+     "B. Schäppi"
+    ],
+    [
+     "10092426",
+     "M. Vogt"
+    ]
+   ],
+   "program": "122753",
+   "dept": "2",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-0212-16L",
+   "title": "Analysis I",
+   "leId": "178295",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10097790",
+     "R. Prohaska"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "First Year Examinations > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "227-0003-10L",
+   "title": "Digital Design and Computer Architecture",
+   "leId": "178469",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032113",
+     "F. K. Gürkaynak"
+    ],
+    [
+     "10052783",
+     "S. Sadrosadati"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "First Year Examinations > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "252-0029-00L",
+   "title": "Parallel Programming",
+   "leId": "177100",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033284",
+     "T. Hoefler"
+    ],
+    [
+     "10031894",
+     "B. Solenthaler"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "First Year Examinations > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "252-0030-00L",
+   "title": "Algorithms and Probability",
+   "leId": "177448",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10064016",
+     "R. Kyng"
+    ],
+    [
+     "10005150",
+     "A. Steger"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "First Year Examinations > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-2002-02L",
+   "title": "Chemistry II",
+   "leId": "178155",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032924",
+     "J. Cvengros"
+    ],
+    [
+     "10004979",
+     "J. E. E. Buschmann"
+    ],
+    [
+     "10002929",
+     "P. Funck"
+    ],
+    [
+     "10032923",
+     "R. Verel"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0252-00L",
+   "title": "Mathematics II",
+   "leId": "177005",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032906",
+     "A. Cannas da Silva"
+    ],
+    [
+     "10080655",
+     "S. Kalisnik Hintz"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "651-3078-00L",
+   "title": "Geology of Switzerland",
+   "leId": "177743",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10072869",
+     "I. Stössel"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "651-3002-00L",
+   "title": "Dynamic Earth II",
+   "leId": "177277",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10072869",
+     "I. Stössel"
+    ],
+    [
+     "10020400",
+     "S. Willett"
+    ],
+    [
+     "10033682",
+     "A. Fichtner"
+    ],
+    [
+     "10004458",
+     "G. Haug"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "651-3321-00L",
+   "title": "Interpretation of Geological Maps I",
+   "leId": "178338",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10097148",
+     "S. Volante"
+    ],
+    [
+     "10067687",
+     "L. Nibourel"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3600-00L",
+   "title": "Microscopy of Rocks Fundamentals",
+   "leId": "178622",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004804",
+     "M. W. Schmidt"
+    ],
+    [
+     "10020980",
+     "M. G. Fellin"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3440-01L",
+   "title": "Geophysics II",
+   "leId": "177353",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10017938",
+     "A. Jackson"
+    ],
+    [
+     "10014878",
+     "P. Tackley"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3420-00L",
+   "title": "Palaeontology",
+   "leId": "178185",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10009290",
+     "C. Klug"
+    ],
+    [
+     "10028843",
+     "M. Hautmann"
+    ],
+    [
+     "10033679",
+     "E. Schneebeli-Hermann"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3424-00L",
+   "title": "Sedimentology and Stratigraphy",
+   "leId": "177406",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10025798",
+     "A. Gilli"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3422-00L",
+   "title": "Structural Geology",
+   "leId": "177158",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10097148",
+     "S. Volante"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0412-00L",
+   "title": "Climate Systems",
+   "leId": "178140",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10014960",
+     "S. I. Seneviratne"
+    ],
+    [
+     "10035844",
+     "L. Gudmundsson"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3480-00L",
+   "title": "Earth Science Excursions II",
+   "leId": "178703",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10072869",
+     "I. Stössel"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3581-00L",
+   "title": "Geophysical Field Lab",
+   "leId": "177673",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10045805",
+     "A. Obermann"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3482-00L",
+   "title": "Geological Field Course II: Sedimentary Rocks",
+   "leId": "176996",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033703",
+     "V. Picotti"
+    ],
+    [
+     "10025798",
+     "A. Gilli"
+    ],
+    [
+     "10056536",
+     "S. Heuberger"
+    ],
+    [
+     "10031504",
+     "S. Ivy Ochs"
+    ],
+    [
+     "10067687",
+     "L. Nibourel"
+    ],
+    [
+     "10033168",
+     "M. Schönbächler"
+    ],
+    [
+     "10097148",
+     "S. Volante"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "General Courses in Earth Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-4180-01L",
+   "title": "Integrated Earth Systems I",
+   "leId": "176655",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033513",
+     "O. Bachmann"
+    ],
+    [
+     "10033682",
+     "A. Fichtner"
+    ],
+    [
+     "10017938",
+     "A. Jackson"
+    ],
+    [
+     "10033168",
+     "M. Schönbächler"
+    ],
+    [
+     "10014878",
+     "P. Tackley"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Integrated Earth Systems",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-4180-03L",
+   "title": "Integrated Earth Systems III",
+   "leId": "176874",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10056536",
+     "S. Heuberger"
+    ],
+    [
+     "10083768",
+     "M. Brehme"
+    ],
+    [
+     "10004335",
+     "T. Driesner"
+    ],
+    [
+     "10110466",
+     "M. Esmaeil Pour"
+    ],
+    [
+     "10025798",
+     "A. Gilli"
+    ],
+    [
+     "10111606",
+     "M. Hefny"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Integrated Earth Systems",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "402-0062-00L",
+   "title": "Physics I",
+   "leId": "177836",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004637",
+     "A. Vaterlaus"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > Basic Courses II: Examination Block",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "751-0304-00L",
+   "title": "Excursions in the World Food System",
+   "leId": "176677",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033702",
+     "B. Dorn"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > Field Trips",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-2002-02L",
+   "title": "Chemistry II",
+   "leId": "178155",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032924",
+     "J. Cvengros"
+    ],
+    [
+     "10004979",
+     "J. E. E. Buschmann"
+    ],
+    [
+     "10002929",
+     "P. Funck"
+    ],
+    [
+     "10032923",
+     "R. Verel"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0252-00L",
+   "title": "Mathematics II",
+   "leId": "177005",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032906",
+     "A. Cannas da Silva"
+    ],
+    [
+     "10080655",
+     "S. Kalisnik Hintz"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0002-00L",
+   "title": "General Biology II",
+   "leId": "176999",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003740",
+     "U. Sauer"
+    ],
+    [
+     "10060892",
+     "K. Bomblies"
+    ],
+    [
+     "10031562",
+     "O. Y. Martin"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "751-0270-00L",
+   "title": "Systematics and Ecology of Algae and Fungi",
+   "leId": "178151",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10013378",
+     "M. Maurhofer Bringolf"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "751-0280-00L",
+   "title": "Crops in the World Food System",
+   "leId": "177174",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031754",
+     "A. Walter"
+    ],
+    [
+     "10002478",
+     "A. Lüscher"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "751-0282-00L",
+   "title": "Animal Sciences in the World Food System",
+   "leId": "176807",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10034381",
+     "S. E. Ulbrich"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "751-0014-00L",
+   "title": "Agricultural Economics in the World Food System",
+   "leId": "177258",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10085302",
+     "E.‑M. Meemken"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "851-0708-00L",
+   "title": "Introduction to Law",
+   "leId": "178224",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032054",
+     "A. Stremitzer"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "2. Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "751-0208-00L",
+   "title": "Agricultural Internship",
+   "leId": "178534",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033702",
+     "B. Dorn"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Practical",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-2312-00L",
+   "title": "Agricultural Policy",
+   "leId": "177554",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033771",
+     "R. Huber"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Disciplines > Agricultural Economics",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-6301-00L",
+   "title": "Animal Breeding",
+   "leId": "177205",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003759",
+     "S. Neuenschwander"
+    ],
+    [
+     "10047406",
+     "H. Pausch"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Disciplines > Animal Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-7002-00L",
+   "title": "Basics in Animal Nutrition",
+   "leId": "178443",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10002564",
+     "M. A. Boessinger"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Disciplines > Animal Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-6102-00L",
+   "title": "Anatomy and Physiology of Humans and Animals II",
+   "leId": "177786",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10034381",
+     "S. E. Ulbrich"
+    ],
+    [
+     "10063293",
+     "A.‑K. Hankele"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Disciplines > Animal Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-4513-00L",
+   "title": "Crop Health: Plant Pathology",
+   "leId": "178579",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004188",
+     "B. McDonald"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Disciplines > Plant Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-4107-00L",
+   "title": "Production of Crops and Forage, Including Aspects of Herbology and Plant Taxonomy",
+   "leId": "177190",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031754",
+     "A. Walter"
+    ],
+    [
+     "10008994",
+     "N. Buchmann"
+    ],
+    [
+     "10010882",
+     "U. J. Haas"
+    ],
+    [
+     "10055756",
+     "S. Hassold"
+    ],
+    [
+     "10002478",
+     "A. Lüscher"
+    ],
+    [
+     "10003327",
+     "W. Richner"
+    ],
+    [
+     "10004998",
+     "B. Streit"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Disciplines > Plant Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-4514-00L",
+   "title": "Crop Health: Entomology",
+   "leId": "178309",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10035329",
+     "C. De Moraes"
+    ],
+    [
+     "10045542",
+     "M. Greeff"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Disciplines > Plant Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-0300-00L",
+   "title": "Agricultural Excursions I",
+   "leId": "176660",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033702",
+     "B. Dorn"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Field Trips",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-0302-00L",
+   "title": "Agricultural Excursions II",
+   "leId": "177820",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033702",
+     "B. Dorn"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Field Trips",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-0201-00L",
+   "title": "Scientific Methods Part I",
+   "leId": "177468",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10017882",
+     "R. Kölliker"
+    ],
+    [
+     "10033689",
+     "B. Studer"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Methods",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0008-00L",
+   "title": "Tackling Environmental Problems II",
+   "leId": "178419",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10062916",
+     "M. Mader"
+    ],
+    [
+     "10004462",
+     "R. Frischknecht"
+    ],
+    [
+     "10004275",
+     "C. E. Pohl"
+    ],
+    [
+     "10087949",
+     "C. Rapo"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0252-00L",
+   "title": "Mathematics II",
+   "leId": "177005",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032906",
+     "A. Cannas da Silva"
+    ],
+    [
+     "10080655",
+     "S. Kalisnik Hintz"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-2002-02L",
+   "title": "Chemistry II",
+   "leId": "178155",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032924",
+     "J. Cvengros"
+    ],
+    [
+     "10004979",
+     "J. E. E. Buschmann"
+    ],
+    [
+     "10002929",
+     "P. Funck"
+    ],
+    [
+     "10032923",
+     "R. Verel"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-0002-00L",
+   "title": "General Biology II",
+   "leId": "176999",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003740",
+     "U. Sauer"
+    ],
+    [
+     "10060892",
+     "K. Bomblies"
+    ],
+    [
+     "10031562",
+     "O. Y. Martin"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Basic Courses I > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "701-0729-00L",
+   "title": "Social Research Methods",
+   "leId": "177359",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003359",
+     "M. Stauffacher"
+    ],
+    [
+     "10085050",
+     "M. Marti"
+    ],
+    [
+     "10079689",
+     "T. Tröndle"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Social Sciences and Humanities > Compulsory",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "551-1110-00L",
+   "title": "Infection",
+   "leId": "178250",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004815",
+     "W.‑D. Hardt"
+    ],
+    [
+     "10005224",
+     "A. B. Hehl"
+    ],
+    [
+     "10019915",
+     "U. Karrer"
+    ],
+    [
+     "10030700",
+     "S. R. Leibundgut"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-1304-00L",
+   "title": "Biochemistry",
+   "leId": "178081",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10041187",
+     "U. K. Genick"
+    ],
+    [
+     "10004852",
+     "M. Peter"
+    ],
+    [
+     "10031022",
+     "B. Wollscheid"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-1012-00L",
+   "title": "Organic Chemistry II (for Biol./Pharm.Sc./HST)",
+   "leId": "177725",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003585",
+     "C. Thilgen"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "376-0001-00L",
+   "title": "Biomechanics I",
+   "leId": "177848",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10028203",
+     "J. G. Snedeker"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0292-00L",
+   "title": "Mathematics II",
+   "leId": "177154",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031315",
+     "A. Caspar"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0643-00L",
+   "title": "Statistics I",
+   "leId": "178101",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10029989",
+     "M. Kalisch"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "376-0004-00L",
+   "title": "Introduction to Health Sciences and Technology II",
+   "leId": "177718",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004189",
+     "R. Müller"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "376-0010-00L",
+   "title": "Laboratory Course in Chemistry",
+   "leId": "177193",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10038763",
+     "N. Kobert"
+    ],
+    [
+     "10081026",
+     "F. Jenny"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Laboratory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "376-0004-01L",
+   "title": "Lab Course in Health Sciences and Technology",
+   "leId": "177287",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004189",
+     "R. Müller"
+    ],
+    [
+     "10056065",
+     "O. Bar-Nur"
+    ],
+    [
+     "10068837",
+     "M. Sommerhalder"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "First Year Core Courses > First Year Laboratory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "227-0383-00L",
+   "title": "Medical Imaging I",
+   "leId": "176821",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10017638",
+     "S. Kozerke"
+    ],
+    [
+     "10005120",
+     "R. Schibli"
+    ],
+    [
+     "10030588",
+     "M. P. Wolf"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0405-10L",
+   "title": "Ethics in Medicine and Health Care",
+   "leId": "176610",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10034438",
+     "E. Vayena"
+    ],
+    [
+     "10062681",
+     "A. Blasimme"
+    ],
+    [
+     "10095407",
+     "K. Ormond"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0405-11L",
+   "title": "Clinical Research",
+   "leId": "176891",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004796",
+     "J. Goldhahn"
+    ],
+    [
+     "10086486",
+     "M. Marks"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0407-00L",
+   "title": "Precision Medicine: Theory and Hands-on Exercises",
+   "leId": "177572",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10070486",
+     "S. Modica"
+    ],
+    [
+     "10091070",
+     "A. Ghosh"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "227-0383-10L",
+   "title": "Medical Imaging II",
+   "leId": "178934",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10017638",
+     "S. Kozerke"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Medical Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0525-00L",
+   "title": "Translational Animal Model",
+   "leId": "178566",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10063655",
+     "T. A. Lutz"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Medical Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0607-00L",
+   "title": "Medical Engineering II",
+   "leId": "178630",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10028885",
+     "R. Gassert"
+    ],
+    [
+     "10039980",
+     "O. Lambercy"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Medical Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0608-00L",
+   "title": "Translational Research Internship",
+   "leId": "178631",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004796",
+     "J. Goldhahn"
+    ],
+    [
+     "10023040",
+     "A. L. Serra"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Medical Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "252-0868-00L",
+   "title": "Data Science for Medicine",
+   "leId": "178757",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10062146",
+     "J. Vogt"
+    ],
+    [
+     "10062147",
+     "V. Boeva"
+    ],
+    [
+     "10045219",
+     "G. Rätsch"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Medical Sciences",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0401-00L",
+   "title": "Sensory Organs",
+   "leId": "176583",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10060529",
+     "D. Bleisch"
+    ],
+    [
+     "10087026",
+     "J. Dlugaiczyk"
+    ],
+    [
+     "10087106",
+     "T. Kleinjung"
+    ],
+    [
+     "10054180",
+     "C. Maake"
+    ],
+    [
+     "10087107",
+     "V. Sturm"
+    ],
+    [
+     "10035778",
+     "O. Ullrich"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0403-00L",
+   "title": "Skin",
+   "leId": "176852",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10088848",
+     "J.‑T. Maul"
+    ],
+    [
+     "10056483",
+     "A. Navarini"
+    ],
+    [
+     "10056113",
+     "J. Loffing"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0415-00L",
+   "title": "Infectious Diseases",
+   "leId": "178740",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10036245",
+     "E. Slack"
+    ],
+    [
+     "10083727",
+     "D. Braun"
+    ],
+    [
+     "10083729",
+     "S. Brugger"
+    ],
+    [
+     "10019915",
+     "U. Karrer"
+    ],
+    [
+     "10060552",
+     "A. Zinkernagel Schüpbach"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "402-0084-00L",
+   "title": "Physics II",
+   "leId": "177694",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033537",
+     "A. S. Antognini"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0411-00L",
+   "title": "Internal Clinical Examination",
+   "leId": "177400",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10067808",
+     "M. Menke"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0413-00L",
+   "title": "From Symptoms to Diagnosis (MED)",
+   "leId": "176940",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10085707",
+     "D. Horschik Klewitz"
+    ],
+    [
+     "10047182",
+     "C. Schmied"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "377-0601-00L",
+   "title": "Psychiatry & Computational Psychiatry",
+   "leId": "176817",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033191",
+     "K. Stephan"
+    ],
+    [
+     "10069289",
+     "H. Schmidt"
+    ],
+    [
+     "10069293",
+     "J. Siemerkus"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Organ Systems and Clinical Practice",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0602-00L",
+   "title": "Psychosomatic and Psychosocial Medicine",
+   "leId": "177097",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10096208",
+     "N. Egloff"
+    ],
+    [
+     "10096250",
+     "J. Ronel"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Organ Systems and Clinical Practice",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0603-00L",
+   "title": "Teamwork, Interprofessionality and Own Career",
+   "leId": "176827",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10028361",
+     "M. Kolbe"
+    ],
+    [
+     "10070831",
+     "B. Grande"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Organ Systems and Clinical Practice",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0604-00L",
+   "title": "Bedside Teaching",
+   "leId": "178477",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10077276",
+     "M. Guigli Poretti"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Organ Systems and Clinical Practice",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0605-00L",
+   "title": "Differential Diagnostics",
+   "leId": "178756",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10047182",
+     "C. Schmied"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2018) > Courses in Organ Systems and Clinical Practice",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "377-0201-00L",
+   "title": "Cardiovascular System",
+   "leId": "178627",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10047182",
+     "C. Schmied"
+    ],
+    [
+     "10056113",
+     "J. Loffing"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "377-0203-00L",
+   "title": "Respiratory System",
+   "leId": "178958",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003791",
+     "C. Spengler"
+    ],
+    [
+     "10085970",
+     "M. Hilty"
+    ],
+    [
+     "10056113",
+     "J. Loffing"
+    ],
+    [
+     "10057532",
+     "S. Ulrich Somaini"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "377-0205-00L",
+   "title": "Kidney and Homeostasis",
+   "leId": "178695",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10055772",
+     "A. Hall"
+    ],
+    [
+     "10056115",
+     "O. Devuyst"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "535-6000-00L",
+   "title": "Pharmacology for Medical Students",
+   "leId": "178283",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10060158",
+     "J. Abd Alla"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-1110-00L",
+   "title": "Infection",
+   "leId": "178250",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004815",
+     "W.‑D. Hardt"
+    ],
+    [
+     "10005224",
+     "A. B. Hehl"
+    ],
+    [
+     "10019915",
+     "U. Karrer"
+    ],
+    [
+     "10030700",
+     "S. R. Leibundgut"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-1304-00L",
+   "title": "Biochemistry",
+   "leId": "178081",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10041187",
+     "U. K. Genick"
+    ],
+    [
+     "10004852",
+     "M. Peter"
+    ],
+    [
+     "10031022",
+     "B. Wollscheid"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "551-1304-01L",
+   "title": "Pathobiochemistry",
+   "leId": "177840",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10026759",
+     "W. Kovacs"
+    ],
+    [
+     "10036184",
+     "M. Pilhofer"
+    ],
+    [
+     "10079870",
+     "G. L. Weiss"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0282-00L",
+   "title": "Mathematics II",
+   "leId": "177204",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10049120",
+     "L. Kobel-Keller"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0643-00L",
+   "title": "Statistics I",
+   "leId": "178101",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10029989",
+     "M. Kalisch"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "377-0211-00L",
+   "title": "Physical Examination: Musculoskeletal and Neurological System",
+   "leId": "178260",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10040461",
+     "M. Leunig"
+    ],
+    [
+     "10069709",
+     "T. F. Fekete"
+    ],
+    [
+     "10075987",
+     "D. Haschtmann"
+    ],
+    [
+     "10056196",
+     "Z.‑M. Manjaly"
+    ],
+    [
+     "10095310",
+     "H. Manner"
+    ],
+    [
+     "10056114",
+     "H. A. Rüdiger"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "377-0303-00L",
+   "title": "Laboratory Course in Physiology (MED)",
+   "leId": "176736",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003791",
+     "C. Spengler"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "377-0417-00L",
+   "title": "Reflecting Communication",
+   "leId": "180898",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10096250",
+     "J. Ronel"
+    ],
+    [
+     "10063304",
+     "S. Goldhahn"
+    ],
+    [
+     "10109189",
+     "E. Olliges"
+    ]
+   ],
+   "program": "122862",
+   "dept": "24",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "853-0048-00L",
+   "title": "International Politics: Theory and Methods (with Tutorat)",
+   "leId": "177396",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10016160",
+     "F. Schimmelfennig"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "853-0034-00L",
+   "title": "Leadership II",
+   "leId": "177337",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10096209",
+     "P. Hofstetter"
+    ],
+    [
+     "10044684",
+     "F. Demont"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "351-1035-00L",
+   "title": "Macroeconomics",
+   "leId": "177575",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005067",
+     "M. Graff"
+    ],
+    [
+     "10013860",
+     "C. Müller"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "853-0726-00L",
+   "title": "History II: Global (Anti-Imperialism and Decolonisation, 1919-1975)",
+   "leId": "177828",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10027981",
+     "H. Fischer-Tiné"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "853-0040-00L",
+   "title": "Military Psychology and Pedagogy II",
+   "leId": "177195",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004573",
+     "H. Annen"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "853-0312-00L",
+   "title": "Proseminar II",
+   "leId": "178147",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10100615",
+     "A. Levis"
+    ],
+    [
+     "10109008",
+     "L. Stapper"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "853-0052-00L",
+   "title": "Research Methods and Statistics",
+   "leId": "177569",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10050100",
+     "P. Stöckli"
+    ],
+    [
+     "10094086",
+     "P. Goldammer"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "853-0051-00L",
+   "title": "Military Sociology II (with Exercises)",
+   "leId": "177943",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10015817",
+     "T. Szvircsev Tresch"
+    ],
+    [
+     "10055449",
+     "S. De Rosa"
+    ],
+    [
+     "10060310",
+     "T. Ferst"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Core Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "853-0406-00L",
+   "title": "English, Part II",
+   "leId": "178657",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10054838",
+     "S. Schweizer"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "2. Semester > Languages",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "227-0004-10L",
+   "title": "Networks and Circuits Laboratory",
+   "leId": "177750",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021562",
+     "J. Biela"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "2nd Semester > First Year Compulsory Laboratory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0232-10L",
+   "title": "Analysis 2",
+   "leId": "178159",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10102890",
+     "F. Ziltener"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "2nd Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "252-0848-00L",
+   "title": "Computer Science I",
+   "leId": "177458",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10055575",
+     "M. Schwerhoff"
+    ],
+    [
+     "10045434",
+     "R. Sasse"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "2nd Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0302-10L",
+   "title": "Complex Analysis",
+   "leId": "178434",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021166",
+     "M. Akveld"
+    ],
+    [
+     "10109195",
+     "C. Urech"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "2nd Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "227-0002-00L",
+   "title": "Networks and Circuits II",
+   "leId": "177583",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021562",
+     "J. Biela"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "2nd Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0052-00L",
+   "title": "Physics I",
+   "leId": "177876",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10022704",
+     "J. Faist"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "2nd Semester > First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0262-G0L",
+   "title": "Analysis II",
+   "leId": "177764",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10039758",
+     "M. Akka Ginosar"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Basis Courses Part 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0172-00L",
+   "title": "Linear Algebra II",
+   "leId": "177478",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10002882",
+     "N. Hungerbühler"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Basis Courses Part 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-2003-00L",
+   "title": "Chemistry II",
+   "leId": "178546",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032924",
+     "J. Cvengros"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Basis Courses Part 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0051-00L",
+   "title": "Physics II",
+   "leId": "176636",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10018323",
+     "A. Wallraff"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Basis Courses Part 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "327-0213-00L",
+   "title": "Foundations of Materials Science II",
+   "leId": "178849",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10035858",
+     "L. Isa"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Basis Courses Part 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "327-0214-00L",
+   "title": "Programming II - Stochastic Simulations",
+   "leId": "178891",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033637",
+     "C. Ederer"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Basis Courses Part 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "327-0211-00L",
+   "title": "Project and Lab Courses II",
+   "leId": "178317",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10015938",
+     "M. B. Willeke"
+    ],
+    [
+     "10062913",
+     "L. De Pietro"
+    ],
+    [
+     "10027881",
+     "M. R. Dusseiller"
+    ],
+    [
+     "10025303",
+     "T.‑B. Schweizer"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Basis Courses Part 1",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "327-0206-00L",
+   "title": "Mechanics",
+   "leId": "178512",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003915",
+     "T. A. Tervoort"
+    ],
+    [
+     "10065166",
+     "R. Style"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Second Year Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "327-0415-00L",
+   "title": "Thermodynamics and Phase Transformations",
+   "leId": "178858",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10009656",
+     "J. F. Löffler"
+    ],
+    [
+     "10045659",
+     "P. Derlet"
+    ],
+    [
+     "10051660",
+     "R. Schäublin"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Second Year Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "327-0412-00L",
+   "title": "Materials Synthesis II",
+   "leId": "178793",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021643",
+     "M. Niederberger"
+    ],
+    [
+     "10093630",
+     "M. Ciomaga Hatnean"
+    ],
+    [
+     "10053045",
+     "A. Lauria"
+    ],
+    [
+     "10015938",
+     "M. B. Willeke"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Second Year Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "327-0413-00L",
+   "title": "Materials Characterization II",
+   "leId": "178851",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10035646",
+     "R. Erni"
+    ],
+    [
+     "10038620",
+     "S. Gerstl"
+    ],
+    [
+     "10073069",
+     "A. Hrabec"
+    ],
+    [
+     "10093631",
+     "S. S. Lee"
+    ],
+    [
+     "10040820",
+     "V. Scagnoli"
+    ],
+    [
+     "10053616",
+     "M. Trassin"
+    ],
+    [
+     "10004708",
+     "T. Weber"
+    ],
+    [
+     "10062690",
+     "P. Zeng"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Second Year Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "327-0416-00L",
+   "title": "Quantum Mechanics and Solid State Physics II",
+   "leId": "178857",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032026",
+     "N. Spaldin"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Second Year Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "327-0414-00L",
+   "title": "Introduction to Finite Elements in Materials Science",
+   "leId": "178792",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003529",
+     "A. Gusev"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Second Year Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "327-0411-00L",
+   "title": "Projects and Lab Courses IV",
+   "leId": "177776",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10015938",
+     "M. B. Willeke"
+    ],
+    [
+     "10062913",
+     "L. De Pietro"
+    ],
+    [
+     "10025303",
+     "T.‑B. Schweizer"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Second Year Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "327-0622-00L",
+   "title": "Materials Selection",
+   "leId": "177424",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10012817",
+     "A. R. Studart"
+    ],
+    [
+     "10055552",
+     "H. Galinski"
+    ],
+    [
+     "10042623",
+     "R. Nicolosi Libanori"
+    ],
+    [
+     "10012837",
+     "R. Spolenak"
+    ],
+    [
+     "10065166",
+     "R. Style"
+    ],
+    [
+     "10053616",
+     "M. Trassin"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Third Year Basic Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "327-0623-00L",
+   "title": "Materials Processing",
+   "leId": "177423",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003915",
+     "T. A. Tervoort"
+    ],
+    [
+     "10009656",
+     "J. F. Löffler"
+    ],
+    [
+     "10025303",
+     "T.‑B. Schweizer"
+    ],
+    [
+     "10012817",
+     "A. R. Studart"
+    ],
+    [
+     "10053616",
+     "M. Trassin"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Third Year Basic Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "327-0624-00L",
+   "title": "Simulation Techniques in Materials Science",
+   "leId": "176788",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033637",
+     "C. Ederer"
+    ],
+    [
+     "10107071",
+     "J. Schmidt"
+    ]
+   ],
+   "program": "122751",
+   "dept": "19",
+   "section": "Bachelor Studies (Programme Regulations 2020) > Third Year Basic Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "401-0232-10L",
+   "title": "Analysis 2",
+   "leId": "178159",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10102890",
+     "F. Ziltener"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0302-10L",
+   "title": "Complex Analysis",
+   "leId": "178434",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021166",
+     "M. Akveld"
+    ],
+    [
+     "10109195",
+     "C. Urech"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0044-00L",
+   "title": "Physics II",
+   "leId": "177080",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033238",
+     "L. Gallmann"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "529-4000-00L",
+   "title": "Chemistry",
+   "leId": "177249",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10086188",
+     "T. Segawa"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "252-0002-00L",
+   "title": "Data Structures and Algorithms",
+   "leId": "177105",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10083871",
+     "M. Fischer"
+    ],
+    [
+     "10022281",
+     "F. Friedrich Wicker"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-2004-00L",
+   "title": "Algebra II",
+   "leId": "177420",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003969",
+     "Ö. Imamoglu"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2016) > Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-2554-00L",
+   "title": "Topology",
+   "leId": "176799",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10025958",
+     "E. Kowalski"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2016) > Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-2654-00L",
+   "title": "Numerical Analysis II",
+   "leId": "176867",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10042027",
+     "H. Ammari"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2016) > Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-2604-00L",
+   "title": "Probability and Statistics",
+   "leId": "177111",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10048364",
+     "V. Tassion"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2016) > Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-2464-00L",
+   "title": "Analysis IV (Fourier Theory and Hilbert Spaces)",
+   "leId": "177914",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10039399",
+     "M. Iacobelli"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2021) > Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-1152-02L",
+   "title": "Linear Algebra II",
+   "leId": "178316",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10081889",
+     "S. Zerbes"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2021) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-1262-07L",
+   "title": "Analysis II: Several Variables",
+   "leId": "178279",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10076584",
+     "J. Serra"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2021) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-1032-00L",
+   "title": "Basic Structures",
+   "leId": "177038",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033331",
+     "L. Halbeisen"
+    ]
+   ],
+   "program": "122755",
+   "dept": "8",
+   "section": "Bachelor Studies (Programme Regulations 2021) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "151-0029-10L",
+   "title": "Laboratory Practice",
+   "leId": "177332",
+   "sem": "2024S",
+   "lecturers": [],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2010) > Laboratory Practice",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "151-0003-00L",
+   "title": "Workshop Training",
+   "leId": "177077",
+   "sem": "2024S",
+   "lecturers": [],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2010) > Workshop Training",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "401-0172-00L",
+   "title": "Linear Algebra II",
+   "leId": "177478",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10002882",
+     "N. Hungerbühler"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "252-0833-00L",
+   "title": "Computer Science II",
+   "leId": "176576",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10067770",
+     "C. Cotrini Jimenez"
+    ],
+    [
+     "10106766",
+     "A. Streich"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0262-00L",
+   "title": "Analysis II",
+   "leId": "176672",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10039758",
+     "M. Akka Ginosar"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0035-00L",
+   "title": "Physics",
+   "leId": "177068",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10002934",
+     "L. Degiorgi"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "151-3222-00L",
+   "title": "Machine Design",
+   "leId": "177331",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033169",
+     "M. Meboldt"
+    ],
+    [
+     "10035638",
+     "Q. Lohmeyer"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "151-0502-00L",
+   "title": "Mechanics II",
+   "leId": "177742",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10040000",
+     "D. Mohr"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0000-11L",
+   "title": "Laboratory Course in Physics for Students in Mechanical Engineering",
+   "leId": "177457",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10015499",
+     "A. Biland"
+    ],
+    [
+     "10090986",
+     "A. Eggenberger"
+    ],
+    [
+     "10064714",
+     "A. Müller"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > First Year Compulsory Courses",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "151-0052-00L",
+   "title": "Thermodynamics II",
+   "leId": "177324",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004448",
+     "R. S. Abhari"
+    ],
+    [
+     "10038941",
+     "N. Noiray"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "151-0120-00L",
+   "title": "Fluid Dynamics",
+   "leId": "176539",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10068713",
+     "F. Coletti"
+    ],
+    [
+     "10005332",
+     "P. Jenny"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "151-0238-00L",
+   "title": "Thermodynamics III",
+   "leId": "179438",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031382",
+     "A. Manera"
+    ],
+    [
+     "10035330",
+     "G. Sansavini"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "252-0870-00L",
+   "title": "Stochastics and Machine Learning",
+   "leId": "176537",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10042823",
+     "P. Cheridito"
+    ],
+    [
+     "10067770",
+     "C. Cotrini Jimenez"
+    ],
+    [
+     "10106766",
+     "A. Streich"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "151-0966-00L",
+   "title": "Quantum Mechanics",
+   "leId": "178167",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031426",
+     "D. J. Norris"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "151-0714-00L",
+   "title": "Engineering Materials and Production",
+   "leId": "176538",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10068712",
+     "M. Bambach"
+    ],
+    [
+     "10075848",
+     "L. Deillon"
+    ]
+   ],
+   "program": "122748",
+   "dept": "3",
+   "section": "Bachelor Studies (Programme Regulations 2022) > Second and Third Year Compulsory Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-1152-02L",
+   "title": "Linear Algebra II",
+   "leId": "178316",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10081889",
+     "S. Zerbes"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-1262-07L",
+   "title": "Analysis II: Several Variables",
+   "leId": "178279",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10076584",
+     "J. Serra"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-1900-00L",
+   "title": "Data Analysis in Physics",
+   "leId": "178564",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10052253",
+     "A. Eichler"
+    ],
+    [
+     "10047850",
+     "M. Kroner"
+    ],
+    [
+     "10067770",
+     "C. Cotrini Jimenez"
+    ],
+    [
+     "10106767",
+     "M. Lüthi"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-1782-00L",
+   "title": "Physics II",
+   "leId": "177909",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031976",
+     "R. Wallny"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "First Year Compulsory Courses > First Year Examination Block 2",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0000-04L",
+   "title": "Physics Lab 2",
+   "leId": "178636",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10052253",
+     "A. Eichler"
+    ],
+    [
+     "10047850",
+     "M. Kroner"
+    ],
+    [
+     "10090986",
+     "A. Eggenberger"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "Practical Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "551-1324-00L",
+   "title": "Biochemistry",
+   "leId": "178331",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005334",
+     "K. Locher"
+    ],
+    [
+     "10004560",
+     "N. Ban"
+    ],
+    [
+     "10003126",
+     "R. Glockshuber"
+    ],
+    [
+     "10033823",
+     "J. Piel"
+    ],
+    [
+     "10004699",
+     "E. Weber-Ban"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "551-1174-00L",
+   "title": "Systems Biology",
+   "leId": "178193",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003740",
+     "U. Sauer"
+    ],
+    [
+     "10079770",
+     "P. Beltrao"
+    ],
+    [
+     "10014397",
+     "J. Stelling"
+    ],
+    [
+     "10021219",
+     "N. Zamboni"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "551-1518-00L",
+   "title": "Molecular Mechanisms of Health and Disease",
+   "leId": "178332",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004270",
+     "S. Werner"
+    ],
+    [
+     "10074108",
+     "N. Aceto"
+    ],
+    [
+     "10004933",
+     "M. Kopf"
+    ],
+    [
+     "10005180",
+     "A. Oxenius"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "551-0132-00L",
+   "title": "Practical Training in Bioinformatics",
+   "leId": "178333",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10048363",
+     "S. Sunagawa"
+    ],
+    [
+     "10079770",
+     "P. Beltrao"
+    ],
+    [
+     "10062681",
+     "A. Blasimme"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "551-1294-00L",
+   "title": "Genetics, Genomics",
+   "leId": "178945",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057074",
+     "J. Corn"
+    ],
+    [
+     "10060892",
+     "K. Bomblies"
+    ],
+    [
+     "10041187",
+     "U. K. Genick"
+    ],
+    [
+     "10062148",
+     "M. Jagannathan"
+    ],
+    [
+     "10085466",
+     "Z. Kontarakis"
+    ],
+    [
+     "10039342",
+     "G. Schwank"
+    ],
+    [
+     "10048363",
+     "S. Sunagawa"
+    ],
+    [
+     "10036240",
+     "K. Weis"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "551-0130-00L",
+   "title": "Fundamentals of Biology II",
+   "leId": "176606",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021218",
+     "M. Gstaiger"
+    ],
+    [
+     "10074108",
+     "N. Aceto"
+    ],
+    [
+     "10085469",
+     "J. A. Antunes Pereira"
+    ],
+    [
+     "10085467",
+     "M. Cangkrama"
+    ],
+    [
+     "10070610",
+     "H. Gehart"
+    ],
+    [
+     "10085466",
+     "Z. Kontarakis"
+    ],
+    [
+     "10026759",
+     "W. Kovacs"
+    ],
+    [
+     "10056074",
+     "A. Leitner"
+    ],
+    [
+     "10064586",
+     "S. L. Masneuf"
+    ],
+    [
+     "10015257",
+     "P. Picotti"
+    ],
+    [
+     "10003740",
+     "U. Sauer"
+    ],
+    [
+     "10031986",
+     "E. B. Truernit"
+    ],
+    [
+     "10033691",
+     "A. Wutz"
+    ],
+    [
+     "10021219",
+     "N. Zamboni"
+    ]
+   ],
+   "program": "122758",
+   "dept": "11",
+   "section": "Second Year Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0222-00L",
+   "title": "Organic Chemistry II",
+   "leId": "178293",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057073",
+     "B. Morandi"
+    ],
+    [
+     "10030781",
+     "J. W. Bode"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block I",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "402-0044-00L",
+   "title": "Physics II",
+   "leId": "177080",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033238",
+     "L. Gallmann"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block I",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0058-00L",
+   "title": "Analytical Chemistry II",
+   "leId": "178289",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004090",
+     "D. Günther"
+    ],
+    [
+     "10058889",
+     "D. Bleiner"
+    ],
+    [
+     "10035983",
+     "T. Bucheli"
+    ],
+    [
+     "10031985",
+     "M.‑O. Ebert"
+    ],
+    [
+     "10040423",
+     "G. Schwarz"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block I",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "535-0522-00L",
+   "title": "Pharmacology and Toxicology II",
+   "leId": "177588",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10017939",
+     "U. Quitterer"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block I",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "551-1324-00L",
+   "title": "Biochemistry",
+   "leId": "178331",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005334",
+     "K. Locher"
+    ],
+    [
+     "10004560",
+     "N. Ban"
+    ],
+    [
+     "10003126",
+     "R. Glockshuber"
+    ],
+    [
+     "10033823",
+     "J. Piel"
+    ],
+    [
+     "10004699",
+     "E. Weber-Ban"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block I",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "551-1174-00L",
+   "title": "Systems Biology",
+   "leId": "178193",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003740",
+     "U. Sauer"
+    ],
+    [
+     "10079770",
+     "P. Beltrao"
+    ],
+    [
+     "10014397",
+     "J. Stelling"
+    ],
+    [
+     "10021219",
+     "N. Zamboni"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block I",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "551-0307-01L",
+   "title": "Molecular and Structural Biology II: Molecular Machines and Cellular Assemblies",
+   "leId": "176727",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004560",
+     "N. Ban"
+    ],
+    [
+     "10062153",
+     "M. Hospenthal"
+    ],
+    [
+     "10053621",
+     "S. Jonas"
+    ],
+    [
+     "10036184",
+     "M. Pilhofer"
+    ],
+    [
+     "10081888",
+     "M. Wieczorek"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0732-00L",
+   "title": "Proteins and Lipids",
+   "leId": "177355",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10076578",
+     "K. Lang"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0289-00L",
+   "title": "Spectra Interpretation of Organic Compounds",
+   "leId": "178502",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003282",
+     "R. Zenobi"
+    ],
+    [
+     "10031985",
+     "M.‑O. Ebert"
+    ],
+    [
+     "10110626",
+     "L. Hagmann"
+    ],
+    [
+     "10076667",
+     "N. Kumar"
+    ],
+    [
+     "10006217",
+     "Y. Yamakoshi"
+    ]
+   ],
+   "program": "122886",
+   "dept": "20",
+   "section": "Core Subjects",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "529-0122-00L",
+   "title": "Inorganic Chemistry II",
+   "leId": "177148",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032710",
+     "M. Kovalenko"
+    ],
+    [
+     "10068034",
+     "K. Kravchyk"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0222-00L",
+   "title": "Organic Chemistry II",
+   "leId": "178293",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057073",
+     "B. Morandi"
+    ],
+    [
+     "10030781",
+     "J. W. Bode"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0431-00L",
+   "title": "Physical Chemistry III: Molecular Quantum Mechanics",
+   "leId": "177814",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003532",
+     "F. Merkt"
+    ],
+    [
+     "10057750",
+     "U. Hollenstein"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "551-1324-00L",
+   "title": "Biochemistry",
+   "leId": "178331",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005334",
+     "K. Locher"
+    ],
+    [
+     "10004560",
+     "N. Ban"
+    ],
+    [
+     "10003126",
+     "R. Glockshuber"
+    ],
+    [
+     "10033823",
+     "J. Piel"
+    ],
+    [
+     "10004699",
+     "E. Weber-Ban"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0058-00L",
+   "title": "Analytical Chemistry II",
+   "leId": "178289",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004090",
+     "D. Günther"
+    ],
+    [
+     "10058889",
+     "D. Bleiner"
+    ],
+    [
+     "10035983",
+     "T. Bucheli"
+    ],
+    [
+     "10031985",
+     "M.‑O. Ebert"
+    ],
+    [
+     "10040423",
+     "G. Schwarz"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0625-00L",
+   "title": "Chemical Engineering",
+   "leId": "177157",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10010858",
+     "W. J. Stark"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block II",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0054-00L",
+   "title": "Physical and Analytical Chemistry",
+   "leId": "177719",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003282",
+     "R. Zenobi"
+    ],
+    [
+     "10031985",
+     "M.‑O. Ebert"
+    ],
+    [
+     "10024768",
+     "B. Hattendorf"
+    ],
+    [
+     "10086188",
+     "T. Segawa"
+    ],
+    [
+     "10006217",
+     "Y. Yamakoshi"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0192-00L",
+   "title": "Industrial Chemistry",
+   "leId": "178673",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10010697",
+     "J. A. van Bokhoven"
+    ],
+    [
+     "10033242",
+     "M. Ranocchiari"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block V",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0633-00L",
+   "title": "Heterogeneous Reaction Engineering",
+   "leId": "177014",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031038",
+     "J. Pérez-Ramírez"
+    ],
+    [
+     "10086170",
+     "A. J. Martín Fernández"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block V",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "151-0926-00L",
+   "title": "Separation Process Technology",
+   "leId": "177894",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10066567",
+     "A. Bardow"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block V",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0031-00L",
+   "title": "Chemical Process Control",
+   "leId": "178942",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021365",
+     "R. Grass"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block VI",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "151-0940-00L",
+   "title": "Modelling and Mathematical Methods in Process and Chemical Engineering",
+   "leId": "177973",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003868",
+     "M. Mazzotti"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block VI",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0580-00L",
+   "title": "Safety, Environmental Assessment and Risk Analysis",
+   "leId": "177132",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10046043",
+     "P. Arosio"
+    ],
+    [
+     "10081026",
+     "F. Jenny"
+    ]
+   ],
+   "program": "122790",
+   "dept": "20",
+   "section": "Examination Block VI",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0122-00L",
+   "title": "Inorganic Chemistry II",
+   "leId": "177148",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032710",
+     "M. Kovalenko"
+    ],
+    [
+     "10068034",
+     "K. Kravchyk"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block II",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0222-00L",
+   "title": "Organic Chemistry II",
+   "leId": "178293",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10057073",
+     "B. Morandi"
+    ],
+    [
+     "10030781",
+     "J. W. Bode"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block II",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0431-00L",
+   "title": "Physical Chemistry III: Molecular Quantum Mechanics",
+   "leId": "177814",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003532",
+     "F. Merkt"
+    ],
+    [
+     "10057750",
+     "U. Hollenstein"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block II",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "551-1324-00L",
+   "title": "Biochemistry",
+   "leId": "178331",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005334",
+     "K. Locher"
+    ],
+    [
+     "10004560",
+     "N. Ban"
+    ],
+    [
+     "10003126",
+     "R. Glockshuber"
+    ],
+    [
+     "10033823",
+     "J. Piel"
+    ],
+    [
+     "10004699",
+     "E. Weber-Ban"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block II",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0058-00L",
+   "title": "Analytical Chemistry II",
+   "leId": "178289",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004090",
+     "D. Günther"
+    ],
+    [
+     "10058889",
+     "D. Bleiner"
+    ],
+    [
+     "10035983",
+     "T. Bucheli"
+    ],
+    [
+     "10031985",
+     "M.‑O. Ebert"
+    ],
+    [
+     "10040423",
+     "G. Schwarz"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block II",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0625-00L",
+   "title": "Chemical Engineering",
+   "leId": "177157",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10010858",
+     "W. J. Stark"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block II",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0054-00L",
+   "title": "Physical and Analytical Chemistry",
+   "leId": "177719",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003282",
+     "R. Zenobi"
+    ],
+    [
+     "10031985",
+     "M.‑O. Ebert"
+    ],
+    [
+     "10024768",
+     "B. Hattendorf"
+    ],
+    [
+     "10086188",
+     "T. Segawa"
+    ],
+    [
+     "10006217",
+     "Y. Yamakoshi"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0131-00L",
+   "title": "Inorganic Chemistry IV: (Nano-)Materials; Synthesis, Properties and Surface Chemistry",
+   "leId": "177700",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031341",
+     "C. Copéret"
+    ],
+    [
+     "10039838",
+     "A. Comas Vives"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block III",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0232-00L",
+   "title": "Organic Chemistry IV: Physical Organic Chemistry",
+   "leId": "178513",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003246",
+     "P. Chen"
+    ],
+    [
+     "10083568",
+     "A. Tsybizova"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block III",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0434-00L",
+   "title": "Physical Chemistry V: Spectroscopy",
+   "leId": "177318",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031649",
+     "H. J. Wörner"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block III",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-0580-00L",
+   "title": "Safety, Environmental Assessment and Risk Analysis",
+   "leId": "177132",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10046043",
+     "P. Arosio"
+    ],
+    [
+     "10081026",
+     "F. Jenny"
+    ]
+   ],
+   "program": "122750",
+   "dept": "20",
+   "section": "Compulsory Subjects Examination Block III",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "529-1025-00L",
+   "title": "Physical Chemistry (for Pharmacy)",
+   "leId": "176804",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10027228",
+     "G. Jeschke"
+    ],
+    [
+     "10033457",
+     "M. Yulikov"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "701-0360-00L",
+   "title": "Systematic Biology: Plants",
+   "leId": "177963",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033247",
+     "A. Guggisberg"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "376-0153-00L",
+   "title": "Histology",
+   "leId": "177531",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003102",
+     "D. P. Wolfer"
+    ],
+    [
+     "10034478",
+     "I. Amrein"
+    ],
+    [
+     "10021121",
+     "L. Slomianka"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "376-0152-00L",
+   "title": "Anatomy and Physiology II",
+   "leId": "177241",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004189",
+     "R. Müller"
+    ],
+    [
+     "10094266",
+     "N. K. Brasier"
+    ],
+    [
+     "10000886",
+     "W. Langhans"
+    ],
+    [
+     "10036245",
+     "E. Slack"
+    ],
+    [
+     "10021121",
+     "L. Slomianka"
+    ],
+    [
+     "10003791",
+     "C. Spengler"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "535-0226-00L",
+   "title": "Pharmaceutical Analytics II",
+   "leId": "178924",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10048020",
+     "C. Steuer"
+    ],
+    [
+     "10046066",
+     "B. Pfeiffer"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "551-0130-01L",
+   "title": "Fundamentals of Biology II",
+   "leId": "178809",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021218",
+     "M. Gstaiger"
+    ],
+    [
+     "10085469",
+     "J. A. Antunes Pereira"
+    ],
+    [
+     "10064586",
+     "S. L. Masneuf"
+    ],
+    [
+     "10031986",
+     "E. B. Truernit"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-1156-00L",
+   "title": "Laboratory Course in Physiology (Pharm. Sci.)",
+   "leId": "177525",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003791",
+     "C. Spengler"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0430-00L",
+   "title": "Practical Course Physical Chemistry (Pharm.Sci.)",
+   "leId": "178050",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10086188",
+     "T. Segawa"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "535-0135-00L",
+   "title": "Clinical Chemistry I",
+   "leId": "177931",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033370",
+     "M. Hersberger"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "535-0231-00L",
+   "title": "Medicinal Chemistry II",
+   "leId": "177503",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10022399",
+     "J. Hall"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "535-0241-03L",
+   "title": "Biopharmacy",
+   "leId": "177099",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10009238",
+     "S.‑D. Krämer"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "535-0422-00L",
+   "title": "Galenical Pharmacy II",
+   "leId": "177744",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10027263",
+     "J.‑C. Leroux"
+    ],
+    [
+     "10064966",
+     "E. Giger"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "535-0440-00L",
+   "title": "Quality Management in Pharmaceutical Business",
+   "leId": "178216",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10034161",
+     "A. Sterchi"
+    ],
+    [
+     "10105606",
+     "S. Weidmann"
+    ]
+   ],
+   "program": "122757",
+   "dept": "20",
+   "section": "Core Courses",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "401-0242-00L",
+   "title": "Analysis II",
+   "leId": "177161",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10021166",
+     "M. Akveld"
+    ]
+   ],
+   "program": "122872",
+   "dept": "2",
+   "section": "First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "401-0612-00L",
+   "title": "Statistics and Probability Theory",
+   "leId": "177871",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003978",
+     "P. L. Bühlmann"
+    ]
+   ],
+   "program": "122872",
+   "dept": "2",
+   "section": "First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "252-0846-00L",
+   "title": "Computer Science II",
+   "leId": "177637",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10083871",
+     "M. Fischer"
+    ],
+    [
+     "10106767",
+     "M. Lüthi"
+    ]
+   ],
+   "program": "122872",
+   "dept": "2",
+   "section": "First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "103-0414-10L",
+   "title": "Transport Basics",
+   "leId": "176876",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10053619",
+     "F. Corman"
+    ],
+    [
+     "10032766",
+     "N. Garrick"
+    ],
+    [
+     "10057629",
+     "A. Kouvelas"
+    ],
+    [
+     "10107006",
+     "J. Lordieck"
+    ]
+   ],
+   "program": "122872",
+   "dept": "2",
+   "section": "First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "103-0132-00L",
+   "title": "Geodetic Metrology Fundamentals",
+   "leId": "176983",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033517",
+     "A. Wieser"
+    ],
+    [
+     "10097167",
+     "H. Laasch"
+    ],
+    [
+     "10097166",
+     "N. Ryter"
+    ]
+   ],
+   "program": "122872",
+   "dept": "2",
+   "section": "First Year Examinations",
+   "semester": 2,
+   "year": 1
+  },
+  {
+   "code": "402-0044-00L",
+   "title": "Physics II",
+   "leId": "177080",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033238",
+     "L. Gallmann"
+    ]
+   ],
+   "program": "122872",
+   "dept": "2",
+   "section": "Examination Block 2",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "103-0849-00L",
+   "title": "Multivariate Statistics and Machine Learning",
+   "leId": "177446",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031621",
+     "K. Schindler"
+    ]
+   ],
+   "program": "122872",
+   "dept": "2",
+   "section": "Examination Block 2",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "252-0058-00L",
+   "title": "Formal Methods and Functional Programming",
+   "leId": "178296",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005236",
+     "D. Basin"
+    ],
+    [
+     "10009143",
+     "P. Müller"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "252-0063-00L",
+   "title": "Data Modelling and Databases",
+   "leId": "178378",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003452",
+     "G. Alonso"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "252-0064-00L",
+   "title": "Computer Networks",
+   "leId": "178312",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033686",
+     "A. Perrig"
+    ],
+    [
+     "10020997",
+     "T. Roscoe"
+    ],
+    [
+     "10107089",
+     "H. Duan"
+    ],
+    [
+     "10051564",
+     "J. H. Kwon"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "401-0614-00L",
+   "title": "Probability and Statistics",
+   "leId": "178306",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10012456",
+     "E. W. Farkas"
+    ]
+   ],
+   "program": "122754",
+   "dept": "5",
+   "section": "Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "402-0062-00L",
+   "title": "Physics I",
+   "leId": "177836",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004637",
+     "A. Vaterlaus"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Examination Block 1",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "651-3698-01L",
+   "title": "Bachelor's Seminar II",
+   "leId": "177516",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10044609",
+     "J. D. Rickli"
+    ],
+    [
+     "10090828",
+     "L. Ermert"
+    ]
+   ],
+   "program": "122759",
+   "dept": "13",
+   "section": "Bachelor's Seminar",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "751-8001-00L",
+   "title": "Agricultural Production Systems",
+   "leId": "178269",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10015757",
+     "T. Anken"
+    ],
+    [
+     "10032799",
+     "M. Sax"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "751-5000-00L",
+   "title": "Sustainable Agroecosystems I",
+   "leId": "177286",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033824",
+     "J. Six"
+    ],
+    [
+     "10072220",
+     "K. Benabderrazik"
+    ],
+    [
+     "10056829",
+     "M. Hartmann"
+    ]
+   ],
+   "program": "122761",
+   "dept": "25",
+   "section": "Agricultural Sciences Basic Courses",
+   "semester": 4,
+   "year": 2
+  },
+  {
+   "code": "402-0062-00L",
+   "title": "Physics I",
+   "leId": "177836",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004637",
+     "A. Vaterlaus"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Examination Block 1",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0401-00L",
+   "title": "Hydrosphere",
+   "leId": "177887",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004531",
+     "M. H. Schroth"
+    ],
+    [
+     "10002931",
+     "R. Kipfer"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0245-00L",
+   "title": "Evolutionary Analysis",
+   "leId": "178649",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10035985",
+     "S. Wielgoss"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0460-00L",
+   "title": "Practical Course in Atmosphere and Climate",
+   "leId": "178436",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004693",
+     "U. Krieger"
+    ],
+    [
+     "10061367",
+     "R. Modini"
+    ],
+    [
+     "10021622",
+     "A. Prévôt"
+    ],
+    [
+     "10093449",
+     "R. Spirig"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Atmosphere and Climate",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0909-00L",
+   "title": "Seminar Environmental Systems",
+   "leId": "176743",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10072378",
+     "A. Carminati"
+    ],
+    [
+     "10042028",
+     "L. Pellissier"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Atmosphere and Climate",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0420-01L",
+   "title": "Practical Course in Biogeochemistry",
+   "leId": "177895",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032720",
+     "L. Winkel"
+    ],
+    [
+     "10005324",
+     "H. Bürgmann"
+    ],
+    [
+     "10093588",
+     "D. Janssen"
+    ],
+    [
+     "10004981",
+     "P. U. Lehmann Grunder"
+    ],
+    [
+     "10030185",
+     "K. McNeill"
+    ],
+    [
+     "10004531",
+     "M. H. Schroth"
+    ],
+    [
+     "10019220",
+     "A. Voegelin"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Biogeochemistry",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0660-00L",
+   "title": "Practical Course in Human Environment Systems",
+   "leId": "178360",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10082447",
+     "J. W. McCaughey"
+    ],
+    [
+     "10030919",
+     "D. N. Bresch"
+    ],
+    [
+     "10059932",
+     "S. Hanger-Kopp"
+    ],
+    [
+     "10082427",
+     "C. M. Kropf"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Human-Environment Systems",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "701-0340-00L",
+   "title": "Practical Course in Environmental Biology",
+   "leId": "177563",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10030046",
+     "C. Vorburger"
+    ],
+    [
+     "10032248",
+     "M. Fischer"
+    ],
+    [
+     "10037964",
+     "J. Hille Ris Lambers"
+    ],
+    [
+     "10003694",
+     "J. Jokela"
+    ]
+   ],
+   "program": "122760",
+   "dept": "25",
+   "section": "Environmental Biology",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-0009-00L",
+   "title": "Molecular and Cell Biology in Health and Disease",
+   "leId": "176693",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10027444",
+     "C. Wolfrum"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-0153-00L",
+   "title": "Histology",
+   "leId": "177531",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003102",
+     "D. P. Wolfer"
+    ],
+    [
+     "10034478",
+     "I. Amrein"
+    ],
+    [
+     "10021121",
+     "L. Slomianka"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "402-0084-00L",
+   "title": "Physics II",
+   "leId": "177694",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033537",
+     "A. S. Antognini"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-0152-00L",
+   "title": "Anatomy and Physiology II",
+   "leId": "177241",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004189",
+     "R. Müller"
+    ],
+    [
+     "10094266",
+     "N. K. Brasier"
+    ],
+    [
+     "10000886",
+     "W. Langhans"
+    ],
+    [
+     "10036245",
+     "E. Slack"
+    ],
+    [
+     "10021121",
+     "L. Slomianka"
+    ],
+    [
+     "10003791",
+     "C. Spengler"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Examination Block 4",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-0206-00L",
+   "title": "Biomechanics II",
+   "leId": "177481",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10034008",
+     "W. R. Taylor"
+    ],
+    [
+     "10055568",
+     "F. Vogl"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Examination Block 4",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-1611-00L",
+   "title": "Biomedical Interfaces",
+   "leId": "178207",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10083428",
+     "M. C. Benn"
+    ],
+    [
+     "10005330",
+     "V. Vogel"
+    ],
+    [
+     "10068290",
+     "S. Lickert"
+    ],
+    [
+     "10092606",
+     "F. Pennacchio"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Examination Block 4",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-0006-01L",
+   "title": "Laboratory Course in Physiology (HST)",
+   "leId": "176926",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003791",
+     "C. Spengler"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Individual Subjects and Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "376-0006-02L",
+   "title": "Laboratory Course in Molecular Biology",
+   "leId": "177296",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10042825",
+     "K. De Bock"
+    ],
+    [
+     "10056065",
+     "O. Bar-Nur"
+    ],
+    [
+     "10059853",
+     "F. von Meyenn"
+    ],
+    [
+     "10027444",
+     "C. Wolfrum"
+    ]
+   ],
+   "program": "122833",
+   "dept": "24",
+   "section": "Individual Subjects and Laboratory Courses",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "853-0056-00L",
+   "title": "Public International Law",
+   "leId": "177536",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10017657",
+     "A. R. Ziegler"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0086-00L",
+   "title": "Business Administration II",
+   "leId": "176813",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10050398",
+     "P. Barmettler"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0058-00L",
+   "title": "Swiss Foreign and Security Politics Since 1945",
+   "leId": "177493",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003358",
+     "A. Wenger"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0010-00L",
+   "title": "Conflict Research II: Civil Wars",
+   "leId": "177926",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10080656",
+     "A. Juon"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0080-00L",
+   "title": "Military History II",
+   "leId": "178227",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033471",
+     "M. Olsansky"
+    ],
+    [
+     "10034365",
+     "A. Wettstein"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0057-00L",
+   "title": "Strategic Studies II (without Exercises)",
+   "leId": "178324",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10056750",
+     "M. Berni"
+    ],
+    [
+     "10061890",
+     "M. Wyss"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0322-00L",
+   "title": "Advanced Course I (Seminar)",
+   "leId": "176764",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10003358",
+     "A. Wenger"
+    ],
+    [
+     "10004573",
+     "H. Annen"
+    ],
+    [
+     "10109229",
+     "M. Stoller"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0102-02L",
+   "title": "Defense Economics II (with Exercises)",
+   "leId": "178681",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10034299",
+     "M. M. Keupp"
+    ],
+    [
+     "10106467",
+     "M. Bader"
+    ],
+    [
+     "10106468",
+     "F. Muhly"
+    ],
+    [
+     "10106486",
+     "C. Schulze"
+    ]
+   ],
+   "program": "122749",
+   "dept": "17",
+   "section": "Remaining Core Courses of the Bachelor Programme",
+   "semester": 6,
+   "year": 3
+  },
+  {
+   "code": "853-0602-00L",
+   "title": "Practical Modules MILAK",
+   "leId": "178067",
+   "sem": "2024S",
+   "lecturers": [],
+   "program": "122749",
+   "dept": "17",
+   "section": "Practical Training MILAK",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "227-0013-00L",
+   "title": "Computer Engineering",
+   "leId": "177328",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10056552",
+     "K. Razavi"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "Examination Block 2",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "227-0046-10L",
+   "title": "Signals and Systems II",
+   "leId": "177146",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10019117",
+     "J. Lygeros"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "Examination Block 2",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "401-0654-00L",
+   "title": "Numerical Methods",
+   "leId": "177938",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10026989",
+     "V. C. Gradinaru"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "227-0052-10L",
+   "title": "Electromagnetic Fields and Waves",
+   "leId": "177796",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10033026",
+     "L. Novotny"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "227-0056-00L",
+   "title": "Semiconductor Devices",
+   "leId": "177522",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10016938",
+     "C. Bolognesi"
+    ],
+    [
+     "10092608",
+     "T. Popovic"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "401-0604-00L",
+   "title": "Probability Theory and Statistics",
+   "leId": "177652",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10009315",
+     "M. Schweizer"
+    ]
+   ],
+   "program": "122763",
+   "dept": "18",
+   "section": "Examination Block 3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "401-0674-00L",
+   "title": "Numerical Methods for Partial Differential Equations",
+   "leId": "177663",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10005212",
+     "R. Hiptmair"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "Block G3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "401-0604-00L",
+   "title": "Probability Theory and Statistics",
+   "leId": "177652",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10009315",
+     "M. Schweizer"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "Block G3",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "151-0120-00L",
+   "title": "Fluid Dynamics",
+   "leId": "176539",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10068713",
+     "F. Coletti"
+    ],
+    [
+     "10005332",
+     "P. Jenny"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "Block G4",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "529-0483-00L",
+   "title": "Statistical Physics and Computer Simulation",
+   "leId": "177633",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10004562",
+     "P. H. Hünenberger"
+    ],
+    [
+     "10035883",
+     "S. Riniker"
+    ]
+   ],
+   "program": "122747",
+   "dept": "8",
+   "section": "Block G4",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "401-2334-00L",
+   "title": "Mathematical Methods of Physics II",
+   "leId": "177701",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10031327",
+     "T. H. Willwacher"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "Examination Block IIa",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "402-0204-00L",
+   "title": "Electrodynamics",
+   "leId": "176915",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10032712",
+     "N. Beisert"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "Examination Block IIa",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "402-2214-10L",
+   "title": "Theory of Heat",
+   "leId": "177441",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10002840",
+     "G. M. Graf"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "Examination Block IIb",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "401-2664-00L",
+   "title": "Introduction to Numerical Methods",
+   "leId": "177912",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10026989",
+     "V. C. Gradinaru"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "Examination Block IIb",
+   "semester": null,
+   "year": null
+  },
+  {
+   "code": "402-2214-00L",
+   "title": "Theory of Heat",
+   "leId": "178148",
+   "sem": "2024S",
+   "lecturers": [
+    [
+     "10002840",
+     "G. M. Graf"
+    ]
+   ],
+   "program": "122756",
+   "dept": "9",
+   "section": "Examination Block III",
+   "semester": null,
+   "year": null
+  }
+ ]
+}

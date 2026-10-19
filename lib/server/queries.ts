@@ -14,7 +14,8 @@ type ProfRow = {
 export function toProf(p: ProfRow): Prof {
   return {
     id: p.id, name: p.name, fullName: p.full_name, relationship: p.relationship, department: p.department,
-    field: p.field || '', image: p.image, url: p.url, elo: Math.round(p.elo), wins: p.wins, losses: p.losses, league: league(p.elo),
+    // photos are not used — the UI draws a comic figure instead
+    field: p.field || '', image: null, url: p.url, elo: Math.round(p.elo), wins: p.wins, losses: p.losses, league: league(p.elo),
   };
 }
 

@@ -9,9 +9,8 @@ const nextConfig: NextConfig = {
   // old routes from earlier versions
   async redirects() {
     return [
-      { source: '/battle', destination: '/', permanent: false },
       { source: '/leaderboard', destination: '/rankings', permanent: false },
-      { source: '/dev/arena', destination: '/', permanent: false },
+      { source: '/dev/arena', destination: '/battle', permanent: false },
     ];
   },
 };

@@ -2,10 +2,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { MOTION } from '@/lib/client/motion';
-import { deptByName } from '@/lib/departments';
 import type { Prof } from '@/lib/types';
 import { DuelCard, type EloReveal, type Phase } from './DuelCard';
-import { useStageLights } from './Stage';
 
 export type DuelPair = { key: string; left: Prof; right: Prof };
 export type VoteOutcome = { left: EloReveal; right: EloReveal };
@@ -28,7 +26,6 @@ export function Duel({ source, onVoted, onEmpty }: { source: DuelSource; onVoted
   const [outcome, setOutcome] = useState<VoteOutcome | null>(null);
   const [loading, setLoading] = useState(true);
   const lock = useRef(false);
-  const setLights = useStageLights();
 
   const load = useCallback(async () => {
     const p = await source.next();
@@ -46,10 +43,6 @@ export function Duel({ source, onVoted, onEmpty }: { source: DuelSource; onVoted
     lock.current = true;
     load().catch(() => { setLoading(false); lock.current = false; });
   }, [source, load]);
-  useEffect(() => {
-    setLights(pair ? [deptByName(pair.left.department).color, deptByName(pair.right.department).color] : null);
-    return () => setLights(null);
-  }, [pair, setLights]);
 
   const choose = useCallback(async (side: 'left' | 'right') => {
     if (lock.current || !pair) return;
@@ -82,7 +75,7 @@ export function Duel({ source, onVoted, onEmpty }: { source: DuelSource; onVoted
     return () => removeEventListener('keydown', onKey);
   }, [choose, skip]);
 
-  if (loading) return <div className="loading"><div className="spinner" />Duell wird vorbereitet</div>;
+  if (loading) return <div className="loading"><span className="spin">⚔️</span>Duell wird vorbereitet</div>;
   if (!pair) return null;
 
   const phase = (side: 'left' | 'right'): Phase => (!choice ? 'idle' : choice === side ? 'chosen' : 'other');
@@ -93,17 +86,15 @@ export function Duel({ source, onVoted, onEmpty }: { source: DuelSource; onVoted
           <DuelCard key={`l-${pair.key}`} index={0} prof={pair.left} phase={phase('left')} elo={outcome?.left ?? null} eloNote={source.eloNote} onChoose={() => choose('left')} />
         </AnimatePresence>
         <div className="vs" aria-hidden="true">
-          <span className="vs-line t" />
-          <motion.span key={pair.key} className="vs-medal" initial={{ scale: 0.6, opacity: 0, rotate: -40 }} animate={{ scale: choice ? 0.86 : 1, opacity: 1, rotate: 0 }}
-            transition={{ ...MOTION.soft, delay: 0.12 }}>VS</motion.span>
-          <span className="vs-line b" />
+          <motion.span key={pair.key} className="vs-shield" initial={{ scale: 2.6, opacity: 0, rotate: -30 }} animate={{ scale: choice ? 0.85 : 1, opacity: 1, rotate: 0 }}
+            transition={{ type: 'spring', bounce: 0.5, visualDuration: 0.45, delay: 0.2 }}>VS</motion.span>
         </div>
         <AnimatePresence mode="wait">
           <DuelCard key={`r-${pair.key}`} index={1} prof={pair.right} phase={phase('right')} elo={outcome?.right ?? null} eloNote={source.eloNote} onChoose={() => choose('right')} />
         </AnimatePresence>
       </div>
       <div className="duel-bar">
-        <button className="btn quiet" onClick={skip} disabled={!!choice}>Überspringen <span className="kbd">S</span></button>
+        <button className="btn sm stone" onClick={skip} disabled={!!choice}>🤷 Überspringen <span className="kbd">S</span></button>
         <span className="status" aria-live="polite">{choice ? (outcome ? 'Gewertet — nächstes Duell kommt' : 'Wird gewertet …') : <><span className="kbd">←</span> <span className="kbd">→</span> zum Wählen</>}</span>
       </div>
     </>
