@@ -16,7 +16,8 @@ const ICONS = {
   globe: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3Z" /></>,
   power: <><path d="M12 3v8" /><path d="M6.3 6.8a8 8 0 1 0 11.4 0" /></>,
   check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
-  close: <path d="M6 6l12 12M18 6 6 18" />,
+  // drawn with its own ink edge: the outline filter other button icons use fills the gaps of a thin X into a dark square
+  close: <><path d="M7 7l10 10M17 7 7 17" stroke="#1e1712" strokeWidth="6.4" /><path d="M7 7l10 10M17 7 7 17" strokeWidth="3" /></>,
   mail: <><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="m3.5 7 8.5 6 8.5-6" /></>,
   skip: <><path d="M5 5.5v13l9-6.5-9-6.5Z" /><path d="M18 5v14" /></>,
   external: <><path d="M14 4h6v6M20 4l-9 9" /><path d="M18 14v4.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10" /></>,

@@ -15,7 +15,7 @@ const PAGE = 50;
 
 export default function RankingsPage() {
   const { profile } = useSession();
-  const { open, openId } = useProfile();
+  const { open, away, portraitId } = useProfile();
   const [scope, setScope] = useState<'all' | 'dept'>('all');
   const [dept, setDept] = useState<number>(profile?.deptId ?? 5);
   const [rows, setRows] = useState<RankedProf[] | null>(null);
@@ -77,9 +77,12 @@ export default function RankingsPage() {
                   <motion.button key={p.id} type="button" className={`row ${top ? 'top' : ''}`} onClick={() => open(p)}
                     layout="position" transition={MOTION.soft} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: MOTION.fade }}>
                     <span className="rk num">{top ? <span className={`medal m${p.rank}`}>{p.rank}</span> : p.rank ?? '–'}</span>
-                    {openId === p.id ? <span className="frame round" style={{ width: 52 }} /> : (
-                      <motion.span layoutId={`portrait-${p.id}`} transition={MOTION.snappy} className="frame round" style={{ width: 52 }}>
-                        <Figure id={p.id} name={p.name} department={p.department} />
+                    {away.has(p.id) ? <span className="frame round" /> : (
+                      <motion.span layoutId={portraitId(p.id)} transition={MOTION.snappy} className="frame round" style={{ borderRadius: '50%' }}
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                        <motion.span layoutId={`${portraitId(p.id)}-fig`} transition={MOTION.snappy} className="fig">
+                          <Figure id={p.id} name={p.name} department={p.department} />
+                        </motion.span>
                       </motion.span>
                     )}
                     <span className="who"><b>{p.name}</b><small><i className="dot" style={{ ['--c' as any]: d.color }} />D-{d.code} · {p.field || p.relationship}</small></span>

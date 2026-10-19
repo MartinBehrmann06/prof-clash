@@ -58,7 +58,7 @@ export default function ClansPage() {
                   transition={{ ...MOTION.soft, delay: Math.min(i, 8) * 0.04 }}>
                   <span className="rk num">{i + 1}</span>
                   <span className="mini-shield">{d.code}</span>
-                  <span><b>{s.name}</b><small>{mine ? 'Dein Clan · ' : ''}{s.players} Mitglieder{s.top ? <> · <Icon name="crown" size={12} /> {s.top.name}</> : ''}</small></span>
+                  <span><b title={s.name}>{s.name}</b><small className="one">{mine ? 'Dein Clan · ' : ''}{s.players} Mitglieder</small>{s.top && <small className="one" title={s.top.name}><Icon name="crown" size={12} /> {s.top.name}</small>}</span>
                   <span className="v num">{s.duels7}<small>Duelle</small></span>
                 </motion.div>
               );
@@ -177,7 +177,7 @@ function WeekendLeague({ lg, myDept }: { lg: LeagueData; myDept?: number }) {
               transition={{ ...MOTION.soft, delay: Math.min(i, 8) * 0.04 }}>
               <span className="rk num">{i + 1}</span>
               <span className="mini-shield">{d.code}</span>
-              <span><b>D-{d.code}</b><small>{mine ? 'Dein Clan · ' : ''}{r.played} gespielt · {r.w}S {r.d}U {r.l}N · Σ {r.score.toFixed(1)}</small></span>
+              <span><b>D-{d.code}</b><small>{mine ? 'Dein Clan · ' : ''}{r.played}&nbsp;gespielt · {r.w}S&nbsp;{r.d}U&nbsp;{r.l}N · Σ&nbsp;{r.score.toFixed(1)}</small></span>
               <span className="v num">{r.pts}<small>Punkte</small></span>
             </motion.div>
           );
