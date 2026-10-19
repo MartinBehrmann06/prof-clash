@@ -1,14 +1,16 @@
 'use client';
-// Procedural comic figures instead of photos. Every professor gets a fixed, family-friendly
+// Procedural professor portraits instead of photos. Every professor gets a fixed, family-friendly
 // character derived from their id — it is deliberately NOT a likeness of the real person.
+// Flat vector style: no outlines, every shape is either fully inside another or clipped to it,
+// so nothing overlaps raggedly at any size.
 import { memo, useId } from 'react';
 import { deptByName } from '@/lib/departments';
 
-const INK = '#2a1a0b';
-const SKIN = ['#ffdcbc', '#f6c89a', '#e8b07a', '#c98b5a', '#9a6440', '#6e4428'];
-const HAIR = ['#2b1d14', '#4a3020', '#7a4a26', '#b9853f', '#e3c27a', '#8f8f94', '#c9c9cd', '#efefef', '#a8432a'];
-type Hair = 'bald' | 'short' | 'side' | 'curly' | 'long' | 'bun' | 'spiky' | 'tuft';
-const HAIRS: Hair[] = ['bald', 'short', 'side', 'curly', 'long', 'bun', 'spiky', 'tuft'];
+const INK = '#23212e';
+const SKIN = ['#ffe0c7', '#f6cba6', '#e6ab80', '#c98a5c', '#9d6743', '#6e472f'];
+const HAIR = ['#2a221f', '#4a3428', '#7a4b2c', '#b5833f', '#e3c483', '#8e8b93', '#c8c5cc', '#eceaee', '#a9472f'];
+type Hair = 'bald' | 'short' | 'side' | 'curly' | 'long' | 'bun' | 'quiff' | 'tuft';
+const HAIRS: Hair[] = ['bald', 'short', 'side', 'curly', 'long', 'bun', 'quiff', 'tuft'];
 type Hat = 'none' | 'cap' | 'hardhat' | 'beret' | 'goggles' | 'wizard';
 
 function rng(seed: number) {
@@ -16,6 +18,13 @@ function rng(seed: number) {
   return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
 }
 const pick = <T,>(r: () => number, a: readonly T[]) => a[Math.floor(r() * a.length)];
+
+/** mix two #rrggbb colours, t = share of b */
+export function mix(a: string, b: string, t: number) {
+  const p = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const [x, y] = [p(a), p(b)];
+  return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, '0')).join('');
+}
 
 function traits(id: number, dept: string) {
   const r = rng(id * 2654435761);
@@ -37,114 +46,187 @@ function traits(id: number, dept: string) {
   };
 }
 
-/** A chibi bust in the department colour. `mood` animates the face after a vote. */
+// head and hair geometry (viewBox 200 × 238)
+const HEAD = { cx: 100, cy: 112, rx: 44, ry: 50 };
+const CAP = { cx: 100, cy: 105, rx: 49, ry: 57 };
+const EYE_Y = 113;
+
+/** Where the hair cap is visible, per style (the cap ellipse is clipped to this) */
+const HAIRLINE: Record<Hair, string> = {
+  short: 'M0 0H200V110H149C147 92 138 81 122 77C108 82 90 84 74 80C63 86 56 96 51 110H0Z',
+  side: 'M0 0H200V108H149C146 90 136 79 118 73C106 86 82 92 60 91C56 97 53 102 51 108H0Z',
+  long: 'M0 0H200V140H146C144 100 128 84 100 77C72 84 56 100 54 140H0Z',
+  bun: 'M0 0H200V106H148C142 88 124 78 100 76C76 78 58 88 52 106H0Z',
+  curly: 'M0 0H200V112H149C147 96 140 86 130 82C122 88 112 84 106 80C98 86 88 86 82 81C72 86 62 90 56 98L51 112H0Z',
+  quiff: 'M0 0H200V108H149C147 92 138 82 124 78C110 82 92 84 76 82C64 88 56 96 51 108H0Z',
+  bald: 'M40 92Q58 84 66 102Q66 114 58 124H40ZM160 92Q142 84 134 102Q134 114 142 124H160Z',
+  tuft: 'M40 92Q58 84 66 102Q66 114 58 124H40ZM160 92Q142 84 134 102Q134 114 142 124H160Z',
+};
+
+/** A friendly flat bust in the department colour. `mood` changes the face after a vote. */
 export const Figure = memo(function Figure({ id, name, department, mood = 'idle', className = '' }: {
   id: number; name: string; department: string; mood?: 'idle' | 'happy' | 'sad'; className?: string;
 }) {
   const t = traits(id, department);
   const d = deptByName(department);
   const uid = useId().replace(/:/g, '');
-  const outfit = d.color;
-  const hairBack = t.hair === 'long' || t.hair === 'bun';
+  const skinShade = mix(t.skin, '#6b2f1f', 0.16);
+  const hairShade = mix(t.hairColor, '#000000', 0.18);
+  const brow = mix(t.hairColor, INK, 0.45);
+  const jacket = d.color, jacketShade = mix(d.color, '#000000', 0.16);
+  const showEars = t.hair !== 'long';
+  const hairBack = t.hair === 'long';
+  const c = (s: string) => `${s}${uid}`;
+
   return (
-    <svg className={`figure ${className}`} viewBox="0 -18 200 238" role="img" aria-label={`Comicfigur für ${name}`}>
+    <svg className={`figure ${className}`} viewBox="0 0 200 238" role="img" aria-label={`Gezeichnete Figur für ${name}`}>
       <defs>
-        <radialGradient id={`bg${uid}`} cx="50%" cy="40%" r="70%">
-          <stop offset="0" stopColor="#fff7d6" /><stop offset="1" stopColor={outfit} stopOpacity=".35" />
-        </radialGradient>
-        <linearGradient id={`sh${uid}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#fff" stopOpacity=".35" /><stop offset="1" stopColor="#000" stopOpacity=".18" />
+        <linearGradient id={c('bg')} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor={mix(d.color, '#ffffff', 0.82)} /><stop offset="1" stopColor={mix(d.color, '#ffffff', 0.62)} />
         </linearGradient>
+        <clipPath id={c('hl')}><path d={HAIRLINE[t.hair]} /></clipPath>
+        <clipPath id={c('head')}><ellipse {...HEAD} /></clipPath>
+        <clipPath id={c('body')}><path d="M18 238C18 198 50 178 100 178C150 178 182 198 182 238Z" /></clipPath>
       </defs>
-      <rect y="-18" width="200" height="238" fill={`url(#bg${uid})`} />
-      {/* sun rays */}
-      <g opacity=".22">{Array.from({ length: 12 }, (_, i) => <path key={i} d="M100 95 L88 -20 L112 -20Z" fill="#fff" transform={`rotate(${i * 30} 100 95)`} />)}</g>
 
-      {/* body */}
-      <path d="M22 222 C24 170 54 150 100 150 C146 150 176 170 178 222Z" fill={outfit} stroke={INK} strokeWidth="5" />
-      <path d="M22 222 C24 170 54 150 100 150 C146 150 176 170 178 222Z" fill={`url(#sh${uid})`} />
-      <path d="M78 152 L100 182 L122 152" fill="#fff" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />
-      {t.tie && <path d="M100 172 L92 186 L100 214 L108 186Z" fill="#e8402a" stroke={INK} strokeWidth="3.5" strokeLinejoin="round" />}
-      <rect x="128" y="186" width="34" height="18" rx="5" fill="#fff" stroke={INK} strokeWidth="3" />
-      <text x="145" y="199" textAnchor="middle" fontSize="10" fontWeight="900" fill={INK} fontFamily="system-ui, sans-serif">{d.code}</text>
-      {/* neck */}
-      <rect x="86" y="128" width="28" height="30" rx="10" fill={t.skin} stroke={INK} strokeWidth="4.5" />
+      <rect width="200" height="238" fill={`url(#${c('bg')})`} />
+      <circle cx="100" cy="118" r="80" fill="#ffffff" opacity=".35" />
 
-      {/* hair behind head */}
-      {hairBack && <path d="M44 92 C40 150 60 168 100 168 C140 168 160 150 156 92Z" fill={t.hairColor} stroke={INK} strokeWidth="5" />}
-      {t.hair === 'bun' && <circle cx="100" cy="30" r="20" fill={t.hairColor} stroke={INK} strokeWidth="5" />}
+      {/* long hair falls behind the head and over the shoulders */}
+      {hairBack && <path d="M51 104C51 70 72 48 100 48C128 48 149 70 149 104V186C149 194 142 200 134 200H66C58 200 51 194 51 186Z" fill={hairShade} />}
 
-      {/* head */}
-      <circle cx="48" cy="98" r="13" fill={t.skin} stroke={INK} strokeWidth="4.5" />
-      <circle cx="152" cy="98" r="13" fill={t.skin} stroke={INK} strokeWidth="4.5" />
-      <ellipse cx="100" cy="92" rx="54" ry="58" fill={t.skin} stroke={INK} strokeWidth="5" />
-      <ellipse cx="82" cy="70" rx="18" ry="10" fill="#fff" opacity=".28" />
+      {/* body: jacket, shirt, optional tie */}
+      <path d="M18 238C18 198 50 178 100 178C150 178 182 198 182 238Z" fill={jacket} />
+      <g clipPath={`url(#${c('body')})`}>
+        <path d="M100 178L74 182L100 228L126 182Z" fill="#ffffff" />
+        {t.tie && <path d="M95 192H105L109 230L100 238L91 230Z" fill={INK} opacity=".85" />}
+        <path d="M74 181L100 214L95 221L66 186Z" fill={jacketShade} />
+        <path d="M126 181L100 214L105 221L134 186Z" fill={jacketShade} />
+      </g>
+      <path d="M86 150H114V174C114 182 108 188 100 188C92 188 86 182 86 174Z" fill={skinShade} />
 
-      <HairFront style={t.hair} color={t.hairColor} />
+      {hairBack && <path d="M51 104C51 70 72 48 100 48C128 48 149 70 149 104V150C140 160 128 164 118 162V120H82V162C72 164 60 160 51 150Z" fill={t.hairColor} />}
+      {t.hair === 'bun' && <circle cx="100" cy="46" r="19" fill={t.hairColor} />}
+      {t.hair === 'curly' && <g fill={t.hairColor}>{[-168, -146, -124, -102, -80, -58, -36, -14].map((deg) => {
+        const a = (deg * Math.PI) / 180;
+        return <circle key={deg} cx={CAP.cx + Math.cos(a) * (CAP.rx - 6)} cy={CAP.cy + Math.sin(a) * (CAP.ry - 6)} r="15" />;
+      })}</g>}
+
+      {/* ears, head */}
+      {showEars && <g>
+        <circle cx="57" cy="117" r="10" fill={t.skin} /><circle cx="58" cy="117" r="5" fill={skinShade} />
+        <circle cx="143" cy="117" r="10" fill={t.skin} /><circle cx="142" cy="117" r="5" fill={skinShade} />
+      </g>}
+      <ellipse {...HEAD} fill={t.skin} />
+      {/* soft jaw shade, clipped to the face */}
+      <ellipse cx="100" cy="176" rx="50" ry="26" fill={skinShade} opacity=".35" clipPath={`url(#${c('head')})`} />
 
       {/* face */}
       <g className={`face mood-${mood}`}>
-        {t.brows === 'up'
-          ? <><path d="M68 74 Q78 66 88 72" stroke={INK} strokeWidth="5" fill="none" strokeLinecap="round" /><path d="M112 72 Q122 66 132 74" stroke={INK} strokeWidth="5" fill="none" strokeLinecap="round" /></>
-          : <><path d="M68 72 L88 72" stroke={INK} strokeWidth="5" strokeLinecap="round" /><path d="M112 72 L132 72" stroke={INK} strokeWidth="5" strokeLinecap="round" /></>}
+        <circle cx="72" cy="131" r="7" fill="#ff7b7b" opacity=".28" />
+        <circle cx="128" cy="131" r="7" fill="#ff7b7b" opacity=".28" />
+        <g stroke={brow} strokeWidth="4" strokeLinecap="round" fill="none">
+          {mood === 'sad'
+            ? <><path d="M75 100L89 97" /><path d="M111 97L125 100" /></>
+            : t.brows === 'up'
+              ? <><path d="M75 99Q82 93 89 97" /><path d="M111 97Q118 93 125 99" /></>
+              : <><path d="M75 98H89" /><path d="M111 98H125" /></>}
+        </g>
         {mood === 'happy' ? (
-          <><path d="M68 92 Q78 82 88 92" stroke={INK} strokeWidth="5" fill="none" strokeLinecap="round" /><path d="M112 92 Q122 82 132 92" stroke={INK} strokeWidth="5" fill="none" strokeLinecap="round" /></>
+          <g stroke={INK} strokeWidth="3.6" strokeLinecap="round" fill="none"><path d="M76 115Q82 108 88 115" /><path d="M112 115Q118 108 124 115" /></g>
         ) : (
-          <>
-            <ellipse cx="78" cy="92" rx="9" ry="11" fill="#fff" stroke={INK} strokeWidth="3.5" />
-            <ellipse cx="122" cy="92" rx="9" ry="11" fill="#fff" stroke={INK} strokeWidth="3.5" />
-            <circle cx={78 + t.eyeShift * 2} cy={mood === 'sad' ? 96 : 93} r="4.5" fill={INK} />
-            <circle cx={122 + t.eyeShift * 2} cy={mood === 'sad' ? 96 : 93} r="4.5" fill={INK} />
-            <circle cx={79 + t.eyeShift * 2} cy="91" r="1.5" fill="#fff" />
-            <circle cx={123 + t.eyeShift * 2} cy="91" r="1.5" fill="#fff" />
-          </>
+          <g>
+            <ellipse cx={82 + t.eyeShift} cy={mood === 'sad' ? EYE_Y + 2 : EYE_Y} rx="4.6" ry="5.6" fill={INK} />
+            <ellipse cx={118 + t.eyeShift} cy={mood === 'sad' ? EYE_Y + 2 : EYE_Y} rx="4.6" ry="5.6" fill={INK} />
+            <circle cx={83.6 + t.eyeShift} cy={EYE_Y - 2} r="1.6" fill="#fff" />
+            <circle cx={119.6 + t.eyeShift} cy={EYE_Y - 2} r="1.6" fill="#fff" />
+          </g>
         )}
-        <ellipse cx="64" cy="112" rx="8" ry="5" fill="#ff8a8a" opacity=".45" />
-        <ellipse cx="136" cy="112" rx="8" ry="5" fill="#ff8a8a" opacity=".45" />
-        <path d="M97 100 Q100 108 104 104" stroke={INK} strokeWidth="3.5" fill="none" strokeLinecap="round" />
-        {mood === 'sad'
-          ? <path d="M86 128 Q100 118 114 128" stroke={INK} strokeWidth="5" fill="none" strokeLinecap="round" />
-          : t.mouth === 'open' || mood === 'happy'
-            ? <path d="M84 118 Q100 140 116 118Z" fill="#7a2a1a" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />
-            : t.mouth === 'grin'
-              ? <><path d="M82 118 Q100 134 118 118Z" fill="#fff" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" /><path d="M86 121 L114 121" stroke={INK} strokeWidth="2" /></>
-              : <path d="M84 120 Q100 132 116 120" stroke={INK} strokeWidth="5" fill="none" strokeLinecap="round" />}
+        <path d="M96 124Q100 129 104 124" stroke={skinShade} strokeWidth="3.4" strokeLinecap="round" fill="none" />
       </g>
 
-      {t.facial === 'beard' && <path d="M50 104 C52 150 76 160 100 160 C124 160 148 150 150 104 C140 128 124 132 100 132 C76 132 60 128 50 104Z" fill={t.hairColor} stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />}
-      {t.facial === 'mustache' && <path d="M80 114 Q90 106 100 112 Q110 106 120 114 Q110 118 100 115 Q90 118 80 114Z" fill={t.hairColor} stroke={INK} strokeWidth="3.5" strokeLinejoin="round" />}
-      {t.facial === 'goatee' && <path d="M90 134 Q100 152 110 134 Q100 140 90 134Z" fill={t.hairColor} stroke={INK} strokeWidth="3.5" strokeLinejoin="round" />}
+      {t.facial === 'beard' && <path d="M56 114C57 152 76 170 100 170C124 170 143 152 144 114C139 128 128 134 116 134C110 132 105 131 100 131C95 131 90 132 84 134C72 134 61 128 56 114Z" fill={t.hairColor} />}
+      {t.facial === 'goatee' && <path d="M91 149C93 160 107 160 109 149C105 152 95 152 91 149Z" fill={t.hairColor} />}
 
-      {t.glasses === 'round' && <g fill="rgba(200,230,255,.25)" stroke={INK} strokeWidth="4"><circle cx="78" cy="92" r="15" /><circle cx="122" cy="92" r="15" /><path d="M93 92 L107 92" /></g>}
-      {t.glasses === 'square' && <g fill="rgba(200,230,255,.25)" stroke={INK} strokeWidth="4"><rect x="62" y="80" width="32" height="24" rx="6" /><rect x="106" y="80" width="32" height="24" rx="6" /><path d="M94 90 L106 90" /></g>}
+      <Mouth mood={mood} style={t.mouth} uid={uid} />
+      {(t.facial === 'mustache' || t.facial === 'beard') && <path d="M83 135C88 129 96 129 100 133C104 129 112 129 117 135C111 138 105 138 100 137C95 138 89 138 83 135Z" fill={t.facial === 'beard' ? hairShade : t.hairColor} />}
 
-      <HatShape hat={t.hat} color={outfit} />
+      {/* hair cap: one ellipse, clipped to the style's hairline */}
+      <ellipse {...CAP} fill={t.hairColor} clipPath={`url(#${c('hl')})`} />
+      {t.hair === 'quiff' && <path d="M66 82C60 52 86 38 112 42C132 45 146 58 146 76C136 64 120 60 104 66C90 70 76 74 66 82Z" fill={t.hairColor} />}
+      {t.hair === 'tuft' && <path d="M92 64C90 54 96 46 106 46C102 52 104 58 110 62C104 66 96 67 92 64Z" fill={t.hairColor} />}
+      {t.hair === 'side' && <path d="M118 73C108 86 84 92 62 91C80 86 100 80 112 70Z" fill={hairShade} opacity=".5" />}
+
+      {t.glasses === 'round' && <g fill="#ffffff" fillOpacity=".18" stroke={INK} strokeWidth="3"><circle cx="82" cy="113" r="12.5" /><circle cx="118" cy="113" r="12.5" /><path d="M94.5 112Q100 108 105.5 112" fill="none" /></g>}
+      {t.glasses === 'square' && <g fill="#ffffff" fillOpacity=".18" stroke={INK} strokeWidth="3" strokeLinejoin="round"><rect x="68" y="103" width="28" height="20" rx="7" /><rect x="104" y="103" width="28" height="20" rx="7" /><path d="M96 111H104" fill="none" /></g>}
+
+      <HatShape hat={t.hat} color={d.color} />
     </svg>
   );
 });
 
-function HairFront({ style, color }: { style: Hair; color: string }) {
-  const p = { fill: color, stroke: INK, strokeWidth: 5, strokeLinejoin: 'round' as const };
-  switch (style) {
-    case 'bald': return <path d="M58 78 C52 66 56 54 64 50" fill="none" stroke={INK} strokeWidth="0" />;
-    case 'tuft': return <><path d="M50 84 C44 66 52 52 62 50 C58 62 60 72 64 80Z" {...p} /><path d="M150 84 C156 66 148 52 138 50 C142 62 140 72 136 80Z" {...p} /></>;
-    case 'short': return <path d="M46 84 C42 46 70 30 100 30 C130 30 158 46 154 84 C146 66 132 58 112 60 C96 50 74 54 62 64 C54 70 50 76 46 84Z" {...p} />;
-    case 'side': return <path d="M46 88 C40 44 72 28 104 30 C136 32 160 50 154 86 C150 70 140 58 124 54 C110 66 84 70 60 66 C52 72 48 80 46 88Z" {...p} />;
-    case 'curly': return <g {...p}>{[[54, 66], [64, 46], [84, 34], [104, 30], [124, 36], [142, 48], [150, 68], [72, 56], [96, 46], [118, 50]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="15" />)}</g>;
-    case 'long': return <path d="M44 100 C38 46 70 30 100 30 C130 30 162 46 156 100 C150 76 138 62 120 58 C104 66 80 64 66 60 C54 70 48 84 44 100Z" {...p} />;
-    case 'bun': return <path d="M46 86 C42 50 70 34 100 34 C130 34 158 50 154 86 C144 64 124 56 100 56 C76 56 56 64 46 86Z" {...p} />;
-    case 'spiky': return <path d="M46 86 L44 54 L62 62 L66 30 L84 50 L100 22 L116 50 L134 30 L138 62 L156 54 L154 86 C140 64 120 58 100 58 C80 58 60 64 46 86Z" {...p} />;
-  }
+function Mouth({ mood, style, uid }: { mood: 'idle' | 'happy' | 'sad'; style: 'smile' | 'grin' | 'open'; uid: string }) {
+  if (mood === 'sad') return <path d="M90 145Q100 138 110 145" stroke={INK} strokeWidth="3.6" strokeLinecap="round" fill="none" />;
+  if (style === 'smile' && mood !== 'happy') return <path d="M89 139Q100 148 111 139" stroke={INK} strokeWidth="3.6" strokeLinecap="round" fill="none" />;
+  const shape = mood === 'happy' ? 'M86 137Q100 137 114 137Q113 155 100 155Q87 155 86 137Z' : 'M88 138Q100 138 112 138Q111 151 100 151Q89 151 88 138Z';
+  return (
+    <g>
+      <clipPath id={`m${uid}`}><path d={shape} /></clipPath>
+      <path d={shape} fill="#5a1f2a" />
+      <g clipPath={`url(#m${uid})`}>
+        {style === 'grin' ? <rect x="80" y="134" width="40" height="8" fill="#fff" /> : <rect x="80" y="134" width="40" height="5" fill="#fff" />}
+        <ellipse cx="100" cy="156" rx="10" ry="6" fill="#ff8b8b" />
+      </g>
+    </g>
+  );
 }
 
 function HatShape({ hat, color }: { hat: Hat; color: string }) {
-  const o = { stroke: INK, strokeWidth: 5, strokeLinejoin: 'round' as const };
   switch (hat) {
-    case 'cap': return <g><path d="M40 46 L100 22 L160 46 L100 70Z" fill="#2b2d3a" {...o} /><path d="M70 58 L70 74 C86 84 114 84 130 74 L130 58" fill="#2b2d3a" {...o} /><path d="M150 50 L154 82" stroke="#ffcf3e" strokeWidth="4" /><circle cx="154" cy="86" r="5" fill="#ffcf3e" stroke={INK} strokeWidth="3" /></g>;
-    case 'hardhat': return <g><path d="M44 74 C44 30 156 30 156 74Z" fill="#ffcf3e" {...o} /><path d="M34 76 L166 76" stroke={INK} strokeWidth="9" strokeLinecap="round" /><path d="M34 76 L166 76" stroke="#ffcf3e" strokeWidth="4" strokeLinecap="round" /><path d="M100 34 L100 70" stroke="#e5a800" strokeWidth="6" /></g>;
-    case 'beret': return <g><path d="M46 62 C40 30 150 22 160 54 C150 66 60 72 46 62Z" fill={color} {...o} /><circle cx="104" cy="28" r="5" fill={color} {...o} strokeWidth={3} /></g>;
-    case 'goggles': return <g><path d="M48 50 Q100 38 152 50" fill="none" stroke={INK} strokeWidth="10" /><path d="M48 50 Q100 38 152 50" fill="none" stroke="#3d8bff" strokeWidth="5" /><rect x="66" y="30" width="30" height="24" rx="10" fill="#b8ecff" {...o} strokeWidth={4} /><rect x="104" y="30" width="30" height="24" rx="10" fill="#b8ecff" {...o} strokeWidth={4} /><path d="M72 36 L80 36" stroke="#fff" strokeWidth="3" strokeLinecap="round" /><path d="M110 36 L118 36" stroke="#fff" strokeWidth="3" strokeLinecap="round" /></g>;
-    case 'wizard': return <g><path d="M56 66 L100 -6 L144 66Z" fill="#6c3bd1" {...o} /><path d="M40 66 C70 80 130 80 160 66" fill="none" {...o} strokeWidth={9} stroke={INK} /><path d="M40 66 C70 80 130 80 160 66" fill="none" stroke="#6c3bd1" strokeWidth="4" /><path d="M96 30 l4 -8 l4 8 l8 1 l-6 6 l2 8 l-8 -4 l-8 4 l2 -8 l-6 -6Z" fill="#ffcf3e" /></g>;
+    case 'cap': return (
+      <g>
+        <path d="M70 62V76C86 84 114 84 130 76V62Z" fill="#2c2b38" />
+        <path d="M38 56L100 34L162 56L100 78Z" fill="#23222d" />
+        <path d="M38 56L100 34L162 56L100 41Z" fill="#3a3948" />
+        <path d="M100 56L150 60V84" stroke="#ffc53d" strokeWidth="2.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="146" y="82" width="8" height="12" rx="3" fill="#ffc53d" />
+        <circle cx="100" cy="56" r="3.5" fill="#ffc53d" />
+      </g>
+    );
+    case 'hardhat': return (
+      <g>
+        <path d="M51 84C51 50 72 38 100 38C128 38 149 50 149 84Z" fill="#ffc53d" />
+        <rect x="93" y="38" width="14" height="46" rx="7" fill="#ffd66e" />
+        <path d="M60 70C62 56 72 48 84 45" stroke="#fff" strokeOpacity=".55" strokeWidth="4" strokeLinecap="round" fill="none" />
+        <rect x="40" y="80" width="120" height="11" rx="5.5" fill="#efa526" />
+      </g>
+    );
+    case 'beret': return (
+      <g transform="rotate(-8 100 64)">
+        <ellipse cx="100" cy="66" rx="54" ry="18" fill={mix(color, '#000000', 0.25)} />
+        <ellipse cx="96" cy="62" rx="46" ry="13" fill={mix(color, '#000000', 0.12)} />
+        <rect x="96" y="42" width="6" height="10" rx="3" fill={mix(color, '#000000', 0.25)} />
+      </g>
+    );
+    case 'goggles': return (
+      <g>
+        <path d="M51 86Q100 66 149 86" stroke="#2c2b38" strokeWidth="7" fill="none" strokeLinecap="round" />
+        <rect x="68" y="64" width="28" height="22" rx="10" fill="#2c2b38" />
+        <rect x="104" y="64" width="28" height="22" rx="10" fill="#2c2b38" />
+        <rect x="71.5" y="67.5" width="21" height="15" rx="7" fill="#8fdcff" />
+        <rect x="107.5" y="67.5" width="21" height="15" rx="7" fill="#8fdcff" />
+        <path d="M76 71H82M112 71H118" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" />
+      </g>
+    );
+    case 'wizard': return (
+      <g>
+        <path d="M60 74C78 52 92 26 108 4C112 30 128 54 140 74Z" fill="#6b4ce0" />
+        <path d="M104 18L108 4C110 16 114 26 118 34Z" fill="#8a6ff0" />
+        <ellipse cx="100" cy="76" rx="56" ry="11" fill="#5639c4" />
+        <path d="M112 42l2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8Z" fill="#ffc53d" />
+        <circle cx="88" cy="58" r="2.2" fill="#ffe08a" />
+      </g>
+    );
     default: return null;
   }
 }

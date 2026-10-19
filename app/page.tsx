@@ -1,34 +1,39 @@
 'use client';
 import { LegalLinks } from '@/components/Chrome';
-import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useSession } from '@/lib/client/session';
 import { useGo, GameLink } from '@/components/CloudTransition';
 import { MOTION } from '@/lib/client/motion';
+import { DEPARTMENTS } from '@/lib/departments';
+import { Figure } from '@/components/Figure';
+import { Icon } from '@/components/art';
 
-// three.js only loads on the client, after the UI is already usable
-const TitleScene = dynamic(() => import('@/components/TitleScene'), { ssr: false });
+// Sample match-ups for the title showcase (drawn figures, not real people)
+const PAIRS: [number, number][] = [[137, 1102], [544, 285], [729, 396], [1028, 618], [470, 914], [803, 248]];
+const deptFor = (id: number) => DEPARTMENTS[id % DEPARTMENTS.length];
+const CYCLE_MS = 3200;
 
-function webglAvailable() {
-  try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; }
-}
+// Flat confetti scattered on the split background: [left %, top %, size px, shape, colour var, rotation]
+const BITS: [number, number, number, 'dot' | 'sq' | 'tri' | 'bar', string, number][] = [
+  [8, 18, 18, 'dot', '--gold', 0], [16, 70, 22, 'sq', '--blue', 18], [5, 46, 26, 'tri', '--blue', -12], [26, 88, 12, 'dot', '--coral', 0],
+  [90, 22, 22, 'sq', '--coral', -14], [84, 64, 16, 'dot', '--blue', 0], [94, 82, 26, 'tri', '--gold', 20], [74, 10, 30, 'bar', '--gold', 35],
+  [30, 8, 34, 'bar', '--coral', -30], [66, 92, 14, 'sq', '--purple', 10],
+];
 
-/** Title screen: 3D island + castle, big logo, PLAY dives through the castle gate into the arena */
+/** Title screen: split blue/coral field, the wordmark, a live sample duel, and PLAY */
 export default function TitlePage() {
   const { user, profile } = useSession();
   const go = useGo();
   const reduced = useReducedMotion();
-  const [gl, setGl] = useState<boolean | null>(null);
-  const [diving, setDiving] = useState(false);
-  useEffect(() => { setGl(webglAvailable()); }, []);
+  const [i, setI] = useState(0);
+  const play = useCallback(() => go('/battle', 'Battle!'), [go]);
 
-  const play = useCallback(() => {
-    if (diving) return;
-    if (!gl || reduced) { go('/battle', '⚔️ Battle!'); return; }
-    setDiving(true);
-  }, [diving, gl, reduced, go]);
-  const onDived = useCallback(() => go('/battle', '⚔️ Battle!'), [go]);
+  useEffect(() => {
+    if (reduced) return;
+    const t = setInterval(() => { if (!document.hidden) setI((n) => (n + 1) % PAIRS.length); }, CYCLE_MS);
+    return () => clearInterval(t);
+  }, [reduced]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Enter' && !(e.target as HTMLElement).closest('a,button,input')) play(); };
@@ -36,54 +41,83 @@ export default function TitlePage() {
     return () => removeEventListener('keydown', onKey);
   }, [play]);
 
-  const letters = (s: string, d0: number) => [...s].map((c, i) => (
-    <motion.span key={i} className="ch" initial={{ y: -160, rotate: -14, opacity: 0 }} animate={{ y: 0, rotate: 0, opacity: 1 }}
-      transition={{ type: 'spring', bounce: 0.45, visualDuration: 0.6, delay: d0 + i * 0.06 }}>{c}</motion.span>
+  const letters = (s: string, d0: number) => [...s].map((c, k) => (
+    <motion.span key={k} className="ch" initial={reduced ? { opacity: 0 } : { y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+      transition={{ type: 'spring', bounce: 0.35, visualDuration: 0.5, delay: d0 + k * 0.04 }}>{c}</motion.span>
   ));
+  const [a, b] = PAIRS[i];
 
   return (
     <div className="title-screen">
-      {gl && <TitleScene diving={diving} onDived={onDived} />}
-      {gl === false && <FallbackIsland />}
-      <motion.div className="title-ui" animate={{ opacity: diving ? 0 : 1, scale: diving ? 1.08 : 1 }} transition={diving ? { duration: 0.5, ease: [0.7, 0, 0.84, 0] } : MOTION.soft}>
+      <div className="title-bg" aria-hidden="true">
+        <motion.div className="side" initial={{ x: reduced ? 0 : '-30%', opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={MOTION.soft} />
+        {BITS.map(([x, y, s, shape, c, r], k) => (
+          <motion.i key={k} className={`bit ${x > 15 && x < 85 ? 'mid' : ''}`} style={{
+            left: `${x}%`, top: `${y}%`, width: shape === 'bar' ? s * 0.35 : s, height: s, rotate: r, background: shape === 'tri' ? 'none' : `var(${c})`,
+            borderRadius: shape === 'dot' || shape === 'bar' ? 999 : shape === 'sq' ? s * 0.28 : 0, opacity: 0.85,
+          }} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', bounce: 0.4, visualDuration: 0.5, delay: 0.3 + k * 0.04 }}>
+            {shape === 'tri' && <svg viewBox="0 0 24 24" width={s} height={s}><path d="M10.3 3.9a2 2 0 0 1 3.4 0l8 13.6A2 2 0 0 1 20 20.5H4a2 2 0 0 1-1.7-3Z" fill={`var(${c})`} /></svg>}
+          </motion.i>
+        ))}
+      </div>
+
+      <div className="title-ui">
         <div className="title-top">
-          <span className="chip">🎓 ETH Zürich · Studierendenprojekt</span>
+          <span className="chip"><Icon name="cap" size={15} /> ETH Zürich · Studierendenprojekt</span>
           {user
-            ? <GameLink className="btn sm blue" href={profile ? '/battle' : '/setup'}>{profile ? `⭐ Level ${profile.level}` : 'Einrichten'}</GameLink>
-            : <GameLink className="btn sm gold" href="/login">Login</GameLink>}
+            ? <GameLink className="btn sm dark" href={profile ? '/battle' : '/setup'}>{profile ? `Level ${profile.level}` : 'Einrichten'}</GameLink>
+            : <GameLink className="btn sm dark" href="/login">Login</GameLink>}
         </div>
-        <div className="logo-big">
-          <h1 aria-label="Prof Clash"><span className="ln">{letters('PROF', 0.15)}</span><span className="ln">{letters('CLASH', 0.45)}</span></h1>
-          <motion.span className="sub" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 1 }}>
-            Wessen Vorlesung würdest du lieber besuchen?
-          </motion.span>
-        </div>
-        <div className="title-cta">
-          <motion.button className="btn xl play-glow" onClick={play} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', bounce: 0.5, visualDuration: 0.5, delay: 1.2 }}>
-            ▶ PLAY
-          </motion.button>
-          <motion.div className="ln" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 1.45 }}>
-            <GameLink className="btn blue" href="/rankings" label="🏆 Rankings">🏆 Rankings</GameLink>
-            <GameLink className="btn red" href="/departments" label="🛡️ Clans">🛡️ Clans</GameLink>
+
+        <div className="title-main">
+          <div className="logo-big">
+            <h1 aria-label="Prof Clash"><span className="ln a">{letters('PROF', 0.1)}</span><span className="ln b">{letters('CLASH', 0.26)}</span></h1>
+            <motion.p className="sub" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.55 }}>
+              Wessen Vorlesung würdest du lieber besuchen?
+            </motion.p>
+          </div>
+
+          <motion.div className="showcase" aria-hidden="true" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.6 }}>
+            <Sample id={a} side={-1} />
+            <span className="vs-chip">VS</span>
+            <Sample id={b} side={1} />
           </motion.div>
-          <p className="tagline">Zwei Profs, eine Wahl. Ohne Login spielst du im Training — mit ETH-Mail zählt deine Stimme. Figuren sind gezeichnet, keine echten Fotos.</p>
+
+          <div className="title-cta">
+            <motion.button className="btn xl" onClick={play} initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: 'spring', bounce: 0.4, visualDuration: 0.45, delay: 0.8 }} whileTap={{ scale: 0.96 }}>
+              <Icon name="play" size={24} /> PLAY
+            </motion.button>
+            <motion.div className="ln" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.95 }}>
+              <GameLink className="btn stone" href="/rankings" label="Rankings"><Icon name="trophy" /> Rankings</GameLink>
+              <GameLink className="btn stone" href="/departments" label="Clans"><Icon name="shield" /> Clans</GameLink>
+            </motion.div>
+          </div>
+        </div>
+
+        <div className="title-cta">
+          <p className="tagline">Zwei Profs, eine Wahl. Ohne Login spielst du im Training, mit ETH-Mail zählt deine Stimme. Alle Figuren sind gezeichnet, keine echten Fotos.</p>
           <LegalLinks className="title-legal" />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
 
-/** Without WebGL: a flat comic island so the title still feels like a game */
-function FallbackIsland() {
+/** One sample card; a new character slides in from its own side every few seconds */
+function Sample({ id, side }: { id: number; side: -1 | 1 }) {
+  const d = deptFor(id);
   return (
-    <svg className="title-fallback" viewBox="0 0 800 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <ellipse cx="400" cy="470" rx="300" ry="50" fill="#7cd04a" stroke="#2a1a0b" strokeWidth="6" />
-      <path d="M100 470 Q400 720 700 470Z" fill="#9a6a3e" stroke="#2a1a0b" strokeWidth="6" />
-      <rect x="300" y="330" width="200" height="130" fill="#e6e0d2" stroke="#2a1a0b" strokeWidth="6" />
-      <rect x="370" y="390" width="60" height="70" rx="28" fill="#3b2a1a" stroke="#2a1a0b" strokeWidth="5" />
-      {[270, 500].map((x) => <g key={x}><rect x={x} y="300" width="40" height="160" fill="#d9d4c7" stroke="#2a1a0b" strokeWidth="6" /><path d={`M${x - 10} 300 L${x + 20} 245 L${x + 50} 300Z`} fill="#e8402a" stroke="#2a1a0b" strokeWidth="6" /></g>)}
-      <path d="M360 330 L400 270 L440 330Z" fill="#a54ee0" stroke="#2a1a0b" strokeWidth="6" />
-    </svg>
+    <div className="mini-card" style={{ rotate: `${side * 4}deg` }}>
+      <div className="frame">
+        <AnimatePresence initial={false} mode="popLayout">
+          <motion.div key={id} style={{ position: 'absolute', inset: 0 }}
+            initial={{ x: `${side * 100}%` }} animate={{ x: 0 }} exit={{ x: `${-side * 100}%` }} transition={{ type: 'spring', bounce: 0, visualDuration: 0.5 }}>
+            <Figure id={id} name="" department={d.name} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <span className="tag">D-{d.code}</span>
+    </div>
   );
 }

@@ -6,6 +6,7 @@ import { useSession } from '@/lib/client/session';
 import { liveSource, practiceSource } from '@/lib/client/sources';
 import { MOTION } from '@/lib/client/motion';
 import { Duel } from '@/components/Duel';
+import { Icon } from '@/components/art';
 
 export default function BattlePage() {
   const { ready, user, profile, setProfile } = useSession();
@@ -17,18 +18,18 @@ export default function BattlePage() {
     if (profile) setProfile({ ...profile, votes: profile.votes + 1, xp: profile.xp + 10 });
   }, [profile, setProfile]);
 
-  if (!ready) return <div className="loading"><span className="spin">⚔️</span>Lädt</div>;
+  if (!ready) return <div className="loading"><span className="spin" />Lädt</div>;
 
   return (
     <div className="battle">
       <motion.header className="question" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={MOTION.soft}>
-        <span className="mode">{live ? `🛡 ${profile!.programName} · Semester ${profile!.semester}` : '🎯 Training — deine Wahl wird nicht gezählt'}</span>
+        <span className="mode">{live ? <><Icon name="shield" size={14} /> {profile!.programName} · Semester {profile!.semester}</> : <><Icon name="target" size={14} /> Training · deine Wahl wird nicht gezählt</>}</span>
         <h1>Wessen Vorlesung würdest du lieber besuchen?</h1>
       </motion.header>
 
       {empty ? (
         <div className="panel cta-card" style={{ marginTop: 40 }}>
-          <p><b>🏆 Alle Duelle entschieden!</b> Du hast jede Paarung deiner Professorenliste gewertet.</p>
+          <p><b>Alle Duelle entschieden!</b> Du hast jede Paarung deiner Professorenliste gewertet.</p>
           <GameLink className="btn sm gold" href="/rankings">Zu den Rankings</GameLink>
         </div>
       ) : (

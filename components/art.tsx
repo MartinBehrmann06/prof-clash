@@ -1,53 +1,97 @@
 'use client';
-// Clash-style game art: trophies, league shields, XP star.
+// Flat game art: icons, trophies, league shields, level star, logo mark.
+// No outlines and no fake 3D: depth comes from one flat facet per shape.
 import { useId } from 'react';
 import { LEAGUES, type LeagueKey } from '@/lib/game';
 
-export function TrophyIcon({ size }: { size?: number }) {
+const ICONS = {
+  swords: <><path d="M14.5 17.5 3 6V3h3l11.5 11.5" /><path d="m13 19 6-6" /><path d="m16 16 4 4" /><path d="m19 21 2-2" /><path d="M14.5 6.5 18 3h3v3l-3.5 3.5" /><path d="m5 14 4 4" /><path d="m7 17-3 3" /><path d="m3 19 2 2" /></>,
+  shield: <path d="M12 21.5s7.5-3.6 7.5-9.5V5.2L12 2.5 4.5 5.2V12c0 5.9 7.5 9.5 7.5 9.5Z" />,
+  trophy: <><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" /><path d="M7 6H4.5a2.5 2.5 0 0 0 2.6 3.9M17 6h2.5a2.5 2.5 0 0 1-2.6 3.9" /><path d="M12 14v4M8 21h8M9.5 18h5" /></>,
+  play: <path d="M7.5 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8a1 1 0 0 0-1.5.86Z" fill="currentColor" stroke="none" />,
+  left: <><path d="M19 12H5" /><path d="m11 6-6 6 6 6" /></>,
+  right: <><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></>,
+  lock: <><rect x="5" y="11" width="14" height="10" rx="2.5" /><path d="M8 11V7.5a4 4 0 0 1 8 0V11" /></>,
+  search: <><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.2-4.2" /></>,
+  globe: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3Z" /></>,
+  power: <><path d="M12 3v8" /><path d="M6.3 6.8a8 8 0 1 0 11.4 0" /></>,
+  check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
+  close: <path d="M6 6l12 12M18 6 6 18" />,
+  mail: <><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="m3.5 7 8.5 6 8.5-6" /></>,
+  skip: <><path d="M5 5.5v13l9-6.5-9-6.5Z" /><path d="M18 5v14" /></>,
+  external: <><path d="M14 4h6v6M20 4l-9 9" /><path d="M18 14v4.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10" /></>,
+  crown: <path d="M3.5 8 8 12l4-6.5 4 6.5 4.5-4-1.8 10.5H5.3L3.5 8Z" />,
+  book: <><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5v-15Z" /><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3" /></>,
+  cap: <><path d="m2 9 10-5 10 5-10 5L2 9Z" /><path d="M6 11v5c3.5 2.4 8.5 2.4 12 0v-5" /></>,
+  target: <><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="4.5" /><circle cx="12" cy="12" r=".8" fill="currentColor" /></>,
+  key: <><circle cx="8" cy="15" r="4.5" /><path d="m11.2 11.8 8.3-8.3M17 6l2.5 2.5M14.5 8.5 16.5 10.5" /></>,
+} as const;
+export type IconName = keyof typeof ICONS;
+
+/** Line icon in the current text colour */
+export function Icon({ name, size = 18, className = 'icon' }: { name: IconName; size?: number; className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" width={size} height={size}>
-      <path d="M6 3h12v3h3v2a5 5 0 0 1-5 5h-.3A5 5 0 0 1 13 15.9V18h3v3H8v-3h3v-2.1A5 5 0 0 1 8.3 13H8a5 5 0 0 1-5-5V6h3V3Zm-1 5a3 3 0 0 0 2 2.8V8H5Zm14 0h-2v2.8A3 3 0 0 0 19 8Z"
-        fill="#ffd23f" stroke="#2a1a0b" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M9 5.5h2v5H9z" fill="#fff6b0" opacity=".8" />
+    <svg className={className} viewBox="0 0 24 24" width={size} height={size} aria-hidden="true"
+      fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">{ICONS[name]}</svg>
+  );
+}
+
+/** Two halves meeting at a slash: the brand mark */
+export function LogoMark({ size = 34 }: { size?: number }) {
+  const id = useId().replace(/:/g, '');
+  return (
+    <svg viewBox="0 0 40 40" width={size} height={size} aria-hidden="true" className="logo-mark">
+      <clipPath id={`lm${id}`}><rect width="40" height="40" rx="12" /></clipPath>
+      <g clipPath={`url(#lm${id})`}>
+        <rect width="40" height="40" fill="var(--blue)" />
+        <path d="M25 0H40V40H13Z" fill="var(--coral)" />
+        <path d="M23 -2 L27 -2 L15 42 L11 42Z" fill="#fff" />
+      </g>
     </svg>
   );
 }
 
-export const Trophies = ({ n }: { n: number }) => <span className="trophies"><TrophyIcon />{n}</span>;
+export function TrophyIcon({ size }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" width={size} height={size} className="trophy-icon">
+      <path d="M5.5 5.5H3.8a.8.8 0 0 0-.8.9c.3 2.6 1.8 4.4 4 4.9M18.5 5.5h1.7a.8.8 0 0 1 .8.9c-.3 2.6-1.8 4.4-4 4.9" fill="none" stroke="#f0a91c" strokeWidth="2" strokeLinecap="round" />
+      <path d="M6 3h12v6a6 6 0 0 1-12 0V3Z" fill="#ffc53d" />
+      <path d="M12 3h6v6a6 6 0 0 1-6 6V3Z" fill="#f0a91c" />
+      <path d="M10.5 14.5h3V18h-3Z" fill="#f0a91c" />
+      <rect x="7" y="18" width="10" height="3.5" rx="1.2" fill="#ffc53d" />
+    </svg>
+  );
+}
 
-const LEAGUE_STYLE: Record<LeagueKey, [string, string, string]> = {
-  bronze: ['#f1b07a', '#b06a35', '#6b3a17'], silver: ['#f4f7fb', '#a9b3c4', '#5b6476'], gold: ['#fff09a', '#ffbf1f', '#a86d00'],
-  crystal: ['#f6c9ff', '#b45ee0', '#5f1f86'], master: ['#d9dde6', '#5c6372', '#22252c'], champion: ['#ff9d8a', '#d8261b', '#6e0e08'],
-  legend: ['#fff6b0', '#ffd23f', '#7a4f00'],
+export const Trophies = ({ n }: { n: number }) => <span className="trophies"><TrophyIcon /><span className="num">{n}</span></span>;
+
+const LEAGUE_STYLE: Record<LeagueKey, [string, string]> = {
+  bronze: ['#e09a63', '#c27a43'], silver: ['#c9d1de', '#a4afc1'], gold: ['#ffc53d', '#f0a21c'],
+  crystal: ['#c084fc', '#9b5cf0'], master: ['#5d6273', '#454959'], champion: ['#ff5a4a', '#dd3d2e'],
+  legend: ['#ffc53d', '#f0a21c'],
 };
 
 export function LeagueBadge({ league, className = 'league-badge', style }: { league: LeagueKey; className?: string; style?: React.CSSProperties }) {
-  const id = useId();
-  const [a, b, c] = LEAGUE_STYLE[league];
+  const [a, b] = LEAGUE_STYLE[league];
   const name = LEAGUES.find((l) => l.key === league)?.name;
+  const shield = 'M42 6 75 17v28c0 24-17 38-33 46C26 83 9 69 9 45V17Z';
   return (
     <svg className={className} style={style} viewBox="0 0 84 96" role="img" aria-label={`${name} league`}>
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor={a} /><stop offset=".6" stopColor={b} /><stop offset="1" stopColor={c} />
-        </linearGradient>
-      </defs>
-      {league === 'legend' && <path d="M8 22 0 6l20 8L42 0l22 14 20-8-8 16Z" fill="#ffd23f" stroke="#2a1a0b" strokeWidth="3" strokeLinejoin="round" />}
-      <path d="M42 8 76 20v28c0 22-16 36-34 44C24 84 8 70 8 48V20Z" fill={`url(#${id})`} stroke="#2a1a0b" strokeWidth="4" strokeLinejoin="round" />
-      <path d="M42 18 66 27v21c0 15-11 26-24 32-13-6-24-17-24-32V27Z" fill="rgba(255,255,255,.18)" />
-      <path d="M30 40h24v6a12 12 0 0 1-24 0Z M26 40h4v6h-4a3 3 0 0 1 0-6Z M58 40h-4v6h4a3 3 0 0 0 0-6Z M38 58h8v6h5v4H33v-4h5Z"
-        fill="#fff" stroke="#2a1a0b" strokeWidth="2.5" strokeLinejoin="round" />
-      <path d="M16 22 42 12l26 10" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="3" strokeLinecap="round" />
+      {league === 'legend' && <path d="M14 22 8 6l15 7 19-11 19 11 15-7-6 16Z" fill="#ffc53d" />}
+      <path d={shield} fill={league === 'legend' ? '#2b2a3a' : a} />
+      <path d="M42 6 75 17v28c0 24-17 38-33 46Z" fill={league === 'legend' ? '#1d1c28' : b} />
+      <path d="M42 30l4.4 9 9.9 1.4-7.2 7 1.7 9.8-8.8-4.6-8.8 4.6 1.7-9.8-7.2-7 9.9-1.4Z" fill={league === 'legend' ? '#ffc53d' : '#fff'} />
     </svg>
   );
 }
 
 export function XpStar({ level }: { level: number }) {
   return (
-    <div className="xp-star" title={`Student level ${level}`}>
-      <svg viewBox="0 0 50 50"><path d="M25 2l6.5 14.5L47 18l-11.5 10.5L39 45 25 37 11 45l3.5-16.5L3 18l15.5-1.5Z" fill="#2f95e6" stroke="#2a1a0b" strokeWidth="3.5" strokeLinejoin="round" /><path d="M25 8l4.6 10.3 10.9 1.1" fill="none" stroke="#bfe8ff" strokeWidth="3" strokeLinecap="round" /></svg>
+    <div className="xp-star" title={`Level ${level}`}>
+      <svg viewBox="0 0 50 50" aria-hidden="true">
+        <path d="M25 3.5c1.2 0 2.2.7 2.7 1.8l4.6 9.6 10.4 1.4c2.4.4 3.4 3.3 1.6 5L36.7 28.7l1.9 10.4c.4 2.4-2.1 4.2-4.3 3.1L25 37.2l-9.3 5c-2.2 1.1-4.7-.7-4.3-3.1l1.9-10.4-7.6-7.4c-1.8-1.7-.8-4.6 1.6-5l10.4-1.4 4.6-9.6c.5-1.1 1.5-1.8 2.7-1.8Z" fill="var(--blue)" />
+      </svg>
       <span>{level}</span>
     </div>
   );
 }
-
