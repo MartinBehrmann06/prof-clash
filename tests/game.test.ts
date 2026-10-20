@@ -46,4 +46,7 @@ describe('ETH logins', () => {
   it('treats both ETH domains as one user', () => {
     expect(ethUser('Max@ethz.ch')).toBe(ethUser('max@student.ethz.ch'));
   });
+  it('treats plus addresses as the same user', () => {
+    expect(ethUser('max+2@student.ethz.ch')).toBe('max');
+  });
 });

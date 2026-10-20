@@ -18,7 +18,7 @@ export async function getMeta(): Promise<Meta> {
  * Professors with fewer than MIN_DUELS duels come last, unranked and alphabetical.
  */
 export async function getLeaderboard(opts: { dept?: number; limit?: number } = {}): Promise<RankedProf[]> {
-  const limit = Math.min(opts.limit || 200, 1000);
+  const limit = Math.max(1, Math.min(Math.trunc(opts.limit || 200), 1000));
   if (opts.dept) {
     const rows = await all<any>(`SELECT p.*, COALESCE(d.elo, ${START_ELO}) AS delo, COALESCE(d.wins, 0) AS dwins, COALESCE(d.losses, 0) AS dlosses
       FROM professors p LEFT JOIN dept_ratings d ON d.prof_id = p.id AND d.dept_id = $1
