@@ -13,10 +13,11 @@ const NEUTRAL = '#cbbd9f';
 const clan = (id: number | null) => (id === null ? 'Neutral' : `D-${deptById(id).code}`);
 const colorOf = (id: number | null) => (id === null ? NEUTRAL : deptById(id).color);
 
-/** "2 Tage 4 Std", "4 Std 12 Min", "12 Min" */
+/** "2 Tage 4 Std", "4 Std 12 Min", "12 Min"; a narrow tile wraps between the parts, never inside one */
 function left(ms: number) {
   const m = Math.max(0, Math.floor(ms / 60_000)), d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60);
-  return d ? `${d} ${d === 1 ? 'Tag' : 'Tage'} ${h} Std` : h ? `${h} Std ${m % 60} Min` : `${m % 60} Min`;
+  const part = (n: number, unit: string) => `${n}\u00a0${unit}`;
+  return d ? `${part(d, d === 1 ? 'Tag' : 'Tage')} ${part(h, 'Std')}` : h ? `${part(h, 'Std')} ${part(m % 60, 'Min')}` : part(m % 60, 'Min');
 }
 
 function useNow(every: number) {

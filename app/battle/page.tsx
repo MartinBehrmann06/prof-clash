@@ -38,6 +38,7 @@ export default function BattlePage() {
             <GameLink className="btn sm gold" href="/departments">Weekend League</GameLink>
             <GameLink className="btn sm blue" href="/rankings">Rankings</GameLink>
           </div>
+          <GameLink className="link-quiet" href="/setup">Profs fehlen? Deck bearbeiten</GameLink>
           <ShareButton className="link-quiet share" path="/" text="Wessen Vorlesung würdest du lieber besuchen? Stimm ab auf Prof Clash." label="Prof Clash teilen" />
         </motion.div>
       ) : (
