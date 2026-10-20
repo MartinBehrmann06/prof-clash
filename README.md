@@ -37,7 +37,8 @@ In development, `/dev/figures` shows a gallery of generated figures (no database
 
 - A professor only gets a rank (and a visible trophy count) after `MIN_DUELS` (5) counted duels (`lib/game.ts`). Below that they show as “Neu”, listed alphabetically.
 - Removal requests: `npm run hide -- <id or name>` hides a professor everywhere (rankings, rosters, duels, profile). Use `--undo` to show them again and `--list` to see all hidden professors. Re-seeding keeps them hidden.
-- Students can delete their account themselves on `/datenschutz` (`DELETE /api/me`). Accounts with no login, vote or league order for 24 months (`RETENTION_MONTHS` in `lib/legal.ts`) are deleted by a weekly Vercel cron (`/api/cleanup`); it only runs when `CRON_SECRET` is set in Vercel.
+- Students can delete their account themselves on `/datenschutz` (`DELETE /api/me`). Accounts with no login, vote or league order for 24 months (`RETENTION_MONTHS` in `lib/legal.ts`) are deleted by a weekly Vercel cron (`/api/cleanup`); it only runs when `CRON_SECRET` is set in Vercel. On deletion, the pairs judged this term are kept under a hash of the ETH username (`spent_pairs`), so a new signup can't judge them again; the cron drops them once the term is over.
+- Set `DATABASE_CA` to the CA certificate from Supabase (Database settings → SSL configuration, `prod-ca-2021.crt`) so the server verifies the database certificate; without it the connection is encrypted but not verified.
 - The scraper identifies itself as `ProfClash-Scraper` (set `VVZ_CONTACT` to add a contact address) and waits 1 s between requests.
 - `/impressum` and `/datenschutz` read the operator's name, place and contact email from `NEXT_PUBLIC_OPERATOR_NAME`, `NEXT_PUBLIC_OPERATOR_PLACE` and `NEXT_PUBLIC_CONTACT_EMAIL`. Set these in Vercel.
 

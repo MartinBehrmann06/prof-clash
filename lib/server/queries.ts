@@ -5,6 +5,7 @@ import type { AuthUser } from './auth';
 import { league, levelFor, MIN_DUELS } from '@/lib/game';
 import { currentTerm, termOfSemester } from '@/lib/terms';
 import { ensureVoteTerms } from './migrate';
+import { userHash } from './accounts';
 import type { Prof, Profile, Roster, RosterGroup } from '@/lib/types';
 
 type ProfRow = {
@@ -54,12 +55,14 @@ export async function requireProfile(user: AuthUser) {
 
 export async function profileSummary(v: ProfileRow): Promise<Profile> {
   // a new round starts every semester: only this term's votes count towards it
-  const { n } = (await one<{ n: number }>('SELECT COUNT(*)::int AS n FROM votes WHERE user_id = $1 AND term = $2', [v.user_id, currentTerm()]))!;
+  // pairs from an account the same person deleted this term count as judged too (see spent_pairs)
+  const { n } = (await one<{ n: number }>(`SELECT COUNT(*)::int AS n FROM (SELECT pair FROM votes WHERE user_id = $1 AND term = $2
+    UNION SELECT pair FROM spent_pairs WHERE user_hash = $3 AND term = $2) x`, [v.user_id, currentTerm(), userHash(v.eth_user)]))!;
   const k = v.profs.length;
   return {
     email: v.email, programId: v.program_id, programName: v.program_name, deptId: v.dept_id, deptName: v.dept_name,
     semester: v.semester, startTerm: v.start_term, profIds: v.profs, xp: v.xp, level: levelFor(v.xp),
-    votes: n, totalPairs: (k * (k - 1)) / 2,
+    votes: Math.min(n, (k * (k - 1)) / 2), totalPairs: (k * (k - 1)) / 2,
   };
 }
 

@@ -32,6 +32,17 @@ alter table votes drop constraint if exists votes_user_id_pair_key;`;
 // Schema v9: the vote speed limit lives in the database, so it holds across serverless instances.
 const VOTE_LIMIT_SCHEMA = `alter table profiles add column if not exists last_vote_at timestamptz;`;
 
+// Schema v10: pairs a deleted player already judged this term, under a hash of their ETH username,
+// so deleting the account and signing up again doesn't allow a second vote on the same pairs.
+const SPENT_PAIRS_SCHEMA = `
+create table if not exists spent_pairs (
+  user_hash text not null,
+  term text not null,
+  pair text not null,
+  primary key (user_hash, term, pair)
+);
+alter table spent_pairs enable row level security;`;
+
 /** Run idempotent schema SQL once per server instance */
 function once(sql: string) {
   let ready: Promise<void> | null = null;
@@ -46,5 +57,5 @@ function once(sql: string) {
 
 /** Make sure the conquest_orders table exists */
 export const ensureConquestSchema = once(CONQUEST_SCHEMA);
-/** Make sure votes carry their term (v8) and profiles their last vote time (v9) */
-export const ensureVoteTerms = once(VOTE_TERM_SCHEMA + VOTE_LIMIT_SCHEMA);
+/** Make sure votes carry their term (v8), profiles their last vote time (v9), and spent_pairs exists (v10) */
+export const ensureVoteTerms = once(VOTE_TERM_SCHEMA + VOTE_LIMIT_SCHEMA + SPENT_PAIRS_SCHEMA);

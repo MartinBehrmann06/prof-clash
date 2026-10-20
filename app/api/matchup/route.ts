@@ -3,6 +3,7 @@ import { requireUser } from '@/lib/server/auth';
 import { all, one } from '@/lib/server/db';
 import { coursesFor, profileSummary, requireProfile, toProf } from '@/lib/server/queries';
 import { pairKey } from '@/lib/server/pairs';
+import { userHash } from '@/lib/server/accounts';
 import { currentTerm } from '@/lib/terms';
 import type { Matchup } from '@/lib/types';
 
@@ -11,7 +12,9 @@ export const GET = handler(async (req): Promise<Matchup> => {
   // professors who asked to be removed drop out of existing rosters too
   const profs = new Map((await all<any>('SELECT * FROM professors WHERE id = ANY($1) AND NOT hidden', [v.profs])).map((p) => [p.id as number, p]));
   const ids = v.profs.filter((id) => profs.has(id));
-  const voted = new Set((await all<{ pair: string }>('SELECT pair FROM votes WHERE user_id = $1 AND term = $2', [v.user_id, currentTerm()])).map((r) => r.pair));
+  // pairs judged this term, also from an account the same person deleted earlier
+  const voted = new Set((await all<{ pair: string }>(`SELECT pair FROM votes WHERE user_id = $1 AND term = $2
+    UNION SELECT pair FROM spent_pairs WHERE user_hash = $3 AND term = $2`, [v.user_id, currentTerm(), userHash(v.eth_user)])).map((r) => r.pair));
   const open: [number, number][] = [];
   for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) if (!voted.has(pairKey(ids[i], ids[j]))) open.push([ids[i], ids[j]]);
   if (!open.length) return { done: true, me: await profileSummary(v) };

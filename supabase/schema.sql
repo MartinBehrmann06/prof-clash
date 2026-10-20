@@ -246,3 +246,17 @@ alter table votes drop constraint if exists votes_user_id_pair_key;
 -- so it holds across serverless instances.
 -- ---------------------------------------------------------------
 alter table profiles add column if not exists last_vote_at timestamptz;
+
+-- ---------------------------------------------------------------
+-- v10: when a player deletes their account, the pairs they judged this
+-- term are kept under a hash of their ETH username (no email, no picks),
+-- so signing up again doesn't allow a second vote on the same pairs.
+-- Rows of past terms are removed by the weekly cleanup.
+-- ---------------------------------------------------------------
+create table if not exists spent_pairs (
+  user_hash text not null,
+  term text not null,
+  pair text not null,
+  primary key (user_hash, term, pair)
+);
+alter table spent_pairs enable row level security;
