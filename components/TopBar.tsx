@@ -42,9 +42,10 @@ export function TopBar() {
         <LogoMark /><span className="logo-text">PROF <em>CLASH</em></span>
       </GameLink>
       <nav className="nav" aria-label="Hauptnavigation" ref={nav}>
-        <motion.span className="pill" aria-hidden initial={false} transition={placed.current ? MOTION.snappy : { duration: 0 }}
-          onAnimationComplete={() => { if (pill) placed.current = true; }}
-          animate={pill ? { x: pill.x, width: pill.width, opacity: 1 } : { opacity: 0 }} />
+        {/* mounted only while a link is active instead of faded with opacity: the opacity animation put the pill on
+            its own compositor layer, the likely reason it was sometimes drawn with its border but without the gold */}
+        {pill && <motion.span className="pill" aria-hidden initial={false} transition={placed.current ? MOTION.snappy : { duration: 0 }}
+          onAnimationComplete={() => { placed.current = true; }} animate={{ x: pill.x, width: pill.width }} />}
         {NAV.map(([href, text]) => {
           const on = path.startsWith(href);
           return (
