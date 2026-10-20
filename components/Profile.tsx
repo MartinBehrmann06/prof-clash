@@ -9,6 +9,7 @@ import { termLabel } from '@/lib/terms';
 import type { Prof, ProfDetail } from '@/lib/types';
 import { Figure } from './Figure';
 import { Icon, LeagueBadge, Trophies } from './art';
+import { ShareButton } from './Share';
 
 /**
  * away: professors whose portrait is in an open or still-closing profile (their row shows an empty frame meanwhile).
@@ -116,6 +117,7 @@ function ProfileBody({ p, base }: { p: ProfDetail | null; base: Prof }) {
       </div>
       <p style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
         {base.url && <a className="btn sm blue" href={base.url} target="_blank" rel="noopener noreferrer">Webseite <Icon name="external" size={15} /></a>}
+        <ShareButton path={`/p/${base.id}`} text={`${base.name} auf Prof Clash. Wen findest du besser?`} />
         <a className="link-quiet" href="/impressum#entfernen">Sind Sie das? Eintrag entfernen lassen</a>
       </p>
     </motion.div>

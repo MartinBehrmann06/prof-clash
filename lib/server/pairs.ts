@@ -1,2 +1,2 @@
-/** Order-independent key for a pair of professors: one vote per pair per student */
+/** Order-independent key for a pair of professors: one vote per pair per student per term */
 export const pairKey = (a: number, b: number) => (a < b ? `${a}-${b}` : `${b}-${a}`);

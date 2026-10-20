@@ -233,6 +233,11 @@ h3 { --sw: 4px; --sh: 2px; }
 .duel-bar .hint { display: inline-flex; align-items: center; gap: 5px; }
 .cta-card { max-width: 600px; margin: 26px auto 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 16px 18px; }
 .cta-card p { margin: 0; max-width: 38ch; font-size: 14px; }
+.done-card { max-width: 460px; margin: 40px auto 0; padding: 26px 22px 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.done-card h2 { margin: 0; font: 400 30px/1.1 var(--display); }
+.done-card p { margin: 0; max-width: 34ch; font-size: 15px; color: var(--ink-2); }
+.done-card .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+.done-card .share { display: inline-flex; align-items: center; gap: 5px; background: none; border: 0; padding: 4px; font: inherit; font-size: 13px; cursor: pointer; }
 .loading { display: grid; place-items: center; align-content: center; gap: 14px; min-height: 40vh; font: 400 20px var(--display); color: #fff; -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; text-shadow: 0 2px 0 var(--ink); }
 .spin { display: block; width: 40px; height: 40px; border-radius: 50%; border: 6px solid rgba(255, 255, 255, .9); border-top-color: var(--gold-2); box-shadow: 0 0 0 2.5px var(--ink), inset 0 0 0 2.5px var(--ink); animation: spin .9s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }

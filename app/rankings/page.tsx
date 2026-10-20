@@ -8,7 +8,7 @@ import { useProfile } from '@/components/Profile';
 import { Figure } from '@/components/Figure';
 import { Icon, LeagueBadge, Trophies } from '@/components/art';
 import { MIN_DUELS } from '@/lib/game';
-import type { RankedProf } from '@/lib/types';
+import type { ProfDetail, RankedProf } from '@/lib/types';
 
 const REFRESH_MS = 15000; // rankings stay in sync; rank changes glide into place
 const PAGE = 50;
@@ -23,6 +23,13 @@ export default function RankingsPage() {
   const [limit, setLimit] = useState(PAGE);
 
   useEffect(() => { if (profile?.deptId) setDept(profile.deptId); }, [profile?.deptId]);
+  // a shared link (/p/<id>) lands here with ?prof=<id>: open that profile once
+  useEffect(() => {
+    const id = Number(new URLSearchParams(location.search).get('prof'));
+    if (!id) return;
+    history.replaceState(null, '', location.pathname);
+    api<ProfDetail>(`/api/professors/${id}`).then(open).catch(() => {});
+  }, [open]);
   useEffect(() => {
     let alive = true;
     const url = scope === 'all' ? '/api/leaderboard?limit=1000' : `/api/leaderboard?scope=dept&dept=${dept}&limit=1000`;
