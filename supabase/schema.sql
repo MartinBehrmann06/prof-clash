@@ -177,3 +177,32 @@ create unique index if not exists profiles_eth_user on profiles (eth_user);
 -- flag so a re-seed from the VVZ doesn't bring them back.
 -- ---------------------------------------------------------------
 alter table professors add column if not exists hidden boolean not null default false;
+
+-- ---------------------------------------------------------------
+-- v6: tip duels. Two students guess the crowd's pick on the same five
+-- professor duels, one after the other, so nobody has to wait online.
+-- The crowd's answer is frozen when the match is created.
+-- ---------------------------------------------------------------
+create table if not exists tip_matches (
+  id bigserial primary key,
+  week integer,                           -- league week if created during a live weekend, else null
+  rival integer,                          -- clan this match is reserved for (the weekend opponent), null = any
+  questions jsonb not null,               -- [{a, b, answer, share}]: answer = crowd's pick, share = its vote share
+  user_a uuid not null references profiles(user_id) on delete cascade,
+  dept_a integer not null,
+  tips_a integer[] not null default '{}',
+  score_a integer,
+  done_a timestamptz,
+  user_b uuid references profiles(user_id) on delete set null,
+  dept_b integer,
+  tips_b integer[] not null default '{}',
+  score_b integer,
+  started_b timestamptz,
+  done_b timestamptz,
+  created_at timestamptz not null default now()
+);
+create index if not exists idx_tip_open on tip_matches (week, rival, created_at) where done_b is null;
+create index if not exists idx_tip_a on tip_matches (user_a);
+create index if not exists idx_tip_b on tip_matches (user_b);
+create index if not exists idx_tip_week on tip_matches (week) where done_b is not null;
+alter table tip_matches enable row level security;
