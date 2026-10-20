@@ -16,7 +16,8 @@ export default function DatenschutzPage() {
 
         <h2>Wenn du dich anmeldest (Studierende)</h2>
         <ul>
-          <li><b>ETH-E-Mail-Adresse</b>: für die Anmeldung per 6-stelligem Code. Daraus leiten wir deinen ETH-Benutzernamen ab, damit name@ethz.ch und name@student.ethz.ch dasselbe Konto sind.</li>
+          <li><b>ETH-E-Mail-Adresse</b>: für die Anmeldung mit Passwort, bestätigt per 6-stelligem Code. Daraus leiten wir deinen ETH-Benutzernamen ab, damit name@ethz.ch und name@student.ethz.ch dasselbe Konto sind.</li>
+          <li><b>Passwort</b>: nur als Hash bei Supabase gespeichert, wir sehen es nie im Klartext.</li>
           <li><b>Studiengang, Semester und Studienbeginn</b>: um die Dozierenden deiner Pflichtfächer aus den richtigen Semestern zu finden.</li>
           <li><b>Deine Auswahl an Dozierenden und deine Stimmen</b> (welche Paarung, wer gewählt wurde, wann, aus welchem Department) sowie deine Spielpunkte (XP).</li>
         </ul>
@@ -41,7 +42,7 @@ export default function DatenschutzPage() {
         <p>Wir nutzen folgende Anbieter, die Daten in unserem Auftrag bearbeiten:</p>
         <ul>
           <li><b>Supabase</b>: Datenbank und Login; Server in der EU (Irland).</li>
-          <li><b>Brevo</b> (Sendinblue SAS, Frankreich): Versand der Login-Codes per E-Mail.</li>
+          <li><b>Brevo</b> (Sendinblue SAS, Frankreich): Versand der Bestätigungs- und Login-Codes per E-Mail.</li>
           <li><b>Vercel</b> (USA): Hosting der Website. Beim Aufruf werden technisch nötige Verbindungsdaten wie die IP-Adresse kurz verarbeitet. Die Übermittlung in die USA stützt sich auf das Swiss-U.S. Data Privacy Framework bzw. Standardvertragsklauseln.</li>
           <li><b>Cloudflare</b>: Verwaltung der Domain (DNS).</li>
         </ul>
