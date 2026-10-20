@@ -2,6 +2,7 @@ import { handler } from '@/lib/server/http';
 import { all, one } from '@/lib/server/db';
 import { authUser } from '@/lib/server/auth';
 import { getProfile } from '@/lib/server/queries';
+import { ensureTipSchema } from '@/lib/server/migrate';
 import { TIP_CAP, TIP_POINTS } from '@/lib/tip';
 import { CAP, LEAGUE_START, ROUNDS, decide, fridayOf, leagueClock, pairings, side, table, type LeagueData, type Match } from '@/lib/league';
 
@@ -11,6 +12,7 @@ const WINDOW = `((($1::date + 4 + 7 * k)::timestamp + time '18:00') AT TIME ZONE
 
 /** Scores of every department for league weeks first..last, computed from the votes */
 async function scores(first: number, last: number) {
+  await ensureTipSchema();
   const [played, members, tips] = await Promise.all([
     all<{ k: number; dept_id: number; counted: number; active: number }>(`
       WITH w AS (SELECT k, ${WINDOW} FROM generate_series($2::int, $3::int) k),

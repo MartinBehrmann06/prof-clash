@@ -2,6 +2,7 @@ import { handler, body, HttpError } from '@/lib/server/http';
 import { requireUser } from '@/lib/server/auth';
 import { all, one, tx } from '@/lib/server/db';
 import { requireProfile, toProf } from '@/lib/server/queries';
+import { ensureTipSchema } from '@/lib/server/migrate';
 import { leagueClock, opponentOf } from '@/lib/league';
 import { MIN_PAIR_VOTES, QUESTIONS, type TipAnswer, type TipGame, type TipMatchView, type TipReveal } from '@/lib/tip';
 
@@ -56,6 +57,7 @@ async function pickQuestions(): Promise<Question[]> {
 // Your recent tip duels
 export const GET = handler(async (req): Promise<TipMatchView[]> => {
   const v = await requireProfile(await requireUser(req));
+  await ensureTipSchema();
   const { week } = leagueClock();
   const rows = await all<Row>('SELECT * FROM tip_matches WHERE user_a = $1 OR user_b = $1 ORDER BY id DESC LIMIT 10', [v.user_id]);
   return rows.map((r) => view(r, v.user_id, week));
@@ -63,6 +65,7 @@ export const GET = handler(async (req): Promise<TipMatchView[]> => {
 
 export const POST = handler(async (req): Promise<TipGame | TipAnswer> => {
   const v = await requireProfile(await requireUser(req));
+  await ensureTipSchema();
   const me = v.user_id;
   const clock = leagueClock();
   const input = await body<{ action: 'start' } | { action: 'tip'; id: number; pick: number }>(req);
