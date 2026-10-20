@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Lilita_One, Nunito } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SessionProvider } from '@/lib/client/session';
 import { ToastProvider } from '@/lib/client/feedback';
 import { ProfileProvider } from '@/components/Profile';
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </SessionProvider>
         </Motion>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

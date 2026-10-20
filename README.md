@@ -51,6 +51,6 @@ npm run db:setup           # apply schema + load data
 npm run dev                # http://localhost:3000
 ```
 
-`npm test` runs the unit tests (Elo, leagues, terms, Weekend League battles); CI runs typecheck, tests and build on every pull request. Visits are counted by Vercel Web Analytics (cookieless), which has to be switched on once under the project's *Analytics* tab in Vercel.
+`npm test` runs the unit tests (Elo, leagues, terms, Weekend League battles); CI runs typecheck, tests and build on every pull request. Visits are counted by Vercel Web Analytics and page speed by Vercel Speed Insights (both cookieless); switch each on once under the project's *Analytics* and *Speed Insights* tabs in Vercel.
 
 Refresh data from the VVZ with `npm run scrape && npm run seed` (slow — the VVZ rate-limits).
