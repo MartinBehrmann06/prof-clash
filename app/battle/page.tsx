@@ -9,6 +9,7 @@ import { Duel } from '@/components/Duel';
 import { Icon } from '@/components/art';
 import { ShareButton } from '@/components/Share';
 import { currentTerm, shiftTerm, termLabel } from '@/lib/terms';
+import { levelFor } from '@/lib/game';
 
 export default function BattlePage() {
   const { ready, user, profile, setProfile } = useSession();
@@ -17,7 +18,7 @@ export default function BattlePage() {
   const [empty, setEmpty] = useState(false);
   const onEmpty = useCallback(() => setEmpty(true), []);
   const onVoted = useCallback(() => {
-    if (profile) setProfile({ ...profile, votes: profile.votes + 1, xp: profile.xp + 10 });
+    if (profile) setProfile({ ...profile, votes: profile.votes + 1, xp: profile.xp + 10, level: levelFor(profile.xp + 10) });
   }, [profile, setProfile]);
 
   if (!ready) return <div className="loading"><span className="spin" />Lädt</div>;
@@ -37,6 +38,7 @@ export default function BattlePage() {
             <GameLink className="btn sm gold" href="/departments">Weekend League</GameLink>
             <GameLink className="btn sm blue" href="/rankings">Rankings</GameLink>
           </div>
+          <GameLink className="link-quiet" href="/setup">Profs fehlen? Deck bearbeiten</GameLink>
           <ShareButton className="link-quiet share" path="/" text="Wessen Vorlesung würdest du lieber besuchen? Stimm ab auf Prof Clash." label="Prof Clash teilen" />
         </motion.div>
       ) : (
