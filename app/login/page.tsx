@@ -88,6 +88,8 @@ function Login() {
 
   async function signUp() {
     const e = ethEmail(); if (!e) return;
+    // name+x@… is the same mailbox and the same player as name@…, so it can't open a second account
+    if (e.split('@')[0].includes('+')) { fail('Bitte deine normale ETH-Adresse ohne „+…“ verwenden.'); return; }
     if (password.length < MIN_PW) { fail(`Passwort muss mindestens ${MIN_PW} Zeichen haben.`); return; }
     setMsg(''); setBusy(true);
     const { data, error } = await (await getSupabase()).auth.signUp({ email: e, password });
