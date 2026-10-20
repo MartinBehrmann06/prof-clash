@@ -28,6 +28,22 @@ export const fridayOf = (week: number) => new Date(startUtc + (week * 7 + 4) * D
 
 export type LeagueClock = { week: number; season: number; round: number; status: 'upcoming' | 'live' };
 
+/** Zurich wall-clock time on a calendar date, as an instant */
+function zurich(date: string, hour: number) {
+  const guess = new Date(`${date}T${String(hour).padStart(2, '0')}:00:00Z`);
+  const off = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Zurich', timeZoneName: 'longOffset' })
+    .formatToParts(guess).find((p) => p.type === 'timeZoneName')!.value; // "GMT+02:00"
+  const m = /([+-])(\d\d):(\d\d)/.exec(off);
+  const mins = m ? (m[1] === '-' ? -1 : 1) * (+m[2] * 60 + +m[3]) : 0;
+  return new Date(guess.getTime() - mins * 60_000);
+}
+
+/** The weekend of league week `week`: Friday 18:00 until Monday 00:00, Zurich time */
+export const weekendOf = (week: number) => ({
+  start: zurich(fridayOf(week), 18),
+  end: zurich(new Date(startUtc + (week * 7 + 7) * DAY).toISOString().slice(0, 10), 0),
+});
+
 /** Where the league stands at `now`: the current week's weekend is either still ahead or running */
 export function leagueClock(now = new Date()): LeagueClock {
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {

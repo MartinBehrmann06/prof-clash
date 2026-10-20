@@ -497,3 +497,7 @@ h3 { --sw: 4px; --sh: 2px; }
 .tip-ok { background: var(--green-1); }
 .tip-no { background: var(--red-1); }
 .how-cta { display: flex; justify-content: center; margin-top: 18px; }
+.tip-weekend { max-width: 720px; margin: 30px auto 0; display: grid; gap: 8px; justify-items: center; text-align: center; }
+.tip-weekend.live { background: linear-gradient(180deg, #fffbe2, var(--gold-1)); }
+.tip-weekend p { margin: 0; color: var(--ink-2); }
+.tip-count { font: 400 clamp(36px, 7vw, 56px)/1 var(--display); color: #fff; -webkit-text-stroke: 7px var(--ink); paint-order: stroke fill; text-shadow: 0 4px 0 var(--ink); }

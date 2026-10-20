@@ -2,7 +2,8 @@
 //
 // Two students answer the same QUESTIONS duels, one after the other: the first creates the
 // match, the next student from another clan plays the same questions later. Nobody waits online.
-// During a live weekend a match is reserved for the weekend opponent and a win counts for the clan.
+// Tip duels only run during a league weekend (Friday 18:00 to Sunday 24:00): every match is
+// against the weekend opponent's clan and every win counts for your own clan.
 
 import type { Prof } from './types';
 
@@ -31,3 +32,14 @@ export type TipGame = TipMatchView & {
 };
 
 export type TipAnswer = TipReveal & { match: TipMatchView };
+
+export type TipState = {
+  open: boolean;
+  /** ISO times of the current (open) or next weekend */
+  opensAt: string; closesAt: string;
+  /** your clan's opponent that weekend */
+  rival: number | null;
+  /** your wins that count this weekend */
+  wins: number;
+  matches: TipMatchView[];
+};
