@@ -9,7 +9,7 @@ import { levelProgress } from '@/lib/game';
 import { Icon, LogoMark, XpStar } from './art';
 import { GameLink } from './CloudTransition';
 
-const NAV = [['/battle', 'Battle'], ['/rankings', 'Rankings'], ['/departments', 'Clans']] as const;
+const NAV = [['/battle', 'Battle'], ['/rankings', 'Rankings'], ['/departments', 'Weekend League']] as const;
 
 /** Dark HUD bar: logo, nav with a sliding gold pill, player level */
 export function TopBar() {
@@ -48,7 +48,7 @@ export function TopBar() {
         {NAV.map(([href, text]) => {
           const on = path.startsWith(href);
           return (
-            <GameLink key={href} href={href} label={text} aria-current={on ? 'page' : undefined}>
+            <GameLink key={href} href={href} label={text} className={text.includes(' ') ? 'two' : undefined} aria-current={on ? 'page' : undefined}>
               {text}
             </GameLink>
           );
