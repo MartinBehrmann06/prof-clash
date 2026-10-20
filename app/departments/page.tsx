@@ -230,7 +230,7 @@ function HowItWorks({ lg }: { lg: LeagueData }) {
     ['Paarung', 'Jedes Wochenende bekommt jeder Clan einen Gegner, zum Beispiel D-INFK gegen D-ITET. Der Spielplan steht fest und ist unten schon sichtbar.'],
     ['Spielen', 'Du musst nichts Besonderes tun: Spiel einfach normale Duelle. Von Freitag 18:00 bis Sonntag 24:00 zählt jedes Duell auch für deinen Clan.'],
     ['Limit', `Pro Person zählen nur die ersten ${lg.cap} Duelle des Wochenendes. So kann niemand allein gewinnen, es kommt darauf an, dass viele mitmachen.`],
-    ['Tipp-Duell', `Zusätzlich kannst du im Tipp-Duell gegen jemanden aus dem Gegner-Clan raten, wen die Mehrheit gewählt hat. Ihr müsst nicht gleichzeitig online sein. Jeder Sieg zählt wie ${lg.tipPoints} Duelle, höchstens ${lg.tipCap} Siege pro Person.`],
+    ['Tipp-Duell', `Nur am Wochenende: Im Tipp-Duell rätst du gegen jemanden aus dem Gegner-Clan, wen die Mehrheit gewählt hat. Ihr müsst nicht gleichzeitig online sein. Jeder Sieg zählt wie ${lg.tipPoints} Duelle, höchstens ${lg.tipCap} Siege pro Person.`],
     ['Wertung', `Gezählte Duelle (plus ${lg.tipPoints} pro Tipp-Sieg) geteilt durch die Mitglieder des Clans. Beispiel: 6 Mitglieder mit zusammen 30 Duellen ergeben 5.0, 3 Mitglieder mit 12 Duellen ergeben 4.0.`],
     ['Punkte', `Höhere Wertung gewinnt: Sieg 3 Punkte, Unentschieden 1, Niederlage 0. In ${lg.rounds} Wochenenden trifft jeder Clan einmal auf jeden anderen, die Saisontabelle zeigt den Stand.`],
   ];
@@ -249,7 +249,9 @@ function HowItWorks({ lg }: { lg: LeagueData }) {
           </motion.div>
         ))}
       </div>
-      <div className="how-cta"><GameLink className="btn gold" href="/tip"><Icon name="target" size={18} /> Tipp-Duell starten</GameLink></div>
+      <div className="how-cta">
+        <GameLink className="btn gold" href="/tip"><Icon name={lg.status === 'live' ? 'target' : 'lock'} size={18} /> {lg.status === 'live' ? 'Tipp-Duell starten' : 'Tipp-Duell · ab Freitag 18:00'}</GameLink>
+      </div>
     </section>
   );
 }

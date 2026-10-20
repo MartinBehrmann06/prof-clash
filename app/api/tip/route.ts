@@ -3,8 +3,8 @@ import { requireUser } from '@/lib/server/auth';
 import { all, one, tx } from '@/lib/server/db';
 import { requireProfile, toProf } from '@/lib/server/queries';
 import { ensureTipSchema } from '@/lib/server/migrate';
-import { leagueClock, opponentOf } from '@/lib/league';
-import { MIN_PAIR_VOTES, QUESTIONS, type TipAnswer, type TipGame, type TipMatchView, type TipReveal } from '@/lib/tip';
+import { leagueClock, opponentOf, weekendOf } from '@/lib/league';
+import { MIN_PAIR_VOTES, QUESTIONS, TIP_CAP, type TipAnswer, type TipGame, type TipMatchView, type TipReveal, type TipState } from '@/lib/tip';
 
 type Question = { a: number; b: number; answer: number; share: number };
 type Row = {
@@ -54,13 +54,21 @@ async function pickQuestions(): Promise<Question[]> {
   });
 }
 
-// Your recent tip duels
-export const GET = handler(async (req): Promise<TipMatchView[]> => {
+const CLOSED = 'Das Tipp-Duell ist nur am Wochenende geöffnet: Freitag 18:00 bis Sonntag 24:00.';
+
+// Whether the weekend is open, your opponent clan, your wins and your recent tip duels
+export const GET = handler(async (req): Promise<TipState> => {
   const v = await requireProfile(await requireUser(req));
   await ensureTipSchema();
-  const { week } = leagueClock();
+  const { week, status } = leagueClock();
   const rows = await all<Row>('SELECT * FROM tip_matches WHERE user_a = $1 OR user_b = $1 ORDER BY id DESC LIMIT 10', [v.user_id]);
-  return rows.map((r) => view(r, v.user_id, week));
+  const matches = rows.map((r) => view(r, v.user_id, week));
+  const w = weekendOf(week);
+  const wins = rows.filter((r) => r.week === week && matches.find((m) => m.id === Number(r.id))?.status === 'won').length;
+  return {
+    open: status === 'live', opensAt: w.start.toISOString(), closesAt: w.end.toISOString(),
+    rival: opponentOf(v.dept_id, week), wins: Math.min(wins, TIP_CAP), matches,
+  };
 });
 
 export const POST = handler(async (req): Promise<TipGame | TipAnswer> => {
@@ -70,17 +78,18 @@ export const POST = handler(async (req): Promise<TipGame | TipAnswer> => {
   const clock = leagueClock();
   const input = await body<{ action: 'start' } | { action: 'tip'; id: number; pick: number }>(req);
 
+  if (clock.status !== 'live') throw new HttpError(409, CLOSED);
+  const week = clock.week;
+
   if (input.action === 'start') {
-    // carry on with an unfinished match first
-    let r = await one<Row>(`SELECT * FROM tip_matches WHERE (user_a = $1 AND done_a IS NULL) OR (user_b = $1 AND done_b IS NULL)
-      ORDER BY id DESC LIMIT 1`, [me]);
-    const live = clock.status === 'live';
-    const week = live ? clock.week : null, rival = live ? opponentOf(v.dept_id, clock.week) : null;
-    // then answer a match someone from another clan already played (on a weekend: only your opponent's)
+    // carry on with an unfinished match of this weekend first
+    let r = await one<Row>(`SELECT * FROM tip_matches WHERE week = $2 AND ((user_a = $1 AND done_a IS NULL) OR (user_b = $1 AND done_b IS NULL))
+      ORDER BY id DESC LIMIT 1`, [me, week]);
+    const rival = opponentOf(v.dept_id, week);
+    // then answer a match someone from the opponent clan already played this weekend
     r ??= await one<Row>(`UPDATE tip_matches SET user_b = $1, dept_b = $2, started_b = now(), tips_b = '{}'
-      WHERE id = (SELECT id FROM tip_matches WHERE done_a IS NOT NULL AND done_b IS NULL AND user_a <> $1 AND dept_a <> $2
-        AND (user_b IS NULL OR started_b < now() - interval '15 minutes')
-        AND (($3::int IS NULL AND week IS NULL) OR (week = $3 AND rival = $2))
+      WHERE id = (SELECT id FROM tip_matches WHERE done_a IS NOT NULL AND done_b IS NULL AND user_a <> $1
+        AND (user_b IS NULL OR started_b < now() - interval '15 minutes') AND week = $3 AND rival = $2
         ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED)
       RETURNING *`, [me, v.dept_id, week]);
     // otherwise open a new one; the next player takes it whenever they come by
@@ -94,6 +103,7 @@ export const POST = handler(async (req): Promise<TipGame | TipAnswer> => {
     const r = (await db.query('SELECT * FROM tip_matches WHERE id = $1 FOR UPDATE', [Number(input.id)])).rows[0] as Row | undefined;
     const side = r?.user_a === me ? 'a' : r?.user_b === me ? 'b' : null;
     if (!r || !side) throw new HttpError(404, 'Dieses Tipp-Duell gibt es nicht');
+    if (r.week !== week) throw new HttpError(409, 'Dieses Tipp-Duell gehört zu einem vergangenen Wochenende');
     const tips = side === 'a' ? r.tips_a : r.tips_b;
     if (tips.length >= QUESTIONS) throw new HttpError(409, 'Dieses Tipp-Duell ist schon fertig');
     const q = r.questions[tips.length], pick = Number(input.pick);

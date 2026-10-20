@@ -7,11 +7,21 @@ import { Icon } from '@/components/art';
 import { api, useSession } from '@/lib/client/session';
 import { MOTION } from '@/lib/client/motion';
 import { deptById } from '@/lib/departments';
-import { QUESTIONS, TIP_CAP, TIP_POINTS, type TipAnswer, type TipGame, type TipMatchView, type TipReveal } from '@/lib/tip';
+import { QUESTIONS, TIP_CAP, TIP_POINTS, type TipAnswer, type TipGame, type TipMatchView, type TipReveal, type TipState } from '@/lib/tip';
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const clan = (m: TipMatchView) => (m.oppDept ? `D-${deptById(m.oppDept).code}` : null);
 const vs = (m: TipMatchView) => clan(m) ?? 'einen anderen Clan';
+
+/** "2 Tage 5 Std" / "3 Std 12 Min" / "12 Min" until `iso`, ticking every 30 seconds */
+function useCountdown(iso?: string) {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => { const t = setInterval(() => setNow(Date.now()), 30_000); return () => clearInterval(t); }, []);
+  if (!iso) return '';
+  const mins = Math.max(0, Math.ceil((Date.parse(iso) - now) / 60_000));
+  const d = Math.floor(mins / 1440), h = Math.floor((mins % 1440) / 60), m = mins % 60;
+  return d ? `${d} ${d === 1 ? 'Tag' : 'Tage'} ${h} Std` : h ? `${h} Std ${m} Min` : `${m} Min`;
+}
 
 const STATUS: Record<TipMatchView['status'], string> = {
   playing: 'Läuft', waiting: 'Wartet auf Gegner', expired: 'Kein Gegner gekommen', won: 'Sieg', lost: 'Niederlage', draw: 'Unentschieden',
@@ -20,11 +30,14 @@ const STATUS: Record<TipMatchView['status'], string> = {
 export default function TipPage() {
   const { ready, user, profile } = useSession();
   const [game, setGame] = useState<TipGame | null>(null);
-  const [history, setHistory] = useState<TipMatchView[] | null>(null);
+  const [state, setState] = useState<TipState | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
-  const loadHistory = useCallback(() => { api<TipMatchView[]>('/api/tip').then(setHistory).catch(() => setHistory([])); }, []);
+  const loadHistory = useCallback(() => { api<TipState>('/api/tip').then(setState).catch(() => {}); }, []);
+  const history = state?.matches ?? null;
+  const countdown = useCountdown(state ? (state.open ? state.closesAt : state.opensAt) : undefined);
+  const rival = state?.rival ? `D-${deptById(state.rival).code}` : 'deinen Gegner-Clan';
   useEffect(() => { if (profile) loadHistory(); }, [profile, loadHistory]);
 
   const start = async () => {
@@ -52,14 +65,25 @@ export default function TipPage() {
         <Play key={game.id} game={game} onDone={(m) => { setGame({ ...game, ...m }); loadHistory(); }} onAgain={() => { setGame(null); start(); }} />
       ) : (
         <>
+          {state && (
+            <motion.div className={`panel tip-weekend ${state.open ? 'live' : ''}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={MOTION.soft}>
+              <span className="chip demo">{state.open ? 'Live · Wochenende läuft' : 'Geschlossen bis Freitag 18:00'}</span>
+              <div className="tip-count num">{countdown}</div>
+              <p>{state.open
+                ? <>bis zum Schluss am Sonntag 24:00. Dein Gegner: <b>{rival}</b>. Deine Siege: <b className="num">{state.wins}/{TIP_CAP}</b></>
+                : <>bis zum nächsten Tipp-Duell-Wochenende. Dann tritt dein Clan gegen <b>{rival}</b> an.</>}</p>
+            </motion.div>
+          )}
           <div className="panel tip-intro">
             <ol>
+              <li>Das Tipp-Duell gibt es <b>nur am Wochenende</b>, von Freitag 18:00 bis Sonntag 24:00, jedes Wochenende neu.</li>
               <li>Du siehst {QUESTIONS} Prof-Duelle und tippst jeweils, wen <b>die Mehrheit</b> der Studierenden gewählt hat.</li>
-              <li>Ein Student aus einem anderen Clan bekommt <b>genau dieselben {QUESTIONS} Fragen</b>. Er muss nicht gleichzeitig online sein: Entweder hat er schon gespielt, oder er spielt sie später.</li>
-              <li>Wer mehr richtig hat, gewinnt. Das Ergebnis siehst du hier, sobald beide fertig sind.</li>
-              <li>Am Wochenende spielst du gegen den Gegner-Clan der Weekend League. Jeder Sieg zählt dann wie {TIP_POINTS} Duelle für deinen Clan (höchstens {TIP_CAP} Siege pro Person und Wochenende).</li>
+              <li>Jemand aus dem Gegner-Clan der Weekend League bekommt <b>genau dieselben {QUESTIONS} Fragen</b>. Ihr müsst nicht gleichzeitig online sein: Entweder hat er schon gespielt, oder er spielt sie später am Wochenende.</li>
+              <li>Wer mehr richtig hat, gewinnt. Jeder Sieg zählt wie {TIP_POINTS} Duelle für deinen Clan, höchstens {TIP_CAP} Siege pro Person und Wochenende.</li>
             </ol>
-            <button className="btn gold" onClick={start} disabled={busy}><Icon name="play" size={18} /> {busy ? 'Wird vorbereitet …' : 'Tipp-Duell starten'}</button>
+            <button className="btn gold" onClick={start} disabled={busy || !state?.open}>
+              <Icon name={state?.open ? 'play' : 'lock'} size={18} /> {busy ? 'Wird vorbereitet …' : state?.open ? 'Tipp-Duell starten' : 'Öffnet Freitag 18:00'}
+            </button>
             {error && <p className="tip-error">{error}</p>}
           </div>
           {history && history.length > 0 && (
