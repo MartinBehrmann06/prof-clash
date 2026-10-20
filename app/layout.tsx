@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Lilita_One, Nunito } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import { SessionProvider } from '@/lib/client/session';
 import { ToastProvider } from '@/lib/client/feedback';
 import { ProfileProvider } from '@/components/Profile';
@@ -18,7 +19,8 @@ export const metadata: Metadata = {
   description,
   openGraph: { title: 'Prof Clash', description, siteName: 'Prof Clash', locale: 'de_CH', type: 'website' },
   twitter: { card: 'summary_large_image' },
-  icons: { icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><clipPath id='c'><rect width='40' height='40' rx='12'/></clipPath><g clip-path='url(%23c)'><rect width='40' height='40' fill='%233d6bff'/><path d='M25 0H40V40H13Z' fill='%23ff5a4a'/><path d='M23 -2L27 -2L15 42L11 42Z' fill='white'/></g></svg>" },
+  appleWebApp: { capable: true, title: 'Prof Clash' },
+  icons: { apple: '/apple-touch-icon.png', icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><clipPath id='c'><rect width='40' height='40' rx='12'/></clipPath><g clip-path='url(%23c)'><rect width='40' height='40' fill='%233d6bff'/><path d='M25 0H40V40H13Z' fill='%23ff5a4a'/><path d='M23 -2L27 -2L15 42L11 42Z' fill='white'/></g></svg>" },
 };
 
 export const viewport: Viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#f5f3ee' };
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </ToastProvider>
         </SessionProvider>
         </Motion>
+        <Analytics />
       </body>
     </html>
   );

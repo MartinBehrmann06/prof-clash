@@ -240,3 +240,9 @@ where term is null;
 alter table votes alter column term set not null;
 create unique index if not exists votes_user_pair_term on votes (user_id, pair, term);
 alter table votes drop constraint if exists votes_user_id_pair_key;
+
+-- ---------------------------------------------------------------
+-- v9: the vote speed limit (one vote per 500 ms) is kept in the database,
+-- so it holds across serverless instances.
+-- ---------------------------------------------------------------
+alter table profiles add column if not exists last_vote_at timestamptz;

@@ -1,7 +1,7 @@
 import 'server-only';
 import { pool } from './db';
 
-// Schema v7 (Weekend League map) and v8, the same statements as in supabase/schema.sql. Applied by the app itself
+// Schema v7 (Weekend League map), v8 and v9, the same statements as in supabase/schema.sql. Applied by the app itself
 // on first use, so a deploy works without running SQL by hand. Every statement is idempotent.
 const CONQUEST_SCHEMA = `
 create table if not exists conquest_orders (
@@ -29,6 +29,9 @@ alter table votes alter column term set not null;
 create unique index if not exists votes_user_pair_term on votes (user_id, pair, term);
 alter table votes drop constraint if exists votes_user_id_pair_key;`;
 
+// Schema v9: the vote speed limit lives in the database, so it holds across serverless instances.
+const VOTE_LIMIT_SCHEMA = `alter table profiles add column if not exists last_vote_at timestamptz;`;
+
 /** Run idempotent schema SQL once per server instance */
 function once(sql: string) {
   let ready: Promise<void> | null = null;
@@ -43,5 +46,5 @@ function once(sql: string) {
 
 /** Make sure the conquest_orders table exists */
 export const ensureConquestSchema = once(CONQUEST_SCHEMA);
-/** Make sure votes carry their term */
-export const ensureVoteTerms = once(VOTE_TERM_SCHEMA);
+/** Make sure votes carry their term (v8) and profiles their last vote time (v9) */
+export const ensureVoteTerms = once(VOTE_TERM_SCHEMA + VOTE_LIMIT_SCHEMA);
