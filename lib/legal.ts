@@ -8,3 +8,6 @@ export const OPERATOR = {
 
 /** Date of the current privacy policy / legal notice */
 export const LEGAL_DATE = '20. Oktober 2026';
+
+/** Accounts with no login, vote or league order for this many months are deleted (weekly cron, /api/cleanup) */
+export const RETENTION_MONTHS = 24;
