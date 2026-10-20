@@ -3,6 +3,7 @@ import { requireUser } from '@/lib/server/auth';
 import { tx } from '@/lib/server/db';
 import { requireProfile } from '@/lib/server/queries';
 import { pairKey } from '@/lib/server/pairs';
+import { userHash } from '@/lib/server/accounts';
 import { currentTerm } from '@/lib/terms';
 import { eloUpdate, league, levelFor } from '@/lib/game';
 import type { VoteResult } from '@/lib/types';
@@ -30,6 +31,8 @@ export const POST = handler(async (req): Promise<VoteResult> => {
         if (r.rows[0]?.same) throw new HttpError(429, 'easy there, chief — slow down');
         throw new HttpError(409, 'this matchup expired — grab a new one');
       }
+      const spent = await db.query('SELECT 1 FROM spent_pairs WHERE user_hash = $1 AND term = $2 AND pair = $3', [userHash(v.eth_user), currentTerm(), pair]);
+      if (spent.rowCount) throw new HttpError(409, 'you already judged this duel');
       await db.query('INSERT INTO votes (user_id, dept_id, winner, loser, pair, term) VALUES ($1, $2, $3, $4, $5, $6)', [v.user_id, v.dept_id, w, l, pair, currentTerm()]);
 
       // global ladder — lock both rows in id order to avoid deadlocks

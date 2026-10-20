@@ -10,8 +10,9 @@ function createPool() {
   if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not set — add it to .env (see README)');
   return new pg.Pool({
     connectionString: process.env.DATABASE_URL,
-    // Supabase requires TLS; its pooler certificate isn't in Node's default CA store
-    ssl: { rejectUnauthorized: false },
+    // Supabase requires TLS; its certificate isn't in Node's default CA store. With DATABASE_CA (the CA certificate
+    // from Supabase → Database settings → SSL) the server is verified; without it the connection is encrypted only.
+    ssl: process.env.DATABASE_CA ? { ca: process.env.DATABASE_CA.replace(/\\n/g, '\n'), rejectUnauthorized: true } : { rejectUnauthorized: false },
     max: Number(process.env.DB_POOL_SIZE || 5),
   });
 }

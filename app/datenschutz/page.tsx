@@ -57,6 +57,8 @@ export default function DatenschutzPage() {
           Dein Konto bleibt bestehen, bis du es löschst oder es {RETENTION_MONTHS} Monate lang nicht benutzt wurde (kein Login, keine Stimme,
           kein Befehl in der Weekend League). Dann löschen wir automatisch dein Konto, dein Profil, deine Stimmen und deine Befehle.
           Bereits berechnete Wertungen werden nicht rückwirkend neu berechnet, enthalten aber keinen Bezug mehr zu dir.
+          Damit nach einer Löschung nicht dieselben Paarungen erneut bewertet werden können, behalten wir bis Ende des laufenden Semesters
+          nur, welche Paarungen bewertet wurden (nicht wie), unter einem Hash deines ETH-Benutzernamens, ohne E-Mail-Adresse.
         </p>
         <DeleteAccount />
 
