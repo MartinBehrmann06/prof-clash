@@ -3,7 +3,7 @@
 //  live:     logged-in students with a roster — server matchups, votes change the real Elo.
 //  practice: everyone else — real professors, but nothing is sent or counted; the revealed number
 //            is the current global Elo, unchanged. Only a local practice counter is stored.
-import { api } from './session';
+import { api, maybeSignedIn } from './session';
 import type { DuelSource } from '@/components/Duel';
 import type { Matchup, Prof, RankedProf, VoteResult } from '@/lib/types';
 
@@ -27,6 +27,13 @@ export function liveSource(): DuelSource {
 const PRACTICE_KEY = 'prof-arena:practice-count';
 export const practiceCount = () => { try { return Number(localStorage.getItem(PRACTICE_KEY)) || 0; } catch { return 0; } };
 
+let poolRequest: Promise<Prof[]> | null = null;
+const loadPool = () => (poolRequest ??= api<RankedProf[]>('/api/leaderboard?limit=1000').catch((e) => { poolRequest = null; throw e; }));
+/** Guests always train: start loading the professors right away instead of after the session check */
+export function prefetchPractice() {
+  if (!maybeSignedIn()) loadPool().catch(() => {});
+}
+
 export function practiceSource(): DuelSource {
   let pool: Prof[] | null = null;
   let last = new Set<number>();
@@ -44,7 +51,7 @@ export function practiceSource(): DuelSource {
   return {
     eloNote: 'Elo · Training',
     next: async () => {
-      pool ??= await api<RankedProf[]>('/api/leaderboard?limit=1000');
+      if (!pool) { pool = await loadPool(); poolRequest = null; } // the next visit loads fresh numbers
       if (pool.length < 2) return null;
       const [left, right] = pick();
       return { key: `${left.id}-${right.id}-${Date.now()}`, left, right };

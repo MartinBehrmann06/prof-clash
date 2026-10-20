@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { api } from '@/lib/client/session';
 import { MIN_DUELS } from '@/lib/game';
@@ -50,8 +50,10 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     return () => removeEventListener('keydown', onKey);
   }, [prof, close]);
 
+  // a stable value: the loaded details arriving must not re-render every page that lists professors
+  const value = useMemo(() => ({ away, portraitId, open }), [away, portraitId, open]);
   return (
-    <ProfileCtx.Provider value={{ away, portraitId, open }}>
+    <ProfileCtx.Provider value={value}>
       {children}
       {/* the portrait flies out of its row on open; on close the panel leaves first and the row gets its
           portrait back once it's gone, so nothing flies back underneath the fading scrim */}

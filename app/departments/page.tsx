@@ -1,6 +1,6 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useInView } from 'motion/react';
 import { api, useSession } from '@/lib/client/session';
 import { useToast } from '@/lib/client/feedback';
 import { MOTION } from '@/lib/client/motion';
@@ -55,7 +55,7 @@ export default function ClansPage() {
       </header>
 
       {!data ? (
-        <div className="panel war loading" style={{ minHeight: 320 }}>{failed ? <p className="note">Die Karte konnte nicht geladen werden. Lade die Seite neu.</p> : <span className="spin" />}</div>
+        <div className="panel war loading" style={{ minHeight: '70vh' }}>{failed ? <p className="note">Die Karte konnte nicht geladen werden. Lade die Seite neu.</p> : <span className="spin" />}</div>
       ) : (
         <>
           <Hud data={data} now={now} />
@@ -242,10 +242,15 @@ function Section({ title, sub, children }: { title: string; sub: string; childre
   );
 }
 
-const rise = (i: number) => ({
-  initial: { opacity: 0, y: 16 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true },
-  transition: { ...MOTION.soft, delay: Math.min(i, 8) * 0.04 },
-});
+/**
+ * A row that rises into place the first time it scrolls into view. A CSS transition rather than a Motion
+ * spring: it runs on the compositor, so the rows don't have to be repainted on every frame while you scroll.
+ */
+function Rise({ i, className, style, children }: { i: number; className: string; style?: React.CSSProperties; children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const seen = useInView(ref, { once: true });
+  return <div ref={ref} className={`${className} rise ${seen ? 'in' : ''}`} style={{ ...style, ['--rise-delay' as any]: `${Math.min(i, 8) * 40}ms` }}>{children}</div>;
+}
 
 function Ranking({ data, myDept }: { data: ConquestData; myDept?: number }) {
   return (
@@ -254,12 +259,12 @@ function Ranking({ data, myDept }: { data: ConquestData; myDept?: number }) {
         const d = deptById(r.dept);
         const mine = myDept === r.dept;
         return (
-          <motion.div key={r.dept} className={`panel clan-row ${mine ? 'mine' : ''}`} style={{ ['--c' as any]: d.color }} {...rise(i)}>
+          <Rise key={r.dept} i={i} className={`panel clan-row ${mine ? 'mine' : ''}`} style={{ ['--c' as any]: d.color }}>
             <span className="rk num">{i + 1}</span>
             <span className="mini-shield">{d.code}</span>
             <span><b title={d.name}>D-{d.code}</b><small className="one">{mine ? 'Dein Clan · ' : ''}{r.troops ? `${r.troops} Truppen eingesetzt` : d.name}</small></span>
             <span className="v num">{r.buildings}<small>Gebäude</small></span>
-          </motion.div>
+          </Rise>
         );
       })}
     </Section>
@@ -290,7 +295,7 @@ function Report({ report, myDept }: { report: NonNullable<ConquestData['report']
         const text = won ? `${clan(e.after)} erobert ${e.before === null ? 'das neutrale Gebäude' : `von ${clan(e.before)}`}`
           : e.before === null ? 'Bleibt neutral' : `${clan(e.before)} hält`;
         return (
-          <motion.div key={e.code} className={`panel cq-event ${involved(e) ? 'mine' : ''}`} {...rise(i)}>
+          <Rise key={e.code} i={i} className={`panel cq-event ${involved(e) ? 'mine' : ''}`}>
             <span className="mini-shield" style={{ ['--c' as any]: colorOf(e.after) }}>{e.code}</span>
             <span>
               <b>{text}{won && myDept === e.after ? '!' : ''}</b>
@@ -301,7 +306,7 @@ function Report({ report, myDept }: { report: NonNullable<ConquestData['report']
                 ))}
               </small>
             </span>
-          </motion.div>
+          </Rise>
         );
       })}
     </Section>
@@ -322,10 +327,10 @@ function HowItWorks({ data }: { data: ConquestData }) {
   return (
     <Section title="So funktioniert die Weekend League" sub="Ein Spiel über das ganze Semester, entschieden durch eure ganz normalen Duelle.">
       {steps.map(([t, d], i) => (
-        <motion.div key={t} className="panel how-step" {...rise(i)}>
+        <Rise key={t} i={i} className="panel how-step">
           <span className="rk num">{i + 1}</span>
           <span><b>{t}</b><small>{d}</small></span>
-        </motion.div>
+        </Rise>
       ))}
     </Section>
   );

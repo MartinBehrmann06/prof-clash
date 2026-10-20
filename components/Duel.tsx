@@ -76,7 +76,7 @@ export function Duel({ source, onVoted, onEmpty }: { source: DuelSource; onVoted
     return () => removeEventListener('keydown', onKey);
   }, [choose, skip]);
 
-  if (loading) return <div className="loading"><span className="spin" />Duell wird vorbereitet</div>;
+  if (loading) return <div className="loading duel-wait"><span className="spin" />Duell wird vorbereitet</div>;
   if (!pair) return null;
 
   const phase = (side: 'left' | 'right'): Phase => (!choice ? 'idle' : choice === side ? 'chosen' : 'other');

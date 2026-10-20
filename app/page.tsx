@@ -112,7 +112,7 @@ function Sample({ id, side }: { id: number; side: -1 | 1 }) {
     <div className="mini-card" style={{ rotate: `${side * 4}deg` }}>
       <div className="frame">
         <AnimatePresence initial={false} mode="popLayout">
-          <motion.div key={id} style={{ position: 'absolute', inset: 0 }}
+          <motion.div key={id} style={{ position: 'absolute', inset: 0, willChange: 'transform' }}
             initial={{ x: `${side * 100}%` }} animate={{ x: 0 }} exit={{ x: `${-side * 100}%` }} transition={{ type: 'spring', bounce: 0, visualDuration: 0.5 }}>
             <Figure id={id} name="" department={d.name} />
           </motion.div>
