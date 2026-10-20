@@ -50,14 +50,16 @@ export function CloudTransition({ children }: { children: React.ReactNode }) {
       <div className="wipe" aria-hidden={!closed}>
         {(['l', 'r'] as const).map((side) => (
           <motion.div key={side} className={`bank ${side}`} initial={false}
-            animate={{ x: closed ? '0%' : side === 'l' ? '-115%' : '115%' }}
+            // `transform`, not `x`: Motion hands it to the compositor, so the clouds keep moving smoothly
+            // while the next page is being built on the main thread behind them
+            animate={{ transform: `translateX(${closed ? '0%' : side === 'l' ? '-115%' : '115%'})` }}
             transition={{ type: 'spring', bounce: 0, visualDuration: closed ? 0.4 : 0.5 }}>
             {PUFFS.map(([x, y, s], i) => (
               <span key={i} className="puff" style={{ left: `${side === 'l' ? x : 100 - x}%`, top: `${y}%`, width: `${s}vmax`, height: `${s}vmax`, translate: '-50% -50%' }} />
             ))}
           </motion.div>
         ))}
-        {closed && label && <motion.div className="label" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', bounce: 0.45, visualDuration: 0.3, delay: 0.25 }}>{label}</motion.div>}
+        {closed && label && <motion.div className="label" initial={{ transform: 'scale(0.6)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} transition={{ type: 'spring', bounce: 0.45, visualDuration: 0.3, delay: 0.25 }}>{label}</motion.div>}
       </div>
     </Ctx.Provider>
   );
