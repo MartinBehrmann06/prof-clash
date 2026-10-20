@@ -91,7 +91,7 @@ export default function TitlePage() {
             </motion.button>
             <motion.div className="ln" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ ...MOTION.soft, delay: 0.95 }}>
               <GameLink className="btn blue" href="/rankings" label="Rankings"><Icon name="trophy" /> Rankings</GameLink>
-              <GameLink className="btn red" href="/departments" label="Clans"><Icon name="shield" /> Clans</GameLink>
+              <GameLink className="btn red" href="/departments" label="Weekend League"><Icon name="shield" /> Weekend League</GameLink>
             </motion.div>
           </div>
         </div>
