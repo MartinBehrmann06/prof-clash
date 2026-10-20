@@ -1,7 +1,7 @@
 import 'server-only';
 import { pool } from './db';
 
-// Schema v7 (Weekend League map), the same statements as in supabase/schema.sql. Applied by the app itself
+// Schema v7 (Weekend League map) and v8, the same statements as in supabase/schema.sql. Applied by the app itself
 // on first use, so a deploy works without running SQL by hand. Every statement is idempotent.
 const CONQUEST_SCHEMA = `
 create table if not exists conquest_orders (
@@ -16,13 +16,32 @@ create table if not exists conquest_orders (
 create index if not exists idx_conquest_week on conquest_orders (week, dept_id);
 alter table conquest_orders enable row level security;`;
 
-let ready: Promise<void> | null = null;
+// Schema v8 (a new round every semester): votes remember their term, one vote per pair per student per term.
+// Older votes get the term they were cast in (Zurich time, same rule as currentTerm in lib/terms.ts).
+const VOTE_TERM_SCHEMA = `
+alter table votes add column if not exists term text;
+update votes set term = case
+  when extract(month from created_at at time zone 'Europe/Zurich') >= 8 then extract(year from created_at at time zone 'Europe/Zurich')::int || 'W'
+  when extract(month from created_at at time zone 'Europe/Zurich') = 1 then (extract(year from created_at at time zone 'Europe/Zurich')::int - 1) || 'W'
+  else extract(year from created_at at time zone 'Europe/Zurich')::int || 'S' end
+where term is null;
+alter table votes alter column term set not null;
+create unique index if not exists votes_user_pair_term on votes (user_id, pair, term);
+alter table votes drop constraint if exists votes_user_id_pair_key;`;
 
-/** Make sure the conquest_orders table exists (once per server instance) */
-export function ensureConquestSchema() {
-  ready ??= (async () => {
-    // two instances starting together can race on CREATE TABLE IF NOT EXISTS; the second try then sees the table
-    try { await pool.query(CONQUEST_SCHEMA); } catch { await pool.query(CONQUEST_SCHEMA); }
-  })().catch((e) => { ready = null; throw e; });
-  return ready;
+/** Run idempotent schema SQL once per server instance */
+function once(sql: string) {
+  let ready: Promise<void> | null = null;
+  return () => {
+    ready ??= (async () => {
+      // two instances starting together can race on the DDL; the second try then sees it done
+      try { await pool.query(sql); } catch { await pool.query(sql); }
+    })().catch((e) => { ready = null; throw e; });
+    return ready;
+  };
 }
+
+/** Make sure the conquest_orders table exists */
+export const ensureConquestSchema = once(CONQUEST_SCHEMA);
+/** Make sure votes carry their term */
+export const ensureVoteTerms = once(VOTE_TERM_SCHEMA);

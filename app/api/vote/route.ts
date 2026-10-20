@@ -3,6 +3,7 @@ import { requireUser } from '@/lib/server/auth';
 import { tx } from '@/lib/server/db';
 import { requireProfile } from '@/lib/server/queries';
 import { pairKey } from '@/lib/server/pairs';
+import { currentTerm } from '@/lib/terms';
 import { eloUpdate, league, levelFor } from '@/lib/game';
 import type { VoteResult } from '@/lib/types';
 
@@ -24,7 +25,7 @@ export const POST = handler(async (req): Promise<VoteResult> => {
       // consume the served matchup atomically (prevents double submits)
       const took = await db.query('UPDATE profiles SET pending_pair = NULL, xp = xp + 10 WHERE user_id = $1 AND pending_pair = $2 RETURNING xp', [v.user_id, pair]);
       if (!took.rowCount) throw new HttpError(409, 'this matchup expired — grab a new one');
-      await db.query('INSERT INTO votes (user_id, dept_id, winner, loser, pair) VALUES ($1, $2, $3, $4, $5)', [v.user_id, v.dept_id, w, l, pair]);
+      await db.query('INSERT INTO votes (user_id, dept_id, winner, loser, pair, term) VALUES ($1, $2, $3, $4, $5, $6)', [v.user_id, v.dept_id, w, l, pair, currentTerm()]);
 
       // global ladder — lock both rows in id order to avoid deadlocks
       const g = await db.query('SELECT id, elo FROM professors WHERE id = ANY($1) AND NOT hidden ORDER BY id FOR UPDATE', [[w, l]]);

@@ -102,7 +102,7 @@ create table if not exists votes (
   dept_id integer not null,
   winner integer not null references professors(id),
   loser integer not null references professors(id),
-  pair text not null,                     -- "minId-maxId": one vote per pair per student
+  pair text not null,                     -- "minId-maxId": one vote per pair per student (per term since v8)
   created_at timestamptz not null default now(),
   unique (user_id, pair)
 );
@@ -225,3 +225,18 @@ create table if not exists conquest_orders (
 create index if not exists idx_conquest_week on conquest_orders (week, dept_id);
 alter table conquest_orders enable row level security;
 drop table if exists tip_matches;
+
+-- ---------------------------------------------------------------
+-- v8: a new round every semester. Votes remember the term they were cast
+-- in (VVZ semkez, Zurich time), and a student can judge each pair once per
+-- term instead of once ever.
+-- ---------------------------------------------------------------
+alter table votes add column if not exists term text;
+update votes set term = case
+  when extract(month from created_at at time zone 'Europe/Zurich') >= 8 then extract(year from created_at at time zone 'Europe/Zurich')::int || 'W'
+  when extract(month from created_at at time zone 'Europe/Zurich') = 1 then (extract(year from created_at at time zone 'Europe/Zurich')::int - 1) || 'W'
+  else extract(year from created_at at time zone 'Europe/Zurich')::int || 'S' end
+where term is null;
+alter table votes alter column term set not null;
+create unique index if not exists votes_user_pair_term on votes (user_id, pair, term);
+alter table votes drop constraint if exists votes_user_id_pair_key;

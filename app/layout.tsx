@@ -11,9 +11,13 @@ import './globals.css';
 const display = Lilita_One({ weight: '400', subsets: ['latin'], variable: '--font-display' });
 const body = Nunito({ weight: ['500', '600', '700', '800'], subsets: ['latin'], variable: '--font-body' });
 
+const description = 'Wessen Vorlesung würdest du lieber besuchen? 1-gegen-1-Duelle zwischen Professoren der ETH Zürich. Unabhängiges Studierendenprojekt.';
+
 export const metadata: Metadata = {
   title: 'Prof Clash',
-  description: 'Wessen Vorlesung würdest du lieber besuchen? 1-gegen-1-Duelle zwischen Professoren der ETH Zürich. Unabhängiges Studierendenprojekt.',
+  description,
+  openGraph: { title: 'Prof Clash', description, siteName: 'Prof Clash', locale: 'de_CH', type: 'website' },
+  twitter: { card: 'summary_large_image' },
   icons: { icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><clipPath id='c'><rect width='40' height='40' rx='12'/></clipPath><g clip-path='url(%23c)'><rect width='40' height='40' fill='%233d6bff'/><path d='M25 0H40V40H13Z' fill='%23ff5a4a'/><path d='M23 -2L27 -2L15 42L11 42Z' fill='white'/></g></svg>" },
 };
 

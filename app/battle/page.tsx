@@ -7,6 +7,8 @@ import { liveSource, practiceSource } from '@/lib/client/sources';
 import { MOTION } from '@/lib/client/motion';
 import { Duel } from '@/components/Duel';
 import { Icon } from '@/components/art';
+import { ShareButton } from '@/components/Share';
+import { currentTerm, shiftTerm, termLabel } from '@/lib/terms';
 
 export default function BattlePage() {
   const { ready, user, profile, setProfile } = useSession();
@@ -28,10 +30,15 @@ export default function BattlePage() {
       </motion.header>
 
       {empty ? (
-        <div className="panel cta-card" style={{ marginTop: 40 }}>
-          <p><b>Alle Duelle entschieden!</b> Du hast jede Paarung deiner Professorenliste gewertet.</p>
-          <GameLink className="btn sm gold" href="/rankings">Zu den Rankings</GameLink>
-        </div>
+        <motion.div className="panel done-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={MOTION.soft}>
+          <h2>Runde geschafft!</h2>
+          <p>Du hast alle Duelle für dieses Semester entschieden. Im {termLabel(shiftTerm(currentTerm(), 1))} startet eine neue Runde.</p>
+          <div className="actions">
+            <GameLink className="btn sm gold" href="/departments">Weekend League</GameLink>
+            <GameLink className="btn sm blue" href="/rankings">Rankings</GameLink>
+          </div>
+          <ShareButton className="link-quiet share" path="/" text="Wessen Vorlesung würdest du lieber besuchen? Stimm ab auf Prof Clash." label="Prof Clash teilen" />
+        </motion.div>
       ) : (
         <Duel key={live ? 'live' : 'practice'} source={source} onVoted={live ? onVoted : undefined} onEmpty={onEmpty} />
       )}

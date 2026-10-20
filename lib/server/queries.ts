@@ -2,8 +2,9 @@ import 'server-only';
 import { all, one } from './db';
 import { HttpError } from './http';
 import type { AuthUser } from './auth';
-import { league, levelFor } from '@/lib/game';
-import { termOfSemester } from '@/lib/terms';
+import { league, levelFor, MIN_DUELS } from '@/lib/game';
+import { currentTerm, termOfSemester } from '@/lib/terms';
+import { ensureVoteTerms } from './migrate';
 import type { Prof, Profile, Roster, RosterGroup } from '@/lib/types';
 
 type ProfRow = {
@@ -19,6 +20,18 @@ export function toProf(p: ProfRow): Prof {
   };
 }
 
+/** Global rank, or null until the professor has MIN_DUELS counted duels */
+export async function profRank(p: { elo: number; wins: number; losses: number }) {
+  if (p.wins + p.losses < MIN_DUELS) return null;
+  return (await one<{ r: number }>('SELECT COUNT(*)::int + 1 AS r FROM professors WHERE NOT hidden AND wins + losses >= $2 AND elo > $1', [p.elo, MIN_DUELS]))!.r;
+}
+
+/** A listed professor with their global rank (for share pages and link previews) */
+export async function profCard(id: number) {
+  const p = Number.isInteger(id) ? await one<ProfRow>('SELECT * FROM professors WHERE id = $1 AND NOT hidden', [id]) : undefined;
+  return p ? { ...toProf(p), rank: await profRank(p) } : null;
+}
+
 // ---------------- profiles ----------------
 
 export type ProfileRow = {
@@ -27,9 +40,11 @@ export type ProfileRow = {
 };
 
 /** The player behind a login. Looked up by ETH username, so @ethz.ch and @student.ethz.ch share one profile. */
-export const getProfile = (user: AuthUser) =>
-  one<ProfileRow>(`SELECT v.*, p.dept_id, p.name AS program_name, d.name AS dept_name FROM profiles v
+export async function getProfile(user: AuthUser) {
+  await ensureVoteTerms();
+  return one<ProfileRow>(`SELECT v.*, p.dept_id, p.name AS program_name, d.name AS dept_name FROM profiles v
     JOIN programs p ON p.id = v.program_id JOIN departments d ON d.id = p.dept_id WHERE v.eth_user = $1`, [user.ethUser]);
+}
 
 export async function requireProfile(user: AuthUser) {
   const v = await getProfile(user);
@@ -38,7 +53,8 @@ export async function requireProfile(user: AuthUser) {
 }
 
 export async function profileSummary(v: ProfileRow): Promise<Profile> {
-  const { n } = (await one<{ n: number }>('SELECT COUNT(*)::int AS n FROM votes WHERE user_id = $1', [v.user_id]))!;
+  // a new round starts every semester: only this term's votes count towards it
+  const { n } = (await one<{ n: number }>('SELECT COUNT(*)::int AS n FROM votes WHERE user_id = $1 AND term = $2', [v.user_id, currentTerm()]))!;
   const k = v.profs.length;
   return {
     email: v.email, programId: v.program_id, programName: v.program_name, deptId: v.dept_id, deptName: v.dept_name,
