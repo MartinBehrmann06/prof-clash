@@ -77,3 +77,11 @@ export type ProfDetail = Prof & {
   courses: (CourseRef & { program: string })[];
   depts: { name: string; elo: number; wins: number; losses: number; league: LeagueKey }[];
 };
+
+/** The signed-in student's own picks, against the crowd (global Elo) */
+export type MyStats = {
+  votes: number; // all terms
+  agree: number | null; // share of picks where the crowd agrees (winner has more trophies now); null below a few votes
+  favourites: (Prof & { wins: number; duels: number })[]; // most picked, up to three
+  rebel: { winner: Prof; loser: Prof; gap: number } | null; // the pick most against the crowd
+};

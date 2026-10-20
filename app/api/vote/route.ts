@@ -7,7 +7,8 @@ import { currentTerm } from '@/lib/terms';
 import { eloUpdate, league, levelFor } from '@/lib/game';
 import type { VoteResult } from '@/lib/types';
 
-const lastVote = new Map<string, number>();
+/** Minimum time between two votes of one student */
+const MIN_GAP_MS = 500;
 
 export const POST = handler(async (req): Promise<VoteResult> => {
   const v = await requireProfile(await requireUser(req));
@@ -16,15 +17,19 @@ export const POST = handler(async (req): Promise<VoteResult> => {
   const pair = pairKey(w, l);
   if (v.pending_pair !== pair) throw new HttpError(409, 'this matchup expired — grab a new one');
   if (!v.profs.includes(w) || !v.profs.includes(l)) throw new HttpError(403, 'you can only rate professors you had');
-  const now = Date.now();
-  if (now - (lastVote.get(v.user_id) || 0) < 500) throw new HttpError(429, 'easy there, chief — slow down');
-  lastVote.set(v.user_id, now);
 
   try {
     return await tx(async (db) => {
       // consume the served matchup atomically (prevents double submits)
-      const took = await db.query('UPDATE profiles SET pending_pair = NULL, xp = xp + 10 WHERE user_id = $1 AND pending_pair = $2 RETURNING xp', [v.user_id, pair]);
-      if (!took.rowCount) throw new HttpError(409, 'this matchup expired — grab a new one');
+      // and enforce the speed limit in the database, so it holds across serverless instances
+      const took = await db.query(`UPDATE profiles SET pending_pair = NULL, xp = xp + 10, last_vote_at = now()
+        WHERE user_id = $1 AND pending_pair = $2 AND (last_vote_at IS NULL OR last_vote_at < now() - make_interval(secs => $3))
+        RETURNING xp`, [v.user_id, pair, MIN_GAP_MS / 1000]);
+      if (!took.rowCount) {
+        const r = await db.query('SELECT pending_pair = $2 AS same FROM profiles WHERE user_id = $1', [v.user_id, pair]);
+        if (r.rows[0]?.same) throw new HttpError(429, 'easy there, chief — slow down');
+        throw new HttpError(409, 'this matchup expired — grab a new one');
+      }
       await db.query('INSERT INTO votes (user_id, dept_id, winner, loser, pair, term) VALUES ($1, $2, $3, $4, $5, $6)', [v.user_id, v.dept_id, w, l, pair, currentTerm()]);
 
       // global ladder — lock both rows in id order to avoid deadlocks

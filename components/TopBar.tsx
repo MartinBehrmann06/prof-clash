@@ -57,7 +57,7 @@ export function TopBar() {
       <div className="me">
         {!user ? <GameLink className="btn sm gold" href="/login">Login</GameLink> : <>
           {profile && (
-            <GameLink href="/setup" className="me-link" title="Dein Fortschritt">
+            <GameLink href="/me" className="me-link" title="Dein Profil">
               <XpStar level={profile.level} />
               <span className="xp-bar" aria-label="XP"><i style={{ width: `${Math.round(levelProgress(profile.xp) * 100)}%` }} /></span>
             </GameLink>

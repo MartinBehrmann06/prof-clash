@@ -45,12 +45,12 @@ export default function DatenschutzPage() {
         <ul>
           <li><b>Supabase</b>: Datenbank und Login; Server in der EU (Irland).</li>
           <li><b>Brevo</b> (Sendinblue SAS, Frankreich): Versand der Bestätigungs- und Login-Codes per E-Mail.</li>
-          <li><b>Vercel</b> (USA): Hosting der Website. Beim Aufruf werden technisch nötige Verbindungsdaten wie die IP-Adresse kurz verarbeitet. Die Übermittlung in die USA stützt sich auf das Swiss-U.S. Data Privacy Framework bzw. Standardvertragsklauseln.</li>
+          <li><b>Vercel</b> (USA): Hosting der Website. Beim Aufruf werden technisch nötige Verbindungsdaten wie die IP-Adresse kurz verarbeitet. Die Übermittlung in die USA stützt sich auf das Swiss-U.S. Data Privacy Framework bzw. Standardvertragsklauseln. Ausserdem zählt Vercel Web Analytics anonym, welche Seiten aufgerufen werden (Seite, Herkunftsseite, Land, Gerätetyp), ohne Cookies und ohne dich über mehrere Tage wiederzuerkennen, und Vercel Speed Insights misst ebenso anonym, wie schnell die Seiten laden.</li>
           <li><b>Cloudflare</b>: Verwaltung der Domain (DNS).</li>
         </ul>
 
         <h2>Cookies und Browser-Speicher</h2>
-        <p>Wir verwenden keine Tracking- oder Werbe-Cookies und keine Analyse-Tools. Im Browser-Speicher liegen nur die Login-Sitzung (falls angemeldet) und der Trainingszähler.</p>
+        <p>Wir verwenden keine Tracking- oder Werbe-Cookies. Besuchsstatistik und Ladezeit-Messung von Vercel (siehe oben) kommen ohne Cookies aus. Im Browser-Speicher liegen nur die Login-Sitzung (falls angemeldet) und der Trainingszähler.</p>
 
         <h2>Wie lange</h2>
         <p>

@@ -546,3 +546,17 @@ h3 { --sw: 4px; --sh: 2px; }
   .cq-stat b { font-size: 22px; -webkit-text-stroke-width: 5px; }
   .cq-stat small:last-child { display: none; }
 }
+
+/* ---------- your profile (/me) ---------- */
+.me-page .panel { max-width: 620px; margin: 0 auto; }
+.me-page .fav { display: flex; align-items: center; gap: 12px; width: 100%; padding: 6px 10px; border: 0; border-radius: 10px; background: none; font: inherit; font-size: 15px; color: inherit; text-align: left; cursor: pointer; }
+.me-page .fav:nth-of-type(even) { background: rgba(170, 125, 55, .12); }
+.me-page .fav:hover { background: rgba(170, 125, 55, .22); }
+.me-page .fav .place { width: 18px; font: 400 18px var(--display); text-align: center; }
+.me-page .fav .fig { width: 40px; height: 48px; flex: none; }
+.me-page .fav .fig svg { width: 100%; height: 100%; }
+.me-page .fav .who { flex: 1; min-width: 0; }
+.me-page .fav small { color: var(--ink-2); font-size: 12px; text-align: right; }
+.me-page .rebel { margin: 0; padding: 0 10px; font-size: 14px; }
+.me-empty { margin: 18px 0 0; text-align: center; color: var(--ink-2); }
+.me-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 20px 0 0; }
