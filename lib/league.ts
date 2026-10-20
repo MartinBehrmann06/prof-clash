@@ -6,9 +6,11 @@
 //   has one opponent, and over one season (DEPARTMENTS.length - 1 weekends) it meets everyone once.
 // - Each member's first CAP duels of the weekend count for their department. The department's
 //   score is counted duels per member, so size doesn't win and one grinder can't carry a clan.
+// - Each won tip duel against the weekend opponent adds TIP_POINTS counted duels (see lib/tip.ts).
 // - Win 3 points, draw 1, loss 0. A match where neither side played a single duel gives nobody points.
 
 import { DEPARTMENTS } from './departments';
+import { TIP_POINTS } from './tip';
 
 /** Duels per member per weekend that count for the department, like FIFA's limited weekend matches */
 export const CAP = 10;
@@ -47,15 +49,21 @@ export function pairings(week: number): [number, number][] {
   return out;
 }
 
-export type Side = { id: number; counted: number; active: number; members: number; score: number };
+/** The other clan a department plays in league week `week` */
+export const opponentOf = (id: number, week: number) => {
+  const m = pairings(week).find(([a, b]) => a === id || b === id);
+  return m ? (m[0] === id ? m[1] : m[0]) : null;
+};
+
+export type Side = { id: number; counted: number; tips: number; active: number; members: number; score: number };
 export type Match = { a: Side; b: Side; result: 'a' | 'b' | 'draw' | 'none' };
 
 /** Score of one department in one weekend */
-export const side = (id: number, counted = 0, active = 0, members = 0): Side =>
-  ({ id, counted, active, members, score: members ? Math.round((counted / members) * 100) / 100 : 0 });
+export const side = (id: number, counted = 0, tips = 0, active = 0, members = 0): Side =>
+  ({ id, counted, tips, active, members, score: members ? Math.round(((counted + TIP_POINTS * tips) / members) * 100) / 100 : 0 });
 
 export function decide(a: Side, b: Side): Match['result'] {
-  if (!a.counted && !b.counted) return 'none';
+  if (!a.counted && !b.counted && !a.tips && !b.tips) return 'none';
   return a.score > b.score ? 'a' : b.score > a.score ? 'b' : 'draw';
 }
 
@@ -80,6 +88,7 @@ export type LeagueData = LeagueClock & {
   matches: Match[];
   last: { round: number; friday: string; matches: Match[] } | null;
   table: TableRow[];
-  /** the logged-in student's counted duels this weekend */
-  me: { deptId: number; counted: number } | null;
+  /** the logged-in student's counted duels and tip-duel wins this weekend */
+  me: { deptId: number; counted: number; tips: number } | null;
+  tipPoints: number; tipCap: number;
 };

@@ -482,3 +482,18 @@ h3 { --sw: 4px; --sh: 2px; }
 /* small art gets the same ink outline as everything else */
 .trophy-icon, .league-badge, .xp-star svg, .logo-mark, .crest, .title-bg .flag { filter: drop-shadow(1.4px 0 0 var(--ink)) drop-shadow(-1.4px 0 0 var(--ink)) drop-shadow(0 1.4px 0 var(--ink)) drop-shadow(0 -1.4px 0 var(--ink)); }
 .crest, .title-bg .flag { filter: drop-shadow(2.5px 0 0 var(--ink)) drop-shadow(-2.5px 0 0 var(--ink)) drop-shadow(0 2.5px 0 var(--ink)) drop-shadow(0 -2.5px 0 var(--ink)) drop-shadow(0 4px 0 var(--ink)); }
+
+/* ---------------- TIP DUEL ---------------- */
+.tip-intro { max-width: 720px; margin: 34px auto 0; display: grid; gap: 16px; justify-items: center; }
+.tip-intro ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.tip-intro b { color: var(--ink); }
+.tip-error { margin: 0; font-weight: 800; color: var(--red-2); text-align: center; }
+.tip-result { max-width: 560px; margin: 34px auto 0; display: grid; gap: 12px; justify-items: center; text-align: center; }
+.tip-result p { margin: 0; color: var(--ink-2); }
+.tip-score { font: 400 clamp(56px, 10vw, 84px)/1 var(--display); color: #fff; -webkit-text-stroke: 8px var(--ink); paint-order: stroke fill; text-shadow: 0 4px 0 var(--ink); }
+.tip-score small { font-size: .45em; }
+.tip-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.tip-ok, .tip-no { padding: 4px 12px; border: 2.5px solid var(--ink); border-radius: 999px; color: var(--ink); text-shadow: none; }
+.tip-ok { background: var(--green-1); }
+.tip-no { background: var(--red-1); }
+.how-cta { display: flex; justify-content: center; margin-top: 18px; }

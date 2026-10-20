@@ -6,6 +6,7 @@ import { MOTION } from '@/lib/client/motion';
 import { deptById, type DeptStyle } from '@/lib/departments';
 import type { DeptStats } from '@/app/api/departments/route';
 import { Icon } from '@/components/art';
+import { GameLink } from '@/components/CloudTransition';
 import type { LeagueData, Match, Side } from '@/lib/league';
 
 const fmtDay = (iso: string, plus = 0) =>
@@ -151,8 +152,9 @@ function WeekendLeague({ lg, myDept }: { lg: LeagueData; myDept?: number }) {
     <>
       {lg.me && live && (
         <p className="note" style={{ textAlign: 'center' }}>
-          Deine Wochenend-Duelle: <b className="num">{lg.me.counted}/{lg.cap}</b> zählen für D-{deptById(lg.me.deptId).code}.
-          {lg.me.counted < lg.cap ? ' Ab in die Arena!' : ' Voll ausgeschöpft, stark!'}
+          Deine Wochenend-Duelle: <b className="num">{lg.me.counted}/{lg.cap}</b> zählen für D-{deptById(lg.me.deptId).code},
+          dazu <b className="num">{lg.me.tips}/{lg.tipCap}</b> Tipp-Duell-Siege.
+          {lg.me.counted < lg.cap || lg.me.tips < lg.tipCap ? ' Ab in die Arena!' : ' Voll ausgeschöpft, stark!'}
         </p>
       )}
 
@@ -228,7 +230,8 @@ function HowItWorks({ lg }: { lg: LeagueData }) {
     ['Paarung', 'Jedes Wochenende bekommt jeder Clan einen Gegner, zum Beispiel D-INFK gegen D-ITET. Der Spielplan steht fest und ist unten schon sichtbar.'],
     ['Spielen', 'Du musst nichts Besonderes tun: Spiel einfach normale Duelle. Von Freitag 18:00 bis Sonntag 24:00 zählt jedes Duell auch für deinen Clan.'],
     ['Limit', `Pro Person zählen nur die ersten ${lg.cap} Duelle des Wochenendes. So kann niemand allein gewinnen, es kommt darauf an, dass viele mitmachen.`],
-    ['Wertung', 'Gezählte Duelle geteilt durch die Mitglieder des Clans. Beispiel: 6 Mitglieder mit zusammen 30 Duellen ergeben 5.0, 3 Mitglieder mit 12 Duellen ergeben 4.0.'],
+    ['Tipp-Duell', `Zusätzlich kannst du im Tipp-Duell gegen jemanden aus dem Gegner-Clan raten, wen die Mehrheit gewählt hat. Ihr müsst nicht gleichzeitig online sein. Jeder Sieg zählt wie ${lg.tipPoints} Duelle, höchstens ${lg.tipCap} Siege pro Person.`],
+    ['Wertung', `Gezählte Duelle (plus ${lg.tipPoints} pro Tipp-Sieg) geteilt durch die Mitglieder des Clans. Beispiel: 6 Mitglieder mit zusammen 30 Duellen ergeben 5.0, 3 Mitglieder mit 12 Duellen ergeben 4.0.`],
     ['Punkte', `Höhere Wertung gewinnt: Sieg 3 Punkte, Unentschieden 1, Niederlage 0. In ${lg.rounds} Wochenenden trifft jeder Clan einmal auf jeden anderen, die Saisontabelle zeigt den Stand.`],
   ];
   return (
@@ -246,6 +249,7 @@ function HowItWorks({ lg }: { lg: LeagueData }) {
           </motion.div>
         ))}
       </div>
+      <div className="how-cta"><GameLink className="btn gold" href="/tip"><Icon name="target" size={18} /> Tipp-Duell starten</GameLink></div>
     </section>
   );
 }
