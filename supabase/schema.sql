@@ -206,3 +206,22 @@ create index if not exists idx_tip_a on tip_matches (user_a);
 create index if not exists idx_tip_b on tip_matches (user_b);
 create index if not exists idx_tip_week on tip_matches (week) where done_b is not null;
 alter table tip_matches enable row level security;
+
+-- ---------------------------------------------------------------
+-- v7: the Weekend League becomes a map game, the tip duels are removed.
+-- Players send the troops they earn by playing duels to buildings on a
+-- map of ETH; battles are fought every Sunday at 24:00. Ownership is not
+-- stored, it is replayed from the orders of every finished week.
+-- ---------------------------------------------------------------
+create table if not exists conquest_orders (
+  user_id uuid not null references profiles(user_id) on delete cascade,
+  week integer not null,                  -- league week (Monday to Sunday, Zurich time)
+  building text not null,                 -- building code, see lib/conquest.ts
+  dept_id integer not null,               -- the player's department when the order was placed
+  troops integer not null check (troops > 0),
+  updated_at timestamptz not null default now(),
+  primary key (user_id, week, building)
+);
+create index if not exists idx_conquest_week on conquest_orders (week, dept_id);
+alter table conquest_orders enable row level security;
+drop table if exists tip_matches;
