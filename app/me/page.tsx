@@ -17,7 +17,7 @@ export default function MePage() {
 
   useEffect(() => {
     if (!ready) return;
-    if (!user) router.replace('/login?next=setup');
+    if (!user) router.replace('/login?next=me');
     else if (!profile) router.replace('/setup');
   }, [ready, user, profile, router]);
   useEffect(() => { if (profile) api<MyStats>('/api/me/stats').then(setStats).catch(() => {}); }, [profile]);

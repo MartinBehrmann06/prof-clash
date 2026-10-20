@@ -15,6 +15,8 @@ export default function LoginPage() {
 const RESEND_AFTER = 90; // ETH mail filtering can take a minute or two
 const LEN = 6;
 const MIN_PW = 8;
+/** pages a ?next= may lead back to; anything else (like //other.site) is ignored */
+const NEXT = ['setup', 'me', 'battle', 'rankings', 'departments'];
 
 type Step = 'login' | 'signup' | 'code' | 'newpw';
 /** why a code was mailed: confirming a new account, or a forgotten / never-set password */
@@ -39,7 +41,8 @@ function Login() {
   const [scope, animate] = useAnimate();
   // a reset code signs the user in before they pick a new password, so hold the redirect until then
   const holdRedirect = useRef(false);
-  const leave = () => router.replace(next ? `/${next}` : profile ? '/battle' : '/setup');
+  // a returning player with a deck goes to the battle, not back through setup
+  const leave = () => router.replace(next && NEXT.includes(next) && !(next === 'setup' && profile) ? `/${next}` : profile ? '/battle' : '/setup');
 
   useEffect(() => { if (user && !holdRedirect.current) leave(); }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -66,7 +69,6 @@ function Login() {
 
   function toCode(e: string, why: CodeFor) {
     setEmail(e); setCodeFor(why); setDigits(Array(LEN).fill('')); setCooldown(RESEND_AFTER); go('code');
-    setTimeout(() => boxes.current[0]?.focus(), 60);
   }
 
   async function logIn() {
@@ -127,7 +129,8 @@ function Login() {
     if (error) {
       holdRedirect.current = false;
       fail(/expired|invalid/i.test(error.message) ? 'Code falsch oder abgelaufen — neueste Mail verwenden oder neu senden.' : error.message);
-      setDigits(Array(LEN).fill('')); boxes.current[0]?.focus();
+      setDigits(Array(LEN).fill(''));
+      setTimeout(() => boxes.current[0]?.focus()); // once the boxes are enabled again
       return;
     }
     if (codeFor === 'reset') { setPassword(''); go('newpw'); return; }
@@ -214,7 +217,7 @@ function Login() {
                 <div className="otp">
                   {digits.map((d, i) => (
                     <input key={i} ref={(el) => { boxes.current[i] = el; }} className={d ? 'filled' : ''} inputMode="numeric" autoComplete={i === 0 ? 'one-time-code' : 'off'}
-                      aria-label={`Ziffer ${i + 1}`} value={d} maxLength={LEN} disabled={busy}
+                      aria-label={`Ziffer ${i + 1}`} autoFocus={i === 0} value={d} maxLength={LEN} disabled={busy}
                       onChange={(e) => setAt(i, e.target.value)}
                       onKeyDown={(e) => { if (e.key === 'Backspace' && !d && i > 0) boxes.current[i - 1]?.focus(); }}
                       onFocus={(e) => e.target.select()} />
