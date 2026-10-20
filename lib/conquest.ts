@@ -1,4 +1,4 @@
-// ETH Conquest: the departments fight over a map of ETH, all season long. Shared by server and client.
+// Weekend League (ETH Conquest): the departments fight over a map of ETH, all season long. Shared by server and client.
 //
 // - Every duel a student plays earns troops for their department: the first DAILY_CAP duels of each
 //   day count, and on Saturday and Sunday each one is worth WEEKEND_MULT troops. Coming back every
@@ -9,6 +9,7 @@
 //   if it beats the defence: the owner's troops x DEFENSE_BONUS, or NEUTRAL_GARRISON for a neutral one.
 //   Two attackers with the same top strength knock each other out. Headquarters can't be taken.
 // - A season lasts SEASON_WEEKS weeks; the department with the most buildings wins, then the map resets.
+//   On equal buildings, the department that sent more troops over the season ranks higher.
 //
 // Nothing is stored about ownership: it is replayed from the orders of every finished week.
 
@@ -82,6 +83,8 @@ export type BattleEvent = { code: string; before: number | null; after: number |
 export function replay(from: number, to: number, forces: Force[]) {
   const owners = new Map<string, number | null>(BUILDINGS.map((b) => [b.code, b.home ?? null]));
   const reports = new Map<number, BattleEvent[]>();
+  /** troops each department sent into battle over these weeks */
+  const sent = new Map<number, number>();
   for (let w = from; w < to; w++) {
     const here = new Map<string, Map<number, number>>();
     for (const f of forces) {
@@ -89,6 +92,7 @@ export function replay(from: number, to: number, forces: Force[]) {
       const m = here.get(f.code) ?? new Map<number, number>();
       m.set(f.dept, (m.get(f.dept) ?? 0) + f.troops);
       here.set(f.code, m);
+      sent.set(f.dept, (sent.get(f.dept) ?? 0) + f.troops);
     }
     const events: BattleEvent[] = [];
     for (const [code, m] of here) { // all battles of a week use the map as it was before them
@@ -102,14 +106,17 @@ export function replay(from: number, to: number, forces: Force[]) {
     for (const e of events) owners.set(e.code, e.after);
     reports.set(w, events);
   }
-  return { owners, reports };
+  return { owners, reports, sent };
 }
 
-/** Departments by buildings held */
-export function ranking(owners: Map<string, number | null>) {
+export type Standing = { dept: number; buildings: number; troops: number };
+
+/** Departments by buildings held, then by troops sent this season */
+export function ranking(owners: Map<string, number | null>, sent = new Map<number, number>()): Standing[] {
   const count = new Map(DEPARTMENTS.map((d) => [d.id, 0]));
   for (const o of owners.values()) if (o !== null && count.has(o)) count.set(o, count.get(o)! + 1);
-  return [...count].map(([dept, buildings]) => ({ dept, buildings })).sort((a, b) => b.buildings - a.buildings || a.dept - b.dept);
+  return [...count].map(([dept, buildings]) => ({ dept, buildings, troops: sent.get(dept) ?? 0 }))
+    .sort((a, b) => b.buildings - a.buildings || b.troops - a.troops || a.dept - b.dept);
 }
 
 export type ConquestBuilding = {
@@ -120,10 +127,10 @@ export type ConquestBuilding = {
 export type ConquestData = Clock & {
   seasonWeeks: number; battleAt: string;
   buildings: ConquestBuilding[];
-  ranking: { dept: number; buildings: number }[];
+  ranking: Standing[];
   report: { round: number; season: number; events: BattleEvent[] } | null;
   /** final standings of the season that just ended, shown during the first round of a new one */
-  lastSeason: { season: number; ranking: { dept: number; buildings: number }[] } | null;
+  lastSeason: { season: number; ranking: Standing[] } | null;
   me: { deptId: number; earned: number; sent: number; today: number; weekend: boolean } | null;
   rules: { dailyCap: number; weekendMult: number; garrison: number; defenseBonus: number };
 };

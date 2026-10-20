@@ -1,7 +1,7 @@
 import 'server-only';
 import { pool } from './db';
 
-// Schema v7 (ETH Conquest), the same statements as in supabase/schema.sql. Applied by the app itself
+// Schema v7 (Weekend League map), the same statements as in supabase/schema.sql. Applied by the app itself
 // on first use, so a deploy works without running SQL by hand. Every statement is idempotent.
 const CONQUEST_SCHEMA = `
 create table if not exists conquest_orders (

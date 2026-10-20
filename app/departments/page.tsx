@@ -50,7 +50,7 @@ export default function ClansPage() {
   return (
     <div className="page">
       <header className="head">
-        <h1><span className="title-badge" style={{ ['--tb' as any]: 'var(--red-2)' }}><Icon name="swords" /></span>ETH Conquest</h1>
+        <h1><span className="title-badge" style={{ ['--tb' as any]: 'var(--red-2)' }}><Icon name="swords" /></span>Weekend League</h1>
         <p>Jedes Department ist ein Clan und startet mit seinem Hauptgebäude. Spiel Duelle, sammle Truppen und erobere die ETH, Gebäude für Gebäude. Jeden Sonntag um 24:00 wird gekämpft.</p>
       </header>
 
@@ -92,7 +92,7 @@ export default function ClansPage() {
           <HowItWorks data={data} />
         </>
       )}
-      <p className="note">Unabhängiges Studierendenprojekt. ETH Conquest basiert nur auf der Aktivität eingeloggter Studierender, nicht auf der Stärke eines Departments.</p>
+      <p className="note">Unabhängiges Studierendenprojekt. Die Weekend League basiert nur auf der Aktivität eingeloggter Studierender, nicht auf der Stärke eines Departments.</p>
     </div>
   );
 }
@@ -249,7 +249,7 @@ const rise = (i: number) => ({
 
 function Ranking({ data, myDept }: { data: ConquestData; myDept?: number }) {
   return (
-    <Section title={`Rangliste · Saison ${data.season}`} sub={`Wer nach ${data.seasonWeeks} Wochen die meisten Gebäude hält, gewinnt die Saison.`}>
+    <Section title={`Rangliste · Saison ${data.season}`} sub={`Wer nach ${data.seasonWeeks} Wochen die meisten Gebäude hält, gewinnt die Saison. Bei Gleichstand zählen die eingesetzten Truppen.`}>
       {data.ranking.map((r, i) => {
         const d = deptById(r.dept);
         const mine = myDept === r.dept;
@@ -257,7 +257,7 @@ function Ranking({ data, myDept }: { data: ConquestData; myDept?: number }) {
           <motion.div key={r.dept} className={`panel clan-row ${mine ? 'mine' : ''}`} style={{ ['--c' as any]: d.color }} {...rise(i)}>
             <span className="rk num">{i + 1}</span>
             <span className="mini-shield">{d.code}</span>
-            <span><b title={d.name}>D-{d.code}</b><small className="one">{mine ? 'Dein Clan · ' : ''}{d.name}</small></span>
+            <span><b title={d.name}>D-{d.code}</b><small className="one">{mine ? 'Dein Clan · ' : ''}{r.troops ? `${r.troops} Truppen eingesetzt` : d.name}</small></span>
             <span className="v num">{r.buildings}<small>Gebäude</small></span>
           </motion.div>
         );
@@ -320,7 +320,7 @@ function HowItWorks({ data }: { data: ConquestData }) {
     ['Saison', `Nach ${data.seasonWeeks} Wochen gewinnt der Clan mit den meisten Gebäuden, dann startet die Karte neu. Je mehr Leute aus deinem Department mitspielen, desto stärker ist euer Clan.`],
   ];
   return (
-    <Section title="So funktioniert ETH Conquest" sub="Ein Spiel über das ganze Semester, entschieden durch eure ganz normalen Duelle.">
+    <Section title="So funktioniert die Weekend League" sub="Ein Spiel über das ganze Semester, entschieden durch eure ganz normalen Duelle.">
       {steps.map(([t, d], i) => (
         <motion.div key={t} className="panel how-step" {...rise(i)}>
           <span className="rk num">{i + 1}</span>

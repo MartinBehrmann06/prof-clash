@@ -58,9 +58,9 @@ export const GET = handler(async (req): Promise<ConquestData> => {
       code: b.code, owner: owners.get(b.code) ?? null, home: b.home ?? null,
       ...(v ? { ours: ours.get(b.code), mine: mine.get(b.code) } : {}),
     })),
-    ranking: ranking(owners),
+    ranking: newSeason ? ranking(owners) : ranking(owners, past.sent),
     report: events && { round: ((week - 1) % SEASON_WEEKS) + 1, season: Math.floor((week - 1) / SEASON_WEEKS) + 1, events },
-    lastSeason: newSeason ? { season: now.season - 1, ranking: ranking(past.owners) } : null,
+    lastSeason: newSeason ? { season: now.season - 1, ranking: ranking(past.owners, past.sent) } : null,
     me,
     rules: { dailyCap: DAILY_CAP, weekendMult: WEEKEND_MULT, garrison: NEUTRAL_GARRISON, defenseBonus: DEFENSE_BONUS },
   };

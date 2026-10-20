@@ -208,7 +208,7 @@ create index if not exists idx_tip_week on tip_matches (week) where done_b is no
 alter table tip_matches enable row level security;
 
 -- ---------------------------------------------------------------
--- v7: ETH Conquest replaces the weekend league and the tip duels.
+-- v7: the Weekend League becomes a map game, the tip duels are removed.
 -- Players send the troops they earn by playing duels to buildings on a
 -- map of ETH; battles are fought every Sunday at 24:00. Ownership is not
 -- stored, it is replayed from the orders of every finished week.
