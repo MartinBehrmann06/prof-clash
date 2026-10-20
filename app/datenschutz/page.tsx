@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { LEGAL_DATE, OPERATOR } from '@/lib/legal';
+import { LEGAL_DATE, OPERATOR, RETENTION_MONTHS } from '@/lib/legal';
+import { DeleteAccount } from '@/components/DeleteAccount';
 
 export const metadata: Metadata = { title: 'Datenschutz · Prof Clash' };
 
@@ -19,6 +20,7 @@ export default function DatenschutzPage() {
           <li><b>ETH-E-Mail-Adresse</b>: für die Anmeldung per 6-stelligem Code. Daraus leiten wir deinen ETH-Benutzernamen ab, damit name@ethz.ch und name@student.ethz.ch dasselbe Konto sind.</li>
           <li><b>Studiengang, Semester und Studienbeginn</b>: um die Dozierenden deiner Pflichtfächer aus den richtigen Semestern zu finden.</li>
           <li><b>Deine Auswahl an Dozierenden und deine Stimmen</b> (welche Paarung, wer gewählt wurde, wann, aus welchem Department) sowie deine Spielpunkte (XP).</li>
+          <li><b>Deine Befehle in der Weekend League</b>: welche Truppen du in welcher Woche zu welchem Gebäude schickst.</li>
         </ul>
         <p>
           Wozu: Login, Ermitteln der Wertung, Missbrauchsschutz (ein Konto pro Person, eine Stimme pro Paarung).
@@ -51,9 +53,11 @@ export default function DatenschutzPage() {
 
         <h2>Wie lange</h2>
         <p>
-          Dein Konto bleibt bestehen, bis du die Löschung verlangst. Dann löschen wir dein Konto, dein Profil und deine gespeicherten Stimmen.
+          Dein Konto bleibt bestehen, bis du es löschst oder es {RETENTION_MONTHS} Monate lang nicht benutzt wurde (kein Login, keine Stimme,
+          kein Befehl in der Weekend League). Dann löschen wir automatisch dein Konto, dein Profil, deine Stimmen und deine Befehle.
           Bereits berechnete Wertungen werden nicht rückwirkend neu berechnet, enthalten aber keinen Bezug mehr zu dir.
         </p>
+        <DeleteAccount />
 
         <h2>Deine Rechte</h2>
         <p>

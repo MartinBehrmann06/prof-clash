@@ -1,13 +1,14 @@
 import os, re, html, time, http.cookiejar, urllib.request, urllib.parse
 
 BASE = 'https://www.vvz.ethz.ch/Vorlesungsverzeichnis/'
-UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36'
+# say who we are instead of posing as a browser, so the VVZ admins can reach us
+UA = 'ProfClash-Scraper/1.0 (independent ETH student project' + (f'; {os.environ["VVZ_CONTACT"]}' if os.environ.get('VVZ_CONTACT') else '') + ')'
 _jar = http.cookiejar.CookieJar()
 _op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(_jar))
 _op.addheaders = [('User-Agent', UA)]
 _primed = False
 # seconds between requests; raise it if the VVZ starts refusing connections
-DELAY = float(os.environ.get('VVZ_DELAY', '0.4'))
+DELAY = float(os.environ.get('VVZ_DELAY', '1.0'))
 
 def _open(url):
     """GET with patient retries: VVZ refuses connections when hit too fast."""
