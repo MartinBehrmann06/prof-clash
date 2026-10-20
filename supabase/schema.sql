@@ -260,3 +260,21 @@ create table if not exists spent_pairs (
   primary key (user_hash, term, pair)
 );
 alter table spent_pairs enable row level security;
+
+-- ---------------------------------------------------------------
+-- v11: no signups with plus addresses (name+x@ethz.ch). The app already
+-- counts them as the same player; this keeps them from opening extra logins.
+-- Also applied by the app itself (lib/server/migrate.ts).
+-- ---------------------------------------------------------------
+create or replace function public.enforce_eth_signup()
+returns trigger language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_eth_email(new.email) then
+    raise exception 'Only ETH Zurich email addresses (@ethz.ch / @student.ethz.ch) can sign up';
+  end if;
+  -- name+x@ethz.ch reaches the same mailbox as name@ethz.ch: one account per person
+  if split_part(new.email, '@', 1) like '%+%' then
+    raise exception 'Use your plain ETH address, without +';
+  end if;
+  return new;
+end $$;

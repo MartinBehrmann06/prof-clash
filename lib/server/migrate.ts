@@ -43,6 +43,21 @@ create table if not exists spent_pairs (
 );
 alter table spent_pairs enable row level security;`;
 
+// Schema v11: the signup trigger also rejects plus addresses (name+x@ethz.ch).
+const SIGNUP_RULE_SCHEMA = `
+create or replace function public.enforce_eth_signup()
+returns trigger language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_eth_email(new.email) then
+    raise exception 'Only ETH Zurich email addresses (@ethz.ch / @student.ethz.ch) can sign up';
+  end if;
+  -- name+x@ethz.ch reaches the same mailbox as name@ethz.ch: one account per person
+  if split_part(new.email, '@', 1) like '%+%' then
+    raise exception 'Use your plain ETH address, without +';
+  end if;
+  return new;
+end $$;`;
+
 /** Run idempotent schema SQL once per server instance */
 function once(sql: string) {
   let ready: Promise<void> | null = null;
@@ -59,3 +74,7 @@ function once(sql: string) {
 export const ensureConquestSchema = once(CONQUEST_SCHEMA);
 /** Make sure votes carry their term (v8), profiles their last vote time (v9), and spent_pairs exists (v10) */
 export const ensureVoteTerms = once(VOTE_TERM_SCHEMA + VOTE_LIMIT_SCHEMA + SPENT_PAIRS_SCHEMA);
+
+/** Best effort, once per instance: a failure is logged and never blocks a request */
+let signupRule: Promise<void> | null = null;
+export const ensureSignupRule = () => (signupRule ??= pool.query(SIGNUP_RULE_SCHEMA).then(() => {}, (e) => console.error('signup rule migration failed', e)));

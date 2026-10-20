@@ -4,7 +4,7 @@ import { HttpError } from './http';
 import type { AuthUser } from './auth';
 import { league, levelFor, MIN_DUELS } from '@/lib/game';
 import { currentTerm, termOfSemester } from '@/lib/terms';
-import { ensureVoteTerms } from './migrate';
+import { ensureSignupRule, ensureVoteTerms } from './migrate';
 import { userHash } from './accounts';
 import type { Prof, Profile, Roster, RosterGroup } from '@/lib/types';
 
@@ -43,6 +43,7 @@ export type ProfileRow = {
 /** The player behind a login. Looked up by ETH username, so @ethz.ch and @student.ethz.ch share one profile. */
 export async function getProfile(user: AuthUser) {
   await ensureVoteTerms();
+  void ensureSignupRule();
   return one<ProfileRow>(`SELECT v.*, p.dept_id, p.name AS program_name, d.name AS dept_name FROM profiles v
     JOIN programs p ON p.id = v.program_id JOIN departments d ON d.id = p.dept_id WHERE v.eth_user = $1`, [user.ethUser]);
 }
