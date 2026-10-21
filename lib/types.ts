@@ -36,8 +36,6 @@ export type Profile = {
   semester: number;
   startTerm: string;
   profIds: number[];
-  xp: number;
-  level: number;
   votes: number;
   totalPairs: number;
 };
@@ -69,9 +67,6 @@ export type VoteResult = {
   deptDelta: number;
   winner: { id: number; elo: number; league: LeagueKey };
   loser: { id: number; elo: number; league: LeagueKey };
-  xp: number;
-  level: number;
-  levelUp: boolean;
 };
 
 /** rank is null until the professor has MIN_DUELS counted duels */
@@ -91,3 +86,10 @@ export type MyStats = {
   rebel: { winner: Prof; loser: Prof; gap: number } | null; // the pick most against the crowd
   ranking: (Prof & { wins: number; duels: number; rating: number })[]; // every professor you judged, by your own votes
 };
+
+/** A professor in the Tipp des Tages: no Elo or record, those would give the answer away */
+export type GuessProf = { id: number; name: string; department: string; field: string };
+export type GuessQuestion = { idx: number; left: GuessProf; right: GuessProf; picked: number | null; answer: number | null };
+/** troops: what a right guess is worth today */
+export type GuessDay = { perDay: number; troops: number; questions: GuessQuestion[] };
+export type GuessResult = { correct: boolean; answer: number; troops: number };

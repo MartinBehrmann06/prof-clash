@@ -5,14 +5,14 @@ import { motion } from 'motion/react';
 import { useSession } from '@/lib/client/session';
 import { useToast } from '@/lib/client/feedback';
 import { MOTION } from '@/lib/client/motion';
-import { ethUser, levelProgress } from '@/lib/game';
-import { Icon, LogoMark, XpStar } from './art';
+import { ethUser } from '@/lib/game';
+import { Icon, LogoMark } from './art';
 import { Avatar } from './Avatar';
 import { GameLink } from './CloudTransition';
 
 const NAV = [['/battle', 'Battle'], ['/rankings', 'Rankings'], ['/departments', 'Weekend League']] as const;
 
-/** Dark HUD bar: logo, nav with a sliding gold pill, player level */
+/** Dark HUD bar: logo, nav with a sliding gold pill, player */
 export function TopBar() {
   const path = usePathname();
   const { user, profile, signOut } = useSession();
@@ -62,15 +62,8 @@ export function TopBar() {
             <GameLink href="/me" className="me-link" title="Dein Profil und dein persönliches Ranking" label="Dein Profil">
               <span className="me-av">
                 <Avatar username={profile.username} department={profile.deptName} size={38} />
-                <XpStar level={profile.level} />
               </span>
-              <span className="me-text">
-                <b className="me-name">{profile.username}</b>
-                <span className="xp-bar" role="progressbar" aria-label={`Level ${profile.level}, Fortschritt zum nächsten Level`}
-                  aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(levelProgress(profile.xp) * 100)}>
-                  <i style={{ width: `${Math.round(levelProgress(profile.xp) * 100)}%` }} />
-                </span>
-              </span>
+              <span className="me-text"><b className="me-name">{profile.username}</b></span>
             </GameLink>
           ) : (
             <GameLink href="/setup" className="me-link" title="Profil einrichten">

@@ -2,7 +2,7 @@ import 'server-only';
 import { all, one } from './db';
 import { HttpError } from './http';
 import type { AuthUser } from './auth';
-import { league, levelFor, MIN_DUELS } from '@/lib/game';
+import { league, MIN_DUELS } from '@/lib/game';
 import { currentTerm, startTermFor, termOfSemester } from '@/lib/terms';
 import { ensureSignupRule, ensureVoteTerms } from './migrate';
 import { userHash } from './accounts';
@@ -37,7 +37,7 @@ export async function profCard(id: number) {
 
 export type ProfileRow = {
   user_id: string; email: string; eth_user: string; program_id: number; semester: number; start_term: string;
-  profs: number[]; xp: number; pending_pair: string | null; dept_id: number; program_name: string; dept_name: string;
+  profs: number[]; pending_pair: string | null; dept_id: number; program_name: string; dept_name: string;
 };
 
 /** The player behind a login. Looked up by ETH username, so @ethz.ch and @student.ethz.ch share one profile. */
@@ -62,7 +62,7 @@ export async function profileSummary(v: ProfileRow): Promise<Profile> {
   const k = v.profs.length;
   return {
     email: v.email, username: v.eth_user, programId: v.program_id, programName: v.program_name, deptId: v.dept_id, deptName: v.dept_name,
-    semester: v.semester, startTerm: v.start_term, profIds: v.profs, xp: v.xp, level: levelFor(v.xp),
+    semester: v.semester, startTerm: v.start_term, profIds: v.profs,
     votes: Math.min(n, (k * (k - 1)) / 2), totalPairs: (k * (k - 1)) / 2,
   };
 }

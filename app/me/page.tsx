@@ -31,12 +31,11 @@ export default function MePage() {
       <header className="head me-head">
         <Avatar username={profile.username} department={profile.deptName} size={88} />
         <h1>{profile.username}</h1>
-        <p>{profile.programName} · Semester {profile.semester} · Level {profile.level}</p>
+        <p>{profile.programName} · Semester {profile.semester}</p>
       </header>
 
       <section className="panel">
         <div className="stats" style={{ marginTop: 0 }}>
-          <div className="stat"><b className="num">{profile.level}</b><small>Level</small></div>
           <div className="stat"><b className="num">{stats.votes}</b><small>Duelle gesamt</small></div>
           <div className="stat"><b className="num">{profile.votes}/{profile.totalPairs}</b><small>Diese Runde</small></div>
           <div className="stat"><b className="num">{stats.agree == null ? '–' : `${Math.round(stats.agree * 100)}%`}</b><small>Einig mit der Masse</small></div>

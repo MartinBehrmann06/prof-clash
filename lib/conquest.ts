@@ -1,8 +1,9 @@
 // Weekend League (ETH Conquest): the departments fight over a map of ETH, all season long. Shared by server and client.
 //
 // - Every duel a student plays earns troops for their department: the first DAILY_CAP duels of each
-//   day count, and on Saturday and Sunday each one is worth WEEKEND_MULT troops. Coming back every
-//   day pays, and the more members play, the bigger the army.
+//   day count, and so does every right guess in the Tipp des Tages (lib/guess.ts). On Saturday and Sunday
+//   each one is worth WEEKEND_MULT troops. Coming back every day pays, and the more members play, the bigger the army.
+//   The cap is low on purpose: a student's pairs then last the whole term, and nobody rushes votes for troops.
 // - During the week each player sends their troops to buildings: to attack one their department
 //   does not own, or to defend one it does. You only see your own department's orders.
 // - Every Sunday at 24:00 the battles are fought. At each building the strongest attacker takes it
@@ -17,7 +18,7 @@ import { DEPARTMENTS } from './departments';
 
 export const LEAGUE_START = '2026-10-19'; // Monday of week 0, Zurich calendar date
 export const SEASON_WEEKS = 15;
-export const DAILY_CAP = 10;
+export const DAILY_CAP = 5;
 export const WEEKEND_MULT = 2;
 export const NEUTRAL_GARRISON = 15;
 export const DEFENSE_BONUS = 1.25;
@@ -49,7 +50,8 @@ export const homeOf = (dept: number) => BUILDINGS.find((b) => b.home === dept);
 
 const DAY = 86_400_000;
 const startUtc = Date.parse(`${LEAGUE_START}T00:00:00Z`);
-const dateOf = (week: number, day: number) => new Date(startUtc + (week * 7 + day) * DAY).toISOString().slice(0, 10);
+/** Calendar date of day `day` (0 = Monday) of league week `week` */
+export const dateOf = (week: number, day: number) => new Date(startUtc + (week * 7 + day) * DAY).toISOString().slice(0, 10);
 
 /** Zurich wall-clock time on a calendar date, as an instant */
 function zurich(date: string, hour: number) {

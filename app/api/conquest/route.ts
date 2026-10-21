@@ -2,26 +2,31 @@ import { handler, body, HttpError } from '@/lib/server/http';
 import { all, one, tx } from '@/lib/server/db';
 import { authUser, requireUser } from '@/lib/server/auth';
 import { getProfile, requireProfile } from '@/lib/server/queries';
-import { ensureConquestSchema } from '@/lib/server/migrate';
+import { ensureConquestSchema, ensureGuessSchema } from '@/lib/server/migrate';
 import {
   BUILDINGS, DAILY_CAP, DEFENSE_BONUS, NEUTRAL_GARRISON, SEASON_WEEKS, WEEKEND_MULT,
-  byCode, clock, ranking, replay, seasonStart, weekOf, type ConquestData, type Force,
+  byCode, clock, dateOf, ranking, replay, seasonStart, weekOf, type ConquestData, type Force,
 } from '@/lib/conquest';
 
-/** Troops a player has earned in a league week: the first DAILY_CAP duels of each Zurich day, doubled on the weekend */
+/**
+ * Troops a player has earned in a league week: the first DAILY_CAP duels of each Zurich day plus every right guess
+ * in the Tipp des Tages, doubled on the weekend
+ */
 async function earned(userId: string, week: number, db?: { query: typeof import('@/lib/server/db').pool.query }) {
   const { start, end } = weekOf(week);
   const sql = `SELECT COALESCE(SUM(LEAST(n, $4) * CASE WHEN dow IN (6, 7) THEN $5 ELSE 1 END), 0)::int AS earned,
-      COALESCE(MAX(n) FILTER (WHERE day = (now() AT TIME ZONE 'Europe/Zurich')::date), 0)::int AS today
+      COALESCE(MAX(n) FILTER (WHERE day = (now() AT TIME ZONE 'Europe/Zurich')::date), 0)::int AS today,
+      (SELECT COALESCE(SUM(CASE WHEN EXTRACT(ISODOW FROM g.day) IN (6, 7) THEN $5 ELSE 1 END), 0)::int FROM daily_guesses g
+        WHERE g.user_id = $1 AND g.picked = g.answer AND g.day >= $6::date AND g.day < $7::date) AS guessed
     FROM (SELECT (created_at AT TIME ZONE 'Europe/Zurich')::date AS day, EXTRACT(ISODOW FROM created_at AT TIME ZONE 'Europe/Zurich') AS dow, COUNT(*) AS n
       FROM votes WHERE user_id = $1 AND created_at >= $2 AND created_at < $3 GROUP BY 1, 2) d`;
-  const params = [userId, start, end, DAILY_CAP, WEEKEND_MULT];
+  const params = [userId, start, end, DAILY_CAP, WEEKEND_MULT, dateOf(week, 0), dateOf(week, 7)];
   const r = db ? (await db.query(sql, params)).rows[0] : await one(sql, params);
-  return { earned: r?.earned ?? 0, today: r?.today ?? 0 };
+  return { earned: (r?.earned ?? 0) + (r?.guessed ?? 0), today: r?.today ?? 0 };
 }
 
 export const GET = handler(async (req): Promise<ConquestData> => {
-  await ensureConquestSchema();
+  await Promise.all([ensureConquestSchema(), ensureGuessSchema()]);
   const now = clock();
   const { week } = now;
   const from = seasonStart(Math.max(0, week - 1));
@@ -75,7 +80,7 @@ export const POST = handler(async (req) => {
   if (!b) throw new HttpError(400, 'Unbekanntes Gebäude');
   if (b.home) throw new HttpError(400, 'Hauptquartiere können nicht angegriffen werden');
   if (!Number.isInteger(troops) || troops < 0 || troops > 100_000) throw new HttpError(400, 'Ungültige Truppenzahl');
-  await ensureConquestSchema();
+  await Promise.all([ensureConquestSchema(), ensureGuessSchema()]);
   const { week } = clock();
   return tx(async (db) => {
     // one player at a time, so two quick clicks can't spend the same troops twice

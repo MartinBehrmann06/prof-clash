@@ -5,7 +5,7 @@ import { requireProfile } from '@/lib/server/queries';
 import { pairKey } from '@/lib/server/pairs';
 import { userHash } from '@/lib/server/accounts';
 import { currentTerm } from '@/lib/terms';
-import { eloUpdate, league, levelFor } from '@/lib/game';
+import { eloUpdate, league } from '@/lib/game';
 import type { VoteResult } from '@/lib/types';
 
 /** Minimum time between two votes of one student */
@@ -23,9 +23,9 @@ export const POST = handler(async (req): Promise<VoteResult> => {
     return await tx(async (db) => {
       // consume the served matchup atomically (prevents double submits)
       // and enforce the speed limit in the database, so it holds across serverless instances
-      const took = await db.query(`UPDATE profiles SET pending_pair = NULL, xp = xp + 10, last_vote_at = now()
+      const took = await db.query(`UPDATE profiles SET pending_pair = NULL, last_vote_at = now()
         WHERE user_id = $1 AND pending_pair = $2 AND (last_vote_at IS NULL OR last_vote_at < now() - make_interval(secs => $3))
-        RETURNING xp`, [v.user_id, pair, MIN_GAP_MS / 1000]);
+        RETURNING 1`, [v.user_id, pair, MIN_GAP_MS / 1000]);
       if (!took.rowCount) {
         const r = await db.query('SELECT pending_pair = $2 AS same FROM profiles WHERE user_id = $1', [v.user_id, pair]);
         if (r.rows[0]?.same) throw new HttpError(429, 'easy there, chief — slow down');
@@ -51,11 +51,9 @@ export const POST = handler(async (req): Promise<VoteResult> => {
       await db.query('UPDATE dept_ratings SET elo = $1, wins = wins + 1 WHERE prof_id = $2 AND dept_id = $3', [dw, w, v.dept_id]);
       await db.query('UPDATE dept_ratings SET elo = $1, losses = losses + 1 WHERE prof_id = $2 AND dept_id = $3', [dl, l, v.dept_id]);
 
-      const xp: number = took.rows[0].xp;
       return {
         delta: Math.round(delta), deptDelta: Math.round(ddelta),
         winner: { id: w, elo: Math.round(nw), league: league(nw) }, loser: { id: l, elo: Math.round(nl), league: league(nl) },
-        xp, level: levelFor(xp), levelUp: levelFor(xp) > levelFor(xp - 10),
       };
     });
   } catch (e: any) {

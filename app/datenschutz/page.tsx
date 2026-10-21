@@ -22,6 +22,7 @@ export default function DatenschutzPage() {
           <li><b>Studiengang, Semester und Studienbeginn</b>: um die Dozierenden deiner Pflichtfächer aus den richtigen Semestern zu finden.</li>
           <li><b>Deine Auswahl an Dozierenden und deine Stimmen</b> (welche Paarung, wer gewählt wurde, wann, aus welchem Department) sowie deine Spielpunkte (XP).</li>
           <li><b>Deine Befehle in der Weekend League</b>: welche Truppen du in welcher Woche zu welchem Gebäude schickst.</li>
+          <li><b>Deine Tipps des Tages</b>: welche Paarungen du an welchem Tag bekommen und wen du getippt hast.</li>
         </ul>
         <p>
           Wozu: Login, Ermitteln der Wertung, Missbrauchsschutz (ein Konto pro Person, eine Stimme pro Paarung).

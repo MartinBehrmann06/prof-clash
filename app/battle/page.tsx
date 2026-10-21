@@ -9,8 +9,9 @@ import { Duel } from '@/components/Duel';
 import { Figure } from '@/components/Figure';
 import { Icon } from '@/components/art';
 import { ShareButton } from '@/components/Share';
+import { DailyGuess } from '@/components/DailyGuess';
 import { currentTerm, shiftTerm, termLabel } from '@/lib/terms';
-import { levelFor, ROUND_SIZE, roundOf } from '@/lib/game';
+import { ROUND_SIZE, roundOf } from '@/lib/game';
 import type { MyStats } from '@/lib/types';
 
 export default function BattlePage() {
@@ -25,6 +26,8 @@ export default function BattlePage() {
   const [start, setStart] = useState<number | null>(null);
   useEffect(() => { if (profile && start === null) setStart(Math.floor(profile.votes / ROUND_SIZE) * ROUND_SIZE); }, [profile, start]);
   const [paused, setPaused] = useState(false);
+  /** the Tipp des Tages in place of the duel, opened from the header */
+  const [tips, setTips] = useState(false);
   const votes = useRef(0);
   votes.current = profile?.votes ?? 0;
   const round = profile && start !== null ? roundOf(profile.votes, profile.totalPairs, start) : null;
@@ -32,7 +35,7 @@ export default function BattlePage() {
   roundEnd.current = round ? start! + round.size : Infinity;
 
   const onVoted = useCallback(() => {
-    if (profile) setProfile({ ...profile, votes: profile.votes + 1, xp: profile.xp + 10, level: levelFor(profile.xp + 10) });
+    if (profile) setProfile({ ...profile, votes: profile.votes + 1 });
   }, [profile, setProfile]);
   // checked after the reveal of each vote: the last duel of a round still gets its full animation
   const canContinue = useCallback(() => votes.current < roundEnd.current, []);
@@ -47,13 +50,17 @@ export default function BattlePage() {
       <motion.header className="question" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={MOTION.soft}>
         <span className="mode">{live ? <><Icon name="shield" size={14} /> {profile!.programName} · Semester {profile!.semester}</> : <><Icon name="target" size={14} /> Training · deine Wahl wird nicht gezählt</>}</span>
         <h1>Wessen Vorlesung würdest du lieber besuchen?</h1>
-        {live && round && round.size > 0 && !allDone && <RoundProgress number={round.number} done={round.done} size={round.size} />}
+        {live && round && round.size > 0 && !allDone && !tips && <RoundProgress number={round.number} done={round.done} size={round.size} />}
+        {live && !allDone && !paused && (
+          <button className="btn sm stone guess-toggle" onClick={() => setTips(!tips)}>
+            {tips ? <><Icon name="swords" size={16} /> Zurück zu den Duellen</> : <><Icon name="target" size={16} /> Tipp des Tages</>}</button>
+        )}
       </motion.header>
 
       {allDone ? (
         <motion.div className="panel done-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={MOTION.soft}>
           <h2>Alle Duelle geschafft!</h2>
-          <p>Du hast alle Duelle für dieses Semester entschieden. Im {termLabel(shiftTerm(currentTerm(), 1))} startet eine neue Runde.</p>
+          <p>Du hast alle Duelle für dieses Semester entschieden. Im {termLabel(shiftTerm(currentTerm(), 1))} startet eine neue Runde. Truppen holst du bis dahin mit dem Tipp des Tages.</p>
           <div className="actions">
             <GameLink className="btn sm gold" href="/departments">Weekend League</GameLink>
             <GameLink className="btn sm blue" href="/me">Dein Ranking</GameLink>
@@ -63,10 +70,12 @@ export default function BattlePage() {
         </motion.div>
       ) : live && paused ? (
         <RoundBreak number={round!.number} played={round!.done} left={profile!.totalPairs - profile!.votes} onNext={nextRound} />
-      ) : (
+      ) : live && tips ? null : (
         <Duel key={live ? `live-${start}` : 'practice'} source={source} onVoted={live ? onVoted : undefined} onEmpty={onEmpty}
           canContinue={live ? canContinue : undefined} onPause={onPause} />
       )}
+
+      {live && (allDone || paused || tips) && <DailyGuess />}
 
       {!live && (
         <div className="panel cta-card">

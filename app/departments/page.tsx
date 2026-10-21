@@ -9,6 +9,7 @@ import { Icon } from '@/components/art';
 import { GameLink } from '@/components/CloudTransition';
 import { replayOnboarding } from '@/components/Onboarding';
 import { BUILDINGS, byCode, type BattleEvent, type ConquestBuilding, type ConquestData } from '@/lib/conquest';
+import { GUESSES_PER_DAY } from '@/lib/guess';
 
 const NEUTRAL = '#cbbd9f';
 const clan = (id: number | null) => (id === null ? 'Neutral' : `D-${deptById(id).code}`);
@@ -103,7 +104,7 @@ export default function ClansPage() {
 function Hud({ data, now }: { data: ConquestData; now: number }) {
   const { user } = useSession();
   const me = data.me;
-  const free = me ? me.earned - me.sent : 0;
+  const free = me ? Math.max(0, me.earned - me.sent) : 0;
   return (
     <section className="panel war cq-hud">
       <span className="ribbon"><Icon name="swords" size={15} /> Saison {data.season} · Runde {data.round}/{data.seasonWeeks}</span>
@@ -113,7 +114,7 @@ function Hud({ data, now }: { data: ConquestData; now: number }) {
           <>
             <div className="cq-stat"><small>Deine freien Truppen</small><b className="num">{free}</b><small>{me.sent} von {me.earned} im Einsatz</small></div>
             <div className="cq-stat"><small>Duelle heute</small><b className="num">{Math.min(me.today, data.rules.dailyCap)}/{data.rules.dailyCap}</b>
-              <small>{me.weekend ? `Wochenende: jedes Duell zählt ×${data.rules.weekendMult}` : 'Jedes Duell bringt 1 Truppe'}</small></div>
+              <small>{me.weekend ? `Wochenende: jedes Duell und jeder richtige Tipp zählt ×${data.rules.weekendMult}` : 'Dazu 1 Truppe pro richtigem Tipp'}</small></div>
           </>
         ) : (
           <div className="cq-stat wide"><small>Mitmachen</small><b>Truppen sammeln</b><small>Mit deinem ETH-Login zählt jedes Duell als Truppe für dein Department.</small></div>
@@ -315,7 +316,7 @@ function HowItWorks({ data }: { data: ConquestData }) {
   const r = data.rules;
   const steps: [string, string][] = [
     ['Karte', 'Jeder Clan startet mit seinem Hauptgebäude, markiert mit der Krone. Alle anderen Gebäude sind neutral.'],
-    ['Truppen', `Jedes Duell bringt dir eine Truppe, höchstens ${r.dailyCap} pro Tag. Am Samstag und Sonntag zählt jedes Duell ×${r.weekendMult}. Wer jeden Tag spielt, hat die grösste Armee.`],
+    ['Truppen', `Jedes Duell bringt dir eine Truppe, höchstens ${r.dailyCap} pro Tag. Dazu kommt der Tipp des Tages: ${GUESSES_PER_DAY} Fragen, welchen Prof die Masse lieber hat, und jeder richtige Tipp ist eine Truppe. Am Samstag und Sonntag zählt alles ×${r.weekendMult}. Wer jeden Tag spielt, hat die grösste Armee.`],
     ['Befehle', 'Tippe auf ein Gebäude und schick deine Truppen hin: Angriff auf fremde oder neutrale Gebäude, Verteidigung für eure eigenen. Was die anderen Clans vorhaben, siehst du nicht.'],
     ['Schlacht', `Sonntag um 24:00 wird überall gleichzeitig gekämpft. Der stärkste Angreifer erobert ein Gebäude, wenn er mehr Truppen hat als die Verteidigung: die Truppen des Besitzers ×${r.defenseBonus}, bei neutralen Gebäuden ${r.garrison}. Liegen zwei Angreifer gleichauf, gewinnt keiner.`],
     ['Bericht', 'Am Montag deckt der Schlachtbericht alles auf. Eine neue Woche beginnt: Truppen, die nicht im Einsatz waren, verfallen, und jedes Gebäude muss neu verteidigt werden.'],

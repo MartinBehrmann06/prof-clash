@@ -6,7 +6,7 @@
 - **Battle** (`/battle`): two duel cards slide in from the sides. The winner steps forward with a gold ring and a confetti pop; the other card settles back with a sad face. Guests play a clearly labelled *training* mode (nothing stored or counted); logged-in students with a roster cast real votes. Each student judges every pair of their professors once per semester; when the round is done, the battle points to the Weekend League and a new round starts with the next term.
 - **Rankings** (`/rankings`): global “Hall of Fame” and per-clan trophies (Elo), animated rank changes, and profiles with a shared-element transition.
 - **Share links** (`/p/<id>`): a professor's profile opens from a shared link, and link previews show a card with their rank (`opengraph-image.tsx`, fonts fetched from Google Fonts). The site itself has a preview card too.
-- **Your profile** (`/me`, the level star in the top bar): your favourite professors, how often you agree with the crowd, and your boldest pick against it.
+- **Your profile** (`/me`, your avatar in the top bar): your favourite professors, how often you agree with the crowd, and your boldest pick against it.
 - **Clans** (`/departments`): departments as clans. The weekly clan war is a labelled preview based on real activity (duels per active member), not a strength score.
 
 **No photos.** Every professor is drawn as a procedural flat-vector figure (`components/Figure.tsx`), generated deterministically from their ID. The hat and outfit colour come from the department. The scraper no longer downloads images.

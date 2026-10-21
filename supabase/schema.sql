@@ -289,3 +289,21 @@ create table if not exists onboarding_seen (
   seen_at timestamptz not null default now()
 );
 alter table onboarding_seen enable row level security;
+
+-- ---------------------------------------------------------------
+-- v13: Tipp des Tages. A few pairs a day per player: guess which one
+-- the crowd prefers. A right guess is a troop in the Weekend League.
+-- Also applied by the app itself (lib/server/migrate.ts).
+-- ---------------------------------------------------------------
+create table if not exists daily_guesses (
+  user_id uuid not null references profiles(user_id) on delete cascade,
+  day date not null,
+  idx smallint not null,
+  left_id integer not null,
+  right_id integer not null,
+  answer integer not null,
+  picked integer,
+  answered_at timestamptz,
+  primary key (user_id, day, idx)
+);
+alter table daily_guesses enable row level security;
