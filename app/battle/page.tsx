@@ -11,7 +11,7 @@ import { Icon } from '@/components/art';
 import { ShareButton } from '@/components/Share';
 import { DailyGuess } from '@/components/DailyGuess';
 import { currentTerm, shiftTerm, termLabel } from '@/lib/terms';
-import { levelFor, ROUND_SIZE, roundOf } from '@/lib/game';
+import { ROUND_SIZE, roundOf } from '@/lib/game';
 import type { MyStats } from '@/lib/types';
 
 export default function BattlePage() {
@@ -35,7 +35,7 @@ export default function BattlePage() {
   roundEnd.current = round ? start! + round.size : Infinity;
 
   const onVoted = useCallback(() => {
-    if (profile) setProfile({ ...profile, votes: profile.votes + 1, xp: profile.xp + 10, level: levelFor(profile.xp + 10) });
+    if (profile) setProfile({ ...profile, votes: profile.votes + 1 });
   }, [profile, setProfile]);
   // checked after the reveal of each vote: the last duel of a round still gets its full animation
   const canContinue = useCallback(() => votes.current < roundEnd.current, []);

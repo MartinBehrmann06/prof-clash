@@ -1,5 +1,5 @@
 'use client';
-// Game art: icons, trophies, league shields, level star, logo mark.
+// Game art: icons, trophies, league shields, logo mark.
 // Flat fills with one shaded facet; the ink outline comes from CSS so edges stay clean.
 import { useId } from 'react';
 import { LEAGUES, type LeagueKey } from '@/lib/game';
@@ -85,13 +85,3 @@ export function LeagueBadge({ league, className = 'league-badge', style }: { lea
   );
 }
 
-export function XpStar({ level }: { level: number }) {
-  return (
-    <div className="xp-star" title={`Level ${level}`}>
-      <svg viewBox="0 0 50 50" aria-hidden="true">
-        <path d="M25 3.5c1.2 0 2.2.7 2.7 1.8l4.6 9.6 10.4 1.4c2.4.4 3.4 3.3 1.6 5L36.7 28.7l1.9 10.4c.4 2.4-2.1 4.2-4.3 3.1L25 37.2l-9.3 5c-2.2 1.1-4.7-.7-4.3-3.1l1.9-10.4-7.6-7.4c-1.8-1.7-.8-4.6 1.6-5l10.4-1.4 4.6-9.6c.5-1.1 1.5-1.8 2.7-1.8Z" fill="var(--blue)" />
-      </svg>
-      <span>{level}</span>
-    </div>
-  );
-}

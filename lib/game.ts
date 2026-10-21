@@ -1,4 +1,4 @@
-// Game rules shared by server and client: Elo, leagues, levels.
+// Game rules shared by server and client: Elo, leagues.
 
 export const START_ELO = 1200;
 export const K = 32;
@@ -46,13 +46,6 @@ export function league(elo: number): LeagueKey {
   for (const x of LEAGUES) if (elo >= x.min) l = x;
   return l.key;
 }
-
-/** Student "town hall" level from XP (10 XP per battle) */
-export const levelFor = (xp: number) => Math.floor(Math.sqrt(xp / 20)) + 1;
-export const levelProgress = (xp: number) => {
-  const L = levelFor(xp), a = 20 * (L - 1) ** 2, b = 20 * L ** 2;
-  return (xp - a) / (b - a);
-};
 
 /**
  * ETH username: name@ethz.ch and name@student.ethz.ch are the same person, and so is

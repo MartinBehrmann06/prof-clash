@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { eloUpdate, expected, isEthEmail, ethUser, K, league, levelFor, levelProgress, ROUND_SIZE, roundOf } from '@/lib/game';
+import { eloUpdate, expected, isEthEmail, ethUser, K, league, ROUND_SIZE, roundOf } from '@/lib/game';
 
 describe('Elo', () => {
   it('moves equal ratings by K/2', () => {
@@ -20,19 +20,12 @@ describe('Elo', () => {
   });
 });
 
-describe('leagues and levels', () => {
+describe('leagues', () => {
   it('maps trophies to leagues at the thresholds', () => {
     expect(league(1099)).toBe('bronze');
     expect(league(1100)).toBe('silver');
     expect(league(1200)).toBe('gold');
     expect(league(1500)).toBe('legend');
-  });
-  it('levels up at 20·L² XP', () => {
-    expect(levelFor(0)).toBe(1);
-    expect(levelFor(19)).toBe(1);
-    expect(levelFor(20)).toBe(2);
-    expect(levelFor(80)).toBe(3);
-    expect(levelProgress(50)).toBeCloseTo(0.5);
   });
 });
 

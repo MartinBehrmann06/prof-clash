@@ -66,7 +66,7 @@ export default function TitlePage() {
         <div className="title-top">
           <span className="chip"><Icon name="cap" size={15} /> ETH Zürich · Studierendenprojekt</span>
           {user
-            ? <GameLink className="btn sm blue" href={profile ? '/battle' : '/setup'}>{profile ? `Level ${profile.level}` : 'Einrichten'}</GameLink>
+            ? <GameLink className="btn sm blue" href={profile ? '/battle' : '/setup'}>{profile ? 'Spielen' : 'Einrichten'}</GameLink>
             : <GameLink className="btn sm gold" href="/login">Login</GameLink>}
         </div>
 
