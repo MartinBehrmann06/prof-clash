@@ -29,6 +29,9 @@ type Session = {
   ready: boolean;
   user: Me['user'];
   profile: Profile | null;
+  /** This player already saw the first-login tour (stored server-side, so it holds on every device) */
+  onboarded: boolean;
+  setOnboarded: (v: boolean) => void;
   refresh: () => Promise<void>;
   setProfile: (p: Profile | null) => void;
   signOut: () => Promise<void>;
@@ -40,15 +43,18 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [user, setUser] = useState<Me['user']>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [onboarded, setOnboarded] = useState(true);
 
   const refresh = useCallback(async () => {
     try {
       const me = await api<Me>('/api/me');
       setUser(me.user);
       setProfile(me.profile);
+      setOnboarded(me.onboarded ?? true);
     } catch {
       setUser(null);
       setProfile(null);
+      setOnboarded(true);
     } finally {
       setReady(true);
     }
@@ -72,7 +78,8 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     setProfile(null);
   }, []);
 
-  const value = useMemo(() => ({ ready, user, profile, refresh, setProfile, signOut }), [ready, user, profile, refresh, signOut]);
+  const value = useMemo(() => ({ ready, user, profile, onboarded, setOnboarded, refresh, setProfile, signOut }),
+    [ready, user, profile, onboarded, refresh, signOut]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 

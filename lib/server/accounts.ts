@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { RETENTION_MONTHS } from '@/lib/legal';
 import { currentTerm } from '@/lib/terms';
 import { all, pool, tx } from './db';
-import { ensureVoteTerms } from './migrate';
+import { ensureOnboardingSchema, ensureVoteTerms } from './migrate';
 
 /** Key for spent_pairs: a hash of the ETH username, so the table holds no email or name */
 export const userHash = (ethUser: string) => createHash('sha256').update(`profclash:${ethUser}`).digest('hex');
@@ -18,11 +18,13 @@ const ETH_USER_SQL = (col: string) => `lower(split_part(split_part(${col}, '@', 
  */
 export async function deleteAccount(ethUser: string) {
   await ensureVoteTerms();
+  await ensureOnboardingSchema();
   await tx(async (db) => {
     // remember which pairs were already judged this term, so a new signup can't judge them again
     await db.query(`INSERT INTO spent_pairs (user_hash, term, pair) SELECT $1, v.term, v.pair FROM votes v
       JOIN profiles p ON p.user_id = v.user_id WHERE p.eth_user = $2 AND v.term = $3 ON CONFLICT DO NOTHING`, [userHash(ethUser), ethUser, currentTerm()]);
     await db.query('DELETE FROM profiles WHERE eth_user = $1', [ethUser]);
+    await db.query('DELETE FROM onboarding_seen WHERE eth_user = $1', [ethUser]);
     await db.query(`DELETE FROM auth.users WHERE ${ETH_USER_SQL('email')} = $1 AND email ~* '@([a-z0-9-]+\\.)*ethz\\.ch$'`, [ethUser]);
   });
 }

@@ -1,11 +1,11 @@
 'use client';
 // First-login tour. A demo duel (watch, then try one), then a hands-on Weekend League: earn troops,
 // send them to a building, fight the Sunday battle. Everything here is pretend: nothing is sent or stored
-// except a local "seen" flag per ETH username. It can be replayed from the profile page.
+// except a "seen" flag per ETH username (on the server, cached locally). It can be replayed from the profile page.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { useSession } from '@/lib/client/session';
+import { api, useSession } from '@/lib/client/session';
 import { MOTION } from '@/lib/client/motion';
 import { DEPARTMENTS, deptById, type DeptStyle } from '@/lib/departments';
 import { ethUser, league, ROUND_SIZE } from '@/lib/game';
@@ -18,6 +18,8 @@ const seenKey = (user: string) => `prof-clash:onboarded:${user}`;
 const REPLAY = 'prof-clash:onboarding';
 const hasSeen = (user: string) => { try { return localStorage.getItem(seenKey(user)) === '1'; } catch { return true; } }; // no storage: don't nag
 const markSeen = (user: string) => { try { localStorage.setItem(seenKey(user), '1'); } catch {} };
+/** Tell the server, so the tour doesn't come back on another device or after the browser storage is cleared */
+const markSeenOnServer = () => api('/api/me/onboarded', { method: 'POST' }).catch(() => {});
 
 /** Opens the tour again (profile page) */
 export const replayOnboarding = () => dispatchEvent(new Event(REPLAY));
@@ -27,12 +29,21 @@ type Step = (typeof STEPS)[number];
 
 /** Shown once per ETH username after the first login, on any page but the login itself */
 export function Onboarding() {
-  const { ready, user } = useSession();
+  const { ready, user, onboarded, setOnboarded } = useSession();
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const name = user ? ethUser(user.email) : null;
 
-  useEffect(() => { if (ready && name && path !== '/login' && !hasSeen(name)) setOpen(true); }, [ready, name, path]);
+  useEffect(() => {
+    if (!ready || !name || onboarded || path === '/login') return;
+    setOnboarded(true);
+    markSeenOnServer();
+    // seen on this browser before the server kept track: just record it there
+    if (hasSeen(name)) return;
+    // counts as seen as soon as it opens, so closing the tab halfway doesn't bring it back
+    markSeen(name);
+    setOpen(true);
+  }, [ready, name, onboarded, path, setOnboarded]);
   useEffect(() => {
     const on = () => setOpen(true);
     addEventListener(REPLAY, on);
