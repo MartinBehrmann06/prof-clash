@@ -28,6 +28,7 @@ export type Meta = {
 
 export type Profile = {
   email: string;
+  username: string; // ETH username (the part before @), the player name shown in the top bar
   programId: number;
   programName: string;
   deptId: number;
@@ -53,7 +54,10 @@ export type RosterGroup = {
 
 export type Roster = { programId: number; semester: number; startTerm: string; groups: RosterGroup[] };
 
-export type FightCard = Prof & { courses: CourseRef[] };
+/** The lecture a student last had with a professor; `more` = other courses with them in that semester */
+export type LastLecture = { title: string; more: number; semester: number | null; term: string | null };
+
+export type FightCard = Prof & { courses: CourseRef[]; lastLecture: LastLecture | null };
 
 export type Matchup =
   | { done: true; me: Profile }
@@ -84,4 +88,5 @@ export type MyStats = {
   agree: number | null; // share of picks where the crowd agrees (winner has more trophies now); null below a few votes
   favourites: (Prof & { wins: number; duels: number })[]; // most picked, up to three
   rebel: { winner: Prof; loser: Prof; gap: number } | null; // the pick most against the crowd
+  ranking: (Prof & { wins: number; duels: number; rating: number })[]; // every professor you judged, by your own votes
 };

@@ -41,6 +41,7 @@ function Login() {
   const [scope, animate] = useAnimate();
   // a reset code signs the user in before they pick a new password, so hold the redirect until then
   const holdRedirect = useRef(false);
+  const verifying = useRef(false);
   // a returning player with a deck goes to the battle, not back through setup
   const leave = () => router.replace(next && NEXT.includes(next) && !(next === 'setup' && profile) ? `/${next}` : profile ? '/battle' : '/setup');
 
@@ -68,6 +69,7 @@ function Login() {
   }
 
   function toCode(e: string, why: CodeFor) {
+    verifying.current = false; // a fresh code may be checked again
     setEmail(e); setCodeFor(why); setDigits(Array(LEN).fill('')); setCooldown(RESEND_AFTER); go('code');
   }
 
@@ -124,11 +126,20 @@ function Login() {
   }
 
   async function verify(code: string) {
+    // One check per code. Filling the last box, a pasted or autofilled code and Enter can each submit;
+    // the second request then fails as "expired" (the code is already used) and flashed an error
+    // while the first one was already signing the player in.
+    if (verifying.current) return;
+    verifying.current = true;
     setMsg(''); setBusy(true);
     holdRedirect.current = codeFor === 'reset'; // set before the session lands
-    const { error } = await (await getSupabase()).auth.verifyOtp({ email, token: code, type: codeFor === 'signup' ? 'signup' : 'email' });
+    const sb = await getSupabase();
+    let { error } = await sb.auth.verifyOtp({ email, token: code, type: codeFor === 'signup' ? 'signup' : 'email' });
+    // an error while a session exists means another request with this code already got through
+    if (error && (await sb.auth.getSession()).data.session) error = null;
     setBusy(false);
     if (error) {
+      verifying.current = false;
       holdRedirect.current = false;
       fail(/expired|invalid/i.test(error.message) ? 'Code falsch oder abgelaufen — neueste Mail verwenden oder neu senden.' : error.message);
       setDigits(Array(LEN).fill(''));

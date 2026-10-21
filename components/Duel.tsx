@@ -2,11 +2,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { MOTION } from '@/lib/client/motion';
-import type { Prof } from '@/lib/types';
-import { DuelCard, type EloReveal, type Phase } from './DuelCard';
+import { DuelCard, type DuelProf, type EloReveal, type Phase } from './DuelCard';
 import { Icon } from './art';
 
-export type DuelPair = { key: string; left: Prof; right: Prof };
+export type DuelPair = { key: string; left: DuelProf; right: DuelProf };
 export type VoteOutcome = { left: EloReveal; right: EloReveal };
 export type DuelSource = {
   next: () => Promise<DuelPair | null>; // null = nothing left to judge
@@ -21,7 +20,11 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
  * Runs the duel loop: show pair → choose (instant emphasis) → reveal Elo → hand over to the next pair.
  * A single lock guards against double votes from clicks, taps and keys alike.
  */
-export function Duel({ source, onVoted, onEmpty }: { source: DuelSource; onVoted?: () => void; onEmpty?: () => void }) {
+export function Duel({ source, onVoted, onEmpty, canContinue, onPause }: {
+  source: DuelSource; onVoted?: () => void; onEmpty?: () => void;
+  /** asked after each reveal; false stops before the next pair (end of a round) and calls onPause */
+  canContinue?: () => boolean; onPause?: () => void;
+}) {
   const [pair, setPair] = useState<DuelPair | null>(null);
   const [choice, setChoice] = useState<'left' | 'right' | null>(null);
   const [outcome, setOutcome] = useState<VoteOutcome | null>(null);
@@ -55,8 +58,9 @@ export function Duel({ source, onVoted, onEmpty }: { source: DuelSource; onVoted
     setOutcome(res);
     onVoted?.();
     await wait(Math.max(0, MOTION.revealHold * 1000 - (performance.now() - t0)));
+    if (canContinue && !canContinue()) { onPause?.(); return; } // stays locked: the round is over
     await load();
-  }, [pair, source, load, onVoted]);
+  }, [pair, source, load, onVoted, canContinue, onPause]);
 
   const skip = useCallback(async () => {
     if (lock.current || !pair) return;

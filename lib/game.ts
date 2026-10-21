@@ -4,6 +4,19 @@ export const START_ELO = 1200;
 export const K = 32;
 /** A professor only gets a rank after this many counted duels — a few votes are noise, not a verdict */
 export const MIN_DUELS = 5;
+/**
+ * Duels per sitting. A roster of 16 has 120 pairs; nobody needs to judge them all at once, and the
+ * global ladder only needs every student's votes spread over their professors. So play comes in
+ * rounds with a visible end and a break screen, and the next round starts whenever you like.
+ */
+export const ROUND_SIZE = 20;
+
+/** Where a student stands in the current round, from this term's vote count */
+export function roundOf(votes: number, totalPairs: number, start: number) {
+  const size = Math.max(0, Math.min(ROUND_SIZE, totalPairs - start));
+  const done = Math.min(size, Math.max(0, votes - start));
+  return { number: Math.floor(start / ROUND_SIZE) + 1, size, done, over: size > 0 && done >= size };
+}
 
 export function expected(a: number, b: number) {
   return 1 / (1 + 10 ** ((b - a) / 400));

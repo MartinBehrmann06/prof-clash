@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { eloUpdate, expected, isEthEmail, ethUser, K, league, levelFor, levelProgress } from '@/lib/game';
+import { eloUpdate, expected, isEthEmail, ethUser, K, league, levelFor, levelProgress, ROUND_SIZE, roundOf } from '@/lib/game';
 
 describe('Elo', () => {
   it('moves equal ratings by K/2', () => {
@@ -48,5 +48,21 @@ describe('ETH logins', () => {
   });
   it('treats plus addresses as the same user', () => {
     expect(ethUser('max+2@student.ethz.ch')).toBe('max');
+  });
+});
+
+describe('rounds', () => {
+  it('counts duels within a round of ROUND_SIZE', () => {
+    expect(roundOf(7, 120, 0)).toEqual({ number: 1, size: ROUND_SIZE, done: 7, over: false });
+    expect(roundOf(20, 120, 0).over).toBe(true);
+    expect(roundOf(23, 120, 20)).toMatchObject({ number: 2, done: 3 });
+  });
+  it('shortens the last round to the pairs that are left', () => {
+    expect(roundOf(110, 120, 100)).toMatchObject({ number: 6, size: 20, done: 10 });
+    expect(roundOf(118, 120, 110)).toMatchObject({ size: 10, done: 8, over: false });
+    expect(roundOf(120, 120, 110).over).toBe(true);
+  });
+  it('is empty when nothing is left to judge', () => {
+    expect(roundOf(45, 45, 45)).toMatchObject({ size: 0, over: false });
   });
 });

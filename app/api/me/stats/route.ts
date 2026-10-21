@@ -2,10 +2,31 @@ import { handler } from '@/lib/server/http';
 import { requireUser } from '@/lib/server/auth';
 import { all, one } from '@/lib/server/db';
 import { requireProfile, toProf } from '@/lib/server/queries';
+import { eloUpdate, START_ELO } from '@/lib/game';
 import type { MyStats } from '@/lib/types';
 
 /** Below this many picks that others also judged, a crowd agreement share is just noise */
 const MIN_FOR_AGREE = 5;
+
+/**
+ * Your own ladder: an Elo over only your votes, replayed in the order you cast them. Unlike plain
+ * win counts it rewards beating someone you otherwise rate highly, so a few duels already give an order.
+ */
+async function personalRanking(userId: string, picks: string): Promise<MyStats['ranking']> {
+  const rows = await all<{ winner: number; loser: number }>(`SELECT x.winner, x.loser ${picks} ORDER BY x.created_at, x.id`, [userId]);
+  const rating = new Map<number, { elo: number; wins: number; duels: number }>();
+  const get = (id: number) => { let s = rating.get(id); if (!s) rating.set(id, (s = { elo: START_ELO, wins: 0, duels: 0 })); return s; };
+  for (const { winner, loser } of rows) {
+    const w = get(winner), l = get(loser);
+    const [nw, nl] = eloUpdate(w.elo, l.elo);
+    w.elo = nw; l.elo = nl; w.wins++; w.duels++; l.duels++;
+  }
+  if (!rating.size) return [];
+  const profs = new Map((await all<any>('SELECT * FROM professors WHERE id = ANY($1) AND NOT hidden', [[...rating.keys()]])).map((p) => [p.id as number, p]));
+  return [...rating.entries()].filter(([id]) => profs.has(id))
+    .sort(([, a], [, b]) => b.elo - a.elo || b.wins - a.wins)
+    .map(([id, s]) => ({ ...toProf(profs.get(id)), wins: s.wins, duels: s.duels, rating: Math.round(s.elo) }));
+}
 
 export const GET = handler(async (req): Promise<MyStats> => {
   const v = await requireProfile(await requireUser(req));
@@ -31,5 +52,6 @@ export const GET = handler(async (req): Promise<MyStats> => {
     agree: a.compared >= MIN_FOR_AGREE ? a.agree / a.compared : null,
     favourites: favourites.map((p) => ({ ...toProf(p), wins: p.wins, duels: p.duels })),
     rebel: r ? { winner: toProf(r.w), loser: toProf(r.l), gap: Math.round(r.gap) } : null,
+    ranking: await personalRanking(v.user_id, picks),
   };
 });

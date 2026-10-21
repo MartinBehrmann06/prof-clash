@@ -1,7 +1,7 @@
 import { handler } from '@/lib/server/http';
 import { requireUser } from '@/lib/server/auth';
 import { all, one } from '@/lib/server/db';
-import { coursesFor, profileSummary, requireProfile, toProf } from '@/lib/server/queries';
+import { coursesFor, lastLectures, profileSummary, requireProfile, toProf } from '@/lib/server/queries';
 import { pairKey } from '@/lib/server/pairs';
 import { userHash } from '@/lib/server/accounts';
 import { currentTerm } from '@/lib/terms';
@@ -27,7 +27,10 @@ export const GET = handler(async (req): Promise<Matchup> => {
   open.sort((x, y) => score(x) - score(y));
   let [a, b] = open[0];
   if (Math.random() < 0.5) [a, b] = [b, a];
-  await one('UPDATE profiles SET pending_pair = $1 WHERE user_id = $2', [pairKey(a, b), v.user_id]);
-  const card = async (id: number) => ({ ...toProf(profs.get(id)), courses: await coursesFor(id, v.program_id) });
+  const [, last] = await Promise.all([
+    one('UPDATE profiles SET pending_pair = $1 WHERE user_id = $2', [pairKey(a, b), v.user_id]),
+    lastLectures(v),
+  ]);
+  const card = async (id: number) => ({ ...toProf(profs.get(id)), courses: await coursesFor(id, v.program_id), lastLecture: last.get(id) ?? null });
   return { left: await card(a), right: await card(b), me: await profileSummary(v), remaining: open.length };
 });
