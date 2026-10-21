@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'motion/react';
 import { MOTION } from '@/lib/client/motion';
 import { deptByName } from '@/lib/departments';
-import type { Prof } from '@/lib/types';
-import { Figure } from './Figure';
-import { TrophyIcon } from './art';
+import type { LastLecture, Prof } from '@/lib/types';
+import { Figure, prefetchFigure } from './Figure';
+import { Icon, TrophyIcon } from './art';
 
 export type Phase = 'idle' | 'chosen' | 'other';
+/** live duels know which lecture you last had with the professor; training duels don't */
+export type DuelProf = Prof & { lastLecture?: LastLecture | null };
 export type EloReveal = { from: number; to: number } | null;
 
 const CONFETTI = ['var(--gold)', 'var(--blue)', 'var(--coral)', 'var(--green)', 'var(--purple)'];
@@ -18,13 +20,21 @@ const CONFETTI = ['var(--gold)', 'var(--blue)', 'var(--coral)', 'var(--green)', 
  * The trophy count stays hidden until the vote.
  */
 export function DuelCard({ prof, index, phase, elo, eloNote, onChoose }: {
-  prof: Prof; index: number; phase: Phase; elo: EloReveal; eloNote?: string; onChoose: () => void;
+  prof: DuelProf; index: number; phase: Phase; elo: EloReveal; eloNote?: string; onChoose: () => void;
 }) {
   const reduced = useReducedMotion();
   const dept = deptByName(prof.department);
   const side = index === 0 ? -1 : 1;
   const decided = phase !== 'idle';
   const delta = elo ? Math.round(elo.to - elo.from) : 0;
+  // the face changes on the vote: have both faces ready as images before that moment
+  // (in idle time, so it doesn't compete with the card sliding in)
+  useEffect(() => {
+    const run = () => prefetchFigure(prof.id, prof.department, ['happy', 'sad']);
+    if (typeof requestIdleCallback === 'undefined') { const t = setTimeout(run, 300); return () => clearTimeout(t); }
+    const h = requestIdleCallback(run, { timeout: 1000 });
+    return () => cancelIdleCallback(h);
+  }, [prof.id, prof.department]);
 
   return (
     <motion.div
@@ -48,7 +58,13 @@ export function DuelCard({ prof, index, phase, elo, eloNote, onChoose }: {
         <span className="banner"><i />{dept.code}</span>
         <div className="frame"><Figure id={prof.id} name={prof.name} department={prof.department} mood={phase === 'chosen' ? 'happy' : phase === 'other' ? 'sad' : 'idle'} /></div>
         <div className="name">{prof.name}</div>
-        <div className="field">{prof.field || prof.relationship}</div>
+        {prof.lastLecture ? (
+          // the lecture you last had with them reminds you who this is; the field is in the profile
+          <div className="field lecture" title={prof.lastLecture.more ? `und ${prof.lastLecture.more} weitere` : undefined}>
+            <Icon name="book" size={13} /> {prof.lastLecture.title}
+            {prof.lastLecture.semester && <span className="sem-tag">Sem. {prof.lastLecture.semester}</span>}
+          </div>
+        ) : <div className="field">{prof.field || prof.relationship}</div>}
         <div className="elo-row">
           {elo ? <EloCount elo={elo} /> : <span className="elo-hidden"><TrophyIcon size={20} />???</span>}
           {elo && delta !== 0 && <motion.span className={`delta ${delta > 0 ? 'up' : 'down'}`} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ ...MOTION.pop, delay: 0.2 }}>{delta > 0 ? '+' : '−'}{Math.abs(delta)}</motion.span>}

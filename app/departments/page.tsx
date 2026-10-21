@@ -7,6 +7,7 @@ import { MOTION } from '@/lib/client/motion';
 import { deptById } from '@/lib/departments';
 import { Icon } from '@/components/art';
 import { GameLink } from '@/components/CloudTransition';
+import { replayOnboarding } from '@/components/Onboarding';
 import { BUILDINGS, byCode, type BattleEvent, type ConquestBuilding, type ConquestData } from '@/lib/conquest';
 
 const NEUTRAL = '#cbbd9f';
@@ -328,6 +329,9 @@ function HowItWorks({ data }: { data: ConquestData }) {
           <span><b>{t}</b><small>{d}</small></span>
         </motion.div>
       ))}
+      <div style={{ gridColumn: '1 / -1', textAlign: 'center' }}>
+        <button type="button" className="btn sm blue" onClick={replayOnboarding}><Icon name="play" size={16} /> Zum Ausprobieren: geführte Tour</button>
+      </div>
     </Section>
   );
 }

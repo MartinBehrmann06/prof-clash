@@ -3,7 +3,7 @@
 // character derived from their id — it is deliberately NOT a likeness of the real person.
 // Clash-style cel look: flat fills with one light-from-the-left shade, and ink outlines drawn by an
 // SVG filter around whole shapes (never strokes on overlapping fills), so every edge stays clean.
-import { memo, useId } from 'react';
+import { memo, useEffect, useId, useState } from 'react';
 import { deptByName } from '@/lib/departments';
 
 const INK = '#1e1712';
@@ -63,13 +63,64 @@ const HAIRLINE: Record<Hair, string> = {
   tuft: 'M40 92Q58 84 66 102Q66 114 58 124H40ZM160 92Q142 84 134 102Q134 114 142 124H160Z',
 };
 
+type Mood = 'idle' | 'happy' | 'sad';
+type FigureProps = { id: number; name: string; department: string; mood?: Mood; className?: string };
+const MOODS: Mood[] = ['idle', 'happy', 'sad'];
+
+// The ink outlines are SVG filters (feMorphology), and an inline SVG runs them again on every repaint —
+// for example on each frame while a duel card scales. So each figure is rendered to markup once,
+// turned into an image the browser rasterises a single time, and reused. Until that image is ready
+// (first sight of a figure) the inline SVG is shown, so nothing pops in late.
+const images = new Map<string, string>(); // `${id}|${department}|${mood}` → object URL
+const pending = new Map<string, Promise<void>>();
+let server: Promise<typeof import('react-dom/server')> | null = null;
+
+const keyOf = (id: number, department: string, mood: Mood) => `${id}|${department}|${mood}`;
+
+/** Renders one figure in one mood to an image and decodes it before it is used */
+function prepare(id: number, department: string, mood: Mood) {
+  const k = keyOf(id, department, mood);
+  let p = pending.get(k);
+  if (!p) {
+    server ??= import('react-dom/server');
+    p = server.then(async ({ renderToStaticMarkup }) => {
+      const markup = renderToStaticMarkup(<FigureSvg id={id} name="" department={department} mood={mood} />);
+      const url = URL.createObjectURL(new Blob([markup], { type: 'image/svg+xml' }));
+      const img = new Image();
+      img.src = url;
+      await img.decode().catch(() => {});
+      images.set(k, url);
+    }).catch(() => { pending.delete(k); }); // stay on the inline SVG; try again next time
+    pending.set(k, p);
+  }
+  return p;
+}
+
+/** Warm the image cache, e.g. the happy and sad faces of a duel card before the vote */
+export function prefetchFigure(id: number, department: string, moods: Mood[] = MOODS) {
+  if (typeof window !== 'undefined') for (const m of moods) void prepare(id, department, m);
+}
+
 /** A friendly flat bust in the department colour. `mood` changes the face after a vote. */
-export const Figure = memo(function Figure({ id, name, department, mood = 'idle', className = '' }: {
-  id: number; name: string; department: string; mood?: 'idle' | 'happy' | 'sad'; className?: string;
-}) {
+export const Figure = memo(function Figure({ id, name, department, mood = 'idle', className = '' }: FigureProps) {
+  const key = keyOf(id, department, mood);
+  const [, setReady] = useState(0);
+  const src = images.get(key);
+  useEffect(() => {
+    if (images.has(key)) return;
+    let live = true;
+    prepare(id, department, mood).then(() => { if (live) setReady((n) => n + 1); });
+    return () => { live = false; };
+  }, [key, id, department, mood]);
+  if (src) return <img className={`figure ${className}`} src={src} alt={name ? `Gezeichnete Figur für ${name}` : ''} draggable={false} decoding="sync" />;
+  return <FigureSvg id={id} name={name} department={department} mood={mood} className={className} />;
+});
+
+/** The drawing itself, as inline SVG */
+export function FigureSvg({ id, name, department, mood = 'idle', className = '' }: FigureProps) {
   const t = traits(id, department);
   const d = deptByName(department);
-  const uid = useId().replace(/:/g, '');
+  const uid = useId().replace(/[^\w-]/g, '');
   const skinShade = mix(t.skin, '#6b2f1f', 0.16);
   const hairShade = mix(t.hairColor, '#000000', 0.18);
   const brow = mix(t.hairColor, INK, 0.45);
@@ -79,7 +130,7 @@ export const Figure = memo(function Figure({ id, name, department, mood = 'idle'
   const c = (s: string) => `${s}${uid}`;
 
   return (
-    <svg className={`figure ${className}`} viewBox="0 0 200 238" role="img" aria-label={`Gezeichnete Figur für ${name}`}>
+    <svg xmlns="http://www.w3.org/2000/svg" className={`figure ${className}`} viewBox="0 0 200 238" role="img" aria-label={`Gezeichnete Figur für ${name}`}>
       <defs>
         <linearGradient id={c('bg')} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor={mix(d.color, '#ffffff', 0.82)} /><stop offset="1" stopColor={mix(d.color, '#ffffff', 0.62)} />
@@ -185,7 +236,7 @@ export const Figure = memo(function Figure({ id, name, department, mood = 'idle'
       </g>
     </svg>
   );
-});
+}
 
 /** Ink outline around the union of the filtered shapes (dilated alpha under the source) */
 function Outline({ id, r }: { id: string; r: number }) {

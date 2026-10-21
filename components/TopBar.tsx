@@ -5,8 +5,9 @@ import { motion } from 'motion/react';
 import { useSession } from '@/lib/client/session';
 import { useToast } from '@/lib/client/feedback';
 import { MOTION } from '@/lib/client/motion';
-import { levelProgress } from '@/lib/game';
+import { ethUser, levelProgress } from '@/lib/game';
 import { Icon, LogoMark, XpStar } from './art';
+import { Avatar } from './Avatar';
 import { GameLink } from './CloudTransition';
 
 const NAV = [['/battle', 'Battle'], ['/rankings', 'Rankings'], ['/departments', 'Weekend League']] as const;
@@ -57,10 +58,24 @@ export function TopBar() {
       </nav>
       <div className="me">
         {!user ? <GameLink className="btn sm gold" href="/login">Login</GameLink> : <>
-          {profile && (
-            <GameLink href="/me" className="me-link" title="Dein Profil">
-              <XpStar level={profile.level} />
-              <span className="xp-bar" aria-label="XP"><i style={{ width: `${Math.round(levelProgress(profile.xp) * 100)}%` }} /></span>
+          {profile ? (
+            <GameLink href="/me" className="me-link" title="Dein Profil und dein persönliches Ranking" label="Dein Profil">
+              <span className="me-av">
+                <Avatar username={profile.username} department={profile.deptName} size={38} />
+                <XpStar level={profile.level} />
+              </span>
+              <span className="me-text">
+                <b className="me-name">{profile.username}</b>
+                <span className="xp-bar" role="progressbar" aria-label={`Level ${profile.level}, Fortschritt zum nächsten Level`}
+                  aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(levelProgress(profile.xp) * 100)}>
+                  <i style={{ width: `${Math.round(levelProgress(profile.xp) * 100)}%` }} />
+                </span>
+              </span>
+            </GameLink>
+          ) : (
+            <GameLink href="/setup" className="me-link" title="Profil einrichten">
+              <span className="me-av"><Avatar username={ethUser(user.email)} size={38} /></span>
+              <span className="me-text"><b className="me-name">{ethUser(user.email)}</b></span>
             </GameLink>
           )}
           <button className="btn sm stone icon-only" aria-label={`Abmelden (${user.email})`} title={`Abmelden (${user.email})`}

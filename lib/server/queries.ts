@@ -3,10 +3,10 @@ import { all, one } from './db';
 import { HttpError } from './http';
 import type { AuthUser } from './auth';
 import { league, levelFor, MIN_DUELS } from '@/lib/game';
-import { currentTerm, termOfSemester } from '@/lib/terms';
+import { currentTerm, startTermFor, termOfSemester } from '@/lib/terms';
 import { ensureSignupRule, ensureVoteTerms } from './migrate';
 import { userHash } from './accounts';
-import type { Prof, Profile, Roster, RosterGroup } from '@/lib/types';
+import type { LastLecture, Prof, Profile, Roster, RosterGroup } from '@/lib/types';
 
 type ProfRow = {
   id: number; name: string; full_name: string; relationship: string; department: string; field: string;
@@ -61,7 +61,7 @@ export async function profileSummary(v: ProfileRow): Promise<Profile> {
     UNION SELECT pair FROM spent_pairs WHERE user_hash = $3 AND term = $2) x`, [v.user_id, currentTerm(), userHash(v.eth_user)]))!;
   const k = v.profs.length;
   return {
-    email: v.email, programId: v.program_id, programName: v.program_name, deptId: v.dept_id, deptName: v.dept_name,
+    email: v.email, username: v.eth_user, programId: v.program_id, programName: v.program_name, deptId: v.dept_id, deptName: v.dept_name,
     semester: v.semester, startTerm: v.start_term, profIds: v.profs, xp: v.xp, level: levelFor(v.xp),
     votes: Math.min(n, (k * (k - 1)) / 2), totalPairs: (k * (k - 1)) / 2,
   };
@@ -124,6 +124,26 @@ export async function buildRoster(programId: number, semester: number, startTerm
   const allowed = new Set<number>();
   for (const g of groups) if (g.status !== 'future') g.entries.forEach((e) => allowed.add(e.prof.id));
   return { programId, semester, startTerm, groups, allowed };
+}
+
+/**
+ * The lecture a student last had with each professor, from the same cohort-aware roster as setup:
+ * a professor from Informatik I (semester 1) and Informatik II (semester 2) shows Informatik II.
+ * Only semesters the student already took count; a course whose semester the VVZ doesn't state is used
+ * only when the professor appears in no known semester.
+ */
+export async function lastLectures(v: ProfileRow): Promise<Map<number, LastLecture>> {
+  const { groups } = await buildRoster(v.program_id, v.semester, v.start_term ?? startTermFor(v.semester));
+  const out = new Map<number, LastLecture>();
+  for (const g of groups) {
+    if (g.status === 'future') continue;
+    for (const e of g.entries) {
+      if (g.status === 'unknown' && out.has(e.prof.id)) continue;
+      // groups come in semester order, so a later semester overwrites an earlier one
+      out.set(e.prof.id, { title: e.courses[0], more: e.courses.length - 1, semester: g.semester, term: g.term });
+    }
+  }
+  return out;
 }
 
 const cmp = (a: string, b: string) => termIdx(a) - termIdx(b);

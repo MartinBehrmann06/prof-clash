@@ -60,15 +60,15 @@ h3 { --sw: 4px; --sh: 2px; }
 .inked { filter: drop-shadow(1.4px 0 0 var(--ink)) drop-shadow(-1.4px 0 0 var(--ink)) drop-shadow(0 1.4px 0 var(--ink)) drop-shadow(0 -1.4px 0 var(--ink)); }
 
 /* ---------------- BACKDROP: isometric lawn ---------------- */
-.sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: var(--lawn-2); }
-.sky::before { content: ''; position: absolute; left: 50%; top: 50%; width: 260vmax; height: 260vmax; translate: -50% -50%;
-  background: conic-gradient(var(--lawn-1) 25%, var(--lawn-2) 0 50%, var(--lawn-1) 0 75%, var(--lawn-2) 0) 0 0 / 120px 120px;
-  transform: scaleY(.58) rotate(45deg); }
+/* The diamond lawn is one small tile, not a rotated 260vmax checkerboard: that layer was several screens
+   in size, so phones spent memory and paint time on it every time the page behind it changed. */
+.sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+  background: var(--lawn-2) url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='85' height='49'><path d='M42.5 0 85 24.5 42.5 49 0 24.5Z' fill='%238fca45'/></svg>") 50% 50% / 85px 49px; }
 .sky::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(40, 70, 10, .38)); }
 
 /* ---------------- CLOUD TRANSITION ---------------- */
 .wipe { position: fixed; inset: 0; z-index: 200; pointer-events: none; overflow: hidden; }
-.wipe .bank { position: absolute; top: -15%; bottom: -15%; width: 75%; }
+.wipe .bank { position: absolute; top: -15%; bottom: -15%; width: 75%; will-change: transform; }
 .wipe .bank.l { left: -5%; } .wipe .bank.r { right: -5%; }
 .wipe .puff { position: absolute; border-radius: 50%; background: #fff; box-shadow: inset 0 -1.6vmax 0 #dcecf8; }
 .wipe .label { position: absolute; inset: 0; display: grid; place-items: center; font: 400 clamp(36px, 6vw, 64px) var(--display); color: var(--gold-1);
@@ -76,7 +76,8 @@ h3 { --sw: 4px; --sh: 2px; }
 
 /* ---------------- TOP BAR (HUD) ---------------- */
 .topbar { position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 12px; padding: 8px max(14px, env(safe-area-inset-left));
-  background: var(--hud); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 3px 0 rgba(0, 0, 0, .25); }
+  /* solid instead of a backdrop blur: a blurred sticky bar is re-blurred on every scrolled frame, the main cost of scrolling on phones */
+  background: #241b14; box-shadow: 0 3px 0 rgba(0, 0, 0, .25); }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
 .logo-mark { display: block; }
 .logo-text { font: 400 23px/1 var(--display); letter-spacing: .02em; color: var(--gold-1); white-space: nowrap; -webkit-text-stroke: 4.5px var(--ink); paint-order: stroke fill; text-shadow: 0 3px 0 var(--ink); }
@@ -90,11 +91,21 @@ h3 { --sw: 4px; --sh: 2px; }
 .nav .pill { position: absolute; top: 0; bottom: 0; left: 0; z-index: 0; border-radius: 12px; border: 2.5px solid var(--ink);
   background: var(--gold-2) linear-gradient(180deg, var(--gold-1), var(--gold-2)); box-shadow: inset 0 -3px 0 var(--gold-3), inset 0 2px 0 rgba(255, 255, 255, .55); }
 .me { display: flex; align-items: center; gap: 8px; }
-.me-link { display: flex; align-items: center; gap: 4px; text-decoration: none; }
+.me-link { display: flex; align-items: center; gap: 8px; text-decoration: none; min-width: 0; }
+.me-av { position: relative; flex: none; }
+.me-av .xp-star { position: absolute; right: -9px; bottom: -7px; width: 24px; height: 24px; }
+.me-av .xp-star span { font-size: 11px; -webkit-text-stroke-width: 2.6px; }
+.me-text { display: grid; gap: 3px; min-width: 0; }
+.me-name { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 400 15px/1.1 var(--display); letter-spacing: .02em; color: #fff;
+  -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; }
+.me-link:hover .avatar { border-color: var(--gold-1); }
+/* the player's own figure as a round badge (also on the profile page) */
+.avatar { position: relative; display: block; flex: none; overflow: hidden; border: 2.5px solid var(--ink); border-radius: 50%; background: #fff; box-shadow: 0 2px 0 var(--ink); }
+.avatar .figure { position: absolute; left: -17.5%; top: -6.7%; width: 135%; height: 135%; }
 .xp-star { position: relative; z-index: 1; width: 40px; height: 40px; display: grid; place-items: center; flex: none; }
 .xp-star svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .xp-star span { position: relative; top: 1px; font: 400 16px var(--display); color: #fff; -webkit-text-stroke: 3.5px var(--ink); paint-order: stroke fill; }
-.xp-bar { width: 96px; height: 18px; margin-left: -14px; padding-left: 12px; border: 2.5px solid var(--ink); border-radius: 0 9px 9px 0; background: #2c241d; overflow: hidden; }
+.xp-bar { display: block; width: 96px; height: 11px; border: 2px solid var(--ink); border-radius: 9px; background: #2c241d; overflow: hidden; }
 .xp-bar i { display: block; height: 100%; background: linear-gradient(180deg, var(--blue-1), var(--blue-2)); box-shadow: inset 0 3px 0 rgba(255, 255, 255, .4); }
 
 /* ---------------- BUTTONS ---------------- */
@@ -203,7 +214,9 @@ h3 { --sw: 4px; --sh: 2px; }
 .question h1 { font-size: clamp(28px, 4vw, 44px); max-width: 22ch; text-wrap: balance; }
 .question .mode { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px; border: 2.5px solid var(--ink); border-radius: 999px; background: #fff; box-shadow: 0 3px 0 var(--ink); font: 900 13px var(--body); }
 .duel { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr); align-items: center; gap: 16px; max-width: 840px; margin: 0 auto; }
-.slot { position: relative; justify-self: center; width: min(100%, 320px); }
+/* own compositor layers: the slide, step-forward and hover springs move pixels instead of repainting the card */
+.slot { position: relative; justify-self: center; width: min(100%, 320px); will-change: transform, opacity; }
+.slot > .card { will-change: transform; }
 .card { position: relative; display: block; width: 100%; padding: 10px 10px 12px; border: 3px solid var(--ink); border-radius: 24px; cursor: pointer; text-align: center; color: var(--ink);
   background: linear-gradient(180deg, var(--parch-1), var(--parch-2)); -webkit-tap-highlight-color: transparent; touch-action: manipulation;
   box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .75), inset 0 -6px 0 rgba(170, 125, 55, .18), 0 6px 0 var(--ink), 0 22px 40px rgba(20, 40, 0, .32); }
@@ -215,6 +228,10 @@ h3 { --sw: 4px; --sh: 2px; }
 .card .frame { aspect-ratio: 200 / 238; border-radius: 16px; }
 .card .name { margin: 12px 6px 3px; font: 400 clamp(20px, 2.4vw, 26px)/1.05 var(--display); color: #fff; letter-spacing: .02em; -webkit-text-stroke: 4.2px var(--ink); paint-order: stroke fill; text-shadow: 0 3px 0 var(--ink); text-wrap: balance; }
 .card .field { min-height: 2.7em; padding: 0 8px; font-size: 13px; color: var(--ink-2); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card .field.lecture { color: var(--ink); font-weight: 800; }
+.card .field.lecture .icon { vertical-align: -0.15em; color: var(--ink-2); }
+.card .sem-tag { display: inline-block; margin-left: 5px; padding: 0 6px; border: 1.5px solid var(--ink); border-radius: 999px; background: #fff;
+  font-size: 10px; font-weight: 900; line-height: 1.5; vertical-align: .1em; white-space: nowrap; }
 .card .elo-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 10px 4px 0; padding-top: 10px; border-top: 2px dashed rgba(30, 23, 18, .18); min-height: 44px; }
 .card .elo-hidden { display: inline-flex; align-items: center; gap: 6px; font: 400 21px var(--display); color: var(--stone-2); -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; letter-spacing: .06em; }
 .card .delta { font: 400 19px var(--display); -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; text-shadow: 0 2px 0 var(--ink); }
@@ -409,7 +426,7 @@ h3 { --sw: 4px; --sh: 2px; }
 
 /* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 760px) {
-  .logo-text, .xp-bar { display: none; }
+  .logo-text, .me-text { display: none; }
   .nav a { padding: 7px 9px; font-size: 14px; -webkit-text-stroke-width: 3.5px; }
   .topbar { gap: 6px; }
   h1 { --sw: 6px; --sh: 3px; }
@@ -556,7 +573,81 @@ h3 { --sw: 4px; --sh: 2px; }
 .me-page .fav:hover { background: rgba(170, 125, 55, .22); }
 .me-page .fav .place { width: 18px; font: 400 18px var(--display); text-align: center; }
 .me-page .fav .fig { width: 40px; height: 48px; flex: none; }
-.me-page .fav .fig svg { width: 100%; height: 100%; }
+.me-page .fav .fig .figure { width: 100%; height: 100%; }
+.me-head { display: grid; justify-items: center; gap: 4px; text-align: center; }
+.me-head .avatar { border-width: 3.5px; box-shadow: 0 4px 0 var(--ink); margin-bottom: 6px; }
+.me-head h1 { overflow-wrap: anywhere; }
+.me-note { margin: 0 10px 6px; font-size: 12px; color: var(--ink-2); }
+.my-rank { margin: 0; padding: 0; list-style: none; max-height: 460px; overflow-y: auto; }
+.my-rank li:nth-child(even) .fav { background: rgba(170, 125, 55, .12); }
+.my-rank .fav:nth-of-type(even) { background: none; }
+
+/* ---------------- ONBOARDING TOUR ---------------- */
+.onb-wrap { z-index: 150; overflow-y: auto; align-items: start; padding-block: max(16px, 4vh); }
+.onb { z-index: 1; width: min(100%, 560px); padding: 16px 18px 20px; outline: none; }
+.onb-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.onb-top .link { background: none; border: 0; padding: 4px; font: inherit; font-size: 13px; color: var(--ink-2); text-decoration: underline; cursor: pointer; }
+.onb-dots { display: flex; gap: 6px; }
+.onb-dots i { width: 9px; height: 9px; border: 2px solid var(--ink); border-radius: 50%; background: #fff; transition: background-color .2s, width .2s; }
+.onb-dots i.done { background: var(--gold-2); }
+.onb-dots i.on { width: 24px; border-radius: 999px; background: var(--gold-1); }
+.onb-body { display: grid; justify-items: center; gap: 12px; text-align: center; }
+.onb-body h2 { margin: 0; font: 400 clamp(24px, 4.6vw, 30px)/1.1 var(--display); }
+.onb-sub { margin: 0; max-width: 46ch; font-size: 14px; color: var(--ink-2); }
+.onb-sub.small { font-size: 12.5px; }
+.onb-center { display: grid; justify-items: center; gap: 12px; }
+.onb-center p { margin: 0; max-width: 40ch; color: var(--ink-2); }
+.onb-center .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+.onb-icon { display: grid; place-items: center; width: 64px; height: 64px; border: 3px solid var(--ink); border-radius: 20px; color: #fff;
+  background: linear-gradient(180deg, var(--blue-1), var(--blue-2)); box-shadow: inset 0 -5px 0 rgba(0, 0, 0, .18), 0 4px 0 var(--ink); }
+.onb-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; text-align: left; max-width: 400px; }
+.onb-list li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border: 2px solid var(--ink); border-radius: 12px; background: #fff; font-size: 14px; }
+.onb-list .icon { margin-top: 1px; color: var(--blue-3); }
+.onb-duel { width: 100%; grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr); gap: 8px; margin: 14px 0 4px; }
+.onb-duel .slot { width: 100%; }
+.onb-duel .card { padding: 6px 6px 8px; border-radius: 18px; }
+.onb-duel .card .name { font-size: 17px; -webkit-text-stroke-width: 3.6px; }
+.onb-duel .card .field { font-size: 11px; }
+.onb-duel .vs-shield { width: 50px; font-size: 20px; -webkit-text-stroke-width: 4px; }
+.onb-hand { position: absolute; z-index: 8; pointer-events: none; translate: -30% -10%; filter: drop-shadow(0 3px 0 rgba(30, 23, 18, .35)); }
+.onb-round { margin-top: 0; }
+.onb-troops { display: grid; justify-items: center; gap: 8px; padding: 12px 16px; border: 2.5px solid var(--ink); border-radius: 16px; background: #fff; }
+.onb-army { display: flex; gap: 6px; }
+.trooper { display: grid; place-items: center; width: 40px; height: 40px; border: 2.5px solid var(--ink); border-radius: 12px; background: var(--parch-2); color: var(--ink-2); }
+.trooper.on { background: linear-gradient(180deg, var(--red-1), var(--red-2)); color: #fff; }
+.onb-troops b { font: 400 20px var(--display); }
+.onb-body .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.onb-map { max-width: 420px; }
+.onb-map .cq-tile .code { font-size: 28px; }
+.onb-map .cq-tile .own { display: block; }
+.onb-detail { display: grid; justify-items: center; gap: 8px; min-height: 64px; font-size: 13px; }
+.onb-detail .cq-step { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.onb-detail .cq-step b { min-width: 30px; font: 400 22px var(--display); }
+@media (max-width: 760px) {
+  .onb { padding: 14px 12px 18px; }
+  .onb-duel .vs { position: absolute; left: 50%; top: 38%; translate: -50% -50%; z-index: 6; }
+  .onb-duel { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .onb-duel .card .name { font-size: 14px; }
+}
+
+/* ---------------- ROUNDS (battle) ---------------- */
+.round { width: min(100%, 420px); margin: 14px auto 0; }
+.round-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; font: 400 15px var(--display); color: #fff;
+  -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 0 2px 0 var(--ink); }
+.round-head b { font-size: 22px; } .round-head small { font-size: 15px; }
+.round-bar { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 3px; padding: 3px; border: 2.5px solid var(--ink); border-radius: 999px; background: #2c241d; box-shadow: 0 3px 0 var(--ink); }
+.round-bar i { height: 10px; border-radius: 999px; background: rgba(255, 255, 255, .12); transition: background-color .25s; }
+.round-bar i:first-child { border-radius: 999px 4px 4px 999px; } .round-bar i:last-child { border-radius: 4px 999px 999px 4px; }
+.round-bar i.on { background: linear-gradient(180deg, var(--gold-1), var(--gold-2)); }
+.round-bar i.now { background: rgba(255, 210, 63, .45); }
+.round-break { position: relative; padding-top: 34px; }
+.round-break .ribbon { position: absolute; top: -14px; left: 50%; translate: -50% 0; }
+.podium-mini { display: flex; justify-content: center; align-items: flex-end; gap: 14px; margin: 16px 0 6px; }
+.podium-mini .pm { display: grid; justify-items: center; gap: 6px; width: 96px; text-align: center; }
+.podium-mini .pm b { font-size: 12px; line-height: 1.2; }
+.podium-mini .frame { width: 64px; }
+.podium-mini .p1 { order: 2; } .podium-mini .p1 .frame { width: 84px; border-color: var(--gold-3); box-shadow: 0 0 0 3px var(--gold-1); }
+.podium-mini .p2 { order: 1; } .podium-mini .p3 { order: 3; }
 .me-page .fav .who { flex: 1; min-width: 0; }
 .me-page .fav small { color: var(--ink-2); font-size: 12px; text-align: right; }
 .me-page .rebel { margin: 0; padding: 0 10px; font-size: 14px; }

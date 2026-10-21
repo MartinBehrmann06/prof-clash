@@ -6,6 +6,8 @@ import { GameLink } from '@/components/CloudTransition';
 import { useProfile } from '@/components/Profile';
 import { Figure } from '@/components/Figure';
 import { Icon } from '@/components/art';
+import { Avatar } from '@/components/Avatar';
+import { replayOnboarding } from '@/components/Onboarding';
 import type { MyStats } from '@/lib/types';
 
 /** Your own picks: how often you agree with the crowd, your favourites, and your boldest pick */
@@ -26,9 +28,10 @@ export default function MePage() {
 
   return (
     <div className="page me-page">
-      <header className="head">
-        <h1><span className="title-badge" style={{ ['--tb' as any]: 'var(--blue-2)' }}><Icon name="cap" /></span>Dein Profil</h1>
-        <p>{profile.programName} · Semester {profile.semester}</p>
+      <header className="head me-head">
+        <Avatar username={profile.username} department={profile.deptName} size={88} />
+        <h1>{profile.username}</h1>
+        <p>{profile.programName} · Semester {profile.semester} · Level {profile.level}</p>
       </header>
 
       <section className="panel">
@@ -61,9 +64,29 @@ export default function MePage() {
           )}
         </>}
 
+        {stats.ranking.length > 0 && (
+          <div className="list">
+            <span className="h"><Icon name="trophy" size={16} /> Dein persönliches Ranking</span>
+            <p className="me-note">Nur aus deinen eigenen Duellen: wer gegen wen gewonnen hat, gewichtet wie im echten Elo.</p>
+            <ol className="my-rank">
+              {stats.ranking.map((p, i) => (
+                <li key={p.id}>
+                  <button type="button" className="fav" onClick={() => open(p)}>
+                    <span className="place num">{i + 1}</span>
+                    <span className="fig"><Figure id={p.id} name={p.name} department={p.department} /></span>
+                    <span className="who">{p.name}</span>
+                    <small>{p.wins}/{p.duels} gewonnen</small>
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
         <p className="me-actions">
           <GameLink className="btn sm gold" href="/battle">Weiter duellieren</GameLink>
           <GameLink className="btn sm blue" href="/setup">Deck bearbeiten</GameLink>
+          <button type="button" className="btn sm stone" onClick={replayOnboarding}>Tour ansehen</button>
         </p>
       </section>
     </div>
