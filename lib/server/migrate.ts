@@ -58,6 +58,14 @@ begin
   return new;
 end $$;`;
 
+// Schema v12: players who already saw the first-login tour, so it shows once per player and not once per browser.
+const ONBOARDING_SCHEMA = `
+create table if not exists onboarding_seen (
+  eth_user text primary key,
+  seen_at timestamptz not null default now()
+);
+alter table onboarding_seen enable row level security;`;
+
 /** Run idempotent schema SQL once per server instance */
 function once(sql: string) {
   let ready: Promise<void> | null = null;
@@ -74,6 +82,9 @@ function once(sql: string) {
 export const ensureConquestSchema = once(CONQUEST_SCHEMA);
 /** Make sure votes carry their term (v8), profiles their last vote time (v9), and spent_pairs exists (v10) */
 export const ensureVoteTerms = once(VOTE_TERM_SCHEMA + VOTE_LIMIT_SCHEMA + SPENT_PAIRS_SCHEMA);
+
+/** Make sure the onboarding_seen table exists (v12) */
+export const ensureOnboardingSchema = once(ONBOARDING_SCHEMA);
 
 /** Best effort, once per instance: a failure is logged and never blocks a request */
 let signupRule: Promise<void> | null = null;

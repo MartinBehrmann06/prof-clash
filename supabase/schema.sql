@@ -278,3 +278,14 @@ begin
   end if;
   return new;
 end $$;
+
+-- ---------------------------------------------------------------
+-- v12: the first-login tour is shown once per player, on any device.
+-- Keyed by ETH username, so it also holds before the profile exists.
+-- Also applied by the app itself (lib/server/migrate.ts).
+-- ---------------------------------------------------------------
+create table if not exists onboarding_seen (
+  eth_user text primary key,
+  seen_at timestamptz not null default now()
+);
+alter table onboarding_seen enable row level security;

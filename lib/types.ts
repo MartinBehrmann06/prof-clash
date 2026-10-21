@@ -42,7 +42,8 @@ export type Profile = {
   totalPairs: number;
 };
 
-export type Me = { user: { id: string; email: string } | null; profile: Profile | null };
+// onboarded: this player already saw the first-login tour (on any device)
+export type Me = { user: { id: string; email: string } | null; profile: Profile | null; onboarded?: boolean };
 
 export type RosterGroup = {
   semester: number | null; // null = semester unknown in the VVZ
