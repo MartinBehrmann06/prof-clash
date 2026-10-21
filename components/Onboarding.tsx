@@ -216,7 +216,7 @@ function Troops({ troops, setTroops, onNext }: { troops: number; setTroops: (n: 
   return (
     <>
       <h2 id="onbTitle">Weekend League: Truppen sammeln</h2>
-      <p className="onb-sub">Jedes Department ist ein Clan. <b>Jedes Duell bringt eine Truppe</b>, höchstens {DAILY_CAP} pro Tag, am Wochenende zählt jedes ×{WEEKEND_MULT}. Spiel ein paar Demo-Duelle:</p>
+      <p className="onb-sub">Jedes Department ist ein Clan. <b>Jedes Duell bringt eine Truppe</b>, höchstens {DAILY_CAP} pro Tag, dazu jeder richtige Tipp des Tages. Am Wochenende zählt alles ×{WEEKEND_MULT}. Spiel ein paar Demo-Duelle:</p>
       <div className="onb-troops" aria-live="polite">
         <div className="onb-army">
           {Array.from({ length: 6 }, (_, k) => (

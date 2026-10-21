@@ -66,6 +66,21 @@ create table if not exists onboarding_seen (
 );
 alter table onboarding_seen enable row level security;`;
 
+// Schema v13: Tipp des Tages, a few guesses a day about the crowd's pick (lib/guess.ts).
+const GUESS_SCHEMA = `
+create table if not exists daily_guesses (
+  user_id uuid not null references profiles(user_id) on delete cascade,
+  day date not null,
+  idx smallint not null,
+  left_id integer not null,
+  right_id integer not null,
+  answer integer not null,
+  picked integer,
+  answered_at timestamptz,
+  primary key (user_id, day, idx)
+);
+alter table daily_guesses enable row level security;`;
+
 /** Run idempotent schema SQL once per server instance */
 function once(sql: string) {
   let ready: Promise<void> | null = null;
@@ -82,6 +97,9 @@ function once(sql: string) {
 export const ensureConquestSchema = once(CONQUEST_SCHEMA);
 /** Make sure votes carry their term (v8), profiles their last vote time (v9), and spent_pairs exists (v10) */
 export const ensureVoteTerms = once(VOTE_TERM_SCHEMA + VOTE_LIMIT_SCHEMA + SPENT_PAIRS_SCHEMA);
+
+/** Make sure the daily_guesses table exists (v13) */
+export const ensureGuessSchema = once(GUESS_SCHEMA);
 
 /** Make sure the onboarding_seen table exists (v12) */
 export const ensureOnboardingSchema = once(ONBOARDING_SCHEMA);

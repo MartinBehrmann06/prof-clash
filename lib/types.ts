@@ -91,3 +91,10 @@ export type MyStats = {
   rebel: { winner: Prof; loser: Prof; gap: number } | null; // the pick most against the crowd
   ranking: (Prof & { wins: number; duels: number; rating: number })[]; // every professor you judged, by your own votes
 };
+
+/** A professor in the Tipp des Tages: no Elo or record, those would give the answer away */
+export type GuessProf = { id: number; name: string; department: string; field: string };
+export type GuessQuestion = { idx: number; left: GuessProf; right: GuessProf; picked: number | null; answer: number | null };
+/** troops: what a right guess is worth today */
+export type GuessDay = { perDay: number; troops: number; questions: GuessQuestion[] };
+export type GuessResult = { correct: boolean; answer: number; troops: number };
