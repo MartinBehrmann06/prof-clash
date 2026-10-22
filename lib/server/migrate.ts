@@ -44,6 +44,7 @@ create table if not exists spent_pairs (
 alter table spent_pairs enable row level security;`;
 
 // Schema v11: the signup trigger also rejects plus addresses (name+x@ethz.ch).
+// v13: the trigger function is not callable over the REST API, and the helpers get a fixed search_path.
 const SIGNUP_RULE_SCHEMA = `
 create or replace function public.enforce_eth_signup()
 returns trigger language plpgsql security definer set search_path = public as $$
@@ -56,7 +57,10 @@ begin
     raise exception 'Use your plain ETH address, without +';
   end if;
   return new;
-end $$;`;
+end $$;
+revoke execute on function public.enforce_eth_signup() from public, anon, authenticated;
+alter function public.lock_profile() set search_path = public;
+alter function public.is_eth_email(text) set search_path = public;`;
 
 // Schema v12: players who already saw the first-login tour, so it shows once per player and not once per browser.
 const ONBOARDING_SCHEMA = `
