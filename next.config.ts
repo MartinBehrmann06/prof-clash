@@ -11,13 +11,15 @@ const nextConfig: NextConfig = {
     return [{
       source: '/:path*',
       headers: [
-        // no framing (clickjacking), no MIME sniffing, no full URLs leaked to other sites
-        { key: 'Content-Security-Policy', value: "frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'" },
+        // no framing (clickjacking), no MIME sniffing, no full URLs leaked to other sites.
+        // Pages get the full Content-Security-Policy with a script nonce from middleware.ts.
         { key: 'X-Frame-Options', value: 'DENY' },
         { key: 'X-Content-Type-Options', value: 'nosniff' },
         { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=()' },
         { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
+        // no other window keeps a handle on ours
+        { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
       ],
     }];
   },
