@@ -289,3 +289,13 @@ create table if not exists onboarding_seen (
   seen_at timestamptz not null default now()
 );
 alter table onboarding_seen enable row level security;
+
+-- ---------------------------------------------------------------
+-- v13: Supabase security advisor. The signup trigger function runs as
+-- security definer, so it must not be callable over /rest/v1/rpc; the
+-- helper functions get a fixed search_path.
+-- Also applied by the app itself (lib/server/migrate.ts).
+-- ---------------------------------------------------------------
+revoke execute on function public.enforce_eth_signup() from public, anon, authenticated;
+alter function public.lock_profile() set search_path = public;
+alter function public.is_eth_email(text) set search_path = public;
